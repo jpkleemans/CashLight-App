@@ -1,8 +1,4 @@
-﻿using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Practices.ServiceLocation;
 
 namespace CashLight_App.ViewModel
 {
@@ -14,12 +10,6 @@ namespace CashLight_App.ViewModel
             {
                 return ServiceLocator.Current.GetInstance<DashboardViewModel>();
             }
-        }
-
-        static ViewModelLocator()
-        {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            SimpleIoc.Default.Register<DashboardViewModel>();
         }
     }
 }
