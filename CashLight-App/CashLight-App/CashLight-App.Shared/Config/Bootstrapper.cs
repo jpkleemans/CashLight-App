@@ -1,9 +1,6 @@
-﻿using CashLight_App.ViewModel;
-using GalaSoft.MvvmLight.Ioc;
+﻿using Autofac;
+using Autofac.Extras.CommonServiceLocator;
 using Microsoft.Practices.ServiceLocation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CashLight_App.Config
 {
@@ -11,8 +8,11 @@ namespace CashLight_App.Config
     {
         public Bootstrapper()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            SimpleIoc.Default.Register<DashboardViewModel>();
+            ContainerBuilder container = new ContainerBuilder();
+
+            ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container.Build()));
+
+            container.RegisterModule(new RuntimeModule());
         }
     }
 }

@@ -16,6 +16,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Config\Bootstrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\Routes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\RuntimeModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DashboardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
