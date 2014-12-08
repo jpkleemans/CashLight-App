@@ -1,29 +1,27 @@
-﻿using GalaSoft.MvvmLight;
+﻿using CashLight_App.Model;
+using GalaSoft.MvvmLight;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace CashLight_App.ViewModel
 {
     public class DashboardViewModel : ViewModelBase
     {
-        private string _helloWorld;
-        public string HelloWorld
-        {
-            get
-            {
-                return _helloWorld;
-            }
-            set
-            {
-                _helloWorld = value;
-                RaisePropertyChanged(() => HelloWorld);
-            }
-        }
+        public ObservableCollection<Transaction> ImportantIncomes { get; set; }
 
         public DashboardViewModel()
         {
-            HelloWorld = "Hello World!";
+            ImportantIncomes = new ObservableCollection<Transaction>();
+
+            InitTransactions();
+        }
+
+        public void InitTransactions()
+        {
+            ImportantIncomes.Add(new Transaction(new DateTime(2014, 10, 6), "Zakgeld", 100));
+            ImportantIncomes.Add(new Transaction(new DateTime(2014, 10, 14), "Salaris", 200));
+            ImportantIncomes.Add(new Transaction(new DateTime(2014, 10, 22), "Kinderbijslag", 150));
+            ImportantIncomes.Add(new Transaction(new DateTime(2014, 10, 28), "Hansje", 120));
         }
     }
 }
