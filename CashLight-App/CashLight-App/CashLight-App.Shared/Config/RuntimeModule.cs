@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using CashLight_App.Interface;
+using CashLight_App.Service;
 using CashLight_App.ViewModel;
 using GalaSoft.MvvmLight.Views;
 
@@ -10,6 +12,10 @@ namespace CashLight_App.Config
         {
             // Services
             builder.RegisterInstance<INavigationService>(Routes.GetRoutes(new NavigationService()));
+
+            builder.RegisterType<SQLiteUnitOfWork>()
+               .As<IUnitOfWork>()
+               .WithParameter("_dbname", "CashLight.db");
 
             // ViewModels
             builder.RegisterType<DashboardViewModel>();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CashLight_App.Interface
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         IRepository<Transaction> Transaction { get; }
         IRepository<Category> Category { get; }
