@@ -10,14 +10,14 @@ namespace CashLight_App.Model
 {
     public class TransactionModel
     {
-        private IUnitOfWork _unitOfWork;
+        private static IUnitOfWork _unitOfWork;
 
         public TransactionModel()
         {
             _unitOfWork = ServiceLocator.Current.GetInstance<IUnitOfWork>();
         }
 
-        public List<Transaction> GetAll()
+        public static List<Transaction> GetAll()
         {
             return _unitOfWork.Transaction.FindAll().ToList();
         }
@@ -76,7 +76,7 @@ namespace CashLight_App.Model
         /// <param name="startdate">Startdatum</param>
         /// <param name="enddate">Einddatum</param>
         /// <returns></returns>
-        public static List<Transaction> getMostImportantTransactionsBij(ref List<Transaction> list, DateTime startdate, DateTime enddate)
+        public static List<Transaction> getMostImportantTransactionsBij(List<Transaction> list, DateTime startdate, DateTime enddate)
         {
             IQueryable<Transaction> transactions = list.AsQueryable();
             return (from a in transactions
