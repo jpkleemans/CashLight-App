@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CashLight_App.Model
 {
-    public class Transaction
+    public class TransactionModel
     {
         public DateTime Date { get; set; }
 
@@ -12,7 +12,7 @@ namespace CashLight_App.Model
 
         public double Amount { get; set; }
 
-        public Transaction(DateTime date, string name, double amount)
+        public TransactionModel(DateTime date, string name, double amount)
         {
             Date = date;
             Name = name;
