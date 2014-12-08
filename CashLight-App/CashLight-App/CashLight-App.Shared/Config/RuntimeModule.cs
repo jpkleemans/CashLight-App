@@ -15,7 +15,8 @@ namespace CashLight_App.Config
 
             builder.RegisterType<SQLiteUnitOfWork>()
                .As<IUnitOfWork>()
-               .WithParameter("_dbname", "CashLight.db");
+               .WithParameter("_dbname", "CashLight.db")
+               .SingleInstance();
 
             // ViewModels
             builder.RegisterType<DashboardViewModel>();

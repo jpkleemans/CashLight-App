@@ -38,7 +38,7 @@ namespace CashLight_App.DataModel
         public string Mededelingen { get; set; }
         //[ForeignKey("Category")]
         public int CategoryID { get; set; }
-        //public virtual Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

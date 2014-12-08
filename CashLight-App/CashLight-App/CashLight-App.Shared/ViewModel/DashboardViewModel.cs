@@ -24,10 +24,7 @@ namespace CashLight_App.ViewModel
 
         public void InitTransactions()
         {
-            ImportantIncomes.Add(new TransactionModel(new DateTime(2014, 10, 6), "Zakgeld", 100));
-            ImportantIncomes.Add(new TransactionModel(new DateTime(2014, 10, 14), "Salaris", 200));
-            ImportantIncomes.Add(new TransactionModel(new DateTime(2014, 10, 22), "Kinderbijslag", 150));
-            ImportantIncomes.Add(new TransactionModel(new DateTime(2014, 10, 28), "Hansje", 120));
+            // Get db records
         }
     }
 }
