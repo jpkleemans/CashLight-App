@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Config\Routes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\RuntimeModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToUpperConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataModels\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataModels\Transaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AfBij.cs" />
