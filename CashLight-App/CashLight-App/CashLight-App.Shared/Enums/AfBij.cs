@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.Enum
+namespace CashLight_App.Enums
 {
     public enum AfBij
     {

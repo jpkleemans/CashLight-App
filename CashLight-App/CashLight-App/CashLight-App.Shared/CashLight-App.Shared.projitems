@@ -21,7 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converter\StringFormatConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataModel\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataModel\Transaction.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Enum\AfBij.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\AfBij.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TransactionModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\Interface\IRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\Interface\IUnitOfWork.cs" />

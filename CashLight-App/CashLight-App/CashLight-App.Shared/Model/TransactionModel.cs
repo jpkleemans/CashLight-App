@@ -75,7 +75,7 @@ namespace CashLight_App.Model
         {
             IQueryable<Transaction> transactions = list.AsQueryable();
             return (from a in transactions
-                    where a.AfBij == (int)Enum.AfBij.Bij
+                    where a.AfBij == (int)Enums.AfBij.Bij
                    // && a.Category != null
                     && a.Datum > startdate
                     && a.Datum < enddate
@@ -95,7 +95,7 @@ namespace CashLight_App.Model
         {
             IQueryable<Transaction> transactions = list.AsQueryable();
             return (from a in transactions
-                    where a.AfBij == (int)Enum.AfBij.Af
+                    where a.AfBij == (int)Enums.AfBij.Af
                    // && a.Category != null
                     && a.Datum > startdate
                     && a.Datum < enddate
