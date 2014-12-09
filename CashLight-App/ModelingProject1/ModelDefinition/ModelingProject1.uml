@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="4a2e8585-23b1-418e-8c9a-403eba34cdc9"
+  name="ModelingProject1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="a6d3cae4-dd5c-40da-9124-685ffd682db0"
+        name="Gebruiker"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="5ed6b1e1-1c55-4a07-9fb9-03e768380b07"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Installeren Cashlight"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1d1abf6d-c0eb-4bc0-b050-70099650e182"
+              LastKnownName="Installeren Cashlight"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7f26d70d-3428-467c-b9da-ae7fe77d388d"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e6c4e97f-c4a6-4e7a-bc6b-72475a09f982"
+                  name="Installeren Cashlight"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="db2f38c2-a5c9-40ad-9fd3-6f0b33d5c7a3"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Uploaden CSV-bestand"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b9145ebc-22ba-400d-9e0d-1f785a3ccf52"
+              LastKnownName="Uploaden CSV-bestand"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a530ac3f-ce3a-42bc-9e69-e69d98b3e9a6"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c1a82ec3-466e-435a-8d36-22d853b878fc"
+                  name="Uploaden CSV-bestand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8076cb00-d104-4345-aa27-a4df2560f7ef"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Categoriseren transacties"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0a61009e-77e3-4c22-b9f6-d1ca6db780c0"
+              LastKnownName="Categoriseren transacties"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="60e7911e-b73a-4433-a3a2-3f7bc6f0a2c0"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="45f3e1a8-f556-42eb-be36-752f781e5c99"
+                  name="Categoriseren transacties"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="470e6903-4257-4924-b2c3-ba190a001444"
+        name="CashLight"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1d1abf6d-c0eb-4bc0-b050-70099650e182"
+        name="Installeren Cashlight"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0a61009e-77e3-4c22-b9f6-d1ca6db780c0"
+        name="Categoriseren transacties"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b9145ebc-22ba-400d-9e0d-1f785a3ccf52"
+        name="Uploaden CSV-bestand"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
