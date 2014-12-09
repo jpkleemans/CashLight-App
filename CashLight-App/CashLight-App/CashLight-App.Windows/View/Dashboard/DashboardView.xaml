@@ -25,30 +25,30 @@
                 </Grid.ColumnDefinitions>
 
                 <local:IncomeMarker Grid.Column="0" 
-                                    Label="{Binding ImportantIncomes[0].Name}"
-                                    Amount="{Binding ImportantIncomes[0].Amount}" 
-                                    Date="{Binding ImportantIncomes[0].Date}" 
-                                    Height="400" 
+                                    Label="{Binding ImportantIncomes[0].Naam}"
+                                    Amount="{Binding ImportantIncomes[0].Bedrag}" 
+                                    Date="{Binding ImportantIncomes[0].Datum}" 
+                                    Height="450" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                 <local:IncomeMarker Grid.Column="1" 
-                                    Label="{Binding ImportantIncomes[1].Name}" 
-                                    Amount="{Binding ImportantIncomes[1].Amount}" 
-                                    Date="{Binding ImportantIncomes[1].Date}" 
+                                    Label="{Binding ImportantIncomes[1].Naam}" 
+                                    Amount="{Binding ImportantIncomes[1].Bedrag}" 
+                                    Date="{Binding ImportantIncomes[1].Datum}" 
                                     Height="350" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                 <local:IncomeMarker Grid.Column="2" 
-                                    Label="{Binding ImportantIncomes[2].Name}" 
-                                    Amount="{Binding ImportantIncomes[2].Amount}" 
-                                    Date="{Binding ImportantIncomes[2].Date}" 
-                                    Height="450" 
+                                    Label="{Binding ImportantIncomes[2].Naam}" 
+                                    Amount="{Binding ImportantIncomes[2].Bedrag}" 
+                                    Date="{Binding ImportantIncomes[2].Datum}" 
+                                    Height="300" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                 <local:IncomeMarker Grid.Column="3" 
-                                    Label="{Binding ImportantIncomes[3].Name}" 
-                                    Amount="{Binding ImportantIncomes[3].Amount}" 
-                                    Date="{Binding ImportantIncomes[3].Date}" 
+                                    Label="{Binding ImportantIncomes[3].Naam}" 
+                                    Amount="{Binding ImportantIncomes[3].Bedrag}" 
+                                    Date="{Binding ImportantIncomes[3].Datum}" 
                                     Height="300" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
@@ -65,10 +65,6 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Content="{Binding ImportantIncomes[0].Name}" Height="{Binding ImportantIncomes[0].Amount}" Width="10" VerticalAlignment="Top" HorizontalAlignment="Right" />
-                <Button Grid.Column="1" Content="{Binding ImportantIncomes[1].Name}" Height="{Binding ImportantIncomes[1].Amount}" Width="10" VerticalAlignment="Top" HorizontalAlignment="Right" />
-                <Button Grid.Column="2" Content="{Binding ImportantIncomes[2].Name}" Height="{Binding ImportantIncomes[2].Amount}" Width="10" VerticalAlignment="Top" HorizontalAlignment="Right" />
-                <Button Grid.Column="3" Content="{Binding ImportantIncomes[3].Name}" Height="{Binding ImportantIncomes[3].Amount}" Width="10" VerticalAlignment="Top" HorizontalAlignment="Right" />
             </Grid>
         </Border>
     </Grid>

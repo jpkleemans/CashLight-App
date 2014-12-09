@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Threading;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -103,6 +104,8 @@ namespace CashLight_App
 
             // Ensure the current window is active
             Window.Current.Activate();
+
+            DispatcherHelper.Initialize();
         }
 
 #if WINDOWS_PHONE_APP

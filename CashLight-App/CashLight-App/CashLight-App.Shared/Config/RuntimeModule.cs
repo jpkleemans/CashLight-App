@@ -11,7 +11,8 @@ namespace CashLight_App.Config
         protected override void Load(ContainerBuilder builder)
         {
             // Services
-            builder.RegisterInstance<INavigationService>(Routes.GetRoutes(new NavigationService()));
+            builder.RegisterInstance<INavigationService>(Routes.GetRoutes(new NavigationService()))
+                .SingleInstance();
 
             builder.RegisterType<SQLiteUnitOfWork>()
                .As<IUnitOfWork>()

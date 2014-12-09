@@ -10,12 +10,7 @@ namespace CashLight_App.Model
 {
     public class TransactionModel
     {
-        private static IUnitOfWork _unitOfWork;
-
-        public TransactionModel()
-        {
-            _unitOfWork = ServiceLocator.Current.GetInstance<IUnitOfWork>();
-        }
+        private static IUnitOfWork _unitOfWork = ServiceLocator.Current.GetInstance<IUnitOfWork>();
 
         public static List<Transaction> GetAll()
         {
@@ -81,7 +76,7 @@ namespace CashLight_App.Model
             IQueryable<Transaction> transactions = list.AsQueryable();
             return (from a in transactions
                     where a.AfBij == (int)Enum.AfBij.Bij
-                    && a.Category != null
+                   // && a.Category != null
                     && a.Datum > startdate
                     && a.Datum < enddate
                     orderby a.Bedrag descending
@@ -101,7 +96,7 @@ namespace CashLight_App.Model
             IQueryable<Transaction> transactions = list.AsQueryable();
             return (from a in transactions
                     where a.AfBij == (int)Enum.AfBij.Af
-                    && a.Category != null
+                   // && a.Category != null
                     && a.Datum > startdate
                     && a.Datum < enddate
                     orderby a.Bedrag descending

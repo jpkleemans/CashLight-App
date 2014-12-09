@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
-using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 
 namespace CashLight_App.Config
@@ -11,9 +10,11 @@ namespace CashLight_App.Config
         {
             ContainerBuilder container = new ContainerBuilder();
 
-            ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container.Build()));
-
             container.RegisterModule(new RuntimeModule());
+
+            IComponentContext build = container.Build();
+
+            ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(build));
         }
     }
 }
