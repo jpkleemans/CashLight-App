@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text;
 using Windows.UI.Xaml.Data;
 
 namespace CashLight_App.Converters
 {
-    public class StringFormatConverter : IValueConverter
+    class StringToUpperConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            // No format provided.
-            if (parameter == null)
+            if (value is string)
             {
-                return value;
+                return value.ToString().ToUpper();
             }
-
-            return String.Format(new CultureInfo("nl-NL"), (String)parameter, value);
+            return String.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
