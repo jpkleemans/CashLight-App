@@ -1,5 +1,5 @@
-﻿using CashLight_App.DataModel;
-using CashLight_App.Service.Interface;
+﻿using CashLight_App.DataModels;
+using CashLight_App.Services.Interface;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace CashLight_App.Service
+namespace CashLight_App.Services
 {
     public class SQLiteUnitOfWork : IUnitOfWork, IDisposable
     {

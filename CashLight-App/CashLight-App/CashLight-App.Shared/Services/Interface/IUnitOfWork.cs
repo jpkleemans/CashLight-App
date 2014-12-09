@@ -1,9 +1,9 @@
-﻿using CashLight_App.DataModel;
+﻿using CashLight_App.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.Service.Interface
+namespace CashLight_App.Services.Interface
 {
     public interface IUnitOfWork
     {

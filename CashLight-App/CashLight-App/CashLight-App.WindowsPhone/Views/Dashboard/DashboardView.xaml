@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="CashLight_App.View.Dashboard.DashboardView"
+    x:Class="CashLight_App.Views.Dashboard.DashboardView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CashLight_App.View.Dashboard"
+    xmlns:local="using:CashLight_App.Views.Dashboard"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"

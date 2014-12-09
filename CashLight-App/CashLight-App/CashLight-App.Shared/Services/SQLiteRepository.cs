@@ -1,11 +1,11 @@
-﻿using CashLight_App.Service.Interface;
+﻿using CashLight_App.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace CashLight_App.Service
+namespace CashLight_App.Services
 {
     public class SQLiteRepository<T> : IRepository<T> where T : class, new()
     {

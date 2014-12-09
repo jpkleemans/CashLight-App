@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Windows.UI.Xaml.Data;
 
-namespace CashLight_App.Converter
+namespace CashLight_App.Converters
 {
     public class StringFormatConverter : IValueConverter
     {

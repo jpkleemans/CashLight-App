@@ -1,13 +1,13 @@
-﻿using CashLight_App.DataModel;
-using CashLight_App.Model;
-using CashLight_App.Service.Interface;
+﻿using CashLight_App.DataModels;
+using CashLight_App.Models;
+using CashLight_App.Services.Interface;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace CashLight_App.ViewModel
+namespace CashLight_App.ViewModels
 {
     public class DashboardViewModel : ViewModelBase
     {

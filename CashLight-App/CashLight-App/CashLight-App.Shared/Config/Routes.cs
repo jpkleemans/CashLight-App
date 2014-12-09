@@ -1,4 +1,4 @@
-﻿using CashLight_App.View.Dashboard;
+﻿using CashLight_App.Views.Dashboard;
 using GalaSoft.MvvmLight.Views;
 
 namespace CashLight_App.Config

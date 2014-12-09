@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.ServiceLocation;
 
-namespace CashLight_App.ViewModel
+namespace CashLight_App.ViewModels
 {
     public class ViewModelLocator
     {

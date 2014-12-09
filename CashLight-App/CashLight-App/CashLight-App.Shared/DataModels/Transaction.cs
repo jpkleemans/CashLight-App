@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.DataModel
+namespace CashLight_App.DataModels
 {
     [Table("Transaction")]
     public class Transaction

@@ -1,12 +1,12 @@
-﻿using CashLight_App.DataModel;
-using CashLight_App.Service.Interface;
+﻿using CashLight_App.DataModels;
+using CashLight_App.Services.Interface;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CashLight_App.Model
+namespace CashLight_App.Models
 {
     public class TransactionModel
     {

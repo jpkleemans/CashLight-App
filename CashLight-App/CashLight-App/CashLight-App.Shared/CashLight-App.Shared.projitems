@@ -18,17 +18,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Config\Bootstrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\Routes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\RuntimeModule.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converter\StringFormatConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataModel\Category.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataModel\Transaction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModels\Category.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModels\Transaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AfBij.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\TransactionModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\Interface\IRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\Interface\IUnitOfWork.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\SQLite.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\SQLiteRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Service\SQLiteUnitOfWork.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DashboardViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TransactionModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interface\IRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interface\IUnitOfWork.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SQLiteRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SQLiteUnitOfWork.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DashboardViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelLocator.cs" />
   </ItemGroup>
 </Project>

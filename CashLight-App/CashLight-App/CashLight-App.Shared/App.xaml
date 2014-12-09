@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:vm="using:CashLight_App.ViewModel"
+    xmlns:vm="using:CashLight_App.ViewModels"
     xmlns:conf="using:CashLight_App.Config">
 
     <Application.Resources>
