@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashLight-App.Windows", "Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashLight-App.WindowsPhone", "CashLight-App\CashLight-App.WindowsPhone\CashLight-App.WindowsPhone.csproj", "{B16F43A3-9743-454B-BCDB-F6E3A03451BC}"
 EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "UseCaseDiagram", "..\..\..\..\Desktop\UseCaseDiagram\UseCaseDiagram.modelproj", "{8FEFE6EF-A531-499A-9B5D-6E936C60594F}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		CashLight-App\CashLight-App.Shared\CashLight-App.Shared.projitems*{b16f43a3-9743-454b-bcdb-f6e3a03451bc}*SharedItemsImports = 4
@@ -74,16 +72,6 @@ Global
 		{B16F43A3-9743-454B-BCDB-F6E3A03451BC}.Release|x86.ActiveCfg = Release|x86
 		{B16F43A3-9743-454B-BCDB-F6E3A03451BC}.Release|x86.Build.0 = Release|x86
 		{B16F43A3-9743-454B-BCDB-F6E3A03451BC}.Release|x86.Deploy.0 = Release|x86
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Release|ARM.ActiveCfg = Release|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Release|x64.ActiveCfg = Release|Any CPU
-		{8FEFE6EF-A531-499A-9B5D-6E936C60594F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
