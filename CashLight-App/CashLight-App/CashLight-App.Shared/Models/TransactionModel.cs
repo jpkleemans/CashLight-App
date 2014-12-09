@@ -10,6 +10,7 @@ namespace CashLight_App.Models
 {
     public class TransactionModel
     {
+        private static int pixels = 500; //Max height off the markers.
         private static IUnitOfWork _unitOfWork = ServiceLocator.Current.GetInstance<IUnitOfWork>();
 
         public static List<Transaction> GetAll()
@@ -74,14 +75,25 @@ namespace CashLight_App.Models
         public static List<Transaction> getMostImportantTransactionsBij(List<Transaction> list, DateTime startdate, DateTime enddate)
         {
             IQueryable<Transaction> transactions = list.AsQueryable();
-            return (from a in transactions
+            List<Transaction> trans = (from a in transactions
                     where a.AfBij == (int)Enums.AfBij.Bij
                    // && a.Category != null
                     && a.Datum > startdate
                     && a.Datum < enddate
                     orderby a.Bedrag descending
                     select a
-                    ).Take(5).ToList();
+                    ).Take(4).ToList();
+            double total = 0;
+            foreach (Transaction item in trans)
+            {
+                total += item.Bedrag;
+            }
+            foreach (Transaction item in trans)
+            {
+                double percentage = (item.Bedrag / total);
+                int height = pixels * Convert.ToInt32(percentage);
+            }
+            return trans;
         }
 
         /// <summary>
