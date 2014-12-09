@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using CashLight_App.Interface;
 using CashLight_App.Service;
+using CashLight_App.Service.Interface;
 using CashLight_App.ViewModel;
 using GalaSoft.MvvmLight.Views;
 

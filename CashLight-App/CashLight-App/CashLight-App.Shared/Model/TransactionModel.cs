@@ -1,5 +1,5 @@
 ﻿using CashLight_App.DataModel;
-using CashLight_App.Interface;
+using CashLight_App.Service.Interface;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;

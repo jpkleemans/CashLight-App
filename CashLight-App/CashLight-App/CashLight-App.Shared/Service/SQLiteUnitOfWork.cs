@@ -1,5 +1,5 @@
 ﻿using CashLight_App.DataModel;
-using CashLight_App.Interface;
+using CashLight_App.Service.Interface;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using Windows.Storage;
 
 namespace CashLight_App.Service
 {
-    public class SQLiteUnitOfWork : Interface.IUnitOfWork, IDisposable
+    public class SQLiteUnitOfWork : IUnitOfWork, IDisposable
     {
         SQLiteRepository<Transaction> _transaction;
         SQLiteRepository<Category> _category;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace CashLight_App.Interface
+namespace CashLight_App.Service.Interface
 {
     public interface IRepository<T>
     {

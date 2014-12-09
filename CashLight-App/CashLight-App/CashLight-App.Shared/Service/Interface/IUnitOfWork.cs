@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.Interface
+namespace CashLight_App.Service.Interface
 {
     public interface IUnitOfWork
     {

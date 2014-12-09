@@ -22,9 +22,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataModel\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataModel\Transaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enum\AfBij.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Interface\IRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Interface\IUnitOfWork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TransactionModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\Interface\IRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\Interface\IUnitOfWork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\SQLiteRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\SQLiteUnitOfWork.cs" />
