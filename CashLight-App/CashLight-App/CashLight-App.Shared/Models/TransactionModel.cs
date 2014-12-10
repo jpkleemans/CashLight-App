@@ -13,7 +13,11 @@ namespace CashLight_App.Models
     public class TransactionModel : ModelBase
     {
         private static int pixels = 500; //Max height off the markers.
-        public static IEnumerable<TransactionModel> All()
+        private static IUnitOfWork _unitOfWork = ServiceLocator.Current.GetInstance<IUnitOfWork>();
+
+        public static int height { get; set; }
+
+        public static List<Transaction> GetAll()
         {
             Mapper.CreateMap<Transaction, TransactionModel>();
             var p = _unitOfWork.Transaction.FindAll();
@@ -72,12 +76,12 @@ namespace CashLight_App.Models
         {
             IQueryable<Transaction> transactions = list.AsQueryable();
             List<Transaction> trans = (from a in transactions
-                                       where a.AfBij == (int)Enums.AfBij.Bij
-                                           // && a.Category != null
-                                       && a.Datum > startdate
-                                       && a.Datum < enddate
-                                       orderby a.Bedrag descending
-                                       select a
+                    where a.AfBij == (int)Enums.AfBij.Bij
+                   // && a.Category != null
+                    && a.Datum > startdate
+                    && a.Datum < enddate
+                    orderby a.Bedrag descending
+                    select a
                     ).Take(4).ToList();
             double total = 0;
             foreach (Transaction item in trans)
@@ -87,7 +91,7 @@ namespace CashLight_App.Models
             foreach (Transaction item in trans)
             {
                 double percentage = (item.Bedrag / total);
-                int height = pixels * Convert.ToInt32(percentage);
+                height = pixels * Convert.ToInt32(percentage);
             }
             return trans;
         }
@@ -104,7 +108,7 @@ namespace CashLight_App.Models
             IQueryable<Transaction> transactions = list.AsQueryable();
             return (from a in transactions
                     where a.AfBij == (int)Enums.AfBij.Af
-                        // && a.Category != null
+                   // && a.Category != null
                     && a.Datum > startdate
                     && a.Datum < enddate
                     orderby a.Bedrag descending
