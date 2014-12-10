@@ -1,31 +1,27 @@
-﻿using CashLight_App.DataModels;
+﻿using AutoMapper;
+using CashLight_App.DataModels;
 using CashLight_App.Services.Interface;
 using Microsoft.Practices.ServiceLocation;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace CashLight_App.Models
 {
-    public class TransactionModel
+    public class TransactionModel : ModelBase
     {
         private static int pixels = 500; //Max height off the markers.
-        private static IUnitOfWork _unitOfWork = ServiceLocator.Current.GetInstance<IUnitOfWork>();
-
-        public static List<Transaction> GetAll()
+        public static IEnumerable<TransactionModel> All()
         {
-            return _unitOfWork.Transaction.FindAll().ToList();
-        }
-
-        public void setCategory(Category c)
-        {
-
+            Mapper.CreateMap<Transaction, TransactionModel>();
+            var p = _unitOfWork.Transaction.FindAll();
+            return Mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionModel>>(p);
         }
 
         public bool Exists(Dictionary<string, string> item)
         {
-
             var name = item["Naam / Omschrijving"];
             var rekening = item["Rekening"];
             var datum = Convert.ToDateTime(item["Datum"]);
@@ -76,12 +72,12 @@ namespace CashLight_App.Models
         {
             IQueryable<Transaction> transactions = list.AsQueryable();
             List<Transaction> trans = (from a in transactions
-                    where a.AfBij == (int)Enums.AfBij.Bij
-                   // && a.Category != null
-                    && a.Datum > startdate
-                    && a.Datum < enddate
-                    orderby a.Bedrag descending
-                    select a
+                                       where a.AfBij == (int)Enums.AfBij.Bij
+                                           // && a.Category != null
+                                       && a.Datum > startdate
+                                       && a.Datum < enddate
+                                       orderby a.Bedrag descending
+                                       select a
                     ).Take(4).ToList();
             double total = 0;
             foreach (Transaction item in trans)
@@ -108,7 +104,7 @@ namespace CashLight_App.Models
             IQueryable<Transaction> transactions = list.AsQueryable();
             return (from a in transactions
                     where a.AfBij == (int)Enums.AfBij.Af
-                   // && a.Category != null
+                        // && a.Category != null
                     && a.Datum > startdate
                     && a.Datum < enddate
                     orderby a.Bedrag descending
@@ -116,5 +112,15 @@ namespace CashLight_App.Models
                     ).Take(5).ToList();
         }
 
+        public int TransactionID { get; set; }
+        public DateTime Datum { get; set; }
+        public string Naam { get; set; }
+        public string Rekening { get; set; }
+        public string Tegenrekening { get; set; }
+        public int Code { get; set; }
+        public int AfBij { get; set; }
+        public double Bedrag { get; set; }
+        public string Mededelingen { get; set; }
+        public int CategoryID { get; set; }
     }
 }

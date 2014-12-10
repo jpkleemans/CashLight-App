@@ -35,7 +35,7 @@
                                     Label="{Binding ImportantIncomes[1].Naam}" 
                                     Amount="{Binding ImportantIncomes[1].Bedrag}" 
                                     Date="{Binding ImportantIncomes[1].Datum}" 
-                                    Height="" 
+                                    Height="300" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                 <local:IncomeMarker Grid.Column="2" 
