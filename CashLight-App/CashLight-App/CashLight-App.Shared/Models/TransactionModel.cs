@@ -13,6 +13,8 @@ namespace CashLight_App.Models
         private static int pixels = 500; //Max height off the markers.
         private static IUnitOfWork _unitOfWork = ServiceLocator.Current.GetInstance<IUnitOfWork>();
 
+        public static int height { get; set; }
+
         public static List<Transaction> GetAll()
         {
             return _unitOfWork.Transaction.FindAll().ToList();
@@ -91,7 +93,7 @@ namespace CashLight_App.Models
             foreach (Transaction item in trans)
             {
                 double percentage = (item.Bedrag / total);
-                int height = pixels * Convert.ToInt32(percentage);
+                height = pixels * Convert.ToInt32(percentage);
             }
             return trans;
         }

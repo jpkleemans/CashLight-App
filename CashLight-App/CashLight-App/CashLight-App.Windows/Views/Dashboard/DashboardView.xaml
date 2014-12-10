@@ -28,7 +28,7 @@
                                     Label="{Binding ImportantIncomes[0].Naam}"
                                     Amount="{Binding ImportantIncomes[0].Bedrag}" 
                                     Date="{Binding ImportantIncomes[0].Datum}" 
-                                    Height="450" 
+                                    Height="{Binding ImportantIncomes[0].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                 <local:IncomeMarker Grid.Column="1" 
@@ -59,6 +59,7 @@
 
         <Button Content="&#x0028;" 
                 FontSize="40" 
+                Command="{Binding }"
                 Foreground="White" 
                 Background="Transparent" 
                 BorderBrush="Transparent" 
@@ -70,6 +71,7 @@
 
         <Button Content="&#x0029;" 
                 FontSize="40" 
+                Command="{Binding }"
                 Foreground="White" 
                 Background="Transparent" 
                 BorderBrush="Transparent" 
