@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using Microsoft.Practices.ServiceLocation;
+using System.Diagnostics;
 
 namespace CashLight_App.Config
 {
@@ -15,6 +16,8 @@ namespace CashLight_App.Config
             IComponentContext build = container.Build();
 
             ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(build));
+
+            Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path);
         }
     }
 }
