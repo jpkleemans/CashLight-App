@@ -53,18 +53,33 @@
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
             </Grid>
-
         </Border>
 
-        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0">
-            <Grid Margin="0,0,300,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-            </Grid>
-        </Border>
+        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0" />
+
+        <Button Content="&#x0028;" 
+                FontSize="40" 
+                Command="{Binding }"
+                Foreground="White" 
+                Background="Transparent" 
+                BorderBrush="Transparent" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left" 
+                Height="80" Margin="0,350,0,360" 
+                Width="80" Grid.RowSpan="2" 
+                ClickMode="Release" />
+
+        <Button Content="&#x0029;" 
+                FontSize="40" 
+                Command="{Binding }"
+                Foreground="White" 
+                Background="Transparent" 
+                BorderBrush="Transparent" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Right" 
+                Height="80" Margin="0,350,0,360" 
+                Width="80" Grid.RowSpan="2" 
+                ClickMode="Release" />
+
     </Grid>
 </Page>
