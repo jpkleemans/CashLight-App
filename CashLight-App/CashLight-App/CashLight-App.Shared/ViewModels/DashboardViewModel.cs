@@ -60,7 +60,7 @@ namespace CashLight_App.ViewModels
 
                 foreach (Transaction item in mostImportantIncomes)
                 {
-                    ImportantIncomes.Add(item.);
+                    ImportantIncomes.Add(item);
                 }
             }
         }
