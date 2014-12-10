@@ -10,6 +10,8 @@ namespace CashLight_App.Services.Interface
         IRepository<Transaction> Transaction { get; }
         IRepository<Category> Category { get; }
 
+        IRepository<Setting> Setting { get; }
+
         //Opslaan gegevens
         void Commit();
     }

@@ -13,6 +13,7 @@ namespace CashLight_App.Services
     {
         SQLiteRepository<Transaction> _transaction;
         SQLiteRepository<Category> _category;
+        SQLiteRepository<Setting> _setting;
 
         SQLiteConnection _context;
 
@@ -59,6 +60,18 @@ namespace CashLight_App.Services
                     _category = new SQLiteRepository<Category>(_context);
                 }
                 return _category;
+            }
+        }
+
+        public IRepository<Setting> Setting
+        {
+            get
+            {
+                if (_setting == null)
+                {
+                    _setting = new SQLiteRepository<Setting>(_context);
+                }
+                return _setting;
             }
         }
 
