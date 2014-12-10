@@ -56,9 +56,7 @@ namespace CashLight_App.ViewModels
             else
             {
                 IEnumerable<TransactionModel> all = TransactionModel.All();
-                //List<Transaction> mostImportantIncomes = TransactionModel.getMostImportantTransactionsBij(all.ToList(), new DateTime(2014, 10, 01), new DateTime(2014, 11, 01));
-
-                var mostImportantIncomes = all.ToList();
+                List<TransactionModel> mostImportantIncomes = TransactionModel.getMostImportantTransactionsBij(all.ToList(), new DateTime(2014, 10, 01), new DateTime(2014, 11, 01));
 
                 foreach (TransactionModel item in mostImportantIncomes)
                 {

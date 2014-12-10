@@ -121,6 +121,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\income-marker.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
