@@ -2,6 +2,7 @@
 using CashLight_App.Models;
 using CashLight_App.Services.Interface;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +14,10 @@ namespace CashLight_App.ViewModels
     {
         private IUnitOfWork _unitOfWork;
 
+        public RelayCommand NextPeriodCommand;
+
+        public RelayCommand PreviousPeriodCommand;
+
         public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
         public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
@@ -23,8 +28,22 @@ namespace CashLight_App.ViewModels
 
             _unitOfWork = unitOfWork;
 
+            NextPeriodCommand = new RelayCommand(GoToNextPeriod);
+
+            PreviousPeriodCommand = new RelayCommand(GoToPreviousPeriod);
+
             InitTransactions();
             InitSpendings();
+        }
+
+        private void GoToPreviousPeriod()
+        {
+            // Period.Previous();
+        }
+
+        private void GoToNextPeriod()
+        {
+            // Period.Next();
         }
 
         public void InitTransactions()
