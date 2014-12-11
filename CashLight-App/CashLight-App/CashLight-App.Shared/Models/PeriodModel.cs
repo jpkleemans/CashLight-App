@@ -59,7 +59,7 @@ namespace CashLight_App.Models
             {
                 if (firstIncome == null)
                 {
-                    this.StartDate = d;
+                    this.StartDate = d.AddDays(-i.AveragePeriod);
                     this.EndDate = StartDate.AddDays(i.AveragePeriod);
                 }
                 else
@@ -169,7 +169,7 @@ namespace CashLight_App.Models
             var name = "NA";
             var account = "NA";
             double averagedeviation = default(double);
-            double averageperiod = default(double);
+            double averageperiod = 31;
 
             try
             {

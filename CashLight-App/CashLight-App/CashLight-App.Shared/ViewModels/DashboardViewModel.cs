@@ -16,23 +16,50 @@ namespace CashLight_App.ViewModels
         private IUnitOfWork _unitOfWork;
         private IPeriodModel _periodModel;
 
-        public RelayCommand NextPeriodCommand;
-
-        public RelayCommand PreviousPeriodCommand;
+        public RelayCommand NextPeriodCommand { get; set; }
+        public RelayCommand PreviousPeriodCommand { get; set; }
 
         public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
         public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
-        public string[] IncomeCategories { get; set; }
+        private string[] _incomeCategories;
+        public string[] IncomeCategories
+        {
+            get
+            {
+                return _incomeCategories;
+            }
+            set
+            {
+                _incomeCategories = value;
+                RaisePropertyChanged(() => IncomeCategories);
+            }
+        }
 
-        public string[] SpendingsCategories { get; set; }
+        private string[] _spendingCategories;
+        public string[] SpendingsCategories
+        {
+            get
+            {
+                return _spendingCategories;
+            }
+            set
+            {
+                _spendingCategories = value;
+                RaisePropertyChanged(() => SpendingsCategories);
+            }
+        }
 
         public DashboardViewModel(IUnitOfWork unitOfWork, IPeriodModel periodModel)
         {
+            NextPeriodCommand = new RelayCommand(GoToNextPeriod);
+            PreviousPeriodCommand = new RelayCommand(GoToPreviousPeriod);
+
             ImportantIncomes = new ObservableCollection<TransactionModel>();
             ImportantSpendings = new ObservableCollection<TransactionModel>();
 
-            IncomeCategories = new string[] { 
+            IncomeCategories = new string[] 
+            { 
                 "VAST: 50%", 
                 "VLOEIBAAR: 30%", 
                 "OVERIG: 20%" 
@@ -47,21 +74,22 @@ namespace CashLight_App.ViewModels
             _unitOfWork = unitOfWork;
             _periodModel = periodModel;
 
-            NextPeriodCommand = new RelayCommand(GoToNextPeriod);
-            PreviousPeriodCommand = new RelayCommand(GoToPreviousPeriod);
-
             InitTransactions();
             InitSpendings();
         }
 
-        private void GoToPreviousPeriod()
+        public void GoToPreviousPeriod()
         {
-            // Period.Previous();
+            _periodModel.Previous();
+            InitTransactions();
+            InitSpendings();
         }
 
-        private void GoToNextPeriod()
+        public void GoToNextPeriod()
         {
-            // Period.Next();
+            _periodModel.Next();
+            InitTransactions();
+            InitSpendings();
         }
 
         public void InitTransactions()
@@ -99,7 +127,11 @@ namespace CashLight_App.ViewModels
             }
             else
             {
-                ImportantIncomes = new ObservableCollection<TransactionModel>(_periodModel.getMostImportantIncomes());
+                ImportantIncomes.Clear();
+                foreach (TransactionModel item in _periodModel.getMostImportantIncomes())
+                {
+                    ImportantIncomes.Add(item);
+                }
             }
         }
 
@@ -138,7 +170,11 @@ namespace CashLight_App.ViewModels
             }
             else
             {
-                ImportantIncomes = new ObservableCollection<TransactionModel>(_periodModel.getMostImportantSpendings());
+                ImportantSpendings.Clear();
+                foreach (TransactionModel item in _periodModel.getMostImportantSpendings())
+                {
+                    ImportantIncomes.Add(item);
+                }
             }
         }
     }
