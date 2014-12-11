@@ -14,44 +14,51 @@ namespace CashLight_App.ViewModels
         private IUnitOfWork _unitOfWork;
 
         public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
+        public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
         public DashboardViewModel(IUnitOfWork unitOfWork)
         {
             ImportantIncomes = new ObservableCollection<TransactionModel>();
+            ImportantSpendings = new ObservableCollection<TransactionModel>();
 
             _unitOfWork = unitOfWork;
 
             InitTransactions();
+            InitSpendings();
         }
 
         public void InitTransactions()
         {
             if (IsInDesignMode)
             {
-                //ImportantIncomes.Add(new Transaction()
-                //{
-                //    Datum = new DateTime(2014, 10, 01),
-                //    Naam = "Test",
-                //    Bedrag = 100
-                //});
-                //ImportantIncomes.Add(new Transaction()
-                //{
-                //    Datum = new DateTime(2014, 10, 05),
-                //    Naam = "Test2",
-                //    Bedrag = 350
-                //});
-                //ImportantIncomes.Add(new Transaction()
-                //{
-                //    Datum = new DateTime(2014, 10, 11),
-                //    Naam = "Test3",
-                //    Bedrag = 149.99
-                //});
-                //ImportantIncomes.Add(new Transaction()
-                //{
-                //    Datum = new DateTime(2014, 10, 28),
-                //    Naam = "Test4",
-                //    Bedrag = 199
-                //});
+                ImportantIncomes.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 01),
+                    Naam = "Test",
+                    Bedrag = 100,
+                    Height = 300
+                });
+                ImportantIncomes.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 05),
+                    Naam = "Test2",
+                    Bedrag = 350,
+                    Height = 300
+                });
+                ImportantIncomes.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 11),
+                    Naam = "Test3",
+                    Bedrag = 149.99,
+                    Height = 300
+                });
+                ImportantIncomes.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 28),
+                    Naam = "Test4",
+                    Bedrag = 199,
+                    Height = 300
+                });
             }
             else
             {
@@ -61,6 +68,51 @@ namespace CashLight_App.ViewModels
                 foreach (TransactionModel item in mostImportantIncomes)
                 {
                     ImportantIncomes.Add(item);
+                }
+            }
+        }
+
+        public void InitSpendings()
+        {
+            if (IsInDesignMode)
+            {
+                ImportantSpendings.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 01),
+                    Naam = "Test",
+                    Bedrag = 100,
+                    Height = 300
+                });
+                ImportantSpendings.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 05),
+                    Naam = "Test2",
+                    Bedrag = 350,
+                    Height = 300
+                });
+                ImportantSpendings.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 11),
+                    Naam = "Test3",
+                    Bedrag = 149.99,
+                    Height = 300
+                });
+                ImportantSpendings.Add(new TransactionModel()
+                {
+                    Datum = new DateTime(2014, 10, 28),
+                    Naam = "Test4",
+                    Bedrag = 199,
+                    Height = 300
+                });
+            }
+            else
+            {
+                IEnumerable<TransactionModel> all = TransactionModel.All();
+                List<TransactionModel> mostImportantSpendings = TransactionModel.getMostImportantTransactionsAf(all.ToList(), new DateTime(2014, 10, 01), new DateTime(2014, 11, 01));
+
+                foreach (TransactionModel item in mostImportantSpendings)
+                {
+                    ImportantSpendings.Add(item);
                 }
             }
         }

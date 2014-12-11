@@ -115,9 +115,9 @@ namespace CashLight_App.Models
         /// <param name="startdate">Startdatum</param>
         /// <param name="enddate">Einddatum</param>
         /// <returns></returns>
-        public static List<Transaction> getMostImportantTransactionsAf(ref List<Transaction> list, DateTime startdate, DateTime enddate)
+        public static List<TransactionModel> getMostImportantTransactionsAf(List<TransactionModel> list, DateTime startdate, DateTime enddate)
         {
-            IQueryable<Transaction> transactions = list.AsQueryable();
+            IQueryable<TransactionModel> transactions = list.AsQueryable();
             return (from a in transactions
                     where a.AfBij == (int)Enums.AfBij.Af
                         // && a.Category != null

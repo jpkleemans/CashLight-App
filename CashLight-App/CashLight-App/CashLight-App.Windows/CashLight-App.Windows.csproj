@@ -110,6 +110,9 @@
     <Compile Include="Views\Dashboard\IncomeMarker.xaml.cs">
       <DependentUpon>IncomeMarker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dashboard\SpendingMarker.xaml.cs">
+      <DependentUpon>SpendingMarker.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -124,6 +127,7 @@
     <Content Include="Assets\income-marker.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\spending-marker.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
   </ItemGroup>
@@ -133,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dashboard\IncomeMarker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dashboard\SpendingMarker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

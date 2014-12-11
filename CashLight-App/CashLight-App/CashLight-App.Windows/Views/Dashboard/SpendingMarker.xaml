@@ -1,0 +1,40 @@
+﻿<UserControl
+    x:Class="CashLight_App.Views.Dashboard.SpendingMarker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CashLight_App.Views.Dashboard"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="250"
+    d:DesignWidth="200"
+    xmlns:sfc="using:CashLight_App.Converters">
+
+    <UserControl.Resources>
+        <sfc:StringFormatConverter x:Key="StringFormatConverter" />
+        <sfc:StringToUpperConverter x:Key="StringToUpperConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <!-- Line -->
+        <Border BorderBrush="White" BorderThickness="0,0,3,0" Margin="0,0,0,70">
+
+            <!-- Label -->
+            <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="20,0,0,50" Background="White" Height="40">
+                <Ellipse Fill="White" Width="40" Height="40" HorizontalAlignment="Left" Margin="-20,0,0,0" />
+                <TextBlock TextWrapping="Wrap" Text="{Binding Label, Converter={StaticResource StringToUpperConverter}}" d:LayoutOverrides="Height" FontFamily="Arial Black" FontSize="20" Margin="0,10,10,10" Foreground="#333333" HorizontalAlignment="Center"/>
+            </Grid>
+
+        </Border>
+
+        <!-- Date -->
+        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,-50,0" TextWrapping="Wrap" Text="{Binding Date, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:dd-MM-yyyy}'}" FontFamily="Arial Black" FontSize="20" Foreground="White" Opacity="0.5"/>
+
+        <!-- Marker -->
+        <Image Width="35" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-16,25" Source="ms-appx:///Assets/spending-marker.png" />
+
+        <!-- Amount -->
+        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,10,170" TextWrapping="Wrap" Text="{Binding Amount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontFamily="Arial Black" FontSize="30" Foreground="White"/>
+
+    </Grid>
+</UserControl>
