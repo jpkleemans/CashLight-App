@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace CashLight_App.Services.CSV
+namespace CashLight_App.Services.CSV 
 {
 
     public static class CsvConverter

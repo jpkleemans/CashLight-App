@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using Windows.Storage;
 
-namespace CashLight_App.Models
+namespace CashLight_App.Models 
 {
     public class UploadModel : ModelBase
     {
