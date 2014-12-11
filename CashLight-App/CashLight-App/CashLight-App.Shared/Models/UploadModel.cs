@@ -13,7 +13,7 @@ namespace CashLight_App.Models
     {
         private StorageFile _storageFile;
         private Stream _streamFile;
-        private Transaction _transaction;
+        private TransactionModel _transaction;
 
         public UploadModel(StorageFile storageFile)
         {
@@ -22,7 +22,7 @@ namespace CashLight_App.Models
             CsvConverter.ToStream(_storageFile);
 
             _streamFile = CsvConverter.GetResult();
-            _transaction = new Transaction();
+            _transaction = new TransactionModel();
         }
 
         public void ToDatabase(IBank bank)
@@ -54,7 +54,7 @@ namespace CashLight_App.Models
                 
                 DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
 
-                bool exists = false; //_transaction.Exists(dic);
+                bool exists = _transaction.Exists(dic);
                 if (exists == false)
                 {
 

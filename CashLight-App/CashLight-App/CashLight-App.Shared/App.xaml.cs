@@ -142,7 +142,34 @@ namespace CashLight_App
 
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
-            Window.Current.Activate(); 
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                // TODO: change this value to a cache size that is appropriate for your application
+                rootFrame.CacheSize = 1;
+
+                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                {
+                    // TODO: Load state from previously suspended application
+                }
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            if (rootFrame.Content == null)
+            {
+            }
+
+            // Ensure the current window is active
+            Window.Current.Activate();
+ 
             Debug.WriteLine(args.Files[0].Path.ToString());
             Debug.WriteLine(args.Files[0]);
             Models.UploadModel upload = new Models.UploadModel((StorageFile) args.Files[0]);
