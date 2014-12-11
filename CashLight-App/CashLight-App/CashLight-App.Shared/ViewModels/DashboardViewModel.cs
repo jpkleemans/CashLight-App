@@ -23,12 +23,11 @@ namespace CashLight_App.ViewModels
         public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
         public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
-        public DashboardViewModel(IUnitOfWork unitOfWork, IPeriodModel periodModel)
         public string[] IncomeCategories { get; set; }
 
         public string[] SpendingsCategories { get; set; }
 
-        public DashboardViewModel(IUnitOfWork unitOfWork)
+        public DashboardViewModel(IUnitOfWork unitOfWork, IPeriodModel periodModel)
         {
             ImportantIncomes = new ObservableCollection<TransactionModel>();
             ImportantSpendings = new ObservableCollection<TransactionModel>();
