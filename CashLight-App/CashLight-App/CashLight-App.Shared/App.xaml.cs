@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Threading;
+﻿using CashLight_App.Models.Interfaces;
+using GalaSoft.MvvmLight.Threading;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,6 +10,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -142,7 +144,12 @@ namespace CashLight_App
         {
             Debug.WriteLine(args.Files[0].Path.ToString());
             Debug.WriteLine(args.Files[0]);
-            Models.
+            Models.UploadModel upload = new Models.UploadModel((StorageFile) args.Files[0]);
+
+            IBank bank = new Models.INGModel();
+            
+            upload.ToDatabase(bank);
+            
         }
     }
 }

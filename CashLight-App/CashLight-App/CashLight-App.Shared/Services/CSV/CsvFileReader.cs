@@ -1,4 +1,5 @@
 ﻿using CashLight_App.Models.Interfaces;
+using GalaSoft.MvvmLight.Threading;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,18 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace CashLight_App.Services.CSV 
+namespace CashLight_App.Services.CSV
 {
 
     public static class CsvConverter
     {
 
-        public static Stream ToStream(StorageFile storageFile)
+        public static Stream _stream;
+
+        public async static void ToStream(StorageFile storageFile)
         {
-            var randomAccessStream = storageFile.OpenReadAsync().GetResults();
+            var randomAccessStream = await storageFile.OpenReadAsync();
+
             Stream stream = randomAccessStream.AsStreamForRead();
-            return stream;
+
+            _stream = stream;
         }
+
+        public static Stream GetResult()
+        {
+            return _stream;
+        }
+
 
     }
 
@@ -28,7 +39,7 @@ namespace CashLight_App.Services.CSV
         public IBank bank { get; set; }
 
         public CsvFileReader(IBank bank, Stream filename)
-            : base (filename)
+            : base(filename)
         {
             this.bank = bank;
 
