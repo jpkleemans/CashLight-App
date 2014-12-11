@@ -19,6 +19,12 @@
 
 
             <Grid Margin="100,0,100,0">
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -64,6 +70,12 @@
         <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0">
 
             <Grid Margin="-100,0,200,0">
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
