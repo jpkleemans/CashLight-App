@@ -1,5 +1,6 @@
 ﻿using CashLight_App.DataModels;
 using CashLight_App.Models;
+using CashLight_App.Models.Interfaces;
 using CashLight_App.Services.Interface;
 using GalaSoft.MvvmLight;
 using System;
@@ -12,16 +13,18 @@ namespace CashLight_App.ViewModels
     public class DashboardViewModel : ViewModelBase
     {
         private IUnitOfWork _unitOfWork;
+        private IPeriodModel _periodModel;
 
         public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
         public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
-        public DashboardViewModel(IUnitOfWork unitOfWork)
+        public DashboardViewModel(IUnitOfWork unitOfWork, IPeriodModel periodModel)
         {
             ImportantIncomes = new ObservableCollection<TransactionModel>();
             ImportantSpendings = new ObservableCollection<TransactionModel>();
 
             _unitOfWork = unitOfWork;
+            _periodModel = periodModel;
 
             InitTransactions();
             InitSpendings();
@@ -62,13 +65,7 @@ namespace CashLight_App.ViewModels
             }
             else
             {
-                IEnumerable<TransactionModel> all = TransactionModel.All();
-                List<TransactionModel> mostImportantIncomes = TransactionModel.getMostImportantTransactionsBij(all.ToList(), new DateTime(2014, 10, 01), new DateTime(2014, 11, 01));
-
-                foreach (TransactionModel item in mostImportantIncomes)
-                {
-                    ImportantIncomes.Add(item);
-                }
+                ImportantIncomes = new ObservableCollection<TransactionModel>(_periodModel.getMostImportantIncomes());
             }
         }
 
@@ -107,13 +104,7 @@ namespace CashLight_App.ViewModels
             }
             else
             {
-                IEnumerable<TransactionModel> all = TransactionModel.All();
-                List<TransactionModel> mostImportantSpendings = TransactionModel.getMostImportantTransactionsAf(all.ToList(), new DateTime(2014, 10, 01), new DateTime(2014, 11, 01));
-
-                foreach (TransactionModel item in mostImportantSpendings)
-                {
-                    ImportantSpendings.Add(item);
-                }
+                ImportantIncomes = new ObservableCollection<TransactionModel>(_periodModel.getMostImportantSpendings());
             }
         }
     }
