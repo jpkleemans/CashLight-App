@@ -1,4 +1,4 @@
-﻿using CashLight.Model.Interface;
+﻿using CashLight_App.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashLight.Utility.CSV
+namespace CashLight_App.Services.CSV
 {
     public class CsvFileReader : StreamReader
     {

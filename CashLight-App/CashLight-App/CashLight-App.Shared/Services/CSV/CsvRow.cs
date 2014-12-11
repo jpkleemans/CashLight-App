@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashLight.Utility.CSV
+namespace CashLight_App.Services.CSV
 {
     public class CsvRow : List<string>
     {

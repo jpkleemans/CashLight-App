@@ -25,12 +25,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataModels\Transaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\PeriodDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AfBij.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ING.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\INGModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interfaces\IBank.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PeriodModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\TransactionModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Upload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UploadModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvFileReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvRow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interface\IPeriod.cs" />

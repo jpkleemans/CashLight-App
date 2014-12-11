@@ -1,26 +1,18 @@
-﻿using CashLight.Database;
-using CashLight.Database.DataModels;
-using CashLight.Database.Interfaces;
-using CashLight.Enums;
-using CashLight.Model.Interface;
-using CashLight.Utility.CSV;
+﻿using CashLight_App.DataModels;
+using CashLight_App.Enums;
+using CashLight_App.Models.Interfaces;
+using CashLight_App.Services.CSV;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace CashLight.Model
+namespace CashLight_App.Models
 {
-    public class Upload
+    public class UploadModel : ModelBase
     {
         private string _filePath;
         private Transaction _transaction;
 
-        public Upload(string filePath)
+        public UploadModel(string filePath)
         {
             _filePath = filePath;
             _transaction = new Transaction();
@@ -54,12 +46,12 @@ namespace CashLight.Model
             {
                 
                 DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
-                
+
                 bool exists = _transaction.Exists(dic);
                 if (exists == false)
                 {
 
-                var transaction = new CashLight.Database.DataModels.Transaction()
+                var transaction = new Transaction()
                 {
                     AfBij = (int)Enum.Parse(typeof(AfBij), dic["Af / Bij"]),
                     Bedrag = Double.Parse(dic["Bedrag (EUR)"]),
@@ -71,14 +63,12 @@ namespace CashLight.Model
                     Datum = csvDate
                 };
 
-                Kernel.Database.Transaction.Add(transaction);
+                _unitOfWork.Transaction.Add(transaction);
 
             }
 
             }
-            Kernel.Database.Commit();
-            Period period = new Period();
-            Hashtable Income = period.GetMostConsistentIncome();          
+            _unitOfWork.Commit();        
         }
     }
 }
