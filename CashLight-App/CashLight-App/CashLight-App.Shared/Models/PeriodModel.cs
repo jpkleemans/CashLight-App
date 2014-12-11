@@ -1,14 +1,17 @@
 ﻿using CashLight_App.Enums;
-using CashLight_App.Services.Interface;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using CashLight_App.DataModels;
+using CashLight_App.Models.Interfaces;
+using System.Collections.ObjectModel;
+
 namespace CashLight_App.Models
 {
-    public class PeriodModel : ModelBase, IPeriod
+    public class PeriodModel : ModelBase, IPeriodModel
     {
+        public ObservableCollection<TransactionModel> Transactions { get; set; }
+
         public PeriodModel()
             : this(DateTime.Now)
         {
@@ -40,29 +43,50 @@ namespace CashLight_App.Models
         public void SetDates(DateTime d)
         {
             var i = GetConsistentIncome();
-            var t = _unitOfWork.Transaction.FindAll()
+            var latestIncome = _unitOfWork.Transaction.FindAll()
                 .Where(q => q.Tegenrekening == i.Account)
-                .Where(q => q.Datum <= d).OrderByDescending(q => q.Datum).Last();
+                .Where(q => q.Datum <= d)
+                .OrderByDescending(q => q.Datum)
+                .LastOrDefault();
 
-            var t2 = _unitOfWork.Transaction.FindAll()
+            var firstIncome = _unitOfWork.Transaction.FindAll()
                 .Where(q => q.Tegenrekening == i.Account)
-                .Where(q => q.Datum > d).OrderBy(q => q.Datum).First();
-            this.StartDate = t.Datum;
-            if (t2 == null)
+                .Where(q => q.Datum > d)
+                .OrderBy(q => q.Datum)
+                .FirstOrDefault();
+
+            if (latestIncome == null)
             {
-
-                this.EndDate = this.StartDate.AddDays(i.AveragePeriod + i.AverageDeviation);
+                if (firstIncome == null)
+                {
+                    this.StartDate = d;
+                    this.EndDate = StartDate.AddDays(i.AveragePeriod);
+                }
+                else
+                {
+                    this.EndDate = firstIncome.Datum.AddDays(-1);
+                    this.StartDate = EndDate.AddDays(-i.AveragePeriod);
+                }
             }
             else
             {
-                this.EndDate = t2.Datum.AddDays(-1);
+                if (firstIncome == null)
+                {
+                    this.StartDate = firstIncome.Datum;
+                    this.EndDate = StartDate.AddDays(i.AveragePeriod);
+                }
+                else
+                {
+                    this.StartDate = latestIncome.Datum;
+                    this.EndDate = firstIncome.Datum.AddDays(-1);
+                }
             }
-        }
 
-        public IEnumerable<TransactionModel> GetTransactions()
-        {
-            var t = TransactionModel.All().Where(q => q.Datum >= this.StartDate && q.Datum <= this.EndDate).OrderBy(q => q.Datum);
-            return t;
+            Transactions = new ObservableCollection<TransactionModel>(
+                TransactionModel.All()
+                    .Where(q => q.Datum >= this.StartDate && q.Datum <= this.EndDate)
+                    .OrderBy(q => q.Datum)
+            );
         }
 
         public static void SearchMostConsistentIncome()
@@ -142,10 +166,23 @@ namespace CashLight_App.Models
 
         public PeriodDTO GetConsistentIncome()
         {
-            var name = _unitOfWork.Setting.Find(q => q.Key == "Name").OrderByDescending(q => q.Date).FirstOrDefault().Value;
-            var account = _unitOfWork.Setting.Find(q => q.Key == "Account").OrderByDescending(q => q.Date).FirstOrDefault().Value;
-            double averagedeviation = Convert.ToDouble(_unitOfWork.Setting.Find(q => q.Key == "AverageDeviation").OrderByDescending(q => q.Date).FirstOrDefault().Value);
-            double averageperiod = Convert.ToDouble(_unitOfWork.Setting.Find(q => q.Key == "AveragePeriod").OrderByDescending(q => q.Date).FirstOrDefault().Value);
+            var name = "NA";
+            var account = "NA";
+            double averagedeviation = default(double);
+            double averageperiod = default(double);
+
+            try
+            {
+                name = _unitOfWork.Setting.Find(q => q.Key == "Name").OrderByDescending(q => q.Date).FirstOrDefault().Value;
+                account = _unitOfWork.Setting.Find(q => q.Key == "Account").OrderByDescending(q => q.Date).FirstOrDefault().Value;
+                averagedeviation = Convert.ToDouble(_unitOfWork.Setting.Find(q => q.Key == "AverageDeviation").OrderByDescending(q => q.Date).FirstOrDefault().Value);
+                averageperiod = Convert.ToDouble(_unitOfWork.Setting.Find(q => q.Key == "AveragePeriod").OrderByDescending(q => q.Date).FirstOrDefault().Value);
+            }
+            catch (Exception)
+            {
+
+            }
+
             return new PeriodDTO(name, account, averagedeviation, averageperiod);
         }
 
@@ -166,7 +203,46 @@ namespace CashLight_App.Models
             _unitOfWork.Commit();
         }
 
+        /// <summary>
+        /// Haalt de belangrijkste inkomsten op uit de database
+        /// </summary>
+        /// <param name="list">Transacties</param>
+        /// <param name="startdate">Startdatum</param>
+        /// <param name="enddate">Einddatum</param>
+        /// <returns></returns>
+        public List<TransactionModel> getMostImportantIncomes()
+        {
+            List<TransactionModel> transactions = Transactions
+                .Where(x => x.AfBij == (int)Enums.AfBij.Bij)
+                .OrderBy(x => x.Bedrag)
+                .Take(4)
+                .OrderBy(x => x.Datum)
+                .ToList();
 
+            TransactionModel.SetHeight(ref transactions);
 
+            return transactions;
+        }
+
+        /// <summary>
+        /// Haalt de belangrijkste uitgaven op uit de database
+        /// </summary>
+        /// <param name="list">Transacties</param>
+        /// <param name="startdate">Startdatum</param>
+        /// <param name="enddate">Einddatum</param>
+        /// <returns></returns>
+        public List<TransactionModel> getMostImportantSpendings()
+        {
+            List<TransactionModel> transactions = Transactions
+           .Where(x => x.AfBij == (int)Enums.AfBij.Af)
+           .OrderBy(x => x.Bedrag)
+           .Take(4)
+           .OrderBy(x => x.Datum)
+           .ToList();
+
+            TransactionModel.SetHeight(ref transactions);
+
+            return transactions;
+        }
     }
 }

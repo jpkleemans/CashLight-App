@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using CashLight_App.Models;
+using CashLight_App.Models.Interfaces;
 using CashLight_App.Services;
 using CashLight_App.Services.Interface;
 using CashLight_App.ViewModels;
@@ -18,6 +20,9 @@ namespace CashLight_App.Config
                .As<IUnitOfWork>()
                .WithParameter("_dbname", "CashLight.db")
                .SingleInstance();
+
+            // Models
+            builder.RegisterType<PeriodModel>().As<IPeriodModel>();
 
             // ViewModels
             builder.RegisterType<DashboardViewModel>();

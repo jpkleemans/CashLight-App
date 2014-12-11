@@ -15,6 +15,16 @@ namespace CashLight_App.Models
 {
     public class TransactionModel : ModelBase
     {
+        public int TransactionID { get; set; }
+        public DateTime Datum { get; set; }
+        public string Naam { get; set; }
+        public string Rekening { get; set; }
+        public string Tegenrekening { get; set; }
+        public int Code { get; set; }
+        public int AfBij { get; set; }
+        public double Bedrag { get; set; }
+        public string Mededelingen { get; set; }
+        public int CategoryID { get; set; }
         public double Height { get; set; }
 
         public static IEnumerable<TransactionModel> All()
@@ -46,47 +56,10 @@ namespace CashLight_App.Models
             return true;
         }
 
-        public static void removeEqualTransactions(ref List<Transaction> list, Transaction account)
+        public static List<TransactionModel> SetHeight(ref List<TransactionModel> transactions)
         {
-            List<Transaction> jopie = new List<Transaction>();
-            foreach (Transaction transaction in list)
-            {
-                if (transaction.Tegenrekening == account.Tegenrekening &&
-                    transaction.AfBij == account.AfBij)
-                {
-                    jopie.Add(transaction);
-                }
-            }
-
-            foreach (Transaction item in jopie)
-            {
-                list.Remove(item);
-            }
-
-        }
-
-        /// <summary>
-        /// Haalt de belangrijkste inkomsten op uit de database
-        /// </summary>
-        /// <param name="list">Transacties</param>
-        /// <param name="startdate">Startdatum</param>
-        /// <param name="enddate">Einddatum</param>
-        /// <returns></returns>
-        public static List<TransactionModel> getMostImportantTransactionsBij(List<TransactionModel> list, DateTime startdate, DateTime enddate)
-        {
-            IQueryable<TransactionModel> transactions = list.AsQueryable();
-
-            List<TransactionModel> trans = (from a in transactions
-                                            where a.AfBij == (int)Enums.AfBij.Bij
-                                                // && a.Category != null
-                                            && a.Datum > startdate
-                                            && a.Datum < enddate
-                                            orderby a.Datum ascending
-                                            select a
-                    ).Take(4).ToList();
-
             double highest = 0;
-            foreach (var item in trans)
+            foreach (var item in transactions)
             {
                 if (item.Bedrag > highest)
                 {
@@ -98,68 +71,14 @@ namespace CashLight_App.Models
             double minHeight = 230; //Min height off the markers.
             double useableHeight = maxHeight - minHeight;
 
-            foreach (TransactionModel item in trans)
+            foreach (TransactionModel item in transactions)
             {
                 double percentage = (item.Bedrag / highest);
 
                 item.Height = (useableHeight * percentage) + minHeight;
             }
 
-            return trans;
+            return transactions;
         }
-
-        /// <summary>
-        /// Haalt de belangrijkste uitgaven op uit de database
-        /// </summary>
-        /// <param name="list">Transacties</param>
-        /// <param name="startdate">Startdatum</param>
-        /// <param name="enddate">Einddatum</param>
-        /// <returns></returns>
-        public static List<TransactionModel> getMostImportantTransactionsAf(List<TransactionModel> list, DateTime startdate, DateTime enddate)
-        {
-            IQueryable<TransactionModel> transactions = list.AsQueryable();
-
-            List<TransactionModel> trans = (from a in transactions
-                                            where a.AfBij == (int)Enums.AfBij.Af
-                                                // && a.Category != null
-                                            && a.Datum > startdate
-                                            && a.Datum < enddate
-                                            orderby a.Datum ascending
-                                            select a
-                    ).Take(4).ToList();
-
-            double highest = 0;
-            foreach (var item in trans)
-            {
-                if (item.Bedrag > highest)
-                {
-                    highest = item.Bedrag;
-                }
-            }
-
-            double maxHeight = (Window.Current.Bounds.Height / 2) - 50; //Max height off the markers.
-            double minHeight = 230; //Min height off the markers.
-            double useableHeight = maxHeight - minHeight;
-
-            foreach (TransactionModel item in trans)
-            {
-                double percentage = (item.Bedrag / highest);
-
-                item.Height = (useableHeight * percentage) + minHeight;
-            }
-
-            return trans;
-        }
-
-        public int TransactionID { get; set; }
-        public DateTime Datum { get; set; }
-        public string Naam { get; set; }
-        public string Rekening { get; set; }
-        public string Tegenrekening { get; set; }
-        public int Code { get; set; }
-        public int AfBij { get; set; }
-        public double Bedrag { get; set; }
-        public string Mededelingen { get; set; }
-        public int CategoryID { get; set; }
     }
 }
