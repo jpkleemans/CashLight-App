@@ -142,6 +142,7 @@ namespace CashLight_App
         {
             Debug.WriteLine(args.Files[0].Path.ToString());
             Debug.WriteLine(args.Files[0]);
+            Models.
         }
     }
 }
