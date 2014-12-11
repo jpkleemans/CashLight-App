@@ -21,15 +21,30 @@ namespace CashLight_App.ViewModels
         public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
         public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
+        public string[] IncomeCategories { get; set; }
+
+        public string[] SpendingsCategories { get; set; }
+
         public DashboardViewModel(IUnitOfWork unitOfWork)
         {
             ImportantIncomes = new ObservableCollection<TransactionModel>();
             ImportantSpendings = new ObservableCollection<TransactionModel>();
 
+            IncomeCategories = new string[] { 
+                "VAST: 50%", 
+                "VLOEIBAAR: 30%", 
+                "OVERIG: 20%" 
+            };
+            SpendingsCategories = new string[] 
+            { 
+                "OVERIG: 25%", 
+                "VLOEIBAAR: 45%", 
+                "VAST: 30%" 
+            };
+
             _unitOfWork = unitOfWork;
 
             NextPeriodCommand = new RelayCommand(GoToNextPeriod);
-
             PreviousPeriodCommand = new RelayCommand(GoToPreviousPeriod);
 
             InitTransactions();
