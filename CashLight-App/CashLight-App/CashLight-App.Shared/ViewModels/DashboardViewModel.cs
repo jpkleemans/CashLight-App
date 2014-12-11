@@ -83,6 +83,13 @@ namespace CashLight_App.ViewModels
             _periodModel.Previous();
             InitTransactions();
             InitSpendings();
+
+            IncomeCategories = new string[] 
+            { 
+                String.Format("{0:d/M/yyyy}",_periodModel.StartDate) + " t/m "+ String.Format("{0:d/M/yyyy}",_periodModel.EndDate), 
+                "VLOEIBAAR: 30%", 
+                "OVERIG: 20%" 
+            };
         }
 
         public void GoToNextPeriod()
@@ -90,6 +97,13 @@ namespace CashLight_App.ViewModels
             _periodModel.Next();
             InitTransactions();
             InitSpendings();
+
+            IncomeCategories = new string[] 
+            { 
+                String.Format("{0:d/M/yyyy}",_periodModel.StartDate) + " t/m "+ String.Format("{0:d/M/yyyy}",_periodModel.EndDate), 
+                "VLOEIBAAR: 30%", 
+                "OVERIG: 20%" 
+            };
         }
 
         public void InitTransactions()
@@ -173,7 +187,7 @@ namespace CashLight_App.ViewModels
                 ImportantSpendings.Clear();
                 foreach (TransactionModel item in _periodModel.getMostImportantSpendings())
                 {
-                    ImportantIncomes.Add(item);
+                    ImportantSpendings.Add(item);
                 }
             }
         }

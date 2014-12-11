@@ -37,10 +37,10 @@ namespace CashLight_App.Models
         public void Previous()
         {
             DateTime dateInPreviousPeriod = StartDate.AddDays(-1);
-            SetDates(dateInPreviousPeriod);
+            SetDates(dateInPreviousPeriod, false);
         }
 
-        public void SetDates(DateTime d)
+        public void SetDates(DateTime d, bool forward = true)
         {
             var i = GetConsistentIncome();
             var latestIncome = _unitOfWork.Transaction.FindAll()
@@ -59,7 +59,15 @@ namespace CashLight_App.Models
             {
                 if (firstIncome == null)
                 {
-                    this.StartDate = d.AddDays(-i.AveragePeriod);
+                    if (forward)
+                    {
+                        this.StartDate = d;
+                    }
+                    else
+                    {
+                        this.StartDate = d.AddDays(-i.AveragePeriod);
+                    }
+
                     this.EndDate = StartDate.AddDays(i.AveragePeriod);
                 }
                 else
