@@ -5,30 +5,33 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace CashLight_App.Services.CSV
 {
+
+    public static class CsvConverter
+    {
+
+        public static Stream ToStream(StorageFile storageFile)
+        {
+            var randomAccessStream = storageFile.OpenReadAsync().GetResults();
+            Stream stream = randomAccessStream.AsStreamForRead();
+            return stream;
+        }
+
+    }
+
     public class CsvFileReader : StreamReader
     {
 
         public IBank bank { get; set; }
 
-        public void FileNameToStream(string filename)
-        {
-            Windows.Storage.FileIO.
-        }
-
-        public CsvFileReader(IBank bank, Stream stream)
-            : base(stream)
-        {
-            this.bank = bank;
-
-        }
-
-        public CsvFileReader(IBank bank, string filename)
+        public CsvFileReader(IBank bank, Stream filename)
             : base (filename)
         {
             this.bank = bank;
+
         }
 
         public List<Dictionary<string, string>> ReadToList()

@@ -4,23 +4,27 @@ using CashLight_App.Models.Interfaces;
 using CashLight_App.Services.CSV;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Windows.Storage;
 
 namespace CashLight_App.Models
 {
     public class UploadModel : ModelBase
     {
-        private string _filePath;
+        private StorageFile _storageFile;
+        private Stream _streamFile;
         private Transaction _transaction;
 
-        public UploadModel(string filePath)
+        public UploadModel(StorageFile storageFile)
         {
-            _filePath = filePath;
+            _storageFile = storageFile;
+            _streamFile = CsvConverter.ToStream(_storageFile);
             _transaction = new Transaction();
         }
 
         public void ToDatabase(IBank bank)
         {
-            CsvFileReader reader = new CsvFileReader(bank, _filePath);
+            CsvFileReader reader = new CsvFileReader(bank, _streamFile);
 
             List<Dictionary<string, string>> list;
             //try
