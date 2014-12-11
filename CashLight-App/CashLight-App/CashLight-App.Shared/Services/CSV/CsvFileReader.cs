@@ -13,6 +13,11 @@ namespace CashLight_App.Services.CSV
 
         public IBank bank { get; set; }
 
+        public void FileNameToStream(string filename)
+        {
+            Windows.Storage.FileIO.
+        }
+
         public CsvFileReader(IBank bank, Stream stream)
             : base(stream)
         {
@@ -21,7 +26,7 @@ namespace CashLight_App.Services.CSV
         }
 
         public CsvFileReader(IBank bank, string filename)
-            : base(filename)
+            : base (filename)
         {
             this.bank = bank;
         }

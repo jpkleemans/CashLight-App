@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="4a2e8585-23b1-418e-8c9a-403eba34cdc9"
   name="ModelingProject1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -128,6 +128,396 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="a31d4174-5319-428d-baef-88e11df3f7c5"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Prioriteren spaardoelen"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="26ed34b7-af81-4893-a19d-6074baa90b5a"
+              LastKnownName="Ingeven spaardoelen"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8d9bc713-8a91-464d-ac01-11f84977e745"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d11bf659-1d3e-4581-9186-8f7b756cc550"
+                  name="Prioriteren spaardoelen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="51d7c73e-7f5c-4638-8d81-bc8c9f583ddb"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Prioriteren spaardoelen"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="823b978d-78c0-4169-8c80-04febe9a69b9"
+              LastKnownName="Prioriteren spaardoelen"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a58e81ba-5b5a-4d05-a84e-11733d53d733"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bb3d7238-b024-4f88-8897-59d9cc000b50"
+                  name="Prioriteren spaardoelen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="95ad8a38-1c81-4457-a85c-481efdbba809"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Installeren cashlight"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="8c5677e8-6c77-4d97-a98b-bad9372527f6"
+              LastKnownName="Installeren cashlight"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="77318038-934c-472b-bbe0-72b53e7fe1a2"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="78cdea42-b7b7-4dcf-95b2-b8ac958dd7b0"
+                  name="Installeren cashlight"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1d2559a4-fa22-41cb-903a-8cfc074e5b89"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Uploaden CSV-bestand"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="ebc052db-5eda-4ae4-98cc-7e4430937df6"
+              LastKnownName="Uploaden CSV-bestand"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="24fabd0d-26d0-4c89-a3eb-8520742e4f91"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="356a6068-d75a-4f08-a859-975551dd0005"
+                  name="Uploaden CSV-bestand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="158beded-1689-4c5f-8566-8aadc0319e64"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Categoriseren transacties"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="e35933a5-feb3-4e48-84e8-d0157f602653"
+              LastKnownName="Categoriseren transacties"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f10a21c0-c6d5-4c16-8561-28b03711eed2"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f310e2ee-6b3a-4199-a66f-6096535be0ff"
+                  name="Categoriseren transacties"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="813bfc6e-2957-4d94-84dd-9ebdc38fc621"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Inzien spaardoelen"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="427e87ae-3810-4c69-ac08-7bf0f046d887"
+              LastKnownName="Inzien spaardoelen"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="67303c02-b8c9-4c71-acc3-476e32171dc0"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fdeb727d-57b7-4f87-aff5-ff34a9776063"
+                  name="Inzien spaardoelen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3b3ba536-9a43-446c-b270-c6b73ae65266"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Ingeven spaardoelen"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="95ed7aa2-264f-47d6-ae04-066893b868eb"
+              LastKnownName="Ingeven spaardoelen"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ceeb76e0-0cc7-4131-8e65-f99f1beb8094"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d75c1673-59d2-412f-be6f-d5201187f4fb"
+                  name="Ingeven spaardoelen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e2c5ed8d-978e-4446-8b4c-9bc39cb69fe0"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Prioriteren spaardoelen"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="064d35f1-8af9-46e4-9d1c-7082ddc16ccb"
+              LastKnownName="Prioriteren spaardoelen"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ff9895b5-916c-45dc-bf83-6dc822fbe97c"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="767afbe3-b1ac-43bd-b43a-a2500edafd5a"
+                  name="Prioriteren spaardoelen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="bfe37761-b220-44d7-a487-aa5f4e195a4f"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Inzien bestedingsruimte"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b874bb67-71d4-499e-8a30-f839bbcb5b4a"
+              LastKnownName="Inzien bestedingsruimte"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b9484b8a-6af8-4f00-aa12-b8514c3618af"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="63fd4525-eee7-4f93-b1a9-f1f4da90ed6e"
+                  name="Inzien bestedingsruimte"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="721599d8-52fa-4f9e-9fc1-4ed661543933"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Wisselen periodes"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="97821638-2117-4205-8484-007e1401e7bc"
+              LastKnownName="Wisselen periodes"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="143aa4a5-a854-49b8-9d1c-af9183f2bdff"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="493ab5ef-27c2-4090-aadd-67638195447e"
+                  name="Wisselen periodes"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -144,6 +534,62 @@
         Id="1d1abf6d-c0eb-4bc0-b050-70099650e182"
         name="Installeren Cashlight"
         isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0a61009e-77e3-4c22-b9f6-d1ca6db780c0"
+        name="Categoriseren transacties"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b9145ebc-22ba-400d-9e0d-1f785a3ccf52"
+        name="Uploaden CSV-bestand"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5e511f50-64e4-45e3-ab6f-9c4e02c8ef9a"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="26ed34b7-af81-4893-a19d-6074baa90b5a"
+        name="Ingeven spaardoelen"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="59dff74f-c799-4f28-ae44-3cabcc2e8976"
+        name="Prioriteren spaardoelen"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="823b978d-78c0-4169-8c80-04febe9a69b9"
+        name="Prioriteren spaardoelen"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9ba08fd6-b63b-446e-8484-2d71b9598df5"
+        name="Inzien spaardoelen"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b874bb67-71d4-499e-8a30-f839bbcb5b4a"
+        name="Inzien bestedingsruimte"
+        isAbstract="false"
         isLeaf="false">
         <subjects>
           <subsystemMoniker
@@ -155,7 +601,49 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="0a61009e-77e3-4c22-b9f6-d1ca6db780c0"
+        Id="064d35f1-8af9-46e4-9d1c-7082ddc16ccb"
+        name="Prioriteren spaardoelen"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="95ed7aa2-264f-47d6-ae04-066893b868eb"
+        name="Ingeven spaardoelen"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="427e87ae-3810-4c69-ac08-7bf0f046d887"
+        name="Inzien spaardoelen"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e35933a5-feb3-4e48-84e8-d0157f602653"
         name="Categoriseren transacties"
         isAbstract="false"
         isLeaf="false">
@@ -169,8 +657,43 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="b9145ebc-22ba-400d-9e0d-1f785a3ccf52"
+        Id="ebc052db-5eda-4ae4-98cc-7e4430937df6"
         name="Uploaden CSV-bestand"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8c5677e8-6c77-4d97-a98b-bad9372527f6"
+        name="Installeren cashlight"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0a1d3dab-79cc-4ac9-bb18-e44e9ab42c2b"
+        name="UseCase2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="97821638-2117-4205-8484-007e1401e7bc"
+        name="Wisselen periodes"
         isAbstract="false"
         isLeaf="false">
         <subjects>
