@@ -13,9 +13,8 @@ namespace CashLight_App.Models
         public ObservableCollection<TransactionModel> Transactions { get; set; }
 
         public PeriodModel()
-            : this(DateTime.Now)
         {
-
+            SetDates(DateTime.Now, false);
         }
 
         public PeriodModel(DateTime d)
