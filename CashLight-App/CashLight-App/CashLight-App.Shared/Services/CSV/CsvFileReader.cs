@@ -159,7 +159,7 @@ namespace CashLight_App.Services.CSV
             // Delete any unused items
             while (row.Count > rows)
                 row.RemoveAt(rows);
-
+              
             // Return true if any columns read
             return (row.Count > 0);
         }
