@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Threading;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -135,6 +136,12 @@ namespace CashLight_App
 
             // TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            Debug.WriteLine(args.Files[0].Path.ToString());
+            Debug.WriteLine(args.Files[0]);
         }
     }
 }
