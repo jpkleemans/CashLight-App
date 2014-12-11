@@ -16,7 +16,7 @@
 
         <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,3">
 
-            <Grid Margin="50,0,100,0">
+            <Grid Margin="100,0,100,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -55,7 +55,46 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0" />
+        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0">
+
+            <Grid Margin="-100,0,200,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <local:SpendingMarker Grid.Column="0" 
+                                    Label="{Binding ImportantSpendings[0].Naam}"
+                                    Amount="{Binding ImportantSpendings[0].Bedrag}" 
+                                    Date="{Binding ImportantSpendings[0].Datum}" 
+                                    Height="{Binding ImportantSpendings[0].Height}" 
+                                    VerticalAlignment="Top" 
+                                    HorizontalAlignment="Right" />
+                <local:SpendingMarker Grid.Column="1" 
+                                    Label="{Binding ImportantSpendings[1].Naam}" 
+                                    Amount="{Binding ImportantSpendings[1].Bedrag}" 
+                                    Date="{Binding ImportantSpendings[1].Datum}" 
+                                    Height="{Binding ImportantSpendings[1].Height}" 
+                                    VerticalAlignment="Top" 
+                                    HorizontalAlignment="Right" />
+                <local:SpendingMarker Grid.Column="2" 
+                                    Label="{Binding ImportantSpendings[2].Naam}" 
+                                    Amount="{Binding ImportantSpendings[2].Bedrag}" 
+                                    Date="{Binding ImportantSpendings[2].Datum}" 
+                                    Height="{Binding ImportantSpendings[2].Height}" 
+                                    VerticalAlignment="Top" 
+                                    HorizontalAlignment="Right" />
+                <local:SpendingMarker Grid.Column="3" 
+                                    Label="{Binding ImportantSpendings[3].Naam}" 
+                                    Amount="{Binding ImportantSpendings[3].Bedrag}" 
+                                    Date="{Binding ImportantSpendings[3].Datum}" 
+                                    Height="{Binding ImportantSpendings[3].Height}" 
+                                    VerticalAlignment="Top" 
+                                    HorizontalAlignment="Right" />
+            </Grid>
+        </Border>
 
         <Button Content="&#x0028;" 
                 FontSize="40" 
