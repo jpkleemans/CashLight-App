@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Import, Source={StaticResource Locator}}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Content="Ga naar dashboard" HorizontalAlignment="Left" Margin="609,385,0,0" VerticalAlignment="Top" Command="{Binding GoToDashboardCommand}"/>
+    <Grid>
+
     </Grid>
 </Page>
