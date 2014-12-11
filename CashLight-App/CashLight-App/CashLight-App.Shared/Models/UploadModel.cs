@@ -4,23 +4,30 @@ using CashLight_App.Models.Interfaces;
 using CashLight_App.Services.CSV;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Windows.Storage;
 
-namespace CashLight_App.Models
+namespace CashLight_App.Models 
 {
     public class UploadModel : ModelBase
     {
-        private string _filePath;
+        private StorageFile _storageFile;
+        private Stream _streamFile;
         private Transaction _transaction;
 
-        public UploadModel(string filePath)
+        public UploadModel(StorageFile storageFile)
         {
-            _filePath = filePath;
+            _storageFile = storageFile;
+
+            CsvConverter.ToStream(_storageFile);
+
+            _streamFile = CsvConverter.GetResult();
             _transaction = new Transaction();
         }
 
         public void ToDatabase(IBank bank)
         {
-            CsvFileReader reader = new CsvFileReader(bank, _filePath);
+            CsvFileReader reader = new CsvFileReader(bank, _streamFile);
 
             List<Dictionary<string, string>> list;
             //try
@@ -47,7 +54,7 @@ namespace CashLight_App.Models
                 
                 DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
 
-                bool exists = _transaction.Exists(dic);
+                bool exists = false; //_transaction.Exists(dic);
                 if (exists == false)
                 {
 

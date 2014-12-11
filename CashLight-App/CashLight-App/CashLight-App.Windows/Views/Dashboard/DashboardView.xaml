@@ -16,6 +16,8 @@
 
         <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,3">
 
+
+
             <Grid Margin="100,0,100,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -54,6 +56,10 @@
                                     HorizontalAlignment="Right" />
             </Grid>
         </Border>
+
+        <TextBlock Text="HOI" Margin="10,320,1250,20" Foreground="Black" FontSize="15" />
+        <TextBlock Text="HOI" Margin="10,300,1250,20" Foreground="Black" FontSize="15" />
+        <TextBlock Text="HOI" Margin="10,280,1250,20" Foreground="Black" FontSize="15" />
 
         <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0">
 

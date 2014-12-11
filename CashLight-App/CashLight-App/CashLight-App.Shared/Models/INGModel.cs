@@ -3,9 +3,9 @@ using CashLight_App.Services.CSV;
 using System;
 using System.Collections.Generic;
 
-namespace CashLight.Model
+namespace CashLight_App.Models
 {
-    public class ING : IBank
+    public class INGModel : IBank
     {
         int rowTime = 0;
 

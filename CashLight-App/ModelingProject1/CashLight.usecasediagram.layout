@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 9.25" name="CashLight">
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 8.75" name="CashLight">
   <useCaseModelRootMoniker Id="baf62e0a-b77e-463c-98d9-4e1a33e36739" />
   <nestedChildShapes>
     <actorShape Id="a696610b-acbe-441b-9afb-d4d1b1f74e64" absoluteBounds="3.25, 4.125, 0.5, 0.5" isReference="false" heightOffset="0">
       <actorMoniker Id="85aaa7cc-0bf1-4674-9b4b-6d5a5c85fd73" LastKnownName="Gebruiker" />
       <relativeChildShapes />
     </actorShape>
-    <SubsystemShape Id="4f8f8b72-f808-4726-bb10-da50652b8b2d" absoluteBounds="4.625, 0.5, 7.125, 8.5" customColor="White">
+    <SubsystemShape Id="4f8f8b72-f808-4726-bb10-da50652b8b2d" absoluteBounds="4.625, 0.5, 7.125, 8" customColor="White">
       <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
       <nestedChildShapes>
         <useCaseShape Id="11627a51-39be-4d9e-8332-778da1593176" absoluteBounds="7.25, 5.375, 1.375, 0.75" customColor="238, 237, 131" heightOffset="0">
