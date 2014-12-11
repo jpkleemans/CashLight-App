@@ -17,7 +17,7 @@ namespace CashLight_App.Config
 
             ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(build));
 
-            Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path);
+            Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path.ToString());
         }
     }
 }

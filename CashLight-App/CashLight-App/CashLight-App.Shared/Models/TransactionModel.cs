@@ -81,7 +81,7 @@ namespace CashLight_App.Models
                                                 // && a.Category != null
                                             && a.Datum > startdate
                                             && a.Datum < enddate
-                                            orderby a.Bedrag descending
+                                            orderby a.Datum ascending
                                             select a
                     ).Take(4).ToList();
 
@@ -118,14 +118,37 @@ namespace CashLight_App.Models
         public static List<TransactionModel> getMostImportantTransactionsAf(List<TransactionModel> list, DateTime startdate, DateTime enddate)
         {
             IQueryable<TransactionModel> transactions = list.AsQueryable();
-            return (from a in transactions
-                    where a.AfBij == (int)Enums.AfBij.Af
-                        // && a.Category != null
-                    && a.Datum > startdate
-                    && a.Datum < enddate
-                    orderby a.Bedrag descending
-                    select a
-                    ).Take(5).ToList();
+
+            List<TransactionModel> trans = (from a in transactions
+                                            where a.AfBij == (int)Enums.AfBij.Af
+                                                // && a.Category != null
+                                            && a.Datum > startdate
+                                            && a.Datum < enddate
+                                            orderby a.Datum ascending
+                                            select a
+                    ).Take(4).ToList();
+
+            double highest = 0;
+            foreach (var item in trans)
+            {
+                if (item.Bedrag > highest)
+                {
+                    highest = item.Bedrag;
+                }
+            }
+
+            double maxHeight = (Window.Current.Bounds.Height / 2) - 50; //Max height off the markers.
+            double minHeight = 230; //Min height off the markers.
+            double useableHeight = maxHeight - minHeight;
+
+            foreach (TransactionModel item in trans)
+            {
+                double percentage = (item.Bedrag / highest);
+
+                item.Height = (useableHeight * percentage) + minHeight;
+            }
+
+            return trans;
         }
 
         public int TransactionID { get; set; }
