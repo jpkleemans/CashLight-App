@@ -22,19 +22,19 @@ namespace CashLight_App.Views.Dashboard
         public static readonly DependencyProperty LabelProperty = DependencyProperty.Register(
             "Label",
             typeof(string),
-            typeof(IncomeMarker),
+            typeof(SpendingMarker),
             new PropertyMetadata(null)
         );
         public static readonly DependencyProperty AmountProperty = DependencyProperty.Register(
             "Amount",
             typeof(double),
-            typeof(IncomeMarker),
+            typeof(SpendingMarker),
             new PropertyMetadata(null)
         );
         public static readonly DependencyProperty DateProperty = DependencyProperty.Register(
             "Date",
             typeof(DateTime),
-            typeof(IncomeMarker),
+            typeof(SpendingMarker),
             new PropertyMetadata(null)
         );
 
