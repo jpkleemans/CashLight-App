@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="ac108e8e-db19-41f4-832f-a66ec1d52cf6" Publisher="CN=Jan-Paul" Version="1.0.0.0" />
+  <Identity Name="ac108e8e-db19-41f4-832f-a66ec1d52cf6" Publisher="CN=Jan-Paul" Version="1.0.0.3" />
   <Properties>
     <DisplayName>CashLight-App.Windows</DisplayName>
-    <PublisherDisplayName>Jan-Paul</PublisherDisplayName>
+    <PublisherDisplayName>Team Cashlight BV</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,8 +15,12 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CashLight_App.Windows.App">
-      <m2:VisualElements DisplayName="CashLight" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="CashLight-App.Windows" ForegroundText="light" BackgroundColor="#464646">
+      <m2:VisualElements DisplayName="CashLight" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Het nieuwe huishoudboekje." ForegroundText="light" BackgroundColor="#464646">
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
+        <m2:InitialRotationPreference>
+          <m2:Rotation Preference="landscape" />
+          <m2:Rotation Preference="landscapeFlipped" />
+        </m2:InitialRotationPreference>
       </m2:VisualElements>
       <Extensions>
         <Extension Category="windows.fileTypeAssociation" Executable="CashLight-App.Windows.exe" EntryPoint="CashLight_App.Windows.App">
