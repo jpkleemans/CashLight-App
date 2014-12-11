@@ -31,6 +31,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\ModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PeriodModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\TransactionModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UploadModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvFileReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvRow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interface\IRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interface\IUnitOfWork.cs" />
