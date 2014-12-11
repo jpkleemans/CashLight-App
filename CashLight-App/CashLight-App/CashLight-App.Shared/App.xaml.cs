@@ -142,6 +142,7 @@ namespace CashLight_App
 
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
+            Window.Current.Activate(); 
             Debug.WriteLine(args.Files[0].Path.ToString());
             Debug.WriteLine(args.Files[0]);
             Models.UploadModel upload = new Models.UploadModel((StorageFile) args.Files[0]);
