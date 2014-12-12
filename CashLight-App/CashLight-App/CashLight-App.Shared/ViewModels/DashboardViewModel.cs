@@ -57,20 +57,8 @@ namespace CashLight_App.ViewModels
 
             ImportantIncomes = new ObservableCollection<TransactionModel>();
             ImportantSpendings = new ObservableCollection<TransactionModel>();
-
-            IncomeCategories = new string[] 
-            { 
-                "VAST: 50%", 
-                "VLOEIBAAR: 30%", 
-                "OVERIG: 20%" 
-            };
-            SpendingsCategories = new string[] 
-            { 
-                "OVERIG: 25%", 
-                "VLOEIBAAR: 45%", 
-                "VAST: 30%" 
-            };
-
+            UpdateCategories(periodModel);
+               
             _unitOfWork = unitOfWork;
             _periodModel = periodModel;
 
@@ -81,29 +69,37 @@ namespace CashLight_App.ViewModels
         public void GoToPreviousPeriod()
         {
             _periodModel.Previous();
+            UpdateCategories(_periodModel);
+
             InitTransactions();
             InitSpendings();
 
-            IncomeCategories = new string[] 
-            { 
-                String.Format("{0:d/M/yyyy}",_periodModel.StartDate) + " t/m "+ String.Format("{0:d/M/yyyy}",_periodModel.EndDate), 
-                "VLOEIBAAR: 30%", 
-                "OVERIG: 20%" 
-            };
+            
         }
 
         public void GoToNextPeriod()
         {
             _periodModel.Next();
+            UpdateCategories(_periodModel);
+
             InitTransactions();
             InitSpendings();
+        }
 
-            IncomeCategories = new string[] 
-            { 
-                String.Format("{0:d/M/yyyy}",_periodModel.StartDate) + " t/m "+ String.Format("{0:d/M/yyyy}",_periodModel.EndDate), 
-                "VLOEIBAAR: 30%", 
-                "OVERIG: 20%" 
-            };
+        public void UpdateCategories(IPeriodModel periodModel)
+        {
+            var cats = CategoryModel.All().ToList();
+            IncomeCategories = new string[3];
+            SpendingsCategories = new string[3];
+            for (var i = 0; i <= cats.Count() - 1; i++)
+            {
+                IncomeCategories[i] = cats[i].Naam.ToUpper() + ": " + cats[i].getIncomePercentage(periodModel).ToString() + "%";
+            }
+
+            for (var i = 0; i <= cats.Count() - 1; i++)
+            {
+                SpendingsCategories[i] = cats[i].Naam.ToUpper() + ": " + cats[i].getSpendingPercentage(periodModel).ToString() + "%";
+            }
         }
 
         public void InitTransactions()

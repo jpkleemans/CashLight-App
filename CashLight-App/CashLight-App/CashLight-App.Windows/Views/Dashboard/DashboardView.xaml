@@ -60,7 +60,7 @@
                                     HorizontalAlignment="Right" />
             </Grid>
         </Border>
-
+        
         <TextBlock Grid.Row="0" Text="{Binding IncomeCategories[0]}" Foreground="White" FontSize="20" VerticalAlignment="Bottom" Margin="20,0,0,130"/>
         <TextBlock Grid.Row="0" Text="{Binding IncomeCategories[1]}" Foreground="White" FontSize="20" VerticalAlignment="Bottom" Margin="20,0,0,90"/>
         <TextBlock Grid.Row="0" Text="{Binding IncomeCategories[2]}" Foreground="White" FontSize="20" VerticalAlignment="Bottom" Margin="20,0,0,50"/>

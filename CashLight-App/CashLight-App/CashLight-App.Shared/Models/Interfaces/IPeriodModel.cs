@@ -13,5 +13,6 @@ namespace CashLight_App.Models.Interfaces
         void Previous();
         List<TransactionModel> getMostImportantIncomes();
         List<TransactionModel> getMostImportantSpendings();
+        IEnumerable<TransactionModel> getTransactions();
     }
 }
