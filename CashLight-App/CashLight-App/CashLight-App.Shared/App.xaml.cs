@@ -1,4 +1,5 @@
 ﻿using CashLight_App.Models.Interfaces;
+using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using System;
 using System.Collections.Generic;
@@ -144,6 +145,8 @@ namespace CashLight_App
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
             if (rootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
@@ -158,25 +161,10 @@ namespace CashLight_App
 
             if (rootFrame.Content == null)
             {
-#if WINDOWS_PHONE_APP
-                // Removes the turnstile navigation for startup.
-                if (rootFrame.ContentTransitions != null)
-                {
-                    this.transitions = new TransitionCollection();
-                    foreach (var c in rootFrame.ContentTransitions)
-                    {
-                        this.transitions.Add(c);
-                    }
-                }
-
-                rootFrame.ContentTransitions = null;
-                rootFrame.Navigated += this.RootFrame_FirstNavigated;
-#endif
-
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(Views.Import.ImportView)))
+                if (!rootFrame.Navigate(typeof(Views.Import.ImportView), args.Files[0]))
                 {
                     throw new Exception("Failed to create initial page");
                 }
@@ -185,11 +173,7 @@ namespace CashLight_App
             // Ensure the current window is active
             Window.Current.Activate();
 
-            //Models.UploadModel upload = new Models.UploadModel((StorageFile)args.Files[0]);
-
-            //IBank bank = new Models.INGModel();
-
-            //upload.ToDatabase(bank);
+            DispatcherHelper.Initialize();
         }
     }
 }

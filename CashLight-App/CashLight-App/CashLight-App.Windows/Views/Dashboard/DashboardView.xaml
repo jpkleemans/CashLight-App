@@ -10,7 +10,15 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <FlipView x:Name="flipview" ItemsSource="{Binding Periods}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,3"></Border>
+        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0"></Border>
+
+        <FlipView x:Name="flipview" ItemsSource="{Binding Periods}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}" Grid.RowSpan="2">
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

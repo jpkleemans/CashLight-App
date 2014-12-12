@@ -7,31 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.Storage.Streams;
 
 namespace CashLight_App.Services.CSV
 {
-
-    public static class CsvConverter
-    {
-
-        public static Stream _stream;
-
-        public async static void ToStream(StorageFile storageFile)
-        {
-            var randomAccessStream = await storageFile.OpenReadAsync();
-
-            Stream stream = randomAccessStream.AsStreamForRead();
-
-            _stream = stream;
-        }
-
-        public static Stream GetResult()
-        {
-            return _stream;
-        }
-
-
-    }
 
     public class CsvFileReader : StreamReader
     {
@@ -159,7 +138,7 @@ namespace CashLight_App.Services.CSV
             // Delete any unused items
             while (row.Count > rows)
                 row.RemoveAt(rows);
-              
+
             // Return true if any columns read
             return (row.Count > 0);
         }
