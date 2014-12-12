@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataModels\Transaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\PeriodDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AfBij.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CategoryModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\INGModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interfaces\IBank.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interfaces\IPeriodModel.cs" />

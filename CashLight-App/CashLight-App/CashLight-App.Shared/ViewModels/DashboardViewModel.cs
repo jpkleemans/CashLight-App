@@ -20,7 +20,7 @@ namespace CashLight_App.ViewModels
             Periods = new ObservableCollection<IPeriodModel>();
 
             InitPeriods();
-        }
+            }
 
         private void InitPeriods()
         {

@@ -5,6 +5,7 @@ using System.Linq;
 using CashLight_App.DataModels;
 using CashLight_App.Models.Interfaces;
 using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace CashLight_App.Models
 {
@@ -49,7 +50,7 @@ namespace CashLight_App.Models
             return new PeriodModel(dateInPreviousPeriod);
         }
 
-        public void SetDates(DateTime d, bool forward = true)
+        private void SetDates(DateTime d, bool forward = true)
         {
             var i = GetConsistentIncome();
             var latestIncome = _unitOfWork.Transaction.FindAll()
@@ -220,6 +221,13 @@ namespace CashLight_App.Models
             _unitOfWork.Commit();
         }
 
+
+        public IEnumerable<TransactionModel> getTransactions()
+        {
+            IEnumerable<TransactionModel> transactions = Transactions;
+
+            return transactions;
+        }
         /// <summary>
         /// Haalt de belangrijkste inkomsten op uit de database
         /// </summary>
@@ -251,11 +259,11 @@ namespace CashLight_App.Models
         public List<TransactionModel> getMostImportantSpendings()
         {
             List<TransactionModel> transactions = Transactions
-               .Where(x => x.AfBij == (int)Enums.AfBij.Af)
-               .OrderBy(x => x.Bedrag)
-               .Take(4)
-               .OrderBy(x => x.Datum)
-               .ToList();
+           .Where(x => x.AfBij == (int)Enums.AfBij.Af)
+           .OrderBy(x => x.Bedrag)
+           .Take(4)
+           .OrderBy(x => x.Datum)
+           .ToList();
 
             TransactionModel.SetHeight(ref transactions);
 
