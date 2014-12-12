@@ -22,13 +22,13 @@ namespace CashLight_App.Models
         public ObservableCollection<CategoryModel> SpendingCategories { get; set; }
 
         public PeriodModel()
-            : this(DateTime.Now)
+            : this(DateTime.Now, false)
         {
         }
 
-        public PeriodModel(DateTime d)
+        public PeriodModel(DateTime d, bool forward = true)
         {
-            SetDates(d);
+            SetDates(d, forward);
             InitImportantTransactions();
             InitCategories();
         }
@@ -56,7 +56,7 @@ namespace CashLight_App.Models
         {
             DateTime dateInPreviousPeriod = StartDate.AddDays(-1);
 
-            return new PeriodModel(dateInPreviousPeriod);
+            return new PeriodModel(dateInPreviousPeriod, false);
         }
 
         private void SetDates(DateTime d, bool forward = true)

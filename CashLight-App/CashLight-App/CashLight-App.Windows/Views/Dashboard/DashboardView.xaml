@@ -10,7 +10,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <FlipView ItemsSource="{Binding Periods}">
+        <FlipView x:Name="flipview" ItemsSource="{Binding Periods}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}">
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -124,6 +124,8 @@
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
+
+        <TextBlock Text="{Binding SelectedIndex, ElementName=flipview}" Margin="100" FontSize="40"/>
 
     </Grid>
 </Page>
