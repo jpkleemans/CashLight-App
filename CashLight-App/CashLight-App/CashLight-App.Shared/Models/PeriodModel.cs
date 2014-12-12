@@ -10,33 +10,43 @@ namespace CashLight_App.Models
 {
     public class PeriodModel : ModelBase, IPeriodModel
     {
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
         public ObservableCollection<TransactionModel> Transactions { get; set; }
+        public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
+        public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
         public PeriodModel()
         {
             SetDates(DateTime.Now, false);
+            InitImportantTransactions();
         }
 
         public PeriodModel(DateTime d)
         {
             SetDates(d);
+            InitImportantTransactions();
         }
 
+        private void InitImportantTransactions()
+        {
+            ImportantIncomes = new ObservableCollection<TransactionModel>(getMostImportantIncomes());
+            ImportantSpendings = new ObservableCollection<TransactionModel>(getMostImportantSpendings());
+        }
 
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
-
-        public void Next()
+        public IPeriodModel Next()
         {
             DateTime dateInNextPeriod = EndDate.AddDays(1);
-            SetDates(dateInNextPeriod);
+
+            return new PeriodModel(dateInNextPeriod);
         }
 
-        public void Previous()
+        public IPeriodModel Previous()
         {
             DateTime dateInPreviousPeriod = StartDate.AddDays(-1);
-            SetDates(dateInPreviousPeriod, false);
+
+            return new PeriodModel(dateInPreviousPeriod);
         }
 
         public void SetDates(DateTime d, bool forward = true)
@@ -241,11 +251,11 @@ namespace CashLight_App.Models
         public List<TransactionModel> getMostImportantSpendings()
         {
             List<TransactionModel> transactions = Transactions
-           .Where(x => x.AfBij == (int)Enums.AfBij.Af)
-           .OrderBy(x => x.Bedrag)
-           .Take(4)
-           .OrderBy(x => x.Datum)
-           .ToList();
+               .Where(x => x.AfBij == (int)Enums.AfBij.Af)
+               .OrderBy(x => x.Bedrag)
+               .Take(4)
+               .OrderBy(x => x.Datum)
+               .ToList();
 
             TransactionModel.SetHeight(ref transactions);
 

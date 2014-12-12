@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="ac108e8e-db19-41f4-832f-a66ec1d52cf6" Publisher="CN=Jan-Paul" Version="1.0.0.4" />
+  <Identity Name="ac108e8e-db19-41f4-832f-a66ec1d52cf6" Publisher="CN=Jan-Paul" Version="1.0.0.5" />
   <Properties>
     <DisplayName>CashLight-App.Windows</DisplayName>
     <PublisherDisplayName>Team Cashlight BV</PublisherDisplayName>

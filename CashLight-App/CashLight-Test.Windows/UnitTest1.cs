@@ -17,7 +17,7 @@ namespace CashLight_Test.Windows
     {
         private Mock<IUnitOfWork> _unitOfWorkMock;
         private Mock<IPeriodModel> _periodModel;
-        private DashboardViewModel _dashboardViewModel;
+        //private DashboardViewModel _dashboardViewModel;
 
         [SetUp]
         public void SetUp()
@@ -25,14 +25,14 @@ namespace CashLight_Test.Windows
             _unitOfWorkMock = new Mock<IUnitOfWork>();
             _periodModel = new Mock<IPeriodModel>();
 
-            _dashboardViewModel = new DashboardViewModel(_unitOfWorkMock.Object, _periodModel.Object);
+            //_dashboardViewModel = new DashboardViewModel(_unitOfWorkMock.Object, _periodModel.Object);
 
         }
 
         [TestMethod]
         public void TestMethod1()
         {
-            Debug.WriteLine(_dashboardViewModel.ImportantIncomes);
+            //Debug.WriteLine(_dashboardViewModel.ImportantIncomes);
         }
     }
 }

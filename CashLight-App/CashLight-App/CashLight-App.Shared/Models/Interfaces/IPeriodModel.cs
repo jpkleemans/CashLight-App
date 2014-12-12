@@ -9,8 +9,8 @@ namespace CashLight_App.Models.Interfaces
         DateTime StartDate { get; set; }
         DateTime EndDate { get; set; }
 
-        void Next();
-        void Previous();
+        IPeriodModel Next();
+        IPeriodModel Previous();
         List<TransactionModel> getMostImportantIncomes();
         List<TransactionModel> getMostImportantSpendings();
     }
