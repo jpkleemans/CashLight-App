@@ -11,5 +11,12 @@ namespace CashLight_App.ViewModels
                 return ServiceLocator.Current.GetInstance<DashboardViewModel>();
             }
         }
+        public ImportViewModel Import
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ImportViewModel>();
+            }
+        }
     }
 }

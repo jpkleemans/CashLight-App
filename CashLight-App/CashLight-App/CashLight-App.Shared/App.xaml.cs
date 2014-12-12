@@ -142,15 +142,54 @@ namespace CashLight_App
 
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
-            Window.Current.Activate(); 
-            Debug.WriteLine(args.Files[0].Path.ToString());
-            Debug.WriteLine(args.Files[0]);
-            Models.UploadModel upload = new Models.UploadModel((StorageFile) args.Files[0]);
+            Frame rootFrame = Window.Current.Content as Frame;
 
-            IBank bank = new Models.INGModel();
-            
-            upload.ToDatabase(bank);
-            
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                // TODO: change this value to a cache size that is appropriate for your application
+                rootFrame.CacheSize = 1;
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            if (rootFrame.Content == null)
+            {
+#if WINDOWS_PHONE_APP
+                // Removes the turnstile navigation for startup.
+                if (rootFrame.ContentTransitions != null)
+                {
+                    this.transitions = new TransitionCollection();
+                    foreach (var c in rootFrame.ContentTransitions)
+                    {
+                        this.transitions.Add(c);
+                    }
+                }
+
+                rootFrame.ContentTransitions = null;
+                rootFrame.Navigated += this.RootFrame_FirstNavigated;
+#endif
+
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+                if (!rootFrame.Navigate(typeof(Views.Import.ImportView)))
+                {
+                    throw new Exception("Failed to create initial page");
+                }
+            }
+
+            // Ensure the current window is active
+            Window.Current.Activate();
+
+            //Models.UploadModel upload = new Models.UploadModel((StorageFile)args.Files[0]);
+
+            //IBank bank = new Models.INGModel();
+
+            //upload.ToDatabase(bank);
         }
     }
 }
