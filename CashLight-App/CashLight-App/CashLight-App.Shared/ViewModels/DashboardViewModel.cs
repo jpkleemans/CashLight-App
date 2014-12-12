@@ -25,6 +25,11 @@ namespace CashLight_App.ViewModels
             {
                 if (_selectedPeriod != null)
                 {
+                    /// PROBLEEM:
+                    /// Hij pakt al de volgende index voordat hij gaat swipen,
+                    /// Hierdoor zie je heel kort al de volgende index
+                    /// en gaat de swipe ook de verkeerde kant op...
+
                     if (value.StartDate > _selectedPeriod.EndDate)
                     {
                         Periods[0] = _selectedPeriod;
