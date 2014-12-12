@@ -89,17 +89,20 @@ namespace CashLight_App.ViewModels
         public void UpdateCategories(IPeriodModel periodModel)
         {
             var cats = CategoryModel.All().ToList();
-            IncomeCategories = new string[3];
-            SpendingsCategories = new string[3];
+            string[] array1 = new string[3];
+            string[] array2 = new string[3];
             for (var i = 0; i <= cats.Count() - 1; i++)
             {
-                IncomeCategories[i] = cats[i].Naam.ToUpper() + ": " + cats[i].getIncomePercentage(periodModel).ToString() + "%";
+                array1[i] = cats[i].Naam.ToUpper() + ": " + cats[i].getIncomePercentage(periodModel).ToString() + "%";
             }
 
             for (var i = 0; i <= cats.Count() - 1; i++)
             {
-                SpendingsCategories[i] = cats[i].Naam.ToUpper() + ": " + cats[i].getSpendingPercentage(periodModel).ToString() + "%";
+                array2[i] = cats[i].Naam.ToUpper() + ": " + cats[i].getSpendingPercentage(periodModel).ToString() + "%";
             }
+
+            IncomeCategories = array1;
+            SpendingsCategories = array2;
         }
 
         public void InitTransactions()
