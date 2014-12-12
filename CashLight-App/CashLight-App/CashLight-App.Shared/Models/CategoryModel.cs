@@ -72,6 +72,20 @@ namespace CashLight_App.Models
             return all;
         }
 
+        public static void SetRandomCategories()
+        {
+            var catlist = CategoryModel.All().ToList();
+            var transactions = _unitOfWork.Transaction.FindAll().ToList();
+            var random = new Random();
+            foreach(var t in transactions)
+            {
+                var catid = catlist[random.Next(0, catlist.Count)].CategoryID;
+                t.CategoryID = catid;
+            }
+            _unitOfWork.Commit();
+
+        }
+
         public int CategoryID { get; set; }
         public string Naam { get; set; }
 
