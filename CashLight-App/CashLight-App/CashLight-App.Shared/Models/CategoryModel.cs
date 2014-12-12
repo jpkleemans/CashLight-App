@@ -10,7 +10,6 @@ namespace CashLight_App.Models
 {
     public class CategoryModel : ModelBase
     {
-
         /// <summary>
         /// Berekent welk percentage van alle transacties aan deze categorie gekoppeld zijn.
         /// </summary>
@@ -19,11 +18,11 @@ namespace CashLight_App.Models
         {
             double totaltransactions = p.getTransactions().Where(q => q.CategoryID == this.CategoryID).Where(q => q.AfBij == (int)AfBij.Bij).Count();
             double amountoftransactions = p.getTransactions().Count();
-            if(totaltransactions == 0 || amountoftransactions == 0)
+            if (totaltransactions == 0 || amountoftransactions == 0)
             {
                 return 0;
             }
-            return Convert.ToInt16((amountoftransactions / totaltransactions) * 100);
+            return Convert.ToInt32((totaltransactions / amountoftransactions) * 100);
         }
 
         public int getSpendingPercentage(IPeriodModel p)
@@ -34,7 +33,7 @@ namespace CashLight_App.Models
             {
                 return 0;
             }
-            return Convert.ToInt16((amountoftransactions / totaltransactions) * 100);
+            return Convert.ToInt32((totaltransactions / amountoftransactions) * 100);
         }
 
         public static CategoryModel getByName(string name)
@@ -51,10 +50,31 @@ namespace CashLight_App.Models
             return Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryModel>>(c);
         }
 
+        public static IEnumerable<CategoryModel> AllWithIncomePercents(IPeriodModel periodModel)
+        {
+            var all = All();
+            foreach (var item in all)
+            {
+                item.Percentage = item.getIncomePercentage(periodModel);
+            }
+
+            return all;
+        }
+
+        public static IEnumerable<CategoryModel> AllWithSpendingPercents(PeriodModel periodModel)
+        {
+            var all = All();
+            foreach (var item in all)
+            {
+                item.Percentage = item.getSpendingPercentage(periodModel);
+            }
+
+            return all;
+        }
 
         public int CategoryID { get; set; }
         public string Naam { get; set; }
 
-        
+        public int Percentage { get; set; }
     }
 }

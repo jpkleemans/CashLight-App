@@ -14,102 +14,111 @@
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,3">
-            <Grid Margin="100,0,100,0">
-                <Grid.ChildrenTransitions>
-                    <TransitionCollection>
-                        <EntranceThemeTransition/>
-                    </TransitionCollection>
-                </Grid.ChildrenTransitions>
+                        <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,3">
+                            <Grid Margin="100,0,100,0">
+                                <Grid.ChildrenTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </Grid.ChildrenTransitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                <local:IncomeMarker Grid.Column="0" 
+                                <local:IncomeMarker Grid.Column="0" 
                                     Label="{Binding ImportantIncomes[0].Naam}"
                                     Amount="{Binding ImportantIncomes[0].Bedrag}" 
                                     Date="{Binding ImportantIncomes[0].Datum}" 
                                     Height="{Binding ImportantIncomes[0].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
-                <local:IncomeMarker Grid.Column="1" 
+                                <local:IncomeMarker Grid.Column="1" 
                                     Label="{Binding ImportantIncomes[1].Naam}" 
                                     Amount="{Binding ImportantIncomes[1].Bedrag}" 
                                     Date="{Binding ImportantIncomes[1].Datum}" 
                                     Height="{Binding ImportantIncomes[1].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
-                <local:IncomeMarker Grid.Column="2" 
+                                <local:IncomeMarker Grid.Column="2" 
                                     Label="{Binding ImportantIncomes[2].Naam}" 
                                     Amount="{Binding ImportantIncomes[2].Bedrag}" 
                                     Date="{Binding ImportantIncomes[2].Datum}" 
                                     Height="{Binding ImportantIncomes[2].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
-                <local:IncomeMarker Grid.Column="3" 
+                                <local:IncomeMarker Grid.Column="3" 
                                     Label="{Binding ImportantIncomes[3].Naam}" 
                                     Amount="{Binding ImportantIncomes[3].Bedrag}" 
                                     Date="{Binding ImportantIncomes[3].Datum}" 
                                     Height="{Binding ImportantIncomes[3].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
-            </Grid>
-        </Border>
 
-        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0">
-            <Grid Margin="-100,0,200,0">
-                <Grid.ChildrenTransitions>
-                    <TransitionCollection>
-                        <EntranceThemeTransition/>
-                    </TransitionCollection>
-                </Grid.ChildrenTransitions>
+                                <TextBlock Text="{Binding IncomeCategories[0].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,100"/>
+                                <TextBlock Text="{Binding IncomeCategories[0].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,100"/>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding IncomeCategories[1].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,50"/>
+                                <TextBlock Text="{Binding IncomeCategories[1].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,50"/>
 
-                <local:SpendingMarker Grid.Column="0" 
+                                <TextBlock Text="{Binding IncomeCategories[2].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,0"/>
+                                <TextBlock Text="{Binding IncomeCategories[2].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0">
+                            <Grid Margin="-100,0,200,0">
+                                <Grid.ChildrenTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </Grid.ChildrenTransitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <local:SpendingMarker Grid.Column="0" 
                                     Label="{Binding ImportantSpendings[0].Naam}"
                                     Amount="{Binding ImportantSpendings[0].Bedrag}" 
                                     Date="{Binding ImportantSpendings[0].Datum}" 
                                     Height="{Binding ImportantSpendings[0].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
-                <local:SpendingMarker Grid.Column="1" 
+                                <local:SpendingMarker Grid.Column="1" 
                                     Label="{Binding ImportantSpendings[1].Naam}" 
                                     Amount="{Binding ImportantSpendings[1].Bedrag}" 
                                     Date="{Binding ImportantSpendings[1].Datum}" 
                                     Height="{Binding ImportantSpendings[1].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
-                <local:SpendingMarker Grid.Column="2" 
+                                <local:SpendingMarker Grid.Column="2" 
                                     Label="{Binding ImportantSpendings[2].Naam}" 
                                     Amount="{Binding ImportantSpendings[2].Bedrag}" 
                                     Date="{Binding ImportantSpendings[2].Datum}" 
                                     Height="{Binding ImportantSpendings[2].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
-                <local:SpendingMarker Grid.Column="3" 
+                                <local:SpendingMarker Grid.Column="3" 
                                     Label="{Binding ImportantSpendings[3].Naam}" 
                                     Amount="{Binding ImportantSpendings[3].Bedrag}" 
                                     Date="{Binding ImportantSpendings[3].Datum}" 
                                     Height="{Binding ImportantSpendings[3].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
-            </Grid>
-        </Border>
+                            </Grid>
+                        </Border>
 
                     </Grid>
                 </DataTemplate>
