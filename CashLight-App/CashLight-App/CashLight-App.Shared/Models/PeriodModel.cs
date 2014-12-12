@@ -18,22 +18,31 @@ namespace CashLight_App.Models
         public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
         public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
 
+        public ObservableCollection<CategoryModel> IncomeCategories { get; set; }
+        public ObservableCollection<CategoryModel> SpendingCategories { get; set; }
+
         public PeriodModel()
+            : this(DateTime.Now)
         {
-            SetDates(DateTime.Now, false);
-            InitImportantTransactions();
         }
 
         public PeriodModel(DateTime d)
         {
             SetDates(d);
             InitImportantTransactions();
+            InitCategories();
         }
 
         private void InitImportantTransactions()
         {
             ImportantIncomes = new ObservableCollection<TransactionModel>(getMostImportantIncomes());
             ImportantSpendings = new ObservableCollection<TransactionModel>(getMostImportantSpendings());
+        }
+
+        private void InitCategories()
+        {
+            IncomeCategories = new ObservableCollection<CategoryModel>(CategoryModel.AllWithIncomePercents(this));
+            SpendingCategories = new ObservableCollection<CategoryModel>(CategoryModel.AllWithSpendingPercents(this));
         }
 
         public IPeriodModel Next()
