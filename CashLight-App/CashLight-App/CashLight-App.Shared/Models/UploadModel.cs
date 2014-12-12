@@ -6,33 +6,29 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Windows.Storage;
+using Windows.Storage.Streams;
 
-namespace CashLight_App.Models 
+namespace CashLight_App.Models
 {
     public class UploadModel : ModelBase
     {
-        private StorageFile _storageFile;
-        private Stream _streamFile;
         private TransactionModel _transaction;
 
-        public UploadModel(StorageFile storageFile)
+        public UploadModel()
         {
-            _storageFile = storageFile;
-
-            CsvConverter.ToStream(_storageFile);
-
-            _streamFile = CsvConverter.GetResult();
             _transaction = new TransactionModel();
         }
 
-        public void ToDatabase(IBank bank)
+        public async void ToDatabase(IBank bank, StorageFile storageFile)
         {
-            CsvFileReader reader = new CsvFileReader(bank, _streamFile);
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+
+            CsvFileReader reader = new CsvFileReader(bank, stream);
 
             List<Dictionary<string, string>> list;
             //try
             //{
-                list = reader.ReadToList();
+            list = reader.ReadToList();
             //}
             //catch (Exception)
             //{
@@ -51,31 +47,31 @@ namespace CashLight_App.Models
 
             foreach (Dictionary<string, string> dic in list)
             {
-                
+
                 DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
 
                 bool exists = _transaction.Exists(dic);
                 if (exists == false)
                 {
 
-                var transaction = new Transaction()
-                {
-                    AfBij = (int)Enum.Parse(typeof(AfBij), dic["Af / Bij"]),
-                    Bedrag = Double.Parse(dic["Bedrag (EUR)"]),
-                    Code = 0,
-                    Tegenrekening = dic["Tegenrekening"],
-                    Mededelingen = dic["Mededelingen"],
-                    Naam = dic["Naam / Omschrijving"],
-                    Rekening = dic["Rekening"],
-                    Datum = csvDate
-                };
+                    var transaction = new Transaction()
+                    {
+                        AfBij = (int)Enum.Parse(typeof(AfBij), dic["Af / Bij"]),
+                        Bedrag = Double.Parse(dic["Bedrag (EUR)"]),
+                        Code = 0,
+                        Tegenrekening = dic["Tegenrekening"],
+                        Mededelingen = dic["Mededelingen"],
+                        Naam = dic["Naam / Omschrijving"],
+                        Rekening = dic["Rekening"],
+                        Datum = csvDate
+                    };
 
-                _unitOfWork.Transaction.Add(transaction);
+                    _unitOfWork.Transaction.Add(transaction);
+
+                }
 
             }
-
-            }
-            _unitOfWork.Commit();        
+            _unitOfWork.Commit();
         }
     }
 }

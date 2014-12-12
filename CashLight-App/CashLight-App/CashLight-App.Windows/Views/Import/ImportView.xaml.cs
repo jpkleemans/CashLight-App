@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashLight_App.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,9 +27,17 @@ namespace CashLight_App.Views.Import
     /// </summary>
     public sealed partial class ImportView : Page
     {
+        private ImportViewModel _dataContext;
+
         public ImportView()
         {
             this.InitializeComponent();
+            _dataContext = (ImportViewModel)DataContext;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _dataContext.UploadCSV((StorageFile)e.Parameter);
         }
     }
 }

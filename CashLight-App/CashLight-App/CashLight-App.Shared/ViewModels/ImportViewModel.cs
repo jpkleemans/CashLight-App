@@ -1,10 +1,13 @@
-﻿using GalaSoft.MvvmLight;
+﻿using CashLight_App.Models;
+using CashLight_App.Models.Interfaces;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Windows.Storage;
 
 namespace CashLight_App.ViewModels
 {
@@ -23,6 +26,14 @@ namespace CashLight_App.ViewModels
         private void GoToDashboard()
         {
             _navigationService.NavigateTo("Dashboard");
+        }
+
+        public void UploadCSV(StorageFile file)
+        {
+            IBank bank = new Models.INGModel();
+
+            UploadModel upload = new UploadModel();
+            upload.ToDatabase(bank, file);
         }
     }
 }
