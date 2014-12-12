@@ -22,7 +22,7 @@ namespace CashLight_App.Models
             {
                 return 0;
             }
-            return Convert.ToInt16((amountoftransactions / totaltransactions) * 100);
+            return Convert.ToInt32((totaltransactions / amountoftransactions) * 100);
         }
 
         public int getSpendingPercentage(IPeriodModel p)
@@ -33,7 +33,7 @@ namespace CashLight_App.Models
             {
                 return 0;
             }
-            return Convert.ToInt16((amountoftransactions / totaltransactions) * 100);
+            return Convert.ToInt32((totaltransactions / amountoftransactions) * 100);
         }
 
         public static CategoryModel getByName(string name)
