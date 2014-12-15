@@ -17,7 +17,7 @@ namespace CashLight_App.Models
         public int getIncomePercentage(IPeriodModel p)
         {
             double totaltransactions = p.getTransactions().Where(q => q.CategoryID == this.CategoryID).Where(q => q.AfBij == (int)AfBij.Bij).Count();
-            double amountoftransactions = p.getTransactions().Count();
+            double amountoftransactions = p.getTransactions().Where(q => q.AfBij == (int)AfBij.Bij).Count();
             if (totaltransactions == 0 || amountoftransactions == 0)
             {
                 return 0;
@@ -28,7 +28,7 @@ namespace CashLight_App.Models
         public int getSpendingPercentage(IPeriodModel p)
         {
             double totaltransactions = p.getTransactions().Where(q => q.CategoryID == this.CategoryID).Where(q => q.AfBij == (int)AfBij.Af).Count();
-            double amountoftransactions = p.getTransactions().Count();
+            double amountoftransactions = p.getTransactions().Where(q => q.AfBij == (int)AfBij.Af).Count();
             if (totaltransactions == 0 || amountoftransactions == 0)
             {
                 return 0;
@@ -55,7 +55,7 @@ namespace CashLight_App.Models
             var all = All();
             foreach (var item in all)
             {
-                item.Percentage = item.getIncomePercentage(periodModel);
+                item.IncomePercentage = item.getIncomePercentage(periodModel);
             }
 
             return all;
@@ -66,7 +66,7 @@ namespace CashLight_App.Models
             var all = All();
             foreach (var item in all)
             {
-                item.Percentage = item.getSpendingPercentage(periodModel);
+                item.SpendingsPercentage = item.getSpendingPercentage(periodModel);
             }
 
             return all;
@@ -90,6 +90,8 @@ namespace CashLight_App.Models
         public int CategoryID { get; set; }
         public string Naam { get; set; }
 
-        public int Percentage { get; set; }
+        public int IncomePercentage { get; set; }
+
+        public int SpendingsPercentage { get; set; }
     }
 }
