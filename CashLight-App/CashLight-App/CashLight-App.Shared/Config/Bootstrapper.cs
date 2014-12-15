@@ -10,6 +10,7 @@ namespace CashLight_App.Config
     {
         public Bootstrapper()
         {
+            Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path.ToString());
             
             ContainerBuilder container = new ContainerBuilder();
 
@@ -19,7 +20,7 @@ namespace CashLight_App.Config
 
             ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(build));
 
-            Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path.ToString());
+            
 
             
         }
