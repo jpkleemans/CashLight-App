@@ -4,6 +4,7 @@ using CashLight_App.Models.Interfaces;
 using CashLight_App.Services.CSV;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Windows.Storage;
 using Windows.Storage.Streams;
@@ -57,7 +58,7 @@ namespace CashLight_App.Models
                     var transaction = new Transaction()
                     {
                         AfBij = (int)Enum.Parse(typeof(AfBij), dic["Af / Bij"]),
-                        Bedrag = Double.Parse(dic["Bedrag (EUR)"]),
+                        Bedrag = Double.Parse(dic["Bedrag (EUR)"],new CultureInfo("nl-NL")),
                         Code = 0,
                         Tegenrekening = dic["Tegenrekening"],
                         Mededelingen = dic["Mededelingen"],

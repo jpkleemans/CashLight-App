@@ -21,14 +21,14 @@
         <FlipView x:Name="flipview" ItemsSource="{Binding Periods}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}" Grid.RowSpan="2">
             <FlipView.ItemTemplate>
                 <DataTemplate>
+
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,3">
-                            <Grid Margin="100,0,100,0">
+                        <Grid Grid.Row="0" Margin="100,0,100,0">
                                 <Grid.ChildrenTransitions>
                                     <TransitionCollection>
                                         <EntranceThemeTransition/>
@@ -80,10 +80,8 @@
                                 <TextBlock Text="{Binding IncomeCategories[2].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,50"/>
                                 <TextBlock Text="{Binding IncomeCategories[2].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,50"/>
                             </Grid>
-                        </Border>
 
-                        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0">
-                            <Grid Margin="-100,0,200,0">
+                        <Grid Grid.Row="1" Margin="-100,0,200,0">
                                 <Grid.ChildrenTransitions>
                                     <TransitionCollection>
                                         <EntranceThemeTransition/>
@@ -138,6 +136,7 @@
                         <TextBlock Text="{Binding SpendingCategories[2].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,-50"/>
                         <TextBlock Text="{Binding SpendingCategories[2].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,-50"/>
                     </Grid>
+
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
