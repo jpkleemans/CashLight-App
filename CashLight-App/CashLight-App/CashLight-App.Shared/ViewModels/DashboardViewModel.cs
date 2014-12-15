@@ -41,7 +41,6 @@ namespace CashLight_App.ViewModels
         public DashboardViewModel()
         {
             Periods = new ObservableCollection<IPeriodModel>();
-
             InitPeriods();
         }
 
