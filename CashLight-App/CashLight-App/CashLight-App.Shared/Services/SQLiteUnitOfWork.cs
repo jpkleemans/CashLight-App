@@ -101,6 +101,16 @@ namespace CashLight_App.Services
             connection.CreateTable<Category>();
             connection.CreateTable<Transaction>();
             connection.CreateTable<Setting>();
+
+            CashLight_App.DataModels.Category c = new CashLight_App.DataModels.Category("Vast");
+            CashLight_App.DataModels.Category c1 = new CashLight_App.DataModels.Category("Variabel");
+            CashLight_App.DataModels.Category c2 = new CashLight_App.DataModels.Category("Overig");
+
+            connection.Insert(c);
+            connection.Insert(c1);
+            connection.Insert(c2);
+
+            connection.Commit();
             return connection;
         }
 
