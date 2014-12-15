@@ -28,6 +28,8 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
+                        <TextBlock Text="{Binding Name}" Margin="20" FontSize="30" TextAlignment="Center"/>
+
                         <Grid Grid.Row="0" Margin="100,0,100,0">
                             <Grid.ChildrenTransitions>
                                 <TransitionCollection>

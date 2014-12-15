@@ -25,22 +25,9 @@ namespace CashLight_App.ViewModels
             {
                 if (_selectedPeriod != null)
                 {
-                    /// PROBLEEM:
-                    /// Hij pakt al de volgende index voordat hij gaat swipen,
-                    /// Hierdoor zie je heel kort al de volgende index
-                    /// en gaat de swipe ook de verkeerde kant op...
-
-                    if (value.StartDate > _selectedPeriod.EndDate)
+                    if (value.EndDate < _selectedPeriod.StartDate)
                     {
-                        Periods[0] = _selectedPeriod;
-                        Periods[1] = value;
-                        Periods[2] = value.Next();
-                    }
-                    else if (value.EndDate < _selectedPeriod.StartDate)
-                    {
-                        Periods[0] = value.Previous();
-                        Periods[1] = value;
-                        Periods[2] = _selectedPeriod;
+                        Periods.Add(value.Previous());
                     }
                 }
 
@@ -62,9 +49,8 @@ namespace CashLight_App.ViewModels
         {
             IPeriodModel now = new PeriodModel(DateTime.Now, false);
 
-            Periods.Add(now.Previous());
             Periods.Add(now);
-            Periods.Add(now.Next());
+            Periods.Add(now.Previous());
 
             SelectedPeriod = now;
         }
