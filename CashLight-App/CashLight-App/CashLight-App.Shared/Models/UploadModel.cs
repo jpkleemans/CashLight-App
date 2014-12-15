@@ -74,7 +74,7 @@ namespace CashLight_App.Models
             }
             _unitOfWork.Commit();
 
-            PeriodModel.SearchMostConsistentIncome();
+            //PeriodModel.SearchMostConsistentIncome();
         }
     }
 }
