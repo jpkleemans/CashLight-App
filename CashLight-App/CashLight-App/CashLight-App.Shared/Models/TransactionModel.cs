@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Windows.UI.Xaml;
@@ -39,7 +40,7 @@ namespace CashLight_App.Models
             var name = item["Naam / Omschrijving"];
             var rekening = item["Rekening"];
             var datum = Convert.ToDateTime(item["Datum"]);
-            var bedrag = Double.Parse(item["Bedrag (EUR)"]);
+            var bedrag = Double.Parse(item["Bedrag (EUR)"],new CultureInfo("nl-NL"));
 
             var list = _unitOfWork.Transaction.FindAll()
                 .Where(x => x.Naam == name)
