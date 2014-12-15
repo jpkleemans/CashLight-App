@@ -19,7 +19,6 @@ namespace CashLight_App.Config
 
             ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(build));
 
-            CategoryModel.SetRandomCategories();
             Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path.ToString());
 
             

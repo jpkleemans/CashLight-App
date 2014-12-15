@@ -24,5 +24,7 @@ namespace CashLight_App.Services.Interface
         void Delete(T Entity);
 
         void DeleteAll();
+
+        void Edit(T Entity);
     }
 }

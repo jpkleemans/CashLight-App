@@ -143,6 +143,7 @@
         </FlipView>
 
         <TextBlock Text="{Binding SelectedIndex, ElementName=flipview}" Margin="100" FontSize="40"/>
+        <Button Content="Update Categorie" HorizontalAlignment="Left" Margin="24,155,0,0" VerticalAlignment="Top" Command="{Binding RandomCategoriesCommand}"/>
 
     </Grid>
 </Page>

@@ -81,10 +81,10 @@ namespace CashLight_App.Models
             {
                 var catid = catlist[random.Next(0, catlist.Count)].CategoryID;
                 t.CategoryID = catid;
-                _unitOfWork.Commit();
+                _unitOfWork.Transaction.Edit(t);
             }
-            
 
+            _unitOfWork.Commit();
         }
 
         public int CategoryID { get; set; }

@@ -66,6 +66,10 @@ namespace CashLight_App.Services
             return query.Any(predicate);
         }
 
+        public void Edit(T Entity)
+        {
+            _context.Table<T>().Connection.Update(Entity);
+        }
         public void DeleteAll()
         {
             //ObjectContext objCtx = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)_context).ObjectContext;

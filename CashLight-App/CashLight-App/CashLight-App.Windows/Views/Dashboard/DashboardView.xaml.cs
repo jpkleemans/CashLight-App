@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashLight_App.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace CashLight_App.Views.Dashboard
         public DashboardView()
         {
             this.InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

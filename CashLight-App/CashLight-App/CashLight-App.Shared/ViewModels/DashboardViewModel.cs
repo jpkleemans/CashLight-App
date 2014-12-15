@@ -14,6 +14,8 @@ namespace CashLight_App.ViewModels
 {
     public class DashboardViewModel : ViewModelBase
     {
+        public RelayCommand RandomCategoriesCommand { get; set; }
+
         private IPeriodModel _selectedPeriod;
         public IPeriodModel SelectedPeriod
         {
@@ -40,8 +42,15 @@ namespace CashLight_App.ViewModels
 
         public DashboardViewModel()
         {
+            RandomCategoriesCommand = new RelayCommand(SetRandomCategories);
+
             Periods = new ObservableCollection<IPeriodModel>();
             InitPeriods();
+        }
+
+        private void SetRandomCategories()
+        {
+            CategoryModel.SetRandomCategories();
         }
 
         private void InitPeriods()
