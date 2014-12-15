@@ -6,6 +6,7 @@ using CashLight_App.DataModels;
 using CashLight_App.Models.Interfaces;
 using System.Collections.ObjectModel;
 using System.Collections;
+using System.Globalization;
 
 namespace CashLight_App.Models
 {
@@ -34,7 +35,7 @@ namespace CashLight_App.Models
             InitImportantTransactions();
             InitCategories();
 
-            Name = String.Format("{1} t/m {0}", StartDate, EndDate);
+            Name = String.Format(new CultureInfo("nl-NL"), "{1} t/m {0}", StartDate, EndDate);
         }
 
         private void InitImportantTransactions()
