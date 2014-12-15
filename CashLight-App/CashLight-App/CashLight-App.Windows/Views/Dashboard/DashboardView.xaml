@@ -6,7 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Dashboard, Source={StaticResource Locator}}">
+    DataContext="{Binding Dashboard, Source={StaticResource Locator}}"
+    xmlns:sfc="using:CashLight_App.Converters">
+
+    <UserControl.Resources>
+        <sfc:StringFormatConverter x:Key="StringFormatConverter" />
+    </UserControl.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -27,8 +32,6 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-
-                        <TextBlock Text="{Binding Name}" Margin="20" FontSize="30" TextAlignment="Center"/>
 
                         <Grid Grid.Row="0" Margin="100,0,100,0">
                             <Grid.ChildrenTransitions>
@@ -72,15 +75,17 @@
                                     Height="{Binding ImportantIncomes[3].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
+                        </Grid>
 
+                        <Grid Grid.Row="0" Margin="50,0,0,0">
                             <TextBlock Text="{Binding IncomeCategories[0].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,110"/>
-                            <TextBlock Text="{Binding IncomeCategories[0].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,110"/>
+                            <TextBlock Text="{Binding IncomeCategories[0].Percentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:P0}'}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,110"/>
 
                             <TextBlock Text="{Binding IncomeCategories[1].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,80"/>
-                            <TextBlock Text="{Binding IncomeCategories[1].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,80"/>
+                            <TextBlock Text="{Binding IncomeCategories[1].Percentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:P0}'}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,80"/>
 
                             <TextBlock Text="{Binding IncomeCategories[2].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,50"/>
-                            <TextBlock Text="{Binding IncomeCategories[2].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,50"/>
+                            <TextBlock Text="{Binding IncomeCategories[2].Percentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:P0}'}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,50"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Margin="-100,0,200,0">
@@ -125,15 +130,17 @@
                                     Height="{Binding ImportantSpendings[3].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
+                        </Grid>
 
-                            <TextBlock Text="{Binding SpendingCategories[0].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,-110"/>
-                            <TextBlock Text="{Binding SpendingCategories[0].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,-110"/>
+                        <Grid Grid.Row="1" Margin="50,0,0,0">
+                            <TextBlock Text="{Binding SpendingCategories[0].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0"/>
+                            <TextBlock Text="{Binding SpendingCategories[0].Percentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:P0}'}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,50,0,0"/>
 
-                            <TextBlock Text="{Binding SpendingCategories[1].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,-80"/>
-                            <TextBlock Text="{Binding SpendingCategories[1].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,-80"/>
+                            <TextBlock Text="{Binding SpendingCategories[1].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,80,0,0"/>
+                            <TextBlock Text="{Binding SpendingCategories[1].Percentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:P0}'}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,80,0,0"/>
 
-                            <TextBlock Text="{Binding SpendingCategories[2].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,-50"/>
-                            <TextBlock Text="{Binding SpendingCategories[2].Percentage}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,-50"/>
+                            <TextBlock Text="{Binding SpendingCategories[2].Naam}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,110,0,0"/>
+                            <TextBlock Text="{Binding SpendingCategories[2].Percentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:P0}'}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,110,0,0"/>
                         </Grid>
 
                     </Grid>
@@ -142,8 +149,23 @@
             </FlipView.ItemTemplate>
         </FlipView>
 
-        <TextBlock Text="{Binding SelectedIndex, ElementName=flipview}" Margin="100" FontSize="40"/>
-        <Button Content="Update Categorie" HorizontalAlignment="Left" Margin="24,155,0,0" VerticalAlignment="Top" Command="{Binding RandomCategoriesCommand}"/>
+        <TextBlock Text="{Binding SelectedPeriod.Name}" Margin="20" FontSize="30" TextAlignment="Center"/>
+
+        <Grid Margin="39">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button  x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        Margin="0,0,39,0" 
+                        VerticalAlignment="Top"
+                        Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" x:Uid="Header" Text="CashLight" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
+        </Grid>
 
     </Grid>
 </Page>
