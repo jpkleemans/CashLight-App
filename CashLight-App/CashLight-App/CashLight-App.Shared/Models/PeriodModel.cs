@@ -104,7 +104,7 @@ namespace CashLight_App.Models
             {
                 if (firstIncome == null)
                 {
-                    this.StartDate = firstIncome.Datum;
+                    this.StartDate = latestIncome.Datum.AddDays(1);
                     this.EndDate = StartDate.AddDays(i.AveragePeriod);
                 }
                 else

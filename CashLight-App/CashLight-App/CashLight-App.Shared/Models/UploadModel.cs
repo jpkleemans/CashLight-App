@@ -58,7 +58,7 @@ namespace CashLight_App.Models
                     var transaction = new Transaction()
                     {
                         AfBij = (int)Enum.Parse(typeof(AfBij), dic["Af / Bij"]),
-                        Bedrag = Double.Parse(dic["Bedrag (EUR)"],new CultureInfo("nl-NL")),
+                        Bedrag = Double.Parse(dic["Bedrag (EUR)"], new CultureInfo("nl-NL")),
                         Code = 0,
                         Tegenrekening = dic["Tegenrekening"],
                         Mededelingen = dic["Mededelingen"],
@@ -73,6 +73,8 @@ namespace CashLight_App.Models
 
             }
             _unitOfWork.Commit();
+
+            PeriodModel.SearchMostConsistentIncome();
         }
     }
 }
