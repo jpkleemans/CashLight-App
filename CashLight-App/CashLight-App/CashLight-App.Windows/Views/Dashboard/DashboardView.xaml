@@ -28,8 +28,6 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="{Binding Name}" Margin="20" FontSize="30" TextAlignment="Center"/>
-
                         <Grid Grid.Row="0" Margin="100,0,100,0">
                             <Grid.ChildrenTransitions>
                                 <TransitionCollection>
@@ -143,6 +141,7 @@
         </FlipView>
 
         <TextBlock Text="{Binding SelectedIndex, ElementName=flipview}" Margin="100" FontSize="40"/>
+        <TextBlock Text="{Binding SelectedPeriod.Name}" Margin="20" FontSize="30" TextAlignment="Center"/>
 
     </Grid>
 </Page>
