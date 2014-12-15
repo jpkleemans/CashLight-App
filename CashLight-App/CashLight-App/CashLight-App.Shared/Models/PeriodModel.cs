@@ -35,7 +35,7 @@ namespace CashLight_App.Models
             InitImportantTransactions();
             InitCategories();
 
-            Name = String.Format("{1} t/m {0}", StartDate.ToString("dd-MM-yyyy"), EndDate.ToString("dd-MM-yyyy"));
+            Name = String.Format("{0} t/m {1}", StartDate.ToString("dd-MM-yyyy"), EndDate.ToString("dd-MM-yyyy"));
         }
 
         private void InitImportantTransactions()
