@@ -19,7 +19,7 @@
             </CommandBar.Background>
                 <AppBarButton Icon="Home" Label="Dashboard" />
                 <AppBarButton Icon="Library" Label="Categoriseren" />
-
+                    <AppBarSeparator Foreground="White"></AppBarSeparator>
             <AppBarButton Icon="Cancel" Label="Afsluiten"/>
         </CommandBar>
     </Page.TopAppBar>
