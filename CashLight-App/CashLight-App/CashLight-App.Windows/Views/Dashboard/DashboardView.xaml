@@ -13,13 +13,13 @@
         <sfc:StringFormatConverter x:Key="StringFormatConverter" />
     </UserControl.Resources>
     <Page.TopAppBar>
-        <CommandBar BorderBrush="Transparent" Height="100">
+        <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True">
             <CommandBar.Background>
                 <SolidColorBrush Color="Black" Opacity="0.25"/>
             </CommandBar.Background>
-                <AppBarButton Icon="Home" Label="Dashboard" />
-                <AppBarButton Icon="Library" Label="Categoriseren" />
-                    <AppBarSeparator Foreground="White"></AppBarSeparator>
+            <AppBarButton Icon="Home" Label="Dashboard" />
+            <AppBarButton Icon="Library" Label="Categoriseren" />
+                <AppBarSeparator Foreground="White"></AppBarSeparator>
             <AppBarButton Icon="Cancel" Label="Afsluiten"/>
         </CommandBar>
     </Page.TopAppBar>
