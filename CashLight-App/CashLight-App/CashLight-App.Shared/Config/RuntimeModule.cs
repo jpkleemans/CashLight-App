@@ -28,6 +28,7 @@ namespace CashLight_App.Config
             builder.RegisterType<DashboardViewModel>();
             builder.RegisterType<ImportViewModel>();
             builder.RegisterType<MenuViewModel>();
+            builder.RegisterType<CategorizeViewModel>();
 
         }
     }

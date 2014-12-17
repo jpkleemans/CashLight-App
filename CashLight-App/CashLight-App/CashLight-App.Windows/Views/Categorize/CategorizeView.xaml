@@ -7,8 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Categorize, Source={StaticResource Locator}}"
-    >
+    DataContext="{Binding Categorize, Source={StaticResource Locator}}">
 
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
@@ -46,17 +45,17 @@
             <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
-        <Button Content="Vast" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Background="#FF48D86D" Width="88" Command="{Binding }" CommandParameter="1"/>
-        <Button Content="Variabel" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="1" VerticalAlignment="Center" Background="OrangeRed" Command="{Binding }" CommandParameter="2"/>
-        <Button Content="Overig" HorizontalAlignment="Center" Margin="0,200,0,0" Grid.Row="1" VerticalAlignment="Center" Background="DarkBlue" Width="88" Command="{Binding }" CommandParameter="3"/>
+        <Button Content="Vast" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Background="#FF48D86D" Width="88" Command="{Binding ButtonCommand}" CommandParameter="1"/>
+        <Button Content="Variabel" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="1" VerticalAlignment="Center" Background="OrangeRed" Command="{Binding ButtonCommand}" CommandParameter="2"/>
+        <Button Content="Overig" HorizontalAlignment="Center" Margin="0,200,0,0" Grid.Row="1" VerticalAlignment="Center" Background="DarkBlue" Width="88" Command="{Binding ButtonCommand}" CommandParameter="3"/>
 
         <TextBlock HorizontalAlignment="Center" Margin="-100,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Naam: " VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Center" Margin="100,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding }" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Center" Margin="100,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontSize="18"/>
 
         <TextBlock HorizontalAlignment="Center" Margin="-100,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Bedrag: " VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Center" Margin="100,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding }" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Center" Margin="100,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" FontSize="18"/>
 
         <TextBlock HorizontalAlignment="Center" Margin="-100,140,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Af/Bij: " VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Center" Margin="100,140,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding }" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Center" Margin="100,140,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding AfBij}" VerticalAlignment="Top" FontSize="18"/>
     </Grid>
 </Page>
