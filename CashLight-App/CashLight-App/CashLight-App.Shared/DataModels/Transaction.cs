@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -36,9 +37,10 @@ namespace CashLight_App.DataModels
         public int AfBij { get; set; }
         public double Bedrag { get; set; }
         public string Mededelingen { get; set; }
-        //[ForeignKey("Category")]
+        [ForeignKey(typeof(Category))]
         public int CategoryID { get; set; }
-        //public virtual Category Category { get; set; }
+        [ManyToOne]
+        public virtual Category Category { get; set; }
 
     }
 }
