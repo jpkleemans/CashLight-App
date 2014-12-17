@@ -1,4 +1,4 @@
-﻿using CashLight_App.DataModels;
+﻿using CashLight_App.Tables;
 using CashLight_App.Services.Interface;
 using CashLight_App.Views.Categorize;
 using System;
