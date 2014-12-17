@@ -18,5 +18,15 @@ namespace CashLight_App.ViewModels
                 return ServiceLocator.Current.GetInstance<ImportViewModel>();
             }
         }
+
+        public MenuViewModel Menu 
+        { 
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MenuViewModel>();
+            }
+        }
+
+        
     }
 }

@@ -27,6 +27,8 @@ namespace CashLight_App.Config
             // ViewModels
             builder.RegisterType<DashboardViewModel>();
             builder.RegisterType<ImportViewModel>();
+            builder.RegisterType<MenuViewModel>();
+
         }
     }
 }

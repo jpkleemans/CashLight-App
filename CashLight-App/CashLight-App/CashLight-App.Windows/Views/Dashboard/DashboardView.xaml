@@ -13,14 +13,14 @@
         <sfc:StringFormatConverter x:Key="StringFormatConverter" />
     </UserControl.Resources>
     <Page.TopAppBar>
-        <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True">
+        <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True" x:Name="Menu"  DataContext="{Binding Menu, Source={StaticResource Locator}}">
             <CommandBar.Background>
                 <SolidColorBrush Color="Black" Opacity="0.25"/>
             </CommandBar.Background>
             <AppBarButton Icon="Home" Label="Dashboard" />
-            <AppBarButton Icon="Library" Label="Categoriseren" />
+            <AppBarButton Icon="Library" Label="Categoriseren" Click="Categorize_Menu" />
                 <AppBarSeparator Foreground="White"></AppBarSeparator>
-            <AppBarButton Icon="Cancel" Label="Afsluiten"/>
+            <AppBarButton Icon="Cancel" Label="Afsluiten" Click="Exit_Button_Click" />
         </CommandBar>
     </Page.TopAppBar>
 

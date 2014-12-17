@@ -1,6 +1,4 @@
-﻿using CashLight_App.Models;
-using CashLight_App.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,29 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace CashLight_App.Views.Dashboard
+namespace CashLight_App.Views.Categorize
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DashboardView : Page
+    public sealed partial class CategorizeView : Page
     {
-        private MenuViewModel _viewModel;
-        public DashboardView()
+        public CategorizeView()
         {
             this.InitializeComponent();
-            _viewModel = (MenuViewModel)Menu.DataContext;
         }
-
-        private void Exit_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.ExitApplication();
-        }
-
-        private void Categorize_Menu(object sender, RoutedEventArgs e)
-        {
-            _viewModel.NavigateToCategorize();
-        }
-
     }
 }
