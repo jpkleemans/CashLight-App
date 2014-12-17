@@ -22,7 +22,7 @@ namespace CashLight_App.ViewModels
 
         public RelayCommand<int> ButtonCommand { get; set; }
         public string Name { get; set; }
-        public double Amount { get; set; }
+        public string Amount { get; set; }
         public string AfBij { get; set; }
         public CategorizeViewModel(IUnitOfWork unitOfWork, INavigationService NavigationService)
         {
@@ -37,7 +37,7 @@ namespace CashLight_App.ViewModels
             else
             {
                 Name = _transactions.First().Naam;
-                Amount = _transactions.First().Bedrag;
+                Amount = _transactions.First().Bedrag.ToString(c);
                 AfBij = _transactions.First().AfBij.ToString();
 
                 ButtonCommand = new RelayCommand<int>((i) => ShowNextTransactionView(i));
