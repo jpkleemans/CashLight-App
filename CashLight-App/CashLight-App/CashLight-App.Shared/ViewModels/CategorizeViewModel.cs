@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Controls;
 using CashLight_App.Models;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using System.Globalization;
 
 namespace CashLight_App.ViewModels
 {
@@ -37,7 +38,7 @@ namespace CashLight_App.ViewModels
             else
             {
                 Name = _transactions.First().Naam;
-                Amount = _transactions.First().Bedrag.ToString(c);
+                Amount = _transactions.First().Bedrag.ToString("C", CultureInfo.CurrentCulture);
                 AfBij = _transactions.First().AfBij.ToString();
 
                 ButtonCommand = new RelayCommand<int>((i) => ShowNextTransactionView(i));
