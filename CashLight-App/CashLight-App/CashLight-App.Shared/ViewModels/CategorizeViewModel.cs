@@ -28,7 +28,7 @@ namespace CashLight_App.ViewModels
             this._view = categorizeView;
             this._unitOfWork = unitOfWork;
             _transactionModel = new Transaction();
-            _transactions = _unitOfWork.Transaction.FindAll().Where(q => !q.CategoryID).ToList();
+            _transactions = Transaction.All().Where(q => q.CategoryID != null).ToList();
             _navigation = NavigationService;
 
             ButtonCommand = new RelayCommand<int>((i) => ShowNextTransactionView(i));
