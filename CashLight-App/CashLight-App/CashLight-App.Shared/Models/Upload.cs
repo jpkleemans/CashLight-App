@@ -1,4 +1,4 @@
-﻿using CashLight_App.DataModels;
+﻿using CashLight_App.Tables;
 using CashLight_App.Enums;
 using CashLight_App.Models.Interfaces;
 using CashLight_App.Services.CSV;
@@ -11,13 +11,13 @@ using Windows.Storage.Streams;
 
 namespace CashLight_App.Models
 {
-    public class UploadModel : ModelBase
+    public class Upload : ModelBase
     {
-        private TransactionModel _transaction;
+        private Transaction _transaction;
 
-        public UploadModel()
+        public Upload()
         {
-            _transaction = new TransactionModel();
+            _transaction = new Transaction();
         }
 
         public async void ToDatabase(IBank bank, StorageFile storageFile)
@@ -55,7 +55,7 @@ namespace CashLight_App.Models
                 if (exists == false)
                 {
 
-                    var transaction = new Transaction()
+                    var transaction = new TransactionTable()
                     {
                         AfBij = (int)Enum.Parse(typeof(AfBij), dic["Af / Bij"]),
                         Bedrag = Double.Parse(dic["Bedrag (EUR)"], new CultureInfo("nl-NL")),

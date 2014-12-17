@@ -15,24 +15,28 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Business\CategoryRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\Interfaces\ICategoryRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\Interfaces\ITransactionRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Business\TransactionRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\Bootstrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\Routes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\RuntimeModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToUpperConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataModels\Category.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataModels\Setting.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataModels\Transaction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tables\CategoryTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tables\SettingTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tables\TransactionTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\PeriodDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AfBij.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\CategoryModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\INGModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Category.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ING.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interfaces\IBank.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interfaces\IPeriodModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ModelBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\PeriodModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\TransactionModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\UploadModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Period.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Transaction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Upload.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvFileReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvRow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interface\IRepository.cs" />

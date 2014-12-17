@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using AutoMapper;
-using CashLight_App.DataModels;
+using CashLight_App.Tables;
 using CashLight_App.Models.Interfaces;
 using CashLight_App.Enums;
 namespace CashLight_App.Models
 {
-    public class CategoryModel : ModelBase
+    public class Category : ModelBase
     {
         /// <summary>
         /// Berekent welk percentage van alle transacties aan deze categorie gekoppeld zijn.
@@ -36,21 +36,21 @@ namespace CashLight_App.Models
             return Convert.ToInt32((totaltransactions / amountoftransactions) * 100);
         }
 
-        public static CategoryModel getByName(string name)
+        public static Category getByName(string name)
         {
-            Mapper.CreateMap<Category, CategoryModel>();
+            Mapper.CreateMap<CategoryTable, Category>();
             var cat = _unitOfWork.Category.Find(q => q.Naam == name).FirstOrDefault();
-            return Mapper.Map<Category, CategoryModel>(cat);
+            return Mapper.Map<CategoryTable, Category>(cat);
         }
 
-        public static IEnumerable<CategoryModel> All()
+        public static IEnumerable<Category> All()
         {
-            Mapper.CreateMap<Category, CategoryModel>();
+            Mapper.CreateMap<CategoryTable, Category>();
             var c = _unitOfWork.Category.FindAll();
-            return Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryModel>>(c);
+            return Mapper.Map<IEnumerable<CategoryTable>, IEnumerable<Category>>(c);
         }
 
-        public static IEnumerable<CategoryModel> AllWithIncomePercents(IPeriodModel periodModel)
+        public static IEnumerable<Category> AllWithIncomePercents(IPeriodModel periodModel)
         {
             var all = All();
             foreach (var item in all)
@@ -61,7 +61,7 @@ namespace CashLight_App.Models
             return all;
         }
 
-        public static IEnumerable<CategoryModel> AllWithSpendingPercents(PeriodModel periodModel)
+        public static IEnumerable<Category> AllWithSpendingPercents(Period periodModel)
         {
             var all = All();
             foreach (var item in all)
@@ -74,7 +74,7 @@ namespace CashLight_App.Models
 
         public static void SetRandomCategories()
         {
-            var catlist = CategoryModel.All().ToList();
+            var catlist = Category.All().ToList();
             var transactions = _unitOfWork.Transaction.FindAll().ToList();
             var random = new Random();
             foreach(var t in transactions)

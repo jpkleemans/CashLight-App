@@ -1,4 +1,4 @@
-﻿using CashLight_App.DataModels;
+﻿using CashLight_App.Tables;
 using CashLight_App.Models;
 using CashLight_App.Models.Interfaces;
 using CashLight_App.Services.Interface;
@@ -42,20 +42,15 @@ namespace CashLight_App.ViewModels
 
         public DashboardViewModel()
         {
-            RandomCategoriesCommand = new RelayCommand(SetRandomCategories);
+            RandomCategoriesCommand = new RelayCommand(() => Category.SetRandomCategories());
 
             Periods = new ObservableCollection<IPeriodModel>();
             InitPeriods();
         }
 
-        private void SetRandomCategories()
-        {
-            CategoryModel.SetRandomCategories();
-        }
-
         private void InitPeriods()
         {
-            IPeriodModel now = new PeriodModel(DateTime.Now, false);
+            IPeriodModel now = new Period(DateTime.Now, false);
 
             Periods.Add(now);
             Periods.Add(now.Previous());

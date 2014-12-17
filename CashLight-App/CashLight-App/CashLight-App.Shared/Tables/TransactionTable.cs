@@ -3,17 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.DataModels
+namespace CashLight_App.Tables
 {
     [Table("Transaction")]
-    public class Transaction
+    public class TransactionTable
     {
 
-        public Transaction()
+        public TransactionTable()
         {
 
         }
-        public Transaction(DateTime datum, string naam, string rekening, string tegenrekening, int code, int afbij, double bedrag, string mededelingen, int categoryid)
+        public TransactionTable(DateTime datum, string naam, string rekening, string tegenrekening, int code, int afbij, double bedrag, string mededelingen, int categoryid)
         {
             this.Datum = datum;
             this.Naam = naam;

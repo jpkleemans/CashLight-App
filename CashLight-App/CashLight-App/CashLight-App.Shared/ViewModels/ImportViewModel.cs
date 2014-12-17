@@ -30,9 +30,9 @@ namespace CashLight_App.ViewModels
 
         public void UploadCSV(StorageFile file)
         {
-            IBank bank = new Models.INGModel();
+            IBank bank = new Models.ING();
 
-            UploadModel upload = new UploadModel();
+            Upload upload = new Upload();
             upload.ToDatabase(bank, file);
         }
     }

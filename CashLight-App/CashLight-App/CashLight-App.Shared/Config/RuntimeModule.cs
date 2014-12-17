@@ -22,7 +22,7 @@ namespace CashLight_App.Config
                .SingleInstance();
 
             // Models
-            builder.RegisterType<PeriodModel>().As<IPeriodModel>();
+            builder.RegisterType<Period>().As<IPeriodModel>();
 
             // ViewModels
             builder.RegisterType<DashboardViewModel>();

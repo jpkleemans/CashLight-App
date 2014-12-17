@@ -1,4 +1,4 @@
-﻿using CashLight_App.DataModels;
+﻿using CashLight_App.Tables;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +7,10 @@ namespace CashLight_App.Services.Interface
 {
     public interface IUnitOfWork
     {
-        IRepository<Transaction> Transaction { get; }
-        IRepository<Category> Category { get; }
+        IRepository<TransactionTable> Transaction { get; }
+        IRepository<CategoryTable> Category { get; }
 
-        IRepository<Setting> Setting { get; }
+        IRepository<SettingTable> Setting { get; }
 
         //Opslaan gegevens
         void Commit();

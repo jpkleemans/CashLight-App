@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CashLight_App.DataModels;
+using CashLight_App.Tables;
 using CashLight_App.Models.Interfaces;
 using System.Collections.ObjectModel;
 using System.Collections;
@@ -10,26 +10,26 @@ using System.Globalization;
 
 namespace CashLight_App.Models
 {
-    public class PeriodModel : ModelBase, IPeriodModel
+    public class Period : ModelBase, IPeriodModel
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
         public string Name { get; set; }
 
-        public ObservableCollection<TransactionModel> Transactions { get; set; }
-        public ObservableCollection<TransactionModel> ImportantIncomes { get; set; }
-        public ObservableCollection<TransactionModel> ImportantSpendings { get; set; }
+        public ObservableCollection<Transaction> Transactions { get; set; }
+        public ObservableCollection<Transaction> ImportantIncomes { get; set; }
+        public ObservableCollection<Transaction> ImportantSpendings { get; set; }
 
-        public ObservableCollection<CategoryModel> IncomeCategories { get; set; }
-        public ObservableCollection<CategoryModel> SpendingCategories { get; set; }
+        public ObservableCollection<Category> IncomeCategories { get; set; }
+        public ObservableCollection<Category> SpendingCategories { get; set; }
 
-        public PeriodModel()
+        public Period()
             : this(DateTime.Now, false)
         {
         }
 
-        public PeriodModel(DateTime d, bool forward = true)
+        public Period(DateTime d, bool forward = true)
         {
             SetDates(d, forward);
             InitImportantTransactions();
@@ -40,28 +40,28 @@ namespace CashLight_App.Models
 
         private void InitImportantTransactions()
         {
-            ImportantIncomes = new ObservableCollection<TransactionModel>(getMostImportantIncomes());
-            ImportantSpendings = new ObservableCollection<TransactionModel>(getMostImportantSpendings());
+            ImportantIncomes = new ObservableCollection<Transaction>(getMostImportantIncomes());
+            ImportantSpendings = new ObservableCollection<Transaction>(getMostImportantSpendings());
         }
 
         private void InitCategories()
         {
-            IncomeCategories = new ObservableCollection<CategoryModel>(CategoryModel.AllWithIncomePercents(this));
-            SpendingCategories = new ObservableCollection<CategoryModel>(CategoryModel.AllWithSpendingPercents(this));
+            IncomeCategories = new ObservableCollection<Category>(Category.AllWithIncomePercents(this));
+            SpendingCategories = new ObservableCollection<Category>(Category.AllWithSpendingPercents(this));
         }
 
         public IPeriodModel Next()
         {
             DateTime dateInNextPeriod = EndDate.AddDays(1);
 
-            return new PeriodModel(dateInNextPeriod);
+            return new Period(dateInNextPeriod);
         }
 
         public IPeriodModel Previous()
         {
             DateTime dateInPreviousPeriod = StartDate.AddDays(-1);
 
-            return new PeriodModel(dateInPreviousPeriod, false);
+            return new Period(dateInPreviousPeriod, false);
         }
 
         private void SetDates(DateTime d, bool forward = true)
@@ -114,8 +114,8 @@ namespace CashLight_App.Models
                 }
             }
 
-            Transactions = new ObservableCollection<TransactionModel>(
-                TransactionModel.All()
+            Transactions = new ObservableCollection<Transaction>(
+                Transaction.All()
                     .Where(q => q.Datum >= this.StartDate && q.Datum <= this.EndDate)
                     .OrderBy(q => q.Datum)
             );
@@ -145,7 +145,7 @@ namespace CashLight_App.Models
 
                 // Loop trough all transactions
                 DateTime previousDate = default(DateTime);
-                foreach (Transaction transaction in group)
+                foreach (TransactionTable transaction in group)
                 {
                     if (previousDate != default(DateTime))
                     {
@@ -220,25 +220,25 @@ namespace CashLight_App.Models
 
         public static void SaveConsistentIncome(PeriodDTO p)
         {
-            Setting s = new Setting("Name", p.Name);
+            SettingTable s = new SettingTable("Name", p.Name);
             _unitOfWork.Setting.Add(s);
 
-            Setting s1 = new Setting("Account", p.Account);
+            SettingTable s1 = new SettingTable("Account", p.Account);
             _unitOfWork.Setting.Add(s1);
 
-            Setting s2 = new Setting("AverageDeviation", p.AverageDeviation);
+            SettingTable s2 = new SettingTable("AverageDeviation", p.AverageDeviation);
             _unitOfWork.Setting.Add(s2);
 
-            Setting s3 = new Setting("AveragePeriod", p.AveragePeriod);
+            SettingTable s3 = new SettingTable("AveragePeriod", p.AveragePeriod);
             _unitOfWork.Setting.Add(s3);
 
             _unitOfWork.Commit();
         }
 
 
-        public IEnumerable<TransactionModel> getTransactions()
+        public IEnumerable<Transaction> getTransactions()
         {
-            IEnumerable<TransactionModel> transactions = Transactions;
+            IEnumerable<Transaction> transactions = Transactions;
 
             return transactions;
         }
@@ -249,16 +249,16 @@ namespace CashLight_App.Models
         /// <param name="startdate">Startdatum</param>
         /// <param name="enddate">Einddatum</param>
         /// <returns></returns>
-        public List<TransactionModel> getMostImportantIncomes()
+        public List<Transaction> getMostImportantIncomes()
         {
-            List<TransactionModel> transactions = Transactions
+            List<Transaction> transactions = Transactions
                 .Where(x => x.AfBij == (int)Enums.AfBij.Bij)
                 .OrderBy(x => x.Bedrag)
                 .Take(4)
                 .OrderBy(x => x.Datum)
                 .ToList();
 
-            TransactionModel.SetHeight(ref transactions);
+            Transaction.SetHeight(ref transactions);
 
             return transactions;
         }
@@ -270,16 +270,16 @@ namespace CashLight_App.Models
         /// <param name="startdate">Startdatum</param>
         /// <param name="enddate">Einddatum</param>
         /// <returns></returns>
-        public List<TransactionModel> getMostImportantSpendings()
+        public List<Transaction> getMostImportantSpendings()
         {
-            List<TransactionModel> transactions = Transactions
+            List<Transaction> transactions = Transactions
            .Where(x => x.AfBij == (int)Enums.AfBij.Af)
            .OrderBy(x => x.Bedrag)
            .Take(4)
            .OrderBy(x => x.Datum)
            .ToList();
 
-            TransactionModel.SetHeight(ref transactions);
+            Transaction.SetHeight(ref transactions);
 
             return transactions;
         }

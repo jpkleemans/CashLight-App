@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CashLight_App.DataModels;
+using CashLight_App.Tables;
 using CashLight_App.Services.Interface;
 using CashLight_App.Views.Dashboard;
 using Microsoft.Practices.ServiceLocation;
@@ -14,7 +14,7 @@ using Windows.UI.Xaml;
 
 namespace CashLight_App.Models
 {
-    public class TransactionModel : ModelBase
+    public class Transaction : ModelBase
     {
         public int TransactionID { get; set; }
         public DateTime Datum { get; set; }
@@ -28,11 +28,11 @@ namespace CashLight_App.Models
         public int CategoryID { get; set; }
         public double Height { get; set; }
 
-        public static IEnumerable<TransactionModel> All()
+        public static IEnumerable<Transaction> All()
         {
-            Mapper.CreateMap<Transaction, TransactionModel>();
+            Mapper.CreateMap<TransactionTable, Transaction>();
             var p = _unitOfWork.Transaction.FindAll();
-            return Mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionModel>>(p);
+            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(p);
         }
 
         public bool Exists(Dictionary<string, string> item)
@@ -40,7 +40,7 @@ namespace CashLight_App.Models
             var name = item["Naam / Omschrijving"];
             var rekening = item["Rekening"];
             var datum = Convert.ToDateTime(item["Datum"]);
-            var bedrag = Double.Parse(item["Bedrag (EUR)"],new CultureInfo("nl-NL"));
+            var bedrag = Double.Parse(item["Bedrag (EUR)"], new CultureInfo("nl-NL"));
 
             var list = _unitOfWork.Transaction.FindAll()
                 .Where(x => x.Naam == name)
@@ -57,7 +57,7 @@ namespace CashLight_App.Models
             return true;
         }
 
-        public static List<TransactionModel> SetHeight(ref List<TransactionModel> transactions)
+        public static List<Transaction> SetHeight(ref List<Transaction> transactions)
         {
             double highest = 0;
             foreach (var item in transactions)
@@ -68,11 +68,17 @@ namespace CashLight_App.Models
                 }
             }
 
-            double maxHeight = (Window.Current.Bounds.Height / 2) - 50; //Max height off the markers.
+            double maxHeight = 1080;
+
+            if (Window.Current != null)
+            {
+                maxHeight = (Window.Current.Bounds.Height / 2) - 50; //Max height off the markers.
+            }
+
             double minHeight = 230; //Min height off the markers.
             double useableHeight = maxHeight - minHeight;
 
-            foreach (TransactionModel item in transactions)
+            foreach (Transaction item in transactions)
             {
                 double percentage = (item.Bedrag / highest);
 

@@ -3,22 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.DataModels
+namespace CashLight_App.Tables
 {
     [Table("Setting")]
-    public class Setting
+    public class SettingTable
     {
-        public Setting()
+        public SettingTable()
         {
 
         }
-        public Setting(string Key, string Value)
+        public SettingTable(string Key, string Value)
         {
             this.Key = Key;
             this.Value = Value;
             this.Date = DateTime.Now;
         }
-        public Setting(string Key, double Value)
+        public SettingTable(string Key, double Value)
         {
             this.Key = Key;
             this.Value = Value.ToString();

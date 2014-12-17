@@ -3,18 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.DataModels
+namespace CashLight_App.Tables
 {
     [Table("Category")]
-    public class Category
+    public class CategoryTable
     {
-        public Category()
+        public CategoryTable()
         {
 
         }
 
 
-        public Category(string naam)
+        public CategoryTable(string naam)
         {
             this.Naam = naam;
         }
