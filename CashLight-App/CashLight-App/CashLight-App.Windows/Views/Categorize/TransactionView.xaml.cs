@@ -1,5 +1,4 @@
-﻿using CashLight_App.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,20 +13,15 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace CashLight_App.Views.Dashboard
+namespace CashLight_App.Views.Categorize
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class DashboardView : Page
+    public sealed partial class TransactionView : UserControl
     {
-        public DashboardView()
+        public TransactionView()
         {
             this.InitializeComponent();
-            
         }
-
     }
 }

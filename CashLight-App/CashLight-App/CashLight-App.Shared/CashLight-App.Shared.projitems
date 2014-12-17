@@ -40,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLiteRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLiteUnitOfWork.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategorizeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DashboardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ImportViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelLocator.cs" />
