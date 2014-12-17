@@ -27,7 +27,7 @@ namespace CashLight_App.ViewModels
         {
             this._unitOfWork = unitOfWork;
             _transactionModel = new Transaction();
-            _transactions = Transaction.All().Where(q => q.CategoryID != 0).ToList();
+            _transactions = Transaction.All().Where(q => q.CategoryID == 0).ToList();
             _navigation = NavigationService;
             if (_transactions.Count <= 0)
             {
