@@ -50,12 +50,12 @@
         <Button Content="Overig" HorizontalAlignment="Center" Margin="0,200,0,0" Grid.Row="1" VerticalAlignment="Center" Background="DarkBlue" Width="88" Command="{Binding ButtonCommand}" CommandParameter="3"/>
 
         <TextBlock HorizontalAlignment="Center" Margin="-100,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Naam: " VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Center" Margin="100,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Center" Margin="220,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
 
         <TextBlock HorizontalAlignment="Center" Margin="-100,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Bedrag: " VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Center" Margin="100,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Center" Margin="220,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Amount}" VerticalAlignment="Top" FontSize="18" Foreground="White" />
 
         <TextBlock HorizontalAlignment="Center" Margin="-100,140,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Af/Bij: " VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Center" Margin="100,140,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding AfBij}" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Center" Margin="220,140,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding AfBij}" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
     </Grid>
 </Page>
