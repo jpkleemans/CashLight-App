@@ -9,6 +9,8 @@
     DataContext="{Binding Import, Source={StaticResource Locator}}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Content="Ga naar dashboard" HorizontalAlignment="Left" Margin="609,385,0,0" VerticalAlignment="Top" Command="{Binding GoToDashboardCommand}"/>
+        <Button Content="Ga naar dashboard" HorizontalAlignment="Left" Margin="1199,-3,0,0" VerticalAlignment="Top" Command="{Binding GoToDashboardCommand}"/>
+        <ProgressRing HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Height="111" Width="111" IsActive="True"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,150,0,0" TextWrapping="Wrap" Text="Importeren..." VerticalAlignment="Center" FontSize="18"/>
     </Grid>
 </Page>
