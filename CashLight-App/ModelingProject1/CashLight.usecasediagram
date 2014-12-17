@@ -205,6 +205,14 @@
         </subjects>
       </useCase>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="c44ce625-abcd-4048-8d1e-ef122265306d" name="Inzien voortgang categoriseren" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="145529ed-a1f9-4782-9c36-d9ba082a32c8" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="08bb5dff-f56f-45a5-8d9f-229e6c1ed620" name="ModelingProject1">
     <elementDefinition Id="4a2e8585-23b1-418e-8c9a-403eba34cdc9" />

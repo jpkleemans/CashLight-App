@@ -12,8 +12,20 @@
     <UserControl.Resources>
         <sfc:StringFormatConverter x:Key="StringFormatConverter" />
     </UserControl.Resources>
+    <Page.TopAppBar>
+        <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True">
+            <CommandBar.Background>
+                <SolidColorBrush Color="Black" Opacity="0.25"/>
+            </CommandBar.Background>
+            <AppBarButton Icon="Home" Label="Dashboard" />
+            <AppBarButton Icon="Library" Label="Categoriseren" />
+                <AppBarSeparator Foreground="White"></AppBarSeparator>
+            <AppBarButton Icon="Cancel" Label="Afsluiten"/>
+        </CommandBar>
+    </Page.TopAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
 
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -28,6 +40,7 @@
                 <DataTemplate>
 
                     <Grid>
+
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -163,7 +176,7 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" x:Uid="Header" Text="CashLight" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+            <TextBlock x:Name="pageTitle" x:Uid="Header" Text="CashLight" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
                         VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
         </Grid>
 

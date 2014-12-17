@@ -704,6 +704,26 @@
         </subjects>
       </useCase>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bf26d97f-fcc0-405b-9d31-39639e0646fc"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="145529ed-a1f9-4782-9c36-d9ba082a32c8"
+        name="Inzien voortgang categoriseren"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
