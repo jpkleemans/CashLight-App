@@ -37,10 +37,10 @@ namespace CashLight_App.Tables
         public int AfBij { get; set; }
         public double Bedrag { get; set; }
         public string Mededelingen { get; set; }
-        [ForeignKey(typeof(Category))]
+        [ForeignKey(typeof(CategoryTable))]
         public int CategoryID { get; set; }
         [ManyToOne]
-        public virtual Category Category { get; set; }
+        public virtual CategoryTable Category { get; set; }
 
     }
 }

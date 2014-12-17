@@ -23,8 +23,8 @@ namespace CashLight_App.Tables
         public int CategoryID { get; set; }
         public string Naam { get; set; }
 
-        [OneToMany]  
-        public List<Transaction> Transacties { get; set; }
+        [OneToMany]
+        public List<TransactionTable> Transacties { get; set; }
 
         public override string ToString()
         {
