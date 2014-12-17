@@ -11,8 +11,8 @@ namespace CashLight_App.Models.Interfaces
 
         IPeriodModel Next();
         IPeriodModel Previous();
-        List<TransactionModel> getMostImportantIncomes();
-        List<TransactionModel> getMostImportantSpendings();
-        IEnumerable<TransactionModel> getTransactions();
+        List<Transaction> getMostImportantIncomes();
+        List<Transaction> getMostImportantSpendings();
+        IEnumerable<Transaction> getTransactions();
     }
 }

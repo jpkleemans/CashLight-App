@@ -11,7 +11,7 @@ namespace CashLight_App.Config
         public Bootstrapper()
         {
             Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path.ToString());
-            
+
             ContainerBuilder container = new ContainerBuilder();
 
             container.RegisterModule(new RuntimeModule());
@@ -19,10 +19,6 @@ namespace CashLight_App.Config
             IComponentContext build = container.Build();
 
             ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(build));
-
-            
-
-            
         }
     }
 }

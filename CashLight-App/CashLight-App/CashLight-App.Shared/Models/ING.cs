@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CashLight_App.Models
 {
-    public class INGModel : IBank
+    public class ING : IBank
     {
         int rowTime = 0;
 

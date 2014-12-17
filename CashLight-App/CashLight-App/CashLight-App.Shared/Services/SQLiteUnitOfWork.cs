@@ -1,4 +1,4 @@
-﻿using CashLight_App.DataModels;
+﻿using CashLight_App.Tables;
 using CashLight_App.Services.Interface;
 using SQLite;
 using System;
@@ -11,9 +11,9 @@ namespace CashLight_App.Services
 {
     public class SQLiteUnitOfWork : IUnitOfWork, IDisposable
     {
-        SQLiteRepository<Transaction> _transaction;
-        SQLiteRepository<Category> _category;
-        SQLiteRepository<Setting> _setting;
+        SQLiteRepository<TransactionTable> _transaction;
+        SQLiteRepository<CategoryTable> _category;
+        SQLiteRepository<SettingTable> _setting;
 
         SQLiteConnection _context;
 
@@ -39,37 +39,37 @@ namespace CashLight_App.Services
             }
         }
 
-        public IRepository<Transaction> Transaction
+        public IRepository<TransactionTable> Transaction
         {
             get
             {
                 if (_transaction == null)
                 {
-                    _transaction = new SQLiteRepository<Transaction>(_context);
+                    _transaction = new SQLiteRepository<TransactionTable>(_context);
                 }
                 return _transaction;
             }
         }
 
-        public IRepository<Category> Category
+        public IRepository<CategoryTable> Category
         {
             get
             {
                 if (_category == null)
                 {
-                    _category = new SQLiteRepository<Category>(_context);
+                    _category = new SQLiteRepository<CategoryTable>(_context);
                 }
                 return _category;
             }
         }
 
-        public IRepository<Setting> Setting
+        public IRepository<SettingTable> Setting
         {
             get
             {
                 if (_setting == null)
                 {
-                    _setting = new SQLiteRepository<Setting>(_context);
+                    _setting = new SQLiteRepository<SettingTable>(_context);
                 }
                 return _setting;
             }
@@ -98,13 +98,13 @@ namespace CashLight_App.Services
         public SQLiteConnection CreateDatabase(string database)
         {
             SQLiteConnection connection = new SQLiteConnection(database);
-            connection.CreateTable<Category>();
-            connection.CreateTable<Transaction>();
-            connection.CreateTable<Setting>();
+            connection.CreateTable<CategoryTable>();
+            connection.CreateTable<TransactionTable>();
+            connection.CreateTable<SettingTable>();
 
-            CashLight_App.DataModels.Category c = new CashLight_App.DataModels.Category("Vast");
-            CashLight_App.DataModels.Category c1 = new CashLight_App.DataModels.Category("Variabel");
-            CashLight_App.DataModels.Category c2 = new CashLight_App.DataModels.Category("Overig");
+            CashLight_App.Tables.CategoryTable c = new CashLight_App.Tables.CategoryTable("Vast");
+            CashLight_App.Tables.CategoryTable c1 = new CashLight_App.Tables.CategoryTable("Variabel");
+            CashLight_App.Tables.CategoryTable c2 = new CashLight_App.Tables.CategoryTable("Overig");
 
             connection.Insert(c);
             connection.Insert(c1);

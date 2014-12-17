@@ -1,19 +1,20 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.DataModels
+namespace CashLight_App.Tables
 {
     [Table("Transaction")]
-    public class Transaction
+    public class TransactionTable
     {
 
-        public Transaction()
+        public TransactionTable()
         {
 
         }
-        public Transaction(DateTime datum, string naam, string rekening, string tegenrekening, int code, int afbij, double bedrag, string mededelingen, int categoryid)
+        public TransactionTable(DateTime datum, string naam, string rekening, string tegenrekening, int code, int afbij, double bedrag, string mededelingen, int categoryid)
         {
             this.Datum = datum;
             this.Naam = naam;
@@ -36,9 +37,10 @@ namespace CashLight_App.DataModels
         public int AfBij { get; set; }
         public double Bedrag { get; set; }
         public string Mededelingen { get; set; }
-        //[ForeignKey("Category")]
+        [ForeignKey(typeof(CategoryTable))]
         public int CategoryID { get; set; }
-        //public virtual Category Category { get; set; }
+        [ManyToOne]
+        public virtual CategoryTable Category { get; set; }
 
     }
 }

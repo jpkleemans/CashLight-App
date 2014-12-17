@@ -1,20 +1,21 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.DataModels
+namespace CashLight_App.Tables
 {
     [Table("Category")]
-    public class Category
+    public class CategoryTable
     {
-        public Category()
+        public CategoryTable()
         {
 
         }
 
 
-        public Category(string naam)
+        public CategoryTable(string naam)
         {
             this.Naam = naam;
         }
@@ -22,7 +23,8 @@ namespace CashLight_App.DataModels
         public int CategoryID { get; set; }
         public string Naam { get; set; }
 
-        //public virtual List<Transaction> Transacties { get; set; }
+        [OneToMany]
+        public List<TransactionTable> Transacties { get; set; }
 
         public override string ToString()
         {

@@ -9,6 +9,7 @@ using CashLight_App.Services.Interface;
 using CashLight_App.ViewModels;
 using CashLight_App.Models.Interfaces;
 using System.Diagnostics;
+using CashLight_App.Models;
 
 namespace CashLight_Test.Windows
 {
@@ -17,22 +18,26 @@ namespace CashLight_Test.Windows
     {
         private Mock<IUnitOfWork> _unitOfWorkMock;
         private Mock<IPeriodModel> _periodModel;
-        //private DashboardViewModel _dashboardViewModel;
 
         [SetUp]
         public void SetUp()
         {
-            _unitOfWorkMock = new Mock<IUnitOfWork>();
-            _periodModel = new Mock<IPeriodModel>();
-
-            //_dashboardViewModel = new DashboardViewModel(_unitOfWorkMock.Object, _periodModel.Object);
-
         }
 
         [TestMethod]
         public void TestMethod1()
         {
-            //Debug.WriteLine(_dashboardViewModel.ImportantIncomes);
+            _periodModel = new Mock<IPeriodModel>();
+            //_periodModel.Setup(x => x.Next()).Returns(new PeriodModel());
+
+            IPeriodModel model = _periodModel.Object;
+
+            var newPeriod = model.Next();
+
+            Debug.WriteLine(newPeriod);
+
+            Microsoft.VisualStudio.TestPlatform.UnitTestFramework.Assert.IsInstanceOfType(_periodModel.Object.Next(), typeof(IPeriodModel));
+
         }
     }
 }
