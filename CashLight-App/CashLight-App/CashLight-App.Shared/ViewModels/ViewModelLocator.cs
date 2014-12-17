@@ -26,6 +26,13 @@ namespace CashLight_App.ViewModels
                 return ServiceLocator.Current.GetInstance<MenuViewModel>();
             }
         }
+        public CategorizeViewModel Categorize
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CategorizeViewModel>();
+            }
+        }
 
         
     }

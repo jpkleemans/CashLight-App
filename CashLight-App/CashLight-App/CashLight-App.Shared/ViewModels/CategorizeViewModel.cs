@@ -22,16 +22,23 @@ namespace CashLight_App.ViewModels
         private INavigationService _navigation;
 
         public RelayCommand<int> ButtonCommand { get; set; }
-
-        public CategorizeViewModel(CategorizeView categorizeView, IUnitOfWork unitOfWork, INavigationService NavigationService)
+        public string Name { get; set; }
+        public CategorizeViewModel(IUnitOfWork unitOfWork, INavigationService NavigationService)
         {
-            this._view = categorizeView;
             this._unitOfWork = unitOfWork;
             _transactionModel = new Transaction();
-            _transactions = Transaction.All().Where(q => q.CategoryID != null).ToList();
+            _transactions = Transaction.All().Where(q => q.CategoryID != 0).ToList();
             _navigation = NavigationService;
+            if (_transactions.Count <= 0)
+            {
+                _navigation.NavigateTo("Dashboard");
+            }
+            else
+            {
+                Name = _transactions.First().Naam;
 
-            ButtonCommand = new RelayCommand<int>((i) => ShowNextTransactionView(i));
+                ButtonCommand = new RelayCommand<int>((i) => ShowNextTransactionView(i));
+            }
         }
 
         /// <summary>
