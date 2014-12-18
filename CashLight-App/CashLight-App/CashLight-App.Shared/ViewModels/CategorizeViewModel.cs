@@ -61,6 +61,7 @@ namespace CashLight_App.ViewModels
             } 
             set
             {
+                _afbij = value;
                 RaisePropertyChanged(() => AfBij);
             }
         }
@@ -76,10 +77,18 @@ namespace CashLight_App.ViewModels
             }
             else
             {
+                _currentTransaction = _transactions.First();
                 Name = _transactions.First().Naam;
                 Amount = _transactions.First().Bedrag.ToString("C", new CultureInfo("nl-NL"));
-                AfBij = _transactions.First().AfBij.ToString();
-
+                if (_currentTransaction.AfBij == 0)
+                {
+                    AfBij = "Af";
+                }
+                else
+                {
+                    AfBij = "Bij";
+                }
+                
                 //ButtonCommand = new RelayCommand<int>(ShowNextTransactionView);
                 ButtonCommand = new RelayCommand<string>((param) => this.ShowNextTransactionView(param));
             }
@@ -96,12 +105,18 @@ namespace CashLight_App.ViewModels
                 Transaction nextTransaction = _transactions.First(); // Get the next transaction from the list
 
                 SaveCategory(i, _currentTransaction);
-
-
-                _currentTransaction = nextTransaction;
                 Name = _currentTransaction.Naam;
                 Amount = _currentTransaction.Bedrag.ToString("C", new CultureInfo("nl-NL"));
-                AfBij = _currentTransaction.AfBij.ToString();
+                if (_currentTransaction.AfBij == 0)
+                {
+                    AfBij = "Af";
+                }
+                else
+                {
+                    AfBij = "Bij";
+                }
+
+                _currentTransaction = nextTransaction;                
                 _transactions.Remove(nextTransaction); // Remove transaction from list, so the next transaction becomes the first of the list
 
             }
