@@ -6,12 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Dashboard, Source={StaticResource Locator}}"
+    DataContext="{Binding Dashboard, Source={StaticResource Locator}}" 
     xmlns:sfc="using:CashLight_App.Converters">
 
     <UserControl.Resources>
         <sfc:StringFormatConverter x:Key="StringFormatConverter" />
     </UserControl.Resources>
+    
     <Page.TopAppBar>
         <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True" x:Name="Menu"  DataContext="{Binding Menu, Source={StaticResource Locator}}">
             <CommandBar.Background>
@@ -19,7 +20,7 @@
             </CommandBar.Background>
             <AppBarButton Icon="Home" Label="Dashboard" />
             <AppBarButton Icon="Library" Label="Categoriseren" Click="Categorize_Menu" />
-                <AppBarSeparator Foreground="White"></AppBarSeparator>
+            <AppBarSeparator Foreground="White"></AppBarSeparator>
             <AppBarButton Icon="Cancel" Label="Afsluiten" Click="Exit_Button_Click" />
         </CommandBar>
     </Page.TopAppBar>
@@ -183,4 +184,4 @@
         <Button Grid.Row="1" Content="Update Categorie" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Bottom" Command="{Binding RandomCategoriesCommand}"/>
 
     </Grid>
-</Page>
+    </Page>
