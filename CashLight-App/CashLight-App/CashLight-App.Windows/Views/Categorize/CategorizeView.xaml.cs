@@ -1,4 +1,5 @@
-﻿using CashLight_App.ViewModels;
+﻿using CashLight_App.Common;
+using CashLight_App.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +25,7 @@ namespace CashLight_App.Views.Categorize
     public sealed partial class CategorizeView : Page
     {
         private MenuViewModel _viewModel;
+        
         public CategorizeView()
         {
             this.InitializeComponent();

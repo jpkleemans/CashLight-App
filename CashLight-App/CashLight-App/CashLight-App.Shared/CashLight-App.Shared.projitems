@@ -20,7 +20,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Business\Interfaces\ITransactionRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Business\TransactionRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\Bootstrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Config\CategorizeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\Routes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\RuntimeModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
@@ -62,6 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\WinRTExtensions\TypeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategorizeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DashboardViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HeaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ImportViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MenuViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelLocator.cs" />

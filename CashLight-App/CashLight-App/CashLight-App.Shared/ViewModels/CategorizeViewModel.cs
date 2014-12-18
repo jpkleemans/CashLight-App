@@ -25,7 +25,6 @@ namespace CashLight_App.ViewModels
 
         public RelayCommand<string> ButtonCommand { get; set; }
 
-
         private string _name;
         public string Name
         {
@@ -71,6 +70,7 @@ namespace CashLight_App.ViewModels
             _transactionModel = new Transaction();
             _transactions = Transaction.All().Where(q => q.CategoryID == 0).ToList();
             _navigation = NavigationService;
+
             if (_transactions.Count <= 0)
             {
                 _navigation.NavigateTo("Dashboard");

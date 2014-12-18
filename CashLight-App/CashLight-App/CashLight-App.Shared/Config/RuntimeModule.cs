@@ -29,7 +29,7 @@ namespace CashLight_App.Config
             builder.RegisterType<ImportViewModel>();
             builder.RegisterType<MenuViewModel>();
             builder.RegisterType<CategorizeViewModel>();
-
+            builder.RegisterType<HeaderViewModel>();
         }
     }
 }

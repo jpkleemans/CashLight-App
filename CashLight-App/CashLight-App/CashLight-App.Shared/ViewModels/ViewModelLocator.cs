@@ -34,6 +34,12 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        
+        public HeaderViewModel Header
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<HeaderViewModel>();
+            }
+        }
     }
 }
