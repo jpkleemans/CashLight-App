@@ -27,5 +27,10 @@ namespace CashLight_App.ViewModels
         {
             _navigationService.NavigateTo("Categorize");
         }
+
+        public void GoToDashboard()
+        {
+            _navigationService.NavigateTo("Dashboard");
+        }
     }
 }
