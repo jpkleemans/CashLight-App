@@ -1,80 +1,24 @@
-﻿using CashLight_App.Tables;
-using CashLight_App.Enums;
-using CashLight_App.Models.Interfaces;
-using CashLight_App.Services.CSV;
+﻿using CashLight_App.Models.Interface;
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
+using System.Text;
 using Windows.Storage;
-using Windows.Storage.Streams;
 
 namespace CashLight_App.Models
 {
-    public class Upload : ModelBase
+    public class Upload : ObservableObject, IUpload
     {
-        private Transaction _transaction;
-
-        public Upload()
+        public StorageFile file
         {
-            _transaction = new Transaction();
-        }
-
-        public async void ToDatabase(IBank bank, StorageFile storageFile)
-        {
-            Stream stream = await storageFile.OpenStreamForReadAsync();
-
-            CsvFileReader reader = new CsvFileReader(bank, stream);
-
-            List<Dictionary<string, string>> list;
-            //try
-            //{
-            list = reader.ReadToList();
-            //}
-            //catch (Exception)
-            //{
-            //    list = new List<Dictionary<string, string>>();
-
-            //    MessageBox.Show(
-            //        "Ongeldig CSV bestand",
-            //        "Foutmelding",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Error,
-            //        MessageBoxDefaultButton.Button1
-            //    );
-
-            //    Application.Exit();
-            //}
-
-            foreach (Dictionary<string, string> dic in list)
+            get
             {
-
-                DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
-
-                bool exists = _transaction.Exists(dic);
-                if (exists == false)
-                {
-
-                    var transaction = new TransactionTable()
-                    {
-                        AfBij = (int)Enum.Parse(typeof(AfBij), dic["Af / Bij"]),
-                        Bedrag = Double.Parse(dic["Bedrag (EUR)"], new CultureInfo("nl-NL")),
-                        Code = 0,
-                        Tegenrekening = dic["Tegenrekening"],
-                        Mededelingen = dic["Mededelingen"],
-                        Naam = dic["Naam / Omschrijving"],
-                        Rekening = dic["Rekening"],
-                        Datum = csvDate
-                    };
-
-                    _unitOfWork.Transaction.Add(transaction);
-
-                }
-
+                throw new NotImplementedException();
             }
-            _unitOfWork.Commit();
-
-            //PeriodModel.SearchMostConsistentIncome();
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

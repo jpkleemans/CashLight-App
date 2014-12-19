@@ -59,31 +59,23 @@
                             </Grid.ColumnDefinitions>
 
                             <local:IncomeMarker Grid.Column="0" 
-                                    Label="{Binding ImportantIncomes[0].Naam}"
-                                    Amount="{Binding ImportantIncomes[0].Bedrag}" 
-                                    Date="{Binding ImportantIncomes[0].Datum}" 
-                                    Height="{Binding ImportantIncomes[0].Height}" 
+                                    Transaction="{Binding ImportantIncomes[0]}"
+                                    Height="{Binding ImportantIncomes[0].Height}"
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                             <local:IncomeMarker Grid.Column="1" 
-                                    Label="{Binding ImportantIncomes[1].Naam}" 
-                                    Amount="{Binding ImportantIncomes[1].Bedrag}" 
-                                    Date="{Binding ImportantIncomes[1].Datum}" 
-                                    Height="{Binding ImportantIncomes[1].Height}" 
+                                    Transaction="{Binding ImportantIncomes[1]}"
+                                    Height="{Binding ImportantIncomes[1].Height}"
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                             <local:IncomeMarker Grid.Column="2" 
-                                    Label="{Binding ImportantIncomes[2].Naam}" 
-                                    Amount="{Binding ImportantIncomes[2].Bedrag}" 
-                                    Date="{Binding ImportantIncomes[2].Datum}" 
-                                    Height="{Binding ImportantIncomes[2].Height}" 
+                                    Transaction="{Binding ImportantIncomes[2]}" 
+                                    Height="{Binding ImportantIncomes[2].Height}"
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                             <local:IncomeMarker Grid.Column="3" 
-                                    Label="{Binding ImportantIncomes[3].Naam}" 
-                                    Amount="{Binding ImportantIncomes[3].Bedrag}" 
-                                    Date="{Binding ImportantIncomes[3].Datum}" 
-                                    Height="{Binding ImportantIncomes[3].Height}" 
+                                    Transaction="{Binding ImportantIncomes[3]}" 
+                                    Height="{Binding ImportantIncomes[3].Height}"
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                         </Grid>
@@ -114,31 +106,23 @@
                             </Grid.ColumnDefinitions>
 
                             <local:SpendingMarker Grid.Column="0" 
-                                    Label="{Binding ImportantSpendings[0].Naam}"
-                                    Amount="{Binding ImportantSpendings[0].Bedrag}" 
-                                    Date="{Binding ImportantSpendings[0].Datum}" 
-                                    Height="{Binding ImportantSpendings[0].Height}" 
+                                    Transaction="{Binding ImportantSpendings[0]}"
+                                    Height="{Binding ImportantSpendings[0].Height}"
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                             <local:SpendingMarker Grid.Column="1" 
-                                    Label="{Binding ImportantSpendings[1].Naam}" 
-                                    Amount="{Binding ImportantSpendings[1].Bedrag}" 
-                                    Date="{Binding ImportantSpendings[1].Datum}" 
-                                    Height="{Binding ImportantSpendings[1].Height}" 
+                                    Transaction="{Binding ImportantSpendings[1]}"
+                                    Height="{Binding ImportantSpendings[1].Height}"
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                             <local:SpendingMarker Grid.Column="2" 
-                                    Label="{Binding ImportantSpendings[2].Naam}" 
-                                    Amount="{Binding ImportantSpendings[2].Bedrag}" 
-                                    Date="{Binding ImportantSpendings[2].Datum}" 
-                                    Height="{Binding ImportantSpendings[2].Height}" 
+                                    Transaction="{Binding ImportantSpendings[2]}"
+                                    Height="{Binding ImportantSpendings[2].Height}"
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                             <local:SpendingMarker Grid.Column="3" 
-                                    Label="{Binding ImportantSpendings[3].Naam}" 
-                                    Amount="{Binding ImportantSpendings[3].Bedrag}" 
-                                    Date="{Binding ImportantSpendings[3].Datum}" 
-                                    Height="{Binding ImportantSpendings[3].Height}" 
+                                    Transaction="{Binding ImportantSpendings[3]}"
+                                    Height="{Binding ImportantSpendings[3].Height}"
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                         </Grid>
@@ -160,7 +144,7 @@
             </FlipView.ItemTemplate>
         </FlipView>
 
-        <TextBlock Text="{Binding SelectedPeriod.Name}" Margin="30" FontSize="30" TextAlignment="Center"/>
+        <TextBlock Text="{Binding Title}" Height="30" Margin="30" FontSize="30" VerticalAlignment="Top" TextAlignment="Center"/>
 
         <Grid Margin="30">
             <Grid.ColumnDefinitions>

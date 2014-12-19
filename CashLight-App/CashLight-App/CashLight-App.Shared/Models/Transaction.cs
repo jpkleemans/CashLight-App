@@ -1,91 +1,153 @@
-﻿using AutoMapper;
-using CashLight_App.Tables;
-using CashLight_App.Services.Interface;
-using CashLight_App.Views.Dashboard;
-using Microsoft.Practices.ServiceLocation;
+﻿using CashLight_App.Models.Interface;
+using GalaSoft.MvvmLight;
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
 using System.Text;
-using Windows.UI.Xaml;
 
 namespace CashLight_App.Models
 {
-    public class Transaction : ModelBase
+    public class Transaction : ObservableObject, ITransaction
     {
-        public int TransactionID { get; set; }
-        public DateTime Datum { get; set; }
-        public string Naam { get; set; }
-        public string Rekening { get; set; }
-        public string Tegenrekening { get; set; }
-        public int Code { get; set; }
-        public int AfBij { get; set; }
-        public double Bedrag { get; set; }
-        public string Mededelingen { get; set; }
-        public int CategoryID { get; set; }
-        public double Height { get; set; }
-
-        public static IEnumerable<Transaction> All()
+        private DateTime _date;
+        private string _debtorNumber;
+        private string _creditorName;
+        private string _creditorNumber;
+        private int _code;
+        private int _inOut;
+        private double _amount;
+        private string _description;
+        private Models.Category _category;
+        private double _height;
+        public DateTime Date
         {
-            Mapper.CreateMap<TransactionTable, Transaction>();
-            var p = _unitOfWork.Transaction.FindAll();
-            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(p);
+            get
+            {
+                return _date;
+            }
+            set
+            {
+                _date = value;
+                RaisePropertyChanged(() => Date);
+            }
         }
 
-        public bool Exists(Dictionary<string, string> item)
+        public string DebtorNumber
         {
-            var name = item["Naam / Omschrijving"];
-            var rekening = item["Rekening"];
-            var datum = Convert.ToDateTime(item["Datum"]);
-            var bedrag = Double.Parse(item["Bedrag (EUR)"], new CultureInfo("nl-NL"));
-
-            var list = _unitOfWork.Transaction.FindAll()
-                .Where(x => x.Naam == name)
-                .Where(x => x.Rekening == rekening)
-                .Where(x => x.Datum == datum)
-                .Where(x => x.Bedrag == bedrag)
-                .ToList();
-
-            if (list.Count == 0)
+            get
             {
-                return false;
+                return _debtorNumber;
             }
-
-            return true;
+            set
+            {
+                _debtorNumber = value;
+                RaisePropertyChanged(() => DebtorNumber);
+            }
         }
 
-        public static List<Transaction> SetHeight(ref List<Transaction> transactions)
+        public string CreditorName
         {
-            double highest = 0;
-            foreach (var item in transactions)
+            get
             {
-                if (item.Bedrag > highest)
-                {
-                    highest = item.Bedrag;
-                }
+                return _creditorName;
             }
-
-            double maxHeight = 1080;
-
-            if (Window.Current != null)
+            set
             {
-                maxHeight = (Window.Current.Bounds.Height / 2) - 50; //Max height off the markers.
+                _creditorName = value;
+                RaisePropertyChanged(() => CreditorName);
             }
+        }
 
-            double minHeight = 230; //Min height off the markers.
-            double useableHeight = maxHeight - minHeight;
-
-            foreach (Transaction item in transactions)
+        public string CreditorNumber
+        {
+            get
             {
-                double percentage = (item.Bedrag / highest);
-
-                item.Height = (useableHeight * percentage) + minHeight;
+                return _creditorNumber;
             }
+            set
+            {
+                _creditorNumber = value;
+                RaisePropertyChanged(() => CreditorNumber);
+            }
+        }
 
-            return transactions;
+        public int Code
+        {
+            get
+            {
+                return _code;
+            }
+            set
+            {
+                _code = value;
+                RaisePropertyChanged(() => Code);
+            }
+        }
+
+        public int InOut
+        {
+            get
+            {
+                return _inOut;
+            }
+            set
+            {
+                _inOut = value;
+                RaisePropertyChanged(() => InOut);
+            }
+        }
+
+        public double Amount
+        {
+            get
+            {
+                return _amount;
+            }
+            set
+            {
+                _amount = value;
+                RaisePropertyChanged(() => Amount);
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                RaisePropertyChanged(() => Description);
+            }
+        }
+
+        public Category Category
+        {
+            get
+            {
+                return _category;
+            }
+            set
+            {
+                _category = value;
+                RaisePropertyChanged(() => Category);
+            }
+        }
+
+        public double Height
+        {
+            get
+            {
+                return _height;
+            }
+            set
+            {
+                _height = value;
+                RaisePropertyChanged(() => Height);
+            }
         }
     }
 }

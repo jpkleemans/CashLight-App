@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashLight_App.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,41 +20,17 @@ namespace CashLight_App.Views.Dashboard
 {
     public sealed partial class SpendingMarker : UserControl
     {
-        public static readonly DependencyProperty LabelProperty = DependencyProperty.Register(
-            "Label",
-            typeof(string),
-            typeof(SpendingMarker),
-            new PropertyMetadata(null)
-        );
-        public static readonly DependencyProperty AmountProperty = DependencyProperty.Register(
-            "Amount",
-            typeof(double),
-            typeof(SpendingMarker),
-            new PropertyMetadata(null)
-        );
-        public static readonly DependencyProperty DateProperty = DependencyProperty.Register(
-            "Date",
-            typeof(DateTime),
+        public static readonly DependencyProperty TransactionProperty = DependencyProperty.Register(
+            "Transaction",
+            typeof(Transaction),
             typeof(SpendingMarker),
             new PropertyMetadata(null)
         );
 
-        public string Label
+        public Transaction Transaction
         {
-            get { return (string)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
-        }
-
-        public double Amount
-        {
-            get { return (double)GetValue(AmountProperty); }
-            set { SetValue(AmountProperty, value); }
-        }
-
-        public DateTime Date
-        {
-            get { return (DateTime)GetValue(DateProperty); }
-            set { SetValue(DateProperty, value); }
+            get { return (Transaction)GetValue(TransactionProperty); }
+            set { SetValue(TransactionProperty, value); }
         }
 
         public SpendingMarker()

@@ -1,5 +1,8 @@
-﻿using CashLight_App.Models;
-using CashLight_App.Models.Interfaces;
+﻿using CashLight_App.Business.Interfaces;
+using CashLight_App.Models;
+using CashLight_App.Models.Interface;
+using CashLight_App.Services.Banks;
+using CashLight_App.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
@@ -14,13 +17,15 @@ namespace CashLight_App.ViewModels
     public class ImportViewModel : ViewModelBase
     {
         private INavigationService _navigationService;
+        private IUploadRepository _uploadRepository;
         public RelayCommand GoToDashboardCommand { get; set; }
 
-        public ImportViewModel(INavigationService navigationService)
+        public ImportViewModel(INavigationService navigationService, IUploadRepository uploadRepository)
         {
             GoToDashboardCommand = new RelayCommand(GoToDashboard);
 
             _navigationService = navigationService;
+            _uploadRepository = uploadRepository;
         }
 
         private void GoToDashboard()
@@ -30,10 +35,9 @@ namespace CashLight_App.ViewModels
 
         public void UploadCSV(StorageFile file)
         {
-            IBank bank = new Models.ING();
+            IBank bank = new ING();
 
-            Upload upload = new Upload();
-            upload.ToDatabase(bank, file);
+            _uploadRepository.ToDatabase(bank, file);
         }
     }
 }

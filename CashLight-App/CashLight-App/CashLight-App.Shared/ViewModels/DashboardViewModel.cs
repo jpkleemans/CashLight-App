@@ -1,7 +1,5 @@
-﻿using CashLight_App.Tables;
-using CashLight_App.Models;
-using CashLight_App.Models.Interfaces;
-using CashLight_App.Services.Interface;
+﻿using CashLight_App.Models;
+using CashLight_App.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -9,15 +7,26 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
+using CashLight_App.Business.Interfaces;
+using System.Diagnostics;
+using CashLight_App.Models.Interface;
 
 namespace CashLight_App.ViewModels
 {
     public class DashboardViewModel : ViewModelBase
     {
-        public RelayCommand RandomCategoriesCommand { get; set; }
+        private IPeriodRepository _periodRepository;
 
-        private IPeriodModel _selectedPeriod;
-        public IPeriodModel SelectedPeriod
+        public string Title
+        {
+            get
+            {
+                return String.Format("{0} t/m {1}", SelectedPeriod.StartDate.ToString("dd-MM-yyyy"), SelectedPeriod.EndDate.ToString("dd-MM-yyyy"));
+            }
+        }
+
+        private IPeriod _selectedPeriod;
+        public IPeriod SelectedPeriod
         {
             get
             {
@@ -29,33 +38,75 @@ namespace CashLight_App.ViewModels
                 {
                     if (value.EndDate < _selectedPeriod.StartDate)
                     {
-                        Periods.Add(value.Previous());
+                        IPeriod previous = _periodRepository.GetByDate(value.StartDate.AddDays(-1));
+                        previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
+                        previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
+                        Periods.Add(previous);
                     }
                 }
 
                 _selectedPeriod = value;
                 RaisePropertyChanged(() => SelectedPeriod);
+                RaisePropertyChanged(() => Title);
             }
         }
 
-        public ObservableCollection<IPeriodModel> Periods { get; set; }
+        public ObservableCollection<IPeriod> Periods { get; set; }
 
-        public DashboardViewModel()
+        public DashboardViewModel(IPeriodRepository periodRepository)
         {
-            RandomCategoriesCommand = new RelayCommand(() => Category.SetRandomCategories());
+            _periodRepository = periodRepository;
 
-            Periods = new ObservableCollection<IPeriodModel>();
             InitPeriods();
         }
 
         private void InitPeriods()
         {
-            IPeriodModel now = new Period(DateTime.Now, false);
+            Periods = new ObservableCollection<IPeriod>();
+
+            IPeriod now = _periodRepository.GetByDate(DateTime.Now);
+            IPeriod previous = _periodRepository.GetByDate(now.StartDate.AddDays(-1));
+
+            now.ImportantIncomes = SetHeight(now.ImportantIncomes);
+            now.ImportantSpendings = SetHeight(now.ImportantSpendings);
+            previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
+            previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
 
             Periods.Add(now);
-            Periods.Add(now.Previous());
+            Periods.Add(previous);
 
             SelectedPeriod = now;
+        }
+
+        private List<ITransaction> SetHeight(List<ITransaction> transactions)
+        {
+            double highest = 0;
+            foreach (var item in transactions)
+            {
+                if (item.Amount > highest)
+                {
+                    highest = item.Amount;
+                }
+            }
+
+            double maxHeight = 1080;
+
+            if (Window.Current != null)
+            {
+                maxHeight = (Window.Current.Bounds.Height / 2) - 50; //Max height off the markers.
+            }
+
+            double minHeight = 230; //Min height off the markers.
+            double useableHeight = maxHeight - minHeight;
+
+            foreach (ITransaction item in transactions)
+            {
+                double percentage = (item.Amount / highest);
+
+                item.Height = (useableHeight * percentage) + minHeight;
+            }
+
+            return transactions;
         }
     }
 }

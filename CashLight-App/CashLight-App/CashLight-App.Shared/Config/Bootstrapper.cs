@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
-using CashLight_App.Models;
 using Microsoft.Practices.ServiceLocation;
 using System.Diagnostics;
 
@@ -8,7 +7,7 @@ namespace CashLight_App.Config
 {
     class Bootstrapper
     {
-        public Bootstrapper()
+        public static void Initialize()
         {
             Debug.WriteLine(Windows.Storage.ApplicationData.Current.LocalFolder.Path.ToString());
 

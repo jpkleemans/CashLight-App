@@ -4,9 +4,9 @@ using System.Text;
 
 namespace CashLight_App.Enums
 {
-    public enum AfBij
+    public enum InOut
     {
-        Af,
-        Bij
+        Out,
+        In
     }
 }

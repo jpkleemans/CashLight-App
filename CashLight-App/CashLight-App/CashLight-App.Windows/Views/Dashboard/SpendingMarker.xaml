@@ -22,19 +22,19 @@
             <!-- Label -->
             <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="20,0,0,30" Background="White" Height="40">
                 <Ellipse Fill="White" Width="40" Height="40" HorizontalAlignment="Left" Margin="-20,0,0,0" />
-                <TextBlock TextWrapping="Wrap" Text="{Binding Label, Converter={StaticResource StringToUpperConverter}}" d:LayoutOverrides="Height" FontFamily="Arial Black" FontSize="15" Margin="0,12,10,10" Foreground="#333333" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Transaction.CreditorName, Converter={StaticResource StringToUpperConverter}}" d:LayoutOverrides="Height" FontFamily="Arial Black" FontSize="15" Margin="0,12,10,10" Foreground="#333333" HorizontalAlignment="Center"/>
             </Grid>
 
         </Border>
 
         <!-- Date -->
-        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,-50,0" TextWrapping="Wrap" Text="{Binding Date, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:dd-MM-yyyy}'}" FontFamily="Arial Black" FontSize="20" Foreground="White" Opacity="0.6"/>
+        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,-50,0" TextWrapping="Wrap" Text="{Binding Transaction.Date, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:dd-MM-yyyy}'}" FontFamily="Arial Black" FontSize="20" Foreground="White" Opacity="0.6"/>
 
         <!-- Marker -->
         <Image Width="35" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-16,30" Source="ms-appx:///Assets/spending-marker.png" />
 
         <!-- Amount -->
-        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,10,150" TextWrapping="Wrap" Text="{Binding Amount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontFamily="Arial Black" FontSize="20" Foreground="White"/>
+        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,0,10,150" TextWrapping="Wrap" Text="{Binding Transaction.Amount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontFamily="Arial Black" FontSize="20" Foreground="White"/>
 
     </Grid>
 </UserControl>

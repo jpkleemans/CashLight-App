@@ -1,4 +1,4 @@
-﻿using CashLight_App.Models.Interfaces;
+﻿using CashLight_App.Services.Interfaces;
 using GalaSoft.MvvmLight.Threading;
 using System;
 using System.Collections.Generic;

@@ -1,10 +1,12 @@
 ﻿using Autofac;
-using CashLight_App.Models;
-using CashLight_App.Models.Interfaces;
+using CashLight_App.Business;
+using CashLight_App.Business.Interfaces;
 using CashLight_App.Services;
-using CashLight_App.Services.Interface;
+using CashLight_App.Services.Interfaces;
+using CashLight_App.Models;
 using CashLight_App.ViewModels;
 using GalaSoft.MvvmLight.Views;
+using CashLight_App.Models.Interface;
 
 namespace CashLight_App.Config
 {
@@ -16,17 +18,28 @@ namespace CashLight_App.Config
             builder.RegisterInstance<INavigationService>(Routes.GetRoutes(new NavigationService()))
                 .SingleInstance();
 
-            builder.RegisterType<SQLiteUnitOfWork>()
-               .As<IUnitOfWork>()
-               .WithParameter("_dbname", "CashLight.db")
+            builder.RegisterType<Database>()
+               .As<IDatabase>()
+               .WithParameter("name", "CashLight.db")
                .SingleInstance();
-
-            // Models
-            builder.RegisterType<Period>().As<IPeriodModel>();
 
             // ViewModels
             builder.RegisterType<DashboardViewModel>();
             builder.RegisterType<ImportViewModel>();
+            builder.RegisterType<TransactionViewModel>();
+
+            // Repositories
+            builder.RegisterType<PeriodRepository>()
+               .As<IPeriodRepository>()
+               .SingleInstance();
+
+            builder.RegisterType<TransactionRepository>()
+               .As<ITransactionRepository>()
+               .SingleInstance();
+
+            builder.RegisterType<UploadRepository>()
+              .As<IUploadRepository>()
+              .SingleInstance();
         }
     }
 }

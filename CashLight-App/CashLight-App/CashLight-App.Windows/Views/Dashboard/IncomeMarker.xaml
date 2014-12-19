@@ -17,13 +17,13 @@
 
     <Grid>
         <!-- Date -->
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,-50,0" TextWrapping="Wrap" Text="{Binding Date, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:dd-MM-yyyy}'}" FontFamily="Arial Black" FontSize="20" Foreground="White" Opacity="0.6"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,-50,0" TextWrapping="Wrap" Text="{Binding Transaction.Date, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:dd-MM-yyyy}'}" FontFamily="Arial Black" FontSize="20" Foreground="White" Opacity="0.6"/>
 
         <!-- Marker -->
         <Image Width="35" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,28,-16,0" Source="ms-appx:///Assets/income-marker.png" />
 
         <!-- Amount -->
-        <TextBlock HorizontalAlignment="Right" Margin="10,150,10,10" TextWrapping="Wrap" Text="{Binding Amount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontFamily="Arial Black" FontSize="20" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Right" Margin="10,150,10,10" TextWrapping="Wrap" Text="{Binding Transaction.Amount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontFamily="Arial Black" FontSize="20" Foreground="White"/>
 
         <!-- Line -->
         <Border BorderBrush="White" BorderThickness="0,0,3,0" Margin="0,70,0,0">
@@ -31,7 +31,7 @@
             <!-- Label -->
             <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20,30,0,0" Background="White" Height="40">
                 <Ellipse Fill="White" Width="40" Height="40" HorizontalAlignment="Left" Margin="-20,0,0,0" />
-                <TextBlock TextWrapping="Wrap" Text="{Binding Label, Converter={StaticResource StringToUpperConverter}}" d:LayoutOverrides="Height" FontFamily="Arial Black" FontSize="15" Margin="0,12,10,10" Foreground="#333333" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Transaction.CreditorName, Converter={StaticResource StringToUpperConverter}}" d:LayoutOverrides="Height" FontFamily="Arial Black" FontSize="15" Margin="0,12,10,10" Foreground="#333333" HorizontalAlignment="Center"/>
             </Grid>
 
         </Border>

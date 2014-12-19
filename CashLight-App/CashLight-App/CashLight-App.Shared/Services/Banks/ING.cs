@@ -1,20 +1,29 @@
-﻿using CashLight_App.Models.Interfaces;
-using CashLight_App.Services.CSV;
+﻿using CashLight_App.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace CashLight_App.Models
+namespace CashLight_App.Services.Banks
 {
     public class ING : IBank
     {
+        public Dictionary<string, string> types
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         int rowTime = 0;
 
         string[] RQ = new string[9];
 
-        // Dictionary implemented from interface IBank
-        public Dictionary<string, string> types { get; set; }
-
-        public Dictionary<string, string> CsvToDictionary(CsvRow row)
+        public Dictionary<string, string> CsvToDictionary(CSV.CsvRow row)
         {
             // Define a new Dictionary to store the database values
             Dictionary<string, string> database = new Dictionary<string, string>();
@@ -24,12 +33,12 @@ namespace CashLight_App.Models
             {
                 rowTime++;
             }
-            else 
+            else
             {
                 // Remove the quotations in a string 
                 for (int i = 0; i < row.LineList.Count; i++)
                 {
-                    
+
                     RQ[i] = RemoveQuotations(row.LineList["field" + i]);
                 }
 
@@ -53,13 +62,13 @@ namespace CashLight_App.Models
 
                 if (row.LineList.Count < 8)
                 {
-                    database.Add("Mededelingen", string.Empty);                
+                    database.Add("Mededelingen", string.Empty);
 
                 }
 
                 else
                 {
-                    database.Add("Mededelingen", RQ[8]);                
+                    database.Add("Mededelingen", RQ[8]);
 
                 }
             }
@@ -67,12 +76,10 @@ namespace CashLight_App.Models
             return database;
         }
 
-        // Method to replace the quotes stored in a string in the CSV file
         public string RemoveQuotations(string s)
         {
             string replaced = s.Replace("\"", "");
             return replaced;
         }
     }
-}   
-
+}

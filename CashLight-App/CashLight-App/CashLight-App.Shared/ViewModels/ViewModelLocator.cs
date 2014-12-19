@@ -18,5 +18,12 @@ namespace CashLight_App.ViewModels
                 return ServiceLocator.Current.GetInstance<ImportViewModel>();
             }
         }
+        public TransactionViewModel Transaction
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<TransactionViewModel>();
+            }
+        }
     }
 }

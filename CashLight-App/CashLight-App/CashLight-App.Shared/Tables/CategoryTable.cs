@@ -7,28 +7,24 @@ using System.Text;
 namespace CashLight_App.Tables
 {
     [Table("Category")]
-    public class CategoryTable
+    class CategoryTable
     {
+        [PrimaryKey, AutoIncrement]
+        public int CategoryID { get; set; }
+
+        public string Name { get; set; }
+
+        [OneToMany]
+        public IEnumerable<TransactionTable> Transactions { get; set; }
+
         public CategoryTable()
         {
 
         }
 
-
-        public CategoryTable(string naam)
+        public CategoryTable(string name)
         {
-            this.Naam = naam;
-        }
-        [PrimaryKey, AutoIncrement]
-        public int CategoryID { get; set; }
-        public string Naam { get; set; }
-
-        [OneToMany]
-        public List<TransactionTable> Transacties { get; set; }
-
-        public override string ToString()
-        {
-            return Naam;
+            this.Name = name;
         }
     }
 }

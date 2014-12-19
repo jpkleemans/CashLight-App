@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.Enums
+namespace CashLight_App.DTOs
 {
     public class PeriodDTO
     {

@@ -1,4 +1,4 @@
-﻿using CashLight_App.Models.Interfaces;
+﻿using CashLight_App.Config;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using System;
@@ -52,6 +52,8 @@ namespace CashLight_App
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            Bootstrapper.Initialize();
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -100,7 +102,7 @@ namespace CashLight_App
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(Views.Categorize.CategorizeView), e.Arguments))
+                if (!rootFrame.Navigate(typeof(Views.Dashboard.DashboardView), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }
@@ -143,6 +145,8 @@ namespace CashLight_App
 
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
+            Bootstrapper.Initialize();
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
