@@ -4,84 +4,131 @@ using CashLight_App.Views.Categorize;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
+using CashLight_App.Models;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
+using System.Globalization;
+using System.Diagnostics;
+using GalaSoft.MvvmLight;
 
 namespace CashLight_App.ViewModels
 {
-    public class CategorizeViewModel
+    public class CategorizeViewModel : ViewModelBase
     {
-        //private CategorizeView _view;
-        //private Transaction _transactionModel;
-        //private List<Transaction> _transactions;
-        //public Transaction _currentTransaction;
-        //private IUnitOfWork _unitOfWork;
-        //public CategorizeViewModel(CategorizeView categorizeView, IUnitOfWork unitOfWork)
-        //{
-        //    this._view = categorizeView;
-        //    this._unitOfWork = unitOfWork;
-        //    _transactionModel = new Transaction();
-        //    _transactions = _unitOfWork.Transaction.FindAll().Where(q => !q.CategoryID.HasValue).ToList();
-        //}
+        private Transaction _transactionModel;
+        private List<Transaction> _transactions;
+        public Transaction _currentTransaction;
+        private IUnitOfWork _unitOfWork;
+        private INavigationService _navigation;
 
-        ///// <summary>
-        ///// Hides the current transaction and shows the next transaction
-        ///// </summary>
-        //public void ShowNextTransactionView()
-        //{                     
+        public RelayCommand<string> ButtonCommand { get; set; }
 
-        //    List<Control> viewsToHide = _view.Controls.OfType<TransactionView>().ToList<Control>();
-        //    if (viewsToHide.Count > 0) // If there is an 'old' transaction-view
-        //    {
-        //        ToggleButtonState(false);
+        private string _name;
+        public string Name
+        {
+            get {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged(() => Name);
+            }
+        }
 
-        //        foreach (Control viewToHide in _view.Controls.OfType<TransactionView>())
-        //        {
-        //            transition.TransitionCompletedEvent += (sender, e) => TransitionCompleted(viewToHide);
-        //            transition.add(viewToHide, "Left", _view.Width);
-        //        }
-        //    }
+        private string _amount;
+        public string Amount
+        {
+            get
+            {
+                return _amount;
+            }
+            set
+            {
+                _amount = value;
+                RaisePropertyChanged(() => Amount);
+            }
+        }
 
-        //    if (_transactions.Count > 0)
-        //    {
-        //        Transaction nextTransaction = _transactions.First(); // Get the next transaction from the list
+        private string _afbij;
+        public string AfBij { 
+            get
+            {
+                return _afbij;
+            } 
+            set
+            {
+                _afbij = value;
+                RaisePropertyChanged(() => AfBij);
+            }
+        }
+        public CategorizeViewModel(IUnitOfWork unitOfWork, INavigationService NavigationService)
+        {
+            this._unitOfWork = unitOfWork;
+            _transactionModel = new Transaction();
+            _transactions = Transaction.All().Where(q => q.CategoryID == 0).ToList();
+            _navigation = NavigationService;
 
-        //        _currentTransaction = nextTransaction;
+            if (_transactions.Count <= 0)
+            {
+                _navigation.NavigateTo("Dashboard");
+            }
+            else
+            {
+                _currentTransaction = _transactions.First();
+                Name = _transactions.First().Naam;
+                Amount = _transactions.First().Bedrag.ToString("C", new CultureInfo("nl-NL"));
+                if (_currentTransaction.AfBij == 0)
+                {
+                    AfBij = "Af";
+                }
+                else
+                {
+                    AfBij = "Bij";
+                }
 
-        //        Control viewToShow = new TransactionView(nextTransaction); // Create new TransactionView for next transaction
-        //        viewToShow.Location = new Point(-viewToShow.Width, 150);
-        //        _view.Controls.Add(viewToShow);
+                //ButtonCommand = new RelayCommand<int>(ShowNextTransactionView);
+                ButtonCommand = new RelayCommand<string>((param) => this.ShowNextTransactionView(param));
+            }
+        }
 
-        //        _transactions.Remove(nextTransaction); // Remove transaction from list, so the next transaction becomes the first of the list
-        //    }
-        //    else
-        //    {
-        //        Kernel.MainViewModel.ShowView(new SpendingsView());
-        //    }
-        //}
+        /// <summary>
+        /// Hides the current transaction and shows the next transaction
+        /// </summary>
+        public void ShowNextTransactionView(string s)
+        {
+            int i = Convert.ToInt32(s);
+            if (_transactions.Count > 0)
+            {
+                Transaction nextTransaction = _transactions.First(); // Get the next transaction from the list
+
+                SaveCategory(i, _currentTransaction);
+                Name = _currentTransaction.Naam;
+                Amount = _currentTransaction.Bedrag.ToString("C", new CultureInfo("nl-NL"));
+                if (_currentTransaction.AfBij == 0)
+                {
+                    AfBij = "Af";
+                }
+                else
+                {
+                    AfBij = "Bij";
+                }
+
+                _currentTransaction = nextTransaction;                
+                _transactions.Remove(nextTransaction); // Remove transaction from list, so the next transaction becomes the first of the list
+
+            }
+            else
+            {
+                _navigation.NavigateTo("Dashboard");
+            }
+        }
 
 
-        //private void TransitionCompleted(Control viewToHide)
-        //{
-        //    viewToHide.Invoke((MethodInvoker)delegate
-        //    {
-        //        viewToHide.Dispose();
-        //    });
-
-        //    _view.btn_Vast.Invoke((MethodInvoker)delegate
-        //    {
-        //        ToggleButtonState(true);
-        //    });
-        //}
-
-        //private void ToggleButtonState(bool enable)
-        //{
-        //    _view.btn_Vast.Enabled = enable;
-        //    _view.btn_Var.Enabled = enable;
-        //    _view.btn_Oth.Enabled = enable;
-        //}
-
-        //public void SaveCategory(Enums.Category category)
-        //{
+        public void SaveCategory(int category, Transaction trans)
+        {
         //    Category c = Kernel.Database.Category.Find(q => q.Naam == category.ToString()).FirstOrDefault();
         //    if (c != null)
         //    {
@@ -89,8 +136,6 @@ namespace CashLight_App.ViewModels
         //        Kernel.Database.Commit();
         //    }
         //    Model.Transaction.removeEqualTransactions(ref _transactions, _currentTransaction);
-
-
-        //}
+        }
     }
 }

@@ -18,11 +18,27 @@ namespace CashLight_App.ViewModels
                 return ServiceLocator.Current.GetInstance<ImportViewModel>();
             }
         }
-        public TransactionViewModel Transaction
+
+        public MenuViewModel Menu 
+        { 
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MenuViewModel>();
+            }
+        }
+        public CategorizeViewModel Categorize
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<TransactionViewModel>();
+                return ServiceLocator.Current.GetInstance<CategorizeViewModel>();
+            }
+        }
+
+        public HeaderViewModel Header
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<HeaderViewModel>();
             }
         }
     }

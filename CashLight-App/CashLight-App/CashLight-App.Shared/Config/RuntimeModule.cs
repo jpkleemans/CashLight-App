@@ -26,7 +26,9 @@ namespace CashLight_App.Config
             // ViewModels
             builder.RegisterType<DashboardViewModel>();
             builder.RegisterType<ImportViewModel>();
-            builder.RegisterType<TransactionViewModel>();
+            builder.RegisterType<MenuViewModel>();
+            builder.RegisterType<CategorizeViewModel>();
+            builder.RegisterType<HeaderViewModel>();
 
             // Repositories
             builder.RegisterType<PeriodRepository>()
@@ -40,6 +42,7 @@ namespace CashLight_App.Config
             builder.RegisterType<UploadRepository>()
               .As<IUploadRepository>()
               .SingleInstance();
+            
         }
     }
 }

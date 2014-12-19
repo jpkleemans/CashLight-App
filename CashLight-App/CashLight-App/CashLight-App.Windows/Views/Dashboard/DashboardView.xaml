@@ -14,18 +14,20 @@
     </UserControl.Resources>
 
     <Page.TopAppBar>
-        <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True">
+        <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True" x:Name="Menu"  DataContext="{Binding Menu, Source={StaticResource Locator}}">
             <CommandBar.Background>
                 <SolidColorBrush Color="Black" Opacity="0.25"/>
             </CommandBar.Background>
             <AppBarButton Icon="Home" Label="Dashboard" />
-            <AppBarButton Icon="Library" Label="Categoriseren" />
+            <AppBarButton Icon="Library" Label="Categoriseren" Click="Categorize_Menu" />
             <AppBarSeparator Foreground="White"></AppBarSeparator>
-            <AppBarButton Icon="Cancel" Label="Afsluiten"/>
+            <AppBarButton Icon="Cancel" Label="Afsluiten" Click="Exit_Button_Click" />
         </CommandBar>
     </Page.TopAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -39,6 +41,7 @@
                 <DataTemplate>
 
                     <Grid>
+
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -60,22 +63,22 @@
 
                             <local:IncomeMarker Grid.Column="0" 
                                     Transaction="{Binding ImportantIncomes[0]}"
-                                    Height="{Binding ImportantIncomes[0].Height}"
+                                    Height="{Binding ImportantIncomes[0].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                             <local:IncomeMarker Grid.Column="1" 
                                     Transaction="{Binding ImportantIncomes[1]}"
-                                    Height="{Binding ImportantIncomes[1].Height}"
+                                    Height="{Binding ImportantIncomes[1].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                             <local:IncomeMarker Grid.Column="2" 
                                     Transaction="{Binding ImportantIncomes[2]}" 
-                                    Height="{Binding ImportantIncomes[2].Height}"
+                                    Height="{Binding ImportantIncomes[2].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                             <local:IncomeMarker Grid.Column="3" 
                                     Transaction="{Binding ImportantIncomes[3]}" 
-                                    Height="{Binding ImportantIncomes[3].Height}"
+                                    Height="{Binding ImportantIncomes[3].Height}" 
                                     VerticalAlignment="Bottom" 
                                     HorizontalAlignment="Right" />
                         </Grid>
@@ -107,22 +110,22 @@
 
                             <local:SpendingMarker Grid.Column="0" 
                                     Transaction="{Binding ImportantSpendings[0]}"
-                                    Height="{Binding ImportantSpendings[0].Height}"
+                                    Height="{Binding ImportantSpendings[0].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                             <local:SpendingMarker Grid.Column="1" 
                                     Transaction="{Binding ImportantSpendings[1]}"
-                                    Height="{Binding ImportantSpendings[1].Height}"
+                                    Height="{Binding ImportantSpendings[1].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                             <local:SpendingMarker Grid.Column="2" 
                                     Transaction="{Binding ImportantSpendings[2]}"
-                                    Height="{Binding ImportantSpendings[2].Height}"
+                                    Height="{Binding ImportantSpendings[2].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                             <local:SpendingMarker Grid.Column="3" 
                                     Transaction="{Binding ImportantSpendings[3]}"
-                                    Height="{Binding ImportantSpendings[3].Height}"
+                                    Height="{Binding ImportantSpendings[3].Height}" 
                                     VerticalAlignment="Top" 
                                     HorizontalAlignment="Right" />
                         </Grid>
@@ -146,28 +149,20 @@
 
         <TextBlock Text="{Binding Title}" Height="30" Margin="30" FontSize="30" VerticalAlignment="Top" TextAlignment="Center"/>
 
-        <Grid Margin="30">
+        <Grid Margin="39">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Button x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}"
+            <Button  x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}"
                         Margin="0,0,39,0" 
                         VerticalAlignment="Top"
                         Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button" />
-
-            <TextBlock x:Name="pageTitle" 
-                       x:Uid="Header" 
-                       Text="CashLight" 
-                       Style="{StaticResource HeaderTextBlockStyle}" 
-                       Grid.Column="1"
-                       VerticalAlignment="Top" 
-                       IsHitTestVisible="false" 
-                       TextWrapping="NoWrap" />
+                        AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" x:Uid="Header" Text="CashLight" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
+                        VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
         </Grid>
 
         <Button Grid.Row="1" Content="Update Categorie" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Bottom" Command="{Binding RandomCategoriesCommand}"/>

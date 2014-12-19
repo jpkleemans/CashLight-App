@@ -113,9 +113,6 @@
     <Compile Include="Views\Categorize\CategorizeView.xaml.cs">
       <DependentUpon>CategorizeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Categorize\TransactionView.xaml.cs">
-      <DependentUpon>TransactionView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Dashboard\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
@@ -148,10 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Categorize\CategorizeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Categorize\TransactionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
