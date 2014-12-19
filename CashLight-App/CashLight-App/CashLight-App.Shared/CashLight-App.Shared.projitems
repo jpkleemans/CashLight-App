@@ -27,8 +27,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Config\Bootstrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\Routes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Config\RuntimeModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Config\TesttimeModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToUpperConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\Mode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interface\ICategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interface\IPeriod.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Interface\ITransaction.cs" />

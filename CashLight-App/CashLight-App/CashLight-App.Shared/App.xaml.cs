@@ -1,4 +1,5 @@
 ﻿using CashLight_App.Config;
+using CashLight_App.Enums;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using System;
@@ -52,7 +53,7 @@ namespace CashLight_App
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Bootstrapper.Initialize();
+            Bootstrapper.Initialize(Mode.Runtime);
 
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -145,7 +146,7 @@ namespace CashLight_App
 
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
-            Bootstrapper.Initialize();
+            Bootstrapper.Initialize(Mode.Runtime);
 
             Frame rootFrame = Window.Current.Content as Frame;
 
