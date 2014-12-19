@@ -68,6 +68,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DashboardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HeaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ImportViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MenuViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PeriodViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TransactionViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelLocator.cs" />

@@ -15,6 +15,8 @@ namespace CashLight_App.Models.Interface
         double Amount { get; set; }
         string Description { get; set; }
 
+        int CategoryID { get; set; }
+
         Category Category { get; set; }
 
         double Height { get; set; }

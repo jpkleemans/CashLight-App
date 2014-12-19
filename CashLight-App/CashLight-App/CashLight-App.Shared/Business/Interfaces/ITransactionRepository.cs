@@ -19,6 +19,8 @@ namespace CashLight_App.Business.Interfaces
 
         IEnumerable<ITransaction> GetHighestBetweenDates(Enums.InOut afBij, int limit, DateTime startDate, DateTime endDate);
 
+        IEnumerable<ITransaction> FindAll();
+
         bool Exists(ITransaction transaction);
     }
 }

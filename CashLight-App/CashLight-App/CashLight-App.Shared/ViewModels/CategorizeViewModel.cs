@@ -12,15 +12,16 @@ using GalaSoft.MvvmLight.Views;
 using System.Globalization;
 using System.Diagnostics;
 using GalaSoft.MvvmLight;
+using CashLight_App.Business.Interfaces;
+using CashLight_App.Models.Interface;
 
 namespace CashLight_App.ViewModels
 {
     public class CategorizeViewModel : ViewModelBase
     {
-        private Transaction _transactionModel;
-        private List<Transaction> _transactions;
-        public Transaction _currentTransaction;
-        private IUnitOfWork _unitOfWork;
+        private ITransaction _transactionModel;
+        private List<ITransaction> _transactions;
+        public ITransaction _currentTransaction;
         private INavigationService _navigation;
 
         public RelayCommand<string> ButtonCommand { get; set; }
@@ -28,7 +29,8 @@ namespace CashLight_App.ViewModels
         private string _name;
         public string Name
         {
-            get {
+            get
+            {
                 return _name;
             }
             set
@@ -53,23 +55,26 @@ namespace CashLight_App.ViewModels
         }
 
         private string _afbij;
-        public string AfBij { 
+        private ITransactionRepository _transactionRepository;
+        public string AfBij
+        {
             get
             {
                 return _afbij;
-            } 
+            }
             set
             {
                 _afbij = value;
                 RaisePropertyChanged(() => AfBij);
             }
         }
-        public CategorizeViewModel(IUnitOfWork unitOfWork, INavigationService NavigationService)
+        public CategorizeViewModel(INavigationService NavigationService, ITransactionRepository transactionRepository)
         {
-            this._unitOfWork = unitOfWork;
             _transactionModel = new Transaction();
-            _transactions = Transaction.All().Where(q => q.CategoryID == 0).ToList();
             _navigation = NavigationService;
+            _transactionRepository = transactionRepository;
+
+            _transactions = _transactionRepository.FindAll().Where(q => q.CategoryID == 0).ToList();
 
             if (_transactions.Count <= 0)
             {
@@ -78,9 +83,9 @@ namespace CashLight_App.ViewModels
             else
             {
                 _currentTransaction = _transactions.First();
-                Name = _transactions.First().Naam;
-                Amount = _transactions.First().Bedrag.ToString("C", new CultureInfo("nl-NL"));
-                if (_currentTransaction.AfBij == 0)
+                Name = _transactions.First().CreditorName;
+                Amount = _transactions.First().Amount.ToString("C", new CultureInfo("nl-NL"));
+                if (_currentTransaction.InOut == 0)
                 {
                     AfBij = "Af";
                 }
@@ -91,6 +96,7 @@ namespace CashLight_App.ViewModels
 
                 //ButtonCommand = new RelayCommand<int>(ShowNextTransactionView);
                 ButtonCommand = new RelayCommand<string>((param) => this.ShowNextTransactionView(param));
+                _transactions.Remove(_currentTransaction);
             }
         }
 
@@ -102,12 +108,13 @@ namespace CashLight_App.ViewModels
             int i = Convert.ToInt32(s);
             if (_transactions.Count > 0)
             {
-                Transaction nextTransaction = _transactions.First(); // Get the next transaction from the list
+                ITransaction nextTransaction = _transactions.First(); // Get the next transaction from the list
 
                 SaveCategory(i, _currentTransaction);
-                Name = _currentTransaction.Naam;
-                Amount = _currentTransaction.Bedrag.ToString("C", new CultureInfo("nl-NL"));
-                if (_currentTransaction.AfBij == 0)
+
+                Name = _currentTransaction.CreditorName;
+                Amount = _currentTransaction.Amount.ToString("C", new CultureInfo("nl-NL"));
+                if (_currentTransaction.InOut == 0)
                 {
                     AfBij = "Af";
                 }
@@ -116,7 +123,7 @@ namespace CashLight_App.ViewModels
                     AfBij = "Bij";
                 }
 
-                _currentTransaction = nextTransaction;                
+                _currentTransaction = nextTransaction;
                 _transactions.Remove(nextTransaction); // Remove transaction from list, so the next transaction becomes the first of the list
 
             }
@@ -127,15 +134,15 @@ namespace CashLight_App.ViewModels
         }
 
 
-        public void SaveCategory(int category, Transaction trans)
+        public void SaveCategory(int category, ITransaction trans)
         {
-        //    Category c = Kernel.Database.Category.Find(q => q.Naam == category.ToString()).FirstOrDefault();
-        //    if (c != null)
-        //    {
-        //        _currentTransaction.CategoryID = c.CategoryID;
-        //        Kernel.Database.Commit();
-        //    }
-        //    Model.Transaction.removeEqualTransactions(ref _transactions, _currentTransaction);
+            //    Category c = Kernel.Database.Category.Find(q => q.Naam == category.ToString()).FirstOrDefault();
+            //    if (c != null)
+            //    {
+            //        _currentTransaction.CategoryID = c.CategoryID;
+            //        Kernel.Database.Commit();
+            //    }
+            //    Model.Transaction.removeEqualTransactions(ref _transactions, _currentTransaction);
         }
     }
 }

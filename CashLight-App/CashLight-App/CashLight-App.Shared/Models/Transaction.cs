@@ -18,8 +18,10 @@ namespace CashLight_App.Models
         private int _inOut;
         private double _amount;
         private string _description;
-        private Models.Category _category;
+        private Category _category;
         private double _height;
+        private int _categoryID;
+
         public DateTime Date
         {
             get
@@ -147,6 +149,20 @@ namespace CashLight_App.Models
             {
                 _height = value;
                 RaisePropertyChanged(() => Height);
+            }
+        }
+
+
+        public int CategoryID
+        {
+            get
+            {
+                return _categoryID;
+            }
+            set
+            {
+                _categoryID = value;
+                RaisePropertyChanged(() => CategoryID);
             }
         }
     }

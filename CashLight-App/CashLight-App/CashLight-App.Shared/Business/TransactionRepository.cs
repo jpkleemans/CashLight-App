@@ -103,5 +103,13 @@ namespace CashLight_App.Business
 
             return true;
         }
+
+
+        public IEnumerable<ITransaction> FindAll()
+        {
+            TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
+
+            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactions);
+        }
     }
 }
