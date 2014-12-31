@@ -32,13 +32,13 @@ namespace CashLight_App.Repositories
 
         private void SetTransactions(ref Period period)
         {
-            period.Transactions = _transactionRepository.GetAllBetweenDates(period.StartDate, period.EndDate).ToList();
+            period.Transactions = _transactionRepository.GetAllBetweenDates(period.StartDate, period.EndDate);
         }
 
         private void SetImportantTransactions(ref Period period)
         {
-            period.ImportantIncomes = _transactionRepository.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate).ToList();
-            period.ImportantSpendings = _transactionRepository.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate).ToList();
+            period.ImportantIncomes = _transactionRepository.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
+            period.ImportantSpendings = _transactionRepository.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
         }
 
         /// <summary>

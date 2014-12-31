@@ -9,10 +9,10 @@ namespace CashLight_App.Models
     {
         private DateTime _startDate;
         private DateTime _endDate;
-        private List<Transaction> _transactions;
-        private List<Transaction> _importantIncomes;
-        private List<Transaction> _importantSpendings;
-        private List<Category> _categories;
+        private IEnumerable<Transaction> _transactions;
+        private IEnumerable<Transaction> _importantIncomes;
+        private IEnumerable<Transaction> _importantSpendings;
+        private IEnumerable<Category> _categories;
 
         public DateTime StartDate
         {
@@ -40,7 +40,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<Transaction> Transactions
+        public IEnumerable<Transaction> Transactions
         {
             get
             {
@@ -53,7 +53,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<Transaction> ImportantIncomes
+        public IEnumerable<Transaction> ImportantIncomes
         {
             get
             {
@@ -66,7 +66,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<Transaction> ImportantSpendings
+        public IEnumerable<Transaction> ImportantSpendings
         {
             get
             {
@@ -79,7 +79,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<Category> Categories
+        public IEnumerable<Category> Categories
         {
             get
             {

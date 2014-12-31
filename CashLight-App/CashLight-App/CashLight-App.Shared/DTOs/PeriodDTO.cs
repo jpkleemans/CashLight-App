@@ -14,10 +14,6 @@ namespace CashLight_App.DTOs
             this.AveragePeriod = averageperiod;
         }
 
-        public PeriodDTO()
-        {
-
-        }
         public string Name { get; set; }
         public string Account { get; set; }
         public double AverageDeviation { get; set; }

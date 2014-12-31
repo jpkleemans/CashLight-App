@@ -38,8 +38,10 @@ namespace CashLight_App.ViewModels
                     if (value.EndDate < _selectedPeriod.StartDate)
                     {
                         Period previous = _periodRepository.GetByDate(value.StartDate.AddDays(-1));
+
                         previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
                         previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
+
                         Periods.Add(previous);
                     }
                 }
@@ -77,7 +79,7 @@ namespace CashLight_App.ViewModels
             SelectedPeriod = now;
         }
 
-        private List<Transaction> SetHeight(List<Transaction> transactions)
+        private IEnumerable<Transaction> SetHeight(IEnumerable<Transaction> transactions)
         {
             double highest = 0;
             foreach (var item in transactions)
