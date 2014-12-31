@@ -12,15 +12,14 @@ using System.Globalization;
 using System.Diagnostics;
 using GalaSoft.MvvmLight;
 using CashLight_App.Repositories.Interfaces;
-using CashLight_App.Models.Interface;
 
 namespace CashLight_App.ViewModels
 {
     public class CategorizeViewModel : ViewModelBase
     {
-        private ITransaction _transactionModel;
-        private List<ITransaction> _transactions;
-        public ITransaction _currentTransaction;
+        private Transaction _transactionModel;
+        private List<Transaction> _transactions;
+        public Transaction _currentTransaction;
         private INavigationService _navigation;
 
         public RelayCommand<string> ButtonCommand { get; set; }
@@ -107,7 +106,7 @@ namespace CashLight_App.ViewModels
             int i = Convert.ToInt32(s);
             if (_transactions.Count > 0)
             {
-                ITransaction nextTransaction = _transactions.First(); // Get the next transaction from the list
+                Transaction nextTransaction = _transactions.First(); // Get the next transaction from the list
 
                 SaveCategory(i, _currentTransaction);
 
@@ -133,7 +132,7 @@ namespace CashLight_App.ViewModels
         }
 
 
-        public void SaveCategory(int category, ITransaction trans)
+        public void SaveCategory(int category, Transaction trans)
         {
             //    Category c = Kernel.Database.Category.Find(q => q.Naam == category.ToString()).FirstOrDefault();
             //    if (c != null)

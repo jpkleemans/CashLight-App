@@ -31,12 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToUpperConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\Mode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Interface\ICategory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Interface\IPeriod.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Interface\ITransaction.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Interface\IUpload.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Period.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Upload.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Banks\ING.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Database.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IBank.cs" />

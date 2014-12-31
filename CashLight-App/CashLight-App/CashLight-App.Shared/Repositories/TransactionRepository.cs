@@ -5,7 +5,6 @@ using System.Text;
 using System.Linq;
 using CashLight_App.Models;
 using CashLight_App.Repositories.Interfaces;
-using CashLight_App.Models.Interface;
 using SQLite;
 using CashLight_App.Tables;
 using AutoMapper;
@@ -19,10 +18,10 @@ namespace CashLight_App.Repositories
             Mapper.CreateMap<TransactionTable, Transaction>();
         }
 
-        public void Add(ITransaction transaction)
+        public void Add(Transaction transaction)
         {
-            Mapper.CreateMap<ITransaction, TransactionTable>();
-            TransactionTable transactionTable = Mapper.Map<ITransaction, TransactionTable>(transaction);
+            Mapper.CreateMap<Transaction, TransactionTable>();
+            TransactionTable transactionTable = Mapper.Map<Transaction, TransactionTable>(transaction);
 
             base._context.Table<TransactionTable>().Connection.Insert(transactionTable);
         }
@@ -32,7 +31,7 @@ namespace CashLight_App.Repositories
             base._context.Commit();
         }
 
-        public ITransaction GetFirstIncomeBeforeDate(DateTime date, string account)
+        public Transaction GetFirstIncomeBeforeDate(DateTime date, string account)
         {
             TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
 
@@ -45,7 +44,7 @@ namespace CashLight_App.Repositories
             return Mapper.Map<TransactionTable, Transaction>(transaction);
         }
 
-        public ITransaction GetFirstIncomeAfterDate(DateTime date, string account)
+        public Transaction GetFirstIncomeAfterDate(DateTime date, string account)
         {
             TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
 
@@ -58,7 +57,7 @@ namespace CashLight_App.Repositories
             return Mapper.Map<TransactionTable, Transaction>(transaction);
         }
 
-        public IEnumerable<ITransaction> GetAllBetweenDates(DateTime startDate, DateTime endDate)
+        public IEnumerable<Transaction> GetAllBetweenDates(DateTime startDate, DateTime endDate)
         {
             TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
 
@@ -69,7 +68,7 @@ namespace CashLight_App.Repositories
             return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
         }
 
-        public IEnumerable<ITransaction> GetHighestBetweenDates(Enums.InOut inOut, int limit, DateTime startDate, DateTime endDate)
+        public IEnumerable<Transaction> GetHighestBetweenDates(Enums.InOut inOut, int limit, DateTime startDate, DateTime endDate)
         {
             TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
 
@@ -85,7 +84,7 @@ namespace CashLight_App.Repositories
             return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
         }
 
-        public bool Exists(ITransaction transaction)
+        public bool Exists(Transaction transaction)
         {
             TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
 
@@ -105,7 +104,7 @@ namespace CashLight_App.Repositories
         }
 
 
-        public IEnumerable<ITransaction> FindAll()
+        public IEnumerable<Transaction> FindAll()
         {
             TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
 

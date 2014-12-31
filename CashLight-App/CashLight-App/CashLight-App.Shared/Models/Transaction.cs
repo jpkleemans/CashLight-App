@@ -1,5 +1,4 @@
-﻿using CashLight_App.Models.Interface;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
@@ -8,7 +7,7 @@ using System.Text;
 
 namespace CashLight_App.Models
 {
-    public class Transaction : ObservableObject, ITransaction
+    public class Transaction : ObservableObject
     {
         private DateTime _date;
         private string _debtorNumber;

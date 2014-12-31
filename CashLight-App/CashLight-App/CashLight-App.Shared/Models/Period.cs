@@ -1,19 +1,18 @@
-﻿using CashLight_App.Models.Interface;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CashLight_App.Models
 {
-    class Period : ObservableObject, IPeriod
+    public class Period : ObservableObject
     {
         private DateTime _startDate;
         private DateTime _endDate;
-        private List<ITransaction> _transactions;
-        private List<ITransaction> _importantIncomes;
-        private List<ITransaction> _importantSpendings;
-        private List<ICategory> _categories;
+        private List<Transaction> _transactions;
+        private List<Transaction> _importantIncomes;
+        private List<Transaction> _importantSpendings;
+        private List<Category> _categories;
 
         public DateTime StartDate
         {
@@ -41,7 +40,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<ITransaction> Transactions
+        public List<Transaction> Transactions
         {
             get
             {
@@ -54,7 +53,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<ITransaction> ImportantIncomes
+        public List<Transaction> ImportantIncomes
         {
             get
             {
@@ -67,7 +66,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<ITransaction> ImportantSpendings
+        public List<Transaction> ImportantSpendings
         {
             get
             {
@@ -80,7 +79,7 @@ namespace CashLight_App.Models
             }
         }
 
-        public List<ICategory> Categories
+        public List<Category> Categories
         {
             get
             {

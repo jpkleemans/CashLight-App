@@ -6,7 +6,6 @@ using CashLight_App.Services.Interfaces;
 using CashLight_App.Models;
 using CashLight_App.ViewModels;
 using GalaSoft.MvvmLight.Views;
-using CashLight_App.Models.Interface;
 
 namespace CashLight_App.Config
 {

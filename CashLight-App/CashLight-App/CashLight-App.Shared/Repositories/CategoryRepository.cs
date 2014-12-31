@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using SQLite;
-using CashLight_App.Models.Interface;
 
 namespace CashLight_App.Repositories
 {

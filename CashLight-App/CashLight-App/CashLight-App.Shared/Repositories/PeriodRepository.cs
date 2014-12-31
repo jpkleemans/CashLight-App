@@ -1,7 +1,6 @@
 ﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.DTOs;
 using CashLight_App.Models;
-using CashLight_App.Models.Interface;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -19,9 +18,9 @@ namespace CashLight_App.Repositories
             _transactionRepository = transactionRepository;
         }
 
-        public IPeriod GetByDate(DateTime date)
+        public Period GetByDate(DateTime date)
         {
-            IPeriod period = new Period();
+            Period period = new Period();
 
             this.SetDates(ref period, date);
             this.SetTransactions(ref period);
@@ -31,12 +30,12 @@ namespace CashLight_App.Repositories
             return period;
         }
 
-        private void SetTransactions(ref IPeriod period)
+        private void SetTransactions(ref Period period)
         {
             period.Transactions = _transactionRepository.GetAllBetweenDates(period.StartDate, period.EndDate).ToList();
         }
 
-        private void SetImportantTransactions(ref IPeriod period)
+        private void SetImportantTransactions(ref Period period)
         {
             period.ImportantIncomes = _transactionRepository.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate).ToList();
             period.ImportantSpendings = _transactionRepository.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate).ToList();
@@ -47,12 +46,12 @@ namespace CashLight_App.Repositories
         /// </summary>
         /// <param name="d"></param>
         /// <param name="forward"></param>
-        private void SetDates(ref IPeriod period, DateTime date, bool forward = false)
+        private void SetDates(ref Period period, DateTime date, bool forward = false)
         {
             PeriodDTO i = GetConsistentIncome();
 
-            ITransaction firstIncomeBeforeDate = _transactionRepository.GetFirstIncomeBeforeDate(date, i.Account);
-            ITransaction firstIncomeAfterDate = _transactionRepository.GetFirstIncomeAfterDate(date, i.Account);
+            Transaction firstIncomeBeforeDate = _transactionRepository.GetFirstIncomeBeforeDate(date, i.Account);
+            Transaction firstIncomeAfterDate = _transactionRepository.GetFirstIncomeAfterDate(date, i.Account);
 
             if (firstIncomeBeforeDate == null)
             {

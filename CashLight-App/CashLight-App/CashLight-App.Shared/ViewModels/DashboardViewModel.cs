@@ -9,7 +9,6 @@ using System.Linq;
 using Windows.UI.Xaml;
 using CashLight_App.Repositories.Interfaces;
 using System.Diagnostics;
-using CashLight_App.Models.Interface;
 
 namespace CashLight_App.ViewModels
 {
@@ -25,8 +24,8 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        private IPeriod _selectedPeriod;
-        public IPeriod SelectedPeriod
+        private Period _selectedPeriod;
+        public Period SelectedPeriod
         {
             get
             {
@@ -38,7 +37,7 @@ namespace CashLight_App.ViewModels
                 {
                     if (value.EndDate < _selectedPeriod.StartDate)
                     {
-                        IPeriod previous = _periodRepository.GetByDate(value.StartDate.AddDays(-1));
+                        Period previous = _periodRepository.GetByDate(value.StartDate.AddDays(-1));
                         previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
                         previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
                         Periods.Add(previous);
@@ -51,7 +50,7 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public ObservableCollection<IPeriod> Periods { get; set; }
+        public ObservableCollection<Period> Periods { get; set; }
 
         public DashboardViewModel(IPeriodRepository periodRepository)
         {
@@ -62,10 +61,10 @@ namespace CashLight_App.ViewModels
 
         private void InitPeriods()
         {
-            Periods = new ObservableCollection<IPeriod>();
+            Periods = new ObservableCollection<Period>();
 
-            IPeriod now = _periodRepository.GetByDate(DateTime.Now);
-            IPeriod previous = _periodRepository.GetByDate(now.StartDate.AddDays(-1));
+            Period now = _periodRepository.GetByDate(DateTime.Now);
+            Period previous = _periodRepository.GetByDate(now.StartDate.AddDays(-1));
 
             now.ImportantIncomes = SetHeight(now.ImportantIncomes);
             now.ImportantSpendings = SetHeight(now.ImportantSpendings);
@@ -78,7 +77,7 @@ namespace CashLight_App.ViewModels
             SelectedPeriod = now;
         }
 
-        private List<ITransaction> SetHeight(List<ITransaction> transactions)
+        private List<Transaction> SetHeight(List<Transaction> transactions)
         {
             double highest = 0;
             foreach (var item in transactions)
@@ -99,7 +98,7 @@ namespace CashLight_App.ViewModels
             double minHeight = 230; //Min height off the markers.
             double useableHeight = maxHeight - minHeight;
 
-            foreach (ITransaction item in transactions)
+            foreach (Transaction item in transactions)
             {
                 double percentage = (item.Amount / highest);
 
