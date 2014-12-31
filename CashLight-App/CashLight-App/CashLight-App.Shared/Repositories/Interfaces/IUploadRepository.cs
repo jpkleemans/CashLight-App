@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Windows.Storage;
 
-namespace CashLight_App.Business.Interfaces
+namespace CashLight_App.Repositories.Interfaces
 {
     public interface IUploadRepository
     {

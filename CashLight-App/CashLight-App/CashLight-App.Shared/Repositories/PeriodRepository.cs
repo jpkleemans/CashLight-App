@@ -1,4 +1,4 @@
-﻿using CashLight_App.Business.Interfaces;
+﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.DTOs;
 using CashLight_App.Models;
 using CashLight_App.Models.Interface;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace CashLight_App.Business
+namespace CashLight_App.Repositories
 {
     class PeriodRepository : RepositoryBase, IPeriodRepository
     {

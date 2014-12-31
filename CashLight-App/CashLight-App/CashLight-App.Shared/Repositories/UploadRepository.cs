@@ -1,4 +1,4 @@
-﻿using CashLight_App.Business.Interfaces;
+﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Enums;
 using CashLight_App.Models;
 using CashLight_App.Services.CSV;
@@ -11,7 +11,7 @@ using System.IO;
 using System.Text;
 using Windows.Storage;
 
-namespace CashLight_App.Business
+namespace CashLight_App.Repositories
 {
     class UploadRepository : RepositoryBase, IUploadRepository
     {

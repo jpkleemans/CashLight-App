@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
-using CashLight_App.Business.Interfaces;
+using CashLight_App.Repositories.Interfaces;
 using System.Diagnostics;
 using CashLight_App.Models.Interface;
 

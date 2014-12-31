@@ -11,7 +11,7 @@ using GalaSoft.MvvmLight.Views;
 using System.Globalization;
 using System.Diagnostics;
 using GalaSoft.MvvmLight;
-using CashLight_App.Business.Interfaces;
+using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Models.Interface;
 
 namespace CashLight_App.ViewModels

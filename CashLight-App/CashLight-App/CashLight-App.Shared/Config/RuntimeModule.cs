@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using CashLight_App.Business;
-using CashLight_App.Business.Interfaces;
+using CashLight_App.Repositories;
+using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Services;
 using CashLight_App.Services.Interfaces;
 using CashLight_App.Models;

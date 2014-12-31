@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CashLight_App.Models.Interface;
 
-namespace CashLight_App.Business.Interfaces
+namespace CashLight_App.Repositories.Interfaces
 {
     public interface ICategoryRepository
     {

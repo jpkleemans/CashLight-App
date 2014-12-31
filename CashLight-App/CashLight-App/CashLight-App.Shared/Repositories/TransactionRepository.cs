@@ -4,13 +4,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Linq;
 using CashLight_App.Models;
-using CashLight_App.Business.Interfaces;
+using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Models.Interface;
 using SQLite;
 using CashLight_App.Tables;
 using AutoMapper;
 
-namespace CashLight_App.Business
+namespace CashLight_App.Repositories
 {
     class TransactionRepository : RepositoryBase, ITransactionRepository
     {

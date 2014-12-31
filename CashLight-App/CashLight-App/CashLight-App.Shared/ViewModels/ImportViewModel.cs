@@ -1,4 +1,4 @@
-﻿using CashLight_App.Business.Interfaces;
+﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Models;
 using CashLight_App.Models.Interface;
 using CashLight_App.Services.Banks;

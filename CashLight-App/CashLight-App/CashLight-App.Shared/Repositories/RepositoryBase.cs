@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.Business
+namespace CashLight_App.Repositories
 {
     public class RepositoryBase
     {
