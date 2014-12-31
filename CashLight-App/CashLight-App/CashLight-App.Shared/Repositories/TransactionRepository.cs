@@ -72,16 +72,13 @@ namespace CashLight_App.Repositories
         {
             TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
 
-            IEnumerable<TransactionTable> transactionList = transactions
+            IEnumerable<TransactionTable> transactionList = (transactions
                 .Where(x => x.InOut == (int)inOut)
                 .Where(q => q.Date >= startDate && q.Date <= endDate)
                 .OrderBy(x => x.Amount)
-                .Take(limit)
-                .OrderBy(x => x.Date);
+                .Take(limit));
 
-            // SetHeight not implemented yet
-
-            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
+            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList.OrderBy(x => x.Date));
         }
 
         public bool Exists(Transaction transaction)

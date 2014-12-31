@@ -81,30 +81,24 @@ namespace CashLight_App.ViewModels
 
         private IEnumerable<Transaction> SetHeight(IEnumerable<Transaction> transactions)
         {
-            double highest = 0;
-            foreach (var item in transactions)
+            if (transactions.Count() > 0)
             {
-                if (item.Amount > highest)
+                double highest = transactions.Max(x => x.Amount);
+
+                double minHeight = 230;
+                double maxHeight = 500;
+                double marginTop = 70;
+                if (Window.Current != null)
                 {
-                    highest = item.Amount;
+                    maxHeight = (Window.Current.Bounds.Height / 2) - marginTop;
                 }
-            }
+                double useableHeight = maxHeight - minHeight;
 
-            double maxHeight = 1080;
-
-            if (Window.Current != null)
-            {
-                maxHeight = (Window.Current.Bounds.Height / 2) - 50; //Max height off the markers.
-            }
-
-            double minHeight = 230; //Min height off the markers.
-            double useableHeight = maxHeight - minHeight;
-
-            foreach (Transaction item in transactions)
-            {
-                double percentage = (item.Amount / highest);
-
-                item.Height = (useableHeight * percentage) + minHeight;
+                foreach (Transaction item in transactions)
+                {
+                    double percentage = (item.Amount / highest);
+                    item.Height = (useableHeight * percentage) + minHeight;
+                }
             }
 
             return transactions;

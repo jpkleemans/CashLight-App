@@ -33,8 +33,8 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,3"></Border>
-        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,3,0,0"></Border>
+        <Border Grid.Row="0" Background="#48D86D" BorderBrush="White" BorderThickness="0,0,0,2"></Border>
+        <Border Grid.Row="1" Background="#F25757" BorderBrush="White" BorderThickness="0,2,0,0"></Border>
 
         <FlipView x:Name="flipview" ItemsSource="{Binding Periods}" SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}" Grid.RowSpan="2">
             <FlipView.ItemTemplate>
@@ -47,7 +47,7 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Margin="100,0,100,0">
+                        <Grid Grid.Row="0" Margin="0,0,100,0">
                             <Grid.ChildrenTransitions>
                                 <TransitionCollection>
                                     <EntranceThemeTransition/>
@@ -94,7 +94,7 @@
                             <TextBlock Text="{Binding IncomeCategories[2].IncomePercentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0}%'}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,50"/>
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="-100,0,200,0">
+                        <Grid Grid.Row="1" Margin="-200,0,300,0">
                             <Grid.ChildrenTransitions>
                                 <TransitionCollection>
                                     <EntranceThemeTransition/>
