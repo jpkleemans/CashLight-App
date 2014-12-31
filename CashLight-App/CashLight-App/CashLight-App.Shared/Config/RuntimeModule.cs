@@ -6,6 +6,7 @@ using CashLight_App.Models;
 using CashLight_App.ViewModels;
 using GalaSoft.MvvmLight.Views;
 using CashLight_App.Services.SQLite;
+using CashLight_App.Services.CSV;
 
 namespace CashLight_App.Config
 {
@@ -21,6 +22,9 @@ namespace CashLight_App.Config
                .As<ISQLiteService>()
                .WithParameter("name", "CashLight.db")
                .SingleInstance();
+
+            builder.RegisterType<CSVService>()
+               .As<ICSVService>();
 
             // ViewModels
             builder.RegisterType<DashboardViewModel>();

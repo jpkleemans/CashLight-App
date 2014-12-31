@@ -15,6 +15,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\Banks\IBank.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\Banks\ING.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CSVService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\ICSVService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite\ISQLiteService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite\SQLiteNetExtensions\Attributes\ForeignKeyAttribute.cs" />
@@ -49,14 +53,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToUpperConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\Mode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Period.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\Banks\IBank.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\Banks\ING.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Transaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\PeriodDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\InOut.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvFileReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CsvRow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tables\CategoryTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tables\SettingTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tables\TransactionTable.cs" />

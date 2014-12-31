@@ -9,28 +9,28 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using Windows.Storage;
-using CashLight_App.Services.Banks;
+using CashLight_App.Services.CSV.Banks;
 
 namespace CashLight_App.Repositories
 {
     class UploadRepository : IUploadRepository
     {
         private ITransactionRepository _transactionRepository;
+        private ICSVService _CSVService;
 
-        public UploadRepository(ITransactionRepository transactionRepository)
+        public UploadRepository(ITransactionRepository transactionRepository, ICSVService CSVService)
         {
             _transactionRepository = transactionRepository;
+            _CSVService = CSVService;
         }
 
         public async void ToDatabase(IBank bank, StorageFile storageFile)
         {
             Stream stream = await storageFile.OpenStreamForReadAsync();
 
-            CsvFileReader reader = new CsvFileReader(bank, stream);
-
             List<Dictionary<string, string>> list;
 
-            list = reader.ReadToList();
+            list = _CSVService.ReadToList(stream, bank);
 
             foreach (Dictionary<string, string> dic in list)
             {

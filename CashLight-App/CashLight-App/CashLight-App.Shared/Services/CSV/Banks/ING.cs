@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.Services.Banks
+namespace CashLight_App.Services.CSV.Banks
 {
     public class ING : IBank
     {
@@ -22,7 +22,7 @@ namespace CashLight_App.Services.Banks
 
         string[] RQ = new string[9];
 
-        public Dictionary<string, string> CsvToDictionary(CSV.CsvRow row)
+        public Dictionary<string, string> CsvToDictionary(Dictionary<string, string> row)
         {
             // Define a new Dictionary to store the database values
             Dictionary<string, string> database = new Dictionary<string, string>();
@@ -35,10 +35,10 @@ namespace CashLight_App.Services.Banks
             else
             {
                 // Remove the quotations in a string 
-                for (int i = 0; i < row.LineList.Count; i++)
+                for (int i = 0; i < row.Count; i++)
                 {
 
-                    RQ[i] = RemoveQuotations(row.LineList["field" + i]);
+                    RQ[i] = RemoveQuotations(row["field" + i]);
                 }
 
                 // Convert date in database to integer
@@ -59,7 +59,7 @@ namespace CashLight_App.Services.Banks
                 database.Add("Bedrag (EUR)", RQ[6]);
                 database.Add("Mutatiesoort", RQ[7]);
 
-                if (row.LineList.Count < 8)
+                if (row.Count < 8)
                 {
                     database.Add("Mededelingen", string.Empty);
 

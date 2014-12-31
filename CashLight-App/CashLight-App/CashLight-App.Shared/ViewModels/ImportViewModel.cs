@@ -1,6 +1,5 @@
 ﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Models;
-using CashLight_App.Services.Banks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
@@ -9,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Windows.Storage;
+using CashLight_App.Services.CSV.Banks;
 
 namespace CashLight_App.ViewModels
 {
