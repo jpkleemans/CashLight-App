@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using SQLiteNetExtensions.Attributes;
-using CashLight_App.Services.WinRTExtensions;
+using WinRTExtensions;
 #if USING_MVVMCROSS
 using Cirrious.MvvmCross.Plugins.Sqlite;
 #else
-using SQLite;
+using CashLight_App.Services.SQLite;
 #endif
 
 namespace SQLiteNetExtensions.Extensions

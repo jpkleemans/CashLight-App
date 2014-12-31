@@ -2,10 +2,10 @@
 using CashLight_App.Repositories;
 using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Services;
-using CashLight_App.Services.Interfaces;
 using CashLight_App.Models;
 using CashLight_App.ViewModels;
 using GalaSoft.MvvmLight.Views;
+using CashLight_App.Services.SQLite;
 
 namespace CashLight_App.Config
 {
@@ -17,8 +17,8 @@ namespace CashLight_App.Config
             builder.RegisterInstance<INavigationService>(Routes.GetRoutes(new NavigationService()))
                 .SingleInstance();
 
-            builder.RegisterType<Database>()
-               .As<IDatabase>()
+            builder.RegisterType<SQLiteService>()
+               .As<ISQLiteService>()
                .WithParameter("name", "CashLight.db")
                .SingleInstance();
 
@@ -41,7 +41,7 @@ namespace CashLight_App.Config
             builder.RegisterType<UploadRepository>()
               .As<IUploadRepository>()
               .SingleInstance();
-            
+
         }
     }
 }

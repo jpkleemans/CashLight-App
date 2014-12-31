@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using CashLight_App.Services;
-using CashLight_App.Services.Interfaces;
+using CashLight_App.Services.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,8 +11,8 @@ namespace CashLight_App.Config
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<Database>()
-               .As<IDatabase>()
+            builder.RegisterType<SQLiteService>()
+               .As<ISQLiteService>()
                .WithParameter("name", "CashLightTest.db")
                .SingleInstance();
         }

@@ -2,7 +2,6 @@
 using CashLight_App.Enums;
 using CashLight_App.Models;
 using CashLight_App.Services.CSV;
-using CashLight_App.Services.Interfaces;
 using CashLight_App.Tables;
 using System;
 using System.Collections.Generic;
@@ -10,10 +9,11 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using Windows.Storage;
+using CashLight_App.Services.Banks;
 
 namespace CashLight_App.Repositories
 {
-    class UploadRepository : RepositoryBase, IUploadRepository
+    class UploadRepository : IUploadRepository
     {
         private ITransactionRepository _transactionRepository;
 

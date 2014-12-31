@@ -10,7 +10,7 @@ using SQLiteNetExtensions.Extensions.TextBlob;
 #if USING_MVVMCROSS
 using SQLiteConnection = Cirrious.MvvmCross.Plugins.Sqlite.ISQLiteConnection;
 #else
-using SQLite;
+using CashLight_App.Services.SQLite;
 #endif
 
 namespace SQLiteNetExtensions.Extensions

@@ -1,5 +1,4 @@
 ﻿using CashLight_App.Models;
-using CashLight_App.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;

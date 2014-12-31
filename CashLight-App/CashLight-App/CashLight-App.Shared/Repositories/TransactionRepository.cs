@@ -5,16 +5,20 @@ using System.Text;
 using System.Linq;
 using CashLight_App.Models;
 using CashLight_App.Repositories.Interfaces;
-using SQLite;
 using CashLight_App.Tables;
 using AutoMapper;
+using CashLight_App.Services.SQLite;
 
 namespace CashLight_App.Repositories
 {
-    class TransactionRepository : RepositoryBase, ITransactionRepository
+    class TransactionRepository : ITransactionRepository
     {
-        public TransactionRepository()
+        private ISQLiteService _db;
+
+        public TransactionRepository(ISQLiteService SQLiteService)
         {
+            this._db = SQLiteService;
+
             Mapper.CreateMap<TransactionTable, Transaction>();
         }
 
@@ -23,17 +27,17 @@ namespace CashLight_App.Repositories
             Mapper.CreateMap<Transaction, TransactionTable>();
             TransactionTable transactionTable = Mapper.Map<Transaction, TransactionTable>(transaction);
 
-            base._context.Table<TransactionTable>().Connection.Insert(transactionTable);
+            _db.Context.Table<TransactionTable>().Connection.Insert(transactionTable);
         }
 
         public void Commit()
         {
-            base._context.Commit();
+            _db.Context.Commit();
         }
 
         public Transaction GetFirstIncomeBeforeDate(DateTime date, string account)
         {
-            TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
 
             TransactionTable transaction = transactions
                 .Where(q => q.CreditorNumber == account)
@@ -46,7 +50,7 @@ namespace CashLight_App.Repositories
 
         public Transaction GetFirstIncomeAfterDate(DateTime date, string account)
         {
-            TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
 
             TransactionTable transaction = transactions
                 .Where(q => q.CreditorNumber == account)
@@ -59,7 +63,7 @@ namespace CashLight_App.Repositories
 
         public IEnumerable<Transaction> GetAllBetweenDates(DateTime startDate, DateTime endDate)
         {
-            TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
 
             IEnumerable<TransactionTable> transactionList = transactions
                     .Where(q => q.Date >= startDate && q.Date <= endDate)
@@ -70,7 +74,7 @@ namespace CashLight_App.Repositories
 
         public IEnumerable<Transaction> GetHighestBetweenDates(Enums.InOut inOut, int limit, DateTime startDate, DateTime endDate)
         {
-            TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
 
             IEnumerable<TransactionTable> transactionList = (transactions
                 .Where(x => x.InOut == (int)inOut)
@@ -83,7 +87,7 @@ namespace CashLight_App.Repositories
 
         public bool Exists(Transaction transaction)
         {
-            TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
 
             int count = transactions
                 .Where(x => x.CreditorName == transaction.CreditorName)
@@ -103,7 +107,7 @@ namespace CashLight_App.Repositories
 
         public IEnumerable<Transaction> FindAll()
         {
-            TableQuery<TransactionTable> transactions = base._context.Table<TransactionTable>();
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
 
             return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactions);
         }

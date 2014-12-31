@@ -4,11 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using SQLite;
 
 namespace CashLight_App.Repositories
 {
-    public class CategoryRepository : RepositoryBase
+    public class CategoryRepository : ICategoryRepository
     {
         //public CategoryRepository()
         //{
@@ -21,5 +20,9 @@ namespace CashLight_App.Repositories
         //    return Mapper.Map<IEnumerable<Category>, IEnumerable<Category>>(table);
         //}
 
+        public IEnumerable<Models.Category> FindAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

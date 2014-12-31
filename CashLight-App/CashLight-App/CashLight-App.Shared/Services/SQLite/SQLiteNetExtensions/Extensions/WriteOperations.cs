@@ -7,7 +7,7 @@ using System.Reflection;
 #if USING_MVVMCROSS
 using SQLiteConnection = Cirrious.MvvmCross.Plugins.Sqlite.ISQLiteConnection;
 #else
-using SQLite;
+using CashLight_App.Services.SQLite;
 #endif
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Extensions.TextBlob;

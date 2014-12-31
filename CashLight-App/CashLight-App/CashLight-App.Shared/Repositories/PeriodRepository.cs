@@ -1,7 +1,6 @@
 ﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.DTOs;
 using CashLight_App.Models;
-using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +8,7 @@ using System.Linq;
 
 namespace CashLight_App.Repositories
 {
-    class PeriodRepository : RepositoryBase, IPeriodRepository
+    class PeriodRepository : IPeriodRepository
     {
         private ITransactionRepository _transactionRepository;
 

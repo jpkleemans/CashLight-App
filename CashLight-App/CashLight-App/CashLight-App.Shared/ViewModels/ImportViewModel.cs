@@ -1,7 +1,6 @@
 ﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Models;
 using CashLight_App.Services.Banks;
-using CashLight_App.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;

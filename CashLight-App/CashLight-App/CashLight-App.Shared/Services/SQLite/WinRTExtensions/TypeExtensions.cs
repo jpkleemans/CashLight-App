@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace CashLight_App.Services.WinRTExtensions
+namespace WinRTExtensions
 {
         public static class ExtensionMethods
         {

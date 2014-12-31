@@ -1,15 +1,11 @@
-﻿using CashLight_App.Services.Interfaces;
-using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
 using Windows.Storage;
 using CashLight_App.Tables;
 
-namespace CashLight_App.Services
+namespace CashLight_App.Services.SQLite
 {
-    public class Database : IDatabase, IDisposable
+    public class SQLiteService : ISQLiteService, IDisposable
     {
         SQLiteConnection _context;
         public SQLiteConnection Context
@@ -24,7 +20,7 @@ namespace CashLight_App.Services
             }
         }
 
-        public Database(string name)
+        public SQLiteService(string name)
         {
             string applicationFolderPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
 
