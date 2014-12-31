@@ -1,5 +1,4 @@
-﻿using CashLight_App.Common;
-using CashLight_App.ViewModels;
+﻿using CashLight_App.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
