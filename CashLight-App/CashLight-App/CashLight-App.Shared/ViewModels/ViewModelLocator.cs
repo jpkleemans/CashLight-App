@@ -1,4 +1,8 @@
-﻿using Microsoft.Practices.ServiceLocation;
+﻿using Autofac;
+using Autofac.Extras.CommonServiceLocator;
+using CashLight_App.Config;
+using GalaSoft.MvvmLight;
+using Microsoft.Practices.ServiceLocation;
 
 namespace CashLight_App.ViewModels
 {
@@ -19,8 +23,8 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public MenuViewModel Menu 
-        { 
+        public MenuViewModel Menu
+        {
             get
             {
                 return ServiceLocator.Current.GetInstance<MenuViewModel>();
@@ -39,6 +43,16 @@ namespace CashLight_App.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<HeaderViewModel>();
+            }
+        }
+
+        public ViewModelLocator()
+        {
+            if (ViewModelBase.IsInDesignModeStatic)
+            {
+                ContainerBuilder container = new ContainerBuilder();
+                container.RegisterModule(new DesigntimeModule());
+                ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container.Build()));
             }
         }
     }

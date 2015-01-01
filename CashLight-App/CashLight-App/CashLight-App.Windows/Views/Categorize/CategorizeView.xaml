@@ -7,7 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Categorize, Source={StaticResource Locator}}">
+    DataContext="{Binding Categorize, Source={StaticResource Locator}}"
+    xmlns:part="using:CashLight_App.Views.Partials">
 
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
@@ -42,21 +43,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Back button and page title -->
-        <Grid DataContext="{Binding Header, Source={StaticResource Locator}}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="41,41,0,0" Command="{Binding BackButtonCommand}"
-                        Style="{StaticResource NavigationBackButtonNormalStyle}"
-                        VerticalAlignment="Top"
-                        AutomationProperties.Name="Back"
-                        AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="Categoriseren" Text="Categoriseren" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,59"/>
-        </Grid>
+        <part:Header Title="Categoriseren" />
+
         <Button Content="Vast" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Background="#FF48D86D" Width="88" Command="{Binding ButtonCommand}" CommandParameter="1"/>
         <Button Content="Variabel" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="1" VerticalAlignment="Center" Background="OrangeRed" Command="{Binding ButtonCommand}" CommandParameter="2"/>
         <Button Content="Overig" HorizontalAlignment="Center" Margin="0,200,0,0" Grid.Row="1" VerticalAlignment="Center" Background="DarkBlue" Width="88" Command="{Binding ButtonCommand}" CommandParameter="3"/>

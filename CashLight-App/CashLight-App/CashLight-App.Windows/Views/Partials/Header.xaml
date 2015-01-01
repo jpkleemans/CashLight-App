@@ -14,14 +14,16 @@
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}"
+        <Button x:Name="backButton" 
+                        DataContext="{Binding Header, Source={StaticResource Locator}}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
                         Margin="0,0,39,0" 
                         VerticalAlignment="Top"
-                        Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Command="{Binding BackButtonCommand}"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-        <TextBlock x:Name="pageTitle" x:Uid="Header" Text="CashLight" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
+        <TextBlock x:Name="pageTitle" x:Uid="Header" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
                         VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
     </Grid>
 </UserControl>

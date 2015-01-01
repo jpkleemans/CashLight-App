@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Config\DesigntimeModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\BankConverterService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\Banks\IBank.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\Banks\ING.cs" />
