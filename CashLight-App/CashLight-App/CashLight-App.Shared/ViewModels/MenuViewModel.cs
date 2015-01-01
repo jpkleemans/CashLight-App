@@ -10,15 +10,13 @@ namespace CashLight_App.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
-
         private INavigationService _navigationservice;
 
         public MenuViewModel(INavigationService Navigation)
         {
             _navigationservice = Navigation;
-            
         }
-        
+
         public void ExitApplication()
         {
             Application.Current.Exit();
@@ -29,7 +27,7 @@ namespace CashLight_App.ViewModels
             _navigationservice.NavigateTo("Categorize");
         }
 
-        public void GoToDashboard()
+        public void NavigateToDashboard()
         {
             _navigationservice.NavigateTo("Dashboard");
         }
