@@ -42,7 +42,7 @@ namespace CashLight_App.Views.Categorize
 
         private void GoToDashboard(object sender, RoutedEventArgs e)
         {
-            _viewModel.GoToDashboard();
+            _viewModel.NavigateToDashboard();
         }
     }
 }
