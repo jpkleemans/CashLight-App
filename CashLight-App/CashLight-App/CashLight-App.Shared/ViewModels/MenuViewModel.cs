@@ -12,9 +12,17 @@ namespace CashLight_App.ViewModels
     {
         private INavigationService _navigationservice;
 
+        public RelayCommand GoToCategorizeCommand { get; set; }
+        public RelayCommand GoToDashboardCommand { get; set; }
+        public RelayCommand ExitApplicationCommand { get; set; }
+
         public MenuViewModel(INavigationService Navigation)
         {
             _navigationservice = Navigation;
+
+            GoToCategorizeCommand = new RelayCommand(NavigateToCategorize);
+            GoToDashboardCommand = new RelayCommand(NavigateToDashboard);
+            ExitApplicationCommand = new RelayCommand(ExitApplication);
         }
 
         public void ExitApplication()

@@ -24,22 +24,9 @@ namespace CashLight_App.Views.Dashboard
     /// </summary>
     public sealed partial class DashboardView : Page
     {
-        private MenuViewModel _menuViewModel;
-
         public DashboardView()
         {
             this.InitializeComponent();
-            _menuViewModel = (MenuViewModel)Menu.DataContext;
-        }
-
-        private void GoToCategorize_Click(object sender, RoutedEventArgs e)
-        {
-            _menuViewModel.NavigateToCategorize();
-        }
-
-        private void ExitApplication_Click(object sender, RoutedEventArgs e)
-        {
-            _menuViewModel.ExitApplication();
         }
     }
 }

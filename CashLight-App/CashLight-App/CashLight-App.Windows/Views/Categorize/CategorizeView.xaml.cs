@@ -23,26 +23,9 @@ namespace CashLight_App.Views.Categorize
     /// </summary>
     public sealed partial class CategorizeView : Page
     {
-        private MenuViewModel _viewModel;
-        
         public CategorizeView()
         {
             this.InitializeComponent();
-            _viewModel = (MenuViewModel)Menu.DataContext;
-        }
-        private void Exit_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.ExitApplication();
-        }
-
-        private void Categorize_Menu(object sender, RoutedEventArgs e)
-        {
-            _viewModel.NavigateToCategorize();
-        }
-
-        private void GoToDashboard(object sender, RoutedEventArgs e)
-        {
-            _viewModel.NavigateToDashboard();
         }
     }
 }

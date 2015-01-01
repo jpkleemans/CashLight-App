@@ -16,14 +16,15 @@
     </Page.Resources>
 
     <Page.TopAppBar>
-        <CommandBar BorderBrush="Transparent" Height="100" AllowDrop="True" x:Name="Menu"  DataContext="{Binding Menu, Source={StaticResource Locator}}">
+        <CommandBar BorderBrush="Transparent" Height="100" x:Name="Menu">
             <CommandBar.Background>
                 <SolidColorBrush Color="Black" Opacity="0.25"/>
             </CommandBar.Background>
-            <AppBarButton Icon="Home" Label="Dashboard" Click="GoToDashboard" />
-            <AppBarButton Icon="Library" Label="Categoriseren" Click="Categorize_Menu" />
+
+            <AppBarButton Icon="Home" Label="Dashboard" Command="{Binding Menu.GoToDashboardCommand, Source={StaticResource Locator}}" />
+            <AppBarButton Icon="Library" Label="Categoriseren" />
             <AppBarSeparator Foreground="White"></AppBarSeparator>
-            <AppBarButton Icon="Cancel" Label="Afsluiten" Click="Exit_Button_Click" />
+            <AppBarButton Icon="Cancel" Label="Afsluiten" Command="{Binding Menu.ExitApplicationCommand, Source={StaticResource Locator}}" />
         </CommandBar>
     </Page.TopAppBar>
 
