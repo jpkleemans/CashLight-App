@@ -2,27 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CashLight_App.Services.CSV.Banks
+namespace CashLight_App.Services.BankConverter.Banks
 {
     public class ING : IBank
     {
-        public Dictionary<string, string> types
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         int rowTime = 0;
 
         string[] RQ = new string[9];
 
-        public Dictionary<string, string> CsvToDictionary(Dictionary<string, string> row)
+        public Dictionary<string, string> RowToDictionary(List<string> row)
         {
             // Define a new Dictionary to store the database values
             Dictionary<string, string> database = new Dictionary<string, string>();
@@ -38,7 +26,7 @@ namespace CashLight_App.Services.CSV.Banks
                 for (int i = 0; i < row.Count; i++)
                 {
 
-                    RQ[i] = RemoveQuotations(row["field" + i]);
+                    RQ[i] = RemoveQuotations(row[i]);
                 }
 
                 // Convert date in database to integer
@@ -80,5 +68,6 @@ namespace CashLight_App.Services.CSV.Banks
             string replaced = s.Replace("\"", "");
             return replaced;
         }
+
     }
 }

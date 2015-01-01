@@ -1,5 +1,4 @@
 ﻿using CashLight_App.Models;
-using CashLight_App.Services.CSV.Banks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +10,6 @@ namespace CashLight_App.Repositories.Interfaces
     {
         //Upload GetByFile(StorageFile file);
 
-        void ToDatabase(IBank bank, StorageFile storageFile);
+        void ToDatabase(StorageFile storageFile);
     }
 }

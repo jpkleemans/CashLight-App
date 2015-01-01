@@ -15,10 +15,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\Banks\IBank.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\Banks\ING.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\CSVService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\CSV\ICSVService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\BankConverterService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\Banks\IBank.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\Banks\ING.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\IBankConverterService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CSVReader\CSVReaderService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CSVReader\ICSVReaderService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite\ISQLiteService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SQLite\SQLiteNetExtensions\Attributes\ForeignKeyAttribute.cs" />

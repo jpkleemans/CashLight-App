@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Windows.Storage;
-using CashLight_App.Services.CSV.Banks;
 
 namespace CashLight_App.ViewModels
 {
@@ -33,9 +32,7 @@ namespace CashLight_App.ViewModels
 
         public void UploadCSV(StorageFile file)
         {
-            IBank bank = new ING();
-
-            _uploadRepository.ToDatabase(bank, file);
+            _uploadRepository.ToDatabase(file);
         }
     }
 }

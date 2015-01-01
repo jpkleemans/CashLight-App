@@ -1,31 +1,29 @@
-﻿using CashLight_App.Services.CSV.Banks;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Windows.Storage;
 
-namespace CashLight_App.Services.CSV
+namespace CashLight_App.Services.CSVReader
 {
-    public class CSVService : ICSVService
+    public class CSVReaderService : ICSVReaderService
     {
         private StreamReader _reader;
 
-        public List<Dictionary<string, string>> ReadToList(Stream stream, IBank bank)
+        public List<List<string>> ReadToList(Stream stream)
         {
             this._reader = new StreamReader(stream);
 
-            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
+            List<List<string>> list = new List<List<string>>();
 
             while (!_reader.EndOfStream)
             {
-                Dictionary<string, string> row = ReadRow();
-                Dictionary<string, string> dict = bank.CsvToDictionary(row);
+                List<string> row = ReadRow();
 
                 // add to full list
-                if (dict.Count > 0)
+                if (row.Count > 0)
                 {
-                    list.Add(dict);
+                    list.Add(row);
                 }
             }
 
@@ -37,18 +35,16 @@ namespace CashLight_App.Services.CSV
         /// </summary>
         /// <param name="row"></param>
         /// <returns></returns>
-        private Dictionary<string, string> ReadRow()
+        private List<string> ReadRow()
         {
             string line = _reader.ReadLine();
             string[] values = line.Trim('"').Split(new String[] { "\",\"" }, StringSplitOptions.None);
 
-            Dictionary<string, string> lineList = new Dictionary<string, string>();
+            List<string> lineList = new List<string>();
 
-            int i = 0;
             foreach (string value in values)
             {
-                lineList.Add("field" + i, value);
-                i++;
+                lineList.Add(value);
             }
 
             return lineList;

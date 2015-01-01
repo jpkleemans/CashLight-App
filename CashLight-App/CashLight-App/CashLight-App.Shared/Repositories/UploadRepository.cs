@@ -1,7 +1,7 @@
 ﻿using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Enums;
 using CashLight_App.Models;
-using CashLight_App.Services.CSV;
+using CashLight_App.Services.CSVReader;
 using CashLight_App.Tables;
 using System;
 using System.Collections.Generic;
@@ -9,30 +9,34 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using Windows.Storage;
-using CashLight_App.Services.CSV.Banks;
+using CashLight_App.Services.BankConverter;
 
 namespace CashLight_App.Repositories
 {
     class UploadRepository : IUploadRepository
     {
         private ITransactionRepository _transactionRepository;
-        private ICSVService _CSVService;
+        private ICSVReaderService _CSVReader;
+        private IBankConverterService _bankConverter;
 
-        public UploadRepository(ITransactionRepository transactionRepository, ICSVService CSVService)
+        public UploadRepository(ITransactionRepository transactionRepository,
+                                ICSVReaderService CSVReader,
+                                IBankConverterService bankConverter)
         {
             _transactionRepository = transactionRepository;
-            _CSVService = CSVService;
+            _CSVReader = CSVReader;
+            _bankConverter = bankConverter;
         }
 
-        public async void ToDatabase(IBank bank, StorageFile storageFile)
+        public async void ToDatabase(StorageFile storageFile)
         {
             Stream stream = await storageFile.OpenStreamForReadAsync();
 
-            List<Dictionary<string, string>> list;
+            List<List<string>> csvList = _CSVReader.ReadToList(stream);
 
-            list = _CSVService.ReadToList(stream, bank);
+            List<Dictionary<string, string>> bankList = _bankConverter.Convert(csvList);
 
-            foreach (Dictionary<string, string> dic in list)
+            foreach (Dictionary<string, string> dic in bankList)
             {
                 int inOut;
                 if (dic["Af / Bij"] == "Bij")

@@ -6,7 +6,8 @@ using CashLight_App.Models;
 using CashLight_App.ViewModels;
 using GalaSoft.MvvmLight.Views;
 using CashLight_App.Services.SQLite;
-using CashLight_App.Services.CSV;
+using CashLight_App.Services.CSVReader;
+using CashLight_App.Services.BankConverter;
 
 namespace CashLight_App.Config
 {
@@ -23,8 +24,13 @@ namespace CashLight_App.Config
                .WithParameter("name", "CashLight.db")
                .SingleInstance();
 
-            builder.RegisterType<CSVService>()
-               .As<ICSVService>();
+            builder.RegisterType<CSVReaderService>()
+               .As<ICSVReaderService>()
+               .SingleInstance();
+
+            builder.RegisterType<BankConverterService>()
+               .As<IBankConverterService>()
+               .SingleInstance();
 
             // ViewModels
             builder.RegisterType<DashboardViewModel>();
