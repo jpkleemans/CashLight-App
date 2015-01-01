@@ -7,22 +7,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="600">
+    d:DesignWidth="600"
+    Height="120"
+    VerticalAlignment="Top">
 
     <Grid Margin="39">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
         <Button x:Name="backButton" 
-                        DataContext="{Binding Header, Source={StaticResource Locator}}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         Margin="0,0,39,0" 
                         VerticalAlignment="Top"
-                        Command="{Binding BackButtonCommand}"
+                        Command="{Binding Header.BackButtonCommand, Source={StaticResource Locator}}"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
+
         <TextBlock x:Name="pageTitle" x:Uid="Header" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
                         VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
     </Grid>
