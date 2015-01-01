@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Dashboard, Source={StaticResource Locator}}"
-    xmlns:sfc="using:CashLight_App.Converters">
+    xmlns:sfc="using:CashLight_App.Converters"
+    xmlns:part="using:CashLight_App.Views.Partials">
 
     <UserControl.Resources>
         <sfc:StringFormatConverter x:Key="StringFormatConverter" />
@@ -26,7 +27,6 @@
     </Page.TopAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
 
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -149,21 +149,7 @@
 
         <TextBlock Text="{Binding Title}" Height="30" Margin="30" FontSize="30" VerticalAlignment="Top" TextAlignment="Center"/>
 
-        <Grid Margin="39">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button  x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}"
-                        Margin="0,0,39,0" 
-                        VerticalAlignment="Top"
-                        Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
-                        AutomationProperties.Name="Back"
-                        AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" x:Uid="Header" Text="CashLight" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
-                        VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
-        </Grid>
+        <part:Header />
 
         <Button Grid.Row="1" Content="Update Categorie" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Bottom" Command="{Binding RandomCategoriesCommand}"/>
 

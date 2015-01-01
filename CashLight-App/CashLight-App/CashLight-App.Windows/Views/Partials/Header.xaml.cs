@@ -15,11 +15,11 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace CashLight_App.Views.Categorize
+namespace CashLight_App.Views.Partials
 {
-    public sealed partial class TransactionView : UserControl
+    public sealed partial class Header : UserControl
     {
-        public TransactionView()
+        public Header()
         {
             this.InitializeComponent();
         }
