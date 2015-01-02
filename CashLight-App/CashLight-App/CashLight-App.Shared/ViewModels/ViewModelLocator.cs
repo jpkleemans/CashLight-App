@@ -52,12 +52,12 @@ namespace CashLight_App.ViewModels
         /// Only for designtime
         /// Comment this if Visual Studio crashes in xaml
         /// </summary>
-        public ViewModelLocator()
-        {
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-                Bootstrapper.Initialize(Mode.Runtime);
-            }
-        }
+        //public ViewModelLocator()
+        //{
+        //    if (ViewModelBase.IsInDesignModeStatic)
+        //    {
+        //        Bootstrapper.Initialize(Mode.Runtime);
+        //    }
+        //}
     }
 }

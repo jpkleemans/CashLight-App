@@ -30,7 +30,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/Backgrounds/Blue.jpg"/>
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/Backgrounds/Purple.jpg"/>
         </Grid.Background>
         <Grid.ChildrenTransitions>
             <TransitionCollection>
