@@ -10,11 +10,13 @@ namespace CashLight_App.Repositories
 {
     class PeriodRepository : IPeriodRepository
     {
-        private ITransactionRepository _transactionRepository;
+        private ITransactionRepository _transactionRepo;
+        private ISettingRepository _settingRepo;
 
-        public PeriodRepository(ITransactionRepository transactionRepository)
+        public PeriodRepository(ITransactionRepository transactionRepo, ISettingRepository settingRepo)
         {
-            _transactionRepository = transactionRepository;
+            _transactionRepo = transactionRepo;
+            _settingRepo = settingRepo;
         }
 
         public Period GetByDate(DateTime date)
@@ -31,13 +33,13 @@ namespace CashLight_App.Repositories
 
         private void SetTransactions(ref Period period)
         {
-            period.Transactions = _transactionRepository.GetAllBetweenDates(period.StartDate, period.EndDate);
+            period.Transactions = _transactionRepo.GetAllBetweenDates(period.StartDate, period.EndDate);
         }
 
         private void SetImportantTransactions(ref Period period)
         {
-            period.ImportantIncomes = _transactionRepository.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
-            period.ImportantSpendings = _transactionRepository.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
+            period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
+            period.ImportantSpendings = _transactionRepo.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
         }
 
         /// <summary>
@@ -49,8 +51,8 @@ namespace CashLight_App.Repositories
         {
             PeriodDTO i = GetConsistentIncome();
 
-            Transaction firstIncomeBeforeDate = _transactionRepository.GetFirstIncomeBeforeDate(date, i.Account);
-            Transaction firstIncomeAfterDate = _transactionRepository.GetFirstIncomeAfterDate(date, i.Account);
+            Transaction firstIncomeBeforeDate = _transactionRepo.GetFirstIncomeBeforeDate(date, i.Account);
+            Transaction firstIncomeAfterDate = _transactionRepo.GetFirstIncomeAfterDate(date, i.Account);
 
             if (firstIncomeBeforeDate == null)
             {
@@ -97,10 +99,10 @@ namespace CashLight_App.Repositories
 
             //try
             //{
-            //    name = _unitOfWork.Setting.Find(q => q.Key == "Name").OrderByDescending(q => q.Date).FirstOrDefault().Value;
-            //    account = _unitOfWork.Setting.Find(q => q.Key == "Account").OrderByDescending(q => q.Date).FirstOrDefault().Value;
-            //    averagedeviation = Convert.ToDouble(_unitOfWork.Setting.Find(q => q.Key == "AverageDeviation").OrderByDescending(q => q.Date).FirstOrDefault().Value);
-            //    averageperiod = Convert.ToDouble(_unitOfWork.Setting.Find(q => q.Key == "AveragePeriod").OrderByDescending(q => q.Date).FirstOrDefault().Value);
+            //    name = _settingRepo.Find(q => q.Key == "Name").OrderByDescending(q => q.Date).FirstOrDefault().Value;
+            //    account = _settingRepo.Find(q => q.Key == "Account").OrderByDescending(q => q.Date).FirstOrDefault().Value;
+            //    averagedeviation = Convert.ToDouble(_settingRepo.Find(q => q.Key == "AverageDeviation").OrderByDescending(q => q.Date).FirstOrDefault().Value);
+            //    averageperiod = Convert.ToDouble(_settingRepo.Find(q => q.Key == "AveragePeriod").OrderByDescending(q => q.Date).FirstOrDefault().Value);
             //}
             //catch (Exception)
             //{

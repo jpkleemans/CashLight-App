@@ -13,7 +13,7 @@ namespace CashLight_App.ViewModels
 {
     public class DashboardViewModel : ViewModelBase
     {
-        private IPeriodRepository _periodRepository;
+        private IPeriodRepository _periodRepo;
 
         public string Title
         {
@@ -36,7 +36,7 @@ namespace CashLight_App.ViewModels
                 {
                     if (value.EndDate < _selectedPeriod.StartDate)
                     {
-                        Period previous = _periodRepository.GetByDate(value.StartDate.AddDays(-1));
+                        Period previous = _periodRepo.GetByDate(value.StartDate.AddDays(-1));
 
                         previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
                         previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
@@ -53,9 +53,9 @@ namespace CashLight_App.ViewModels
 
         public ObservableCollection<Period> Periods { get; set; }
 
-        public DashboardViewModel(IPeriodRepository periodRepository)
+        public DashboardViewModel(IPeriodRepository periodRepo)
         {
-            _periodRepository = periodRepository;
+            _periodRepo = periodRepo;
 
             InitPeriods();
         }
@@ -64,8 +64,8 @@ namespace CashLight_App.ViewModels
         {
             Periods = new ObservableCollection<Period>();
 
-            Period now = _periodRepository.GetByDate(DateTime.Now);
-            Period previous = _periodRepository.GetByDate(now.StartDate.AddDays(-1));
+            Period now = _periodRepo.GetByDate(DateTime.Now);
+            Period previous = _periodRepo.GetByDate(now.StartDate.AddDays(-1));
 
             now.ImportantIncomes = SetHeight(now.ImportantIncomes);
             now.ImportantSpendings = SetHeight(now.ImportantSpendings);

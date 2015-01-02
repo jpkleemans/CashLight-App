@@ -10,15 +10,15 @@ namespace CashLight_App.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
-        private INavigationService _navigationservice;
+        private INavigationService _navigator;
 
         public RelayCommand GoToCategorizeCommand { get; set; }
         public RelayCommand GoToDashboardCommand { get; set; }
         public RelayCommand ExitApplicationCommand { get; set; }
 
-        public MenuViewModel(INavigationService Navigation)
+        public MenuViewModel(INavigationService navigator)
         {
-            _navigationservice = Navigation;
+            _navigator = navigator;
 
             GoToCategorizeCommand = new RelayCommand(NavigateToCategorize);
             GoToDashboardCommand = new RelayCommand(NavigateToDashboard);
@@ -32,12 +32,12 @@ namespace CashLight_App.ViewModels
 
         public void NavigateToCategorize()
         {
-            _navigationservice.NavigateTo("Categorize");
+            _navigator.NavigateTo("Categorize");
         }
 
         public void NavigateToDashboard()
         {
-            _navigationservice.NavigateTo("Dashboard");
+            _navigator.NavigateTo("Dashboard");
         }
 
     }

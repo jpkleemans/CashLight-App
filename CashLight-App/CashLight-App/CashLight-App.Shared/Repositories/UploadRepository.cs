@@ -15,15 +15,15 @@ namespace CashLight_App.Repositories
 {
     class UploadRepository : IUploadRepository
     {
-        private ITransactionRepository _transactionRepository;
+        private ITransactionRepository _transactionRepo;
         private ICSVReaderService _CSVReader;
         private IBankConverterService _bankConverter;
 
-        public UploadRepository(ITransactionRepository transactionRepository,
+        public UploadRepository(ITransactionRepository transactionRepo,
                                 ICSVReaderService CSVReader,
                                 IBankConverterService bankConverter)
         {
-            _transactionRepository = transactionRepository;
+            _transactionRepo = transactionRepo;
             _CSVReader = CSVReader;
             _bankConverter = bankConverter;
         }
@@ -62,15 +62,15 @@ namespace CashLight_App.Repositories
                     Date = csvDate
                 };
 
-                bool exists = _transactionRepository.Exists(transaction);
+                bool exists = _transactionRepo.Exists(transaction);
 
                 if (!exists)
                 {
-                    _transactionRepository.Add(transaction);
+                    _transactionRepo.Add(transaction);
                 }
 
             }
-            _transactionRepository.Commit();
+            _transactionRepo.Commit();
         }
     }
 }

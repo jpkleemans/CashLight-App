@@ -6,20 +6,20 @@ namespace CashLight_App.ViewModels
 {
     public class HeaderViewModel : ViewModelBase
     {
-        private INavigationService _navigationService;
+        private INavigationService _navigator;
 
         public RelayCommand BackButtonCommand { get; set; }
 
-        public HeaderViewModel(INavigationService Navigation)
+        public HeaderViewModel(INavigationService navigator)
         {
-            _navigationService = Navigation;
+            _navigator = navigator;
 
             BackButtonCommand = new RelayCommand(GoToPreviousView);
         }
 
         public void GoToPreviousView()
         {
-            _navigationService.GoBack();
+            _navigator.GoBack();
         }
     }
 }
