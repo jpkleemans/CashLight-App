@@ -1,4 +1,5 @@
-﻿using CashLight_App.Services.SQLite;
+﻿using CashLight_App.Enums;
+using CashLight_App.Services.SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace CashLight_App.Tables
 
         public string Name { get; set; }
 
+        public int Type { get; set; }
+
         [OneToMany]
         public IEnumerable<TransactionTable> Transactions { get; set; }
 
@@ -22,9 +25,10 @@ namespace CashLight_App.Tables
 
         }
 
-        public CategoryTable(string name)
+        public CategoryTable(string name, CategoryType type)
         {
             this.Name = name;
+            this.Type = (int)type;
         }
     }
 }

@@ -4,25 +4,28 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using CashLight_App.Services.SQLite;
+using CashLight_App.Tables;
+using CashLight_App.Models;
 
 namespace CashLight_App.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        //public CategoryRepository()
-        //{
-        //    Mapper.CreateMap<ICategory, ICategory>();
-        //}
+        private ISQLiteService _db;
 
-        //public IEnumerable<ICategory> FindAll()
-        //{
-        //    TableQuery<Category> table = this._context.Table<Category>();
-        //    return Mapper.Map<IEnumerable<Category>, IEnumerable<Category>>(table);
-        //}
-
-        public IEnumerable<Models.Category> FindAll()
+        public CategoryRepository(ISQLiteService SQLiteService)
         {
-            throw new NotImplementedException();
+            this._db = SQLiteService;
+
+            Mapper.CreateMap<CategoryTable, Category>();
+        }
+
+        public IEnumerable<Category> FindAll()
+        {
+            TableQuery<CategoryTable> table = _db.Context.Table<CategoryTable>();
+
+            return Mapper.Map<IEnumerable<CategoryTable>, IEnumerable<Category>>(table);
         }
     }
 }

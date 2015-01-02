@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Windows.Storage;
 using CashLight_App.Tables;
+using CashLight_App.Enums;
+using System.Collections.Generic;
 
 namespace CashLight_App.Services.SQLite
 {
@@ -62,15 +64,22 @@ namespace CashLight_App.Services.SQLite
             connection.CreateTable<TransactionTable>();
             connection.CreateTable<SettingTable>();
 
-            CategoryTable c = new CategoryTable("Vast");
-            CategoryTable c1 = new CategoryTable("Variabel");
-            CategoryTable c2 = new CategoryTable("Overig");
+            List<CategoryTable> defaultCategories = new List<CategoryTable>()
+            {
+                new CategoryTable("Energie", CategoryType.Fixed),
+                new CategoryTable("Wonen", CategoryType.Fixed),
+                new CategoryTable("Boodschappen", CategoryType.Fixed),
+                new CategoryTable("Kleding", CategoryType.Variable),
+                new CategoryTable("Vrije tijd", CategoryType.Variable)
+            };
 
-            connection.Insert(c);
-            connection.Insert(c1);
-            connection.Insert(c2);
+            foreach (CategoryTable categorie in defaultCategories)
+            {
+                connection.Insert(categorie);
+            }
 
             connection.Commit();
+
             return connection;
         }
 

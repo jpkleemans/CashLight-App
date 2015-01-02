@@ -8,6 +8,7 @@ using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Tables;
 using AutoMapper;
 using CashLight_App.Services.SQLite;
+using CashLight_App.Enums;
 
 namespace CashLight_App.Repositories
 {
@@ -110,6 +111,17 @@ namespace CashLight_App.Repositories
             TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
 
             return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactions);
+        }
+
+
+        public IEnumerable<Transaction> GetAllSpendings()
+        {
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
+
+            IEnumerable<TransactionTable> spendings = transactions
+                .Where(x => x.InOut == (int)InOut.Out);
+
+            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(spendings);
         }
     }
 }

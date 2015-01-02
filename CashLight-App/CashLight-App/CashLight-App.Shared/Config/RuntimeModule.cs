@@ -48,6 +48,10 @@ namespace CashLight_App.Config
                .As<ITransactionRepository>()
                .SingleInstance();
 
+            builder.RegisterType<CategoryRepository>()
+             .As<ICategoryRepository>()
+             .SingleInstance();
+
             builder.RegisterType<UploadRepository>()
               .As<IUploadRepository>()
               .SingleInstance();

@@ -135,6 +135,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Backgrounds\Beige.jpg" />
+    <Content Include="Assets\Backgrounds\Blue.jpg" />
+    <Content Include="Assets\Backgrounds\DarkBlue.jpg" />
+    <Content Include="Assets\Backgrounds\Green.jpg" />
+    <Content Include="Assets\Backgrounds\Grey.jpg" />
+    <Content Include="Assets\Backgrounds\Purple.jpg" />
+    <Content Include="Assets\Backgrounds\Red.jpg" />
+    <Content Include="Assets\Backgrounds\Yellow.jpg" />
     <Content Include="Assets\income-marker.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />

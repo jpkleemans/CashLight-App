@@ -1,7 +1,7 @@
 ﻿
 namespace CashLight_App.Services.SQLite
 {
-    interface ISQLiteService
+    public interface ISQLiteService
     {
         SQLiteConnection Context { get; set; }
     }

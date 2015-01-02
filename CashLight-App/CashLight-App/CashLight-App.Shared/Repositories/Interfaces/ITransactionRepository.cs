@@ -21,5 +21,7 @@ namespace CashLight_App.Repositories.Interfaces
         IEnumerable<Transaction> FindAll();
 
         bool Exists(Transaction transaction);
+
+        IEnumerable<Transaction> GetAllSpendings();
     }
 }

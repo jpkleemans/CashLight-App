@@ -23,9 +23,17 @@ namespace CashLight_App.Views.Categorize
     /// </summary>
     public sealed partial class CategorizeView : Page
     {
+        private CategorizeViewModel _viewModel;
+
         public CategorizeView()
         {
             this.InitializeComponent();
+            _viewModel = (CategorizeViewModel)DataContext;
+        }
+
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.SetCategory(1);
         }
     }
 }

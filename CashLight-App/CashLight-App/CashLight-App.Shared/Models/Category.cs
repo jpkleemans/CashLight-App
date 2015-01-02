@@ -8,6 +8,10 @@ namespace CashLight_App.Models
 {
     public class Category : ObservableObject
     {
+        public int CategoryID { get; set; }
 
+        public string Name { get; set; }
+
+        public int Type { get; set; }
     }
 }

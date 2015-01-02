@@ -11,22 +11,28 @@
     Height="120"
     VerticalAlignment="Top">
 
-    <Grid Margin="39">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="backButton" 
-                        Style="{StaticResource NavigationBackButtonNormalStyle}"
-                        Margin="0,0,39,0" 
-                        VerticalAlignment="Top"
-                        Command="{Binding Header.BackButtonCommand, Source={StaticResource Locator}}"
-                        AutomationProperties.Name="Back"
-                        AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
+        <Button x:Name="backButton"
+                Margin="39"
+                Command="{Binding Header.BackButtonCommand, Source={StaticResource Locator}}"
+                Style="{StaticResource NavigationBackButtonNormalStyle}"
+                VerticalAlignment="Top"
+                AutomationProperties.Name="Back"
+                AutomationProperties.AutomationId="BackButton"
+                AutomationProperties.ItemType="Navigation Button"/>
 
-        <TextBlock x:Name="pageTitle" x:Uid="Header" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1"
-                        VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" />
+        <TextBlock x:Name="pageTitle"
+                   Text="{Binding Title}" 
+                   Style="{StaticResource HeaderTextBlockStyle}" 
+                   Grid.Column="1" 
+                   IsHitTestVisible="false" 
+                   TextWrapping="NoWrap" 
+                   VerticalAlignment="Top" 
+                   Margin="0,39,0,0"/>
     </Grid>
 </UserControl>
