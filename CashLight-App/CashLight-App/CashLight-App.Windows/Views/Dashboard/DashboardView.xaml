@@ -8,7 +8,8 @@
     mc:Ignorable="d"
     DataContext="{Binding Dashboard, Source={StaticResource Locator}}"
     xmlns:sfc="using:CashLight_App.Converters"
-    xmlns:part="using:CashLight_App.Views.Partials">
+    xmlns:part="using:CashLight_App.Views.Partials"
+    x:Name="_this">
 
     <Page.Resources>
         <sfc:StringFormatConverter x:Key="StringFormatConverter" />
@@ -66,25 +67,33 @@
                             </Grid.ColumnDefinitions>
 
                             <local:IncomeMarker Grid.Column="0" 
-                                    Transaction="{Binding ImportantIncomes[0]}"
-                                    Height="{Binding ImportantIncomes[0].Height}" 
-                                    VerticalAlignment="Bottom" 
-                                    HorizontalAlignment="Right" />
+                                                Transaction="{Binding ImportantIncomes[0]}"
+                                                Height="{Binding ImportantIncomes[0].Height}" 
+                                                VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Right" 
+                                                Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                CommandParameter="{Binding ImportantIncomes[0]}" />
                             <local:IncomeMarker Grid.Column="1" 
-                                    Transaction="{Binding ImportantIncomes[1]}"
-                                    Height="{Binding ImportantIncomes[1].Height}" 
-                                    VerticalAlignment="Bottom" 
-                                    HorizontalAlignment="Right" />
+                                                Transaction="{Binding ImportantIncomes[1]}"
+                                                Height="{Binding ImportantIncomes[1].Height}" 
+                                                VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Right" 
+                                                Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                CommandParameter="{Binding ImportantIncomes[1]}" />
                             <local:IncomeMarker Grid.Column="2" 
-                                    Transaction="{Binding ImportantIncomes[2]}" 
-                                    Height="{Binding ImportantIncomes[2].Height}" 
-                                    VerticalAlignment="Bottom" 
-                                    HorizontalAlignment="Right" />
+                                                Transaction="{Binding ImportantIncomes[2]}" 
+                                                Height="{Binding ImportantIncomes[2].Height}" 
+                                                VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Right" 
+                                                Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                CommandParameter="{Binding ImportantIncomes[2]}" />
                             <local:IncomeMarker Grid.Column="3" 
-                                    Transaction="{Binding ImportantIncomes[3]}" 
-                                    Height="{Binding ImportantIncomes[3].Height}" 
-                                    VerticalAlignment="Bottom" 
-                                    HorizontalAlignment="Right" />
+                                                Transaction="{Binding ImportantIncomes[3]}" 
+                                                Height="{Binding ImportantIncomes[3].Height}" 
+                                                VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Right" 
+                                                Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                CommandParameter="{Binding ImportantIncomes[3]}" />
                         </Grid>
 
                         <Grid Grid.Row="0" Margin="50,0,0,0">
@@ -113,25 +122,33 @@
                             </Grid.ColumnDefinitions>
 
                             <local:SpendingMarker Grid.Column="0" 
-                                    Transaction="{Binding ImportantSpendings[0]}"
-                                    Height="{Binding ImportantSpendings[0].Height}" 
-                                    VerticalAlignment="Top" 
-                                    HorizontalAlignment="Right" />
+                                                  Transaction="{Binding ImportantSpendings[0]}"
+                                                  Height="{Binding ImportantSpendings[0].Height}" 
+                                                  VerticalAlignment="Top" 
+                                                  HorizontalAlignment="Right" 
+                                                  Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                  CommandParameter="{Binding ImportantSpendings[0]}" />
                             <local:SpendingMarker Grid.Column="1" 
-                                    Transaction="{Binding ImportantSpendings[1]}"
-                                    Height="{Binding ImportantSpendings[1].Height}" 
-                                    VerticalAlignment="Top" 
-                                    HorizontalAlignment="Right" />
+                                                  Transaction="{Binding ImportantSpendings[1]}"
+                                                  Height="{Binding ImportantSpendings[1].Height}" 
+                                                  VerticalAlignment="Top" 
+                                                  HorizontalAlignment="Right" 
+                                                  Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                  CommandParameter="{Binding ImportantSpendings[1]}" />
                             <local:SpendingMarker Grid.Column="2" 
-                                    Transaction="{Binding ImportantSpendings[2]}"
-                                    Height="{Binding ImportantSpendings[2].Height}" 
-                                    VerticalAlignment="Top" 
-                                    HorizontalAlignment="Right" />
+                                                  Transaction="{Binding ImportantSpendings[2]}"
+                                                  Height="{Binding ImportantSpendings[2].Height}" 
+                                                  VerticalAlignment="Top" 
+                                                  HorizontalAlignment="Right" 
+                                                  Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                  CommandParameter="{Binding ImportantSpendings[2]}" />
                             <local:SpendingMarker Grid.Column="3" 
-                                    Transaction="{Binding ImportantSpendings[3]}"
-                                    Height="{Binding ImportantSpendings[3].Height}" 
-                                    VerticalAlignment="Top" 
-                                    HorizontalAlignment="Right" />
+                                                  Transaction="{Binding ImportantSpendings[3]}"
+                                                  Height="{Binding ImportantSpendings[3].Height}" 
+                                                  VerticalAlignment="Top" 
+                                                  HorizontalAlignment="Right" 
+                                                  Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
+                                                  CommandParameter="{Binding ImportantSpendings[3]}" />
                         </Grid>
 
                         <Grid Grid.Row="1" Margin="50,0,0,0">

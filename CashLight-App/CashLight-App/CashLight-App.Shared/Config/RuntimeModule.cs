@@ -19,6 +19,10 @@ namespace CashLight_App.Config
             builder.RegisterInstance<INavigationService>(Routes.GetRoutes(new NavigationService()))
                 .SingleInstance();
 
+            builder.RegisterType<DialogService>()
+              .As<IDialogService>()
+              .SingleInstance();
+
             builder.RegisterType<SQLiteService>()
                .As<ISQLiteService>()
                .WithParameter("name", "CashLight.db")

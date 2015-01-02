@@ -8,12 +8,14 @@ using System.Linq;
 using Windows.UI.Xaml;
 using CashLight_App.Repositories.Interfaces;
 using System.Diagnostics;
+using GalaSoft.MvvmLight.Views;
 
 namespace CashLight_App.ViewModels
 {
     public class DashboardViewModel : ViewModelBase
     {
         private IPeriodRepository _periodRepo;
+        private IDialogService _dialogService;
 
         public string Title
         {
@@ -53,9 +55,14 @@ namespace CashLight_App.ViewModels
 
         public ObservableCollection<Period> Periods { get; set; }
 
-        public DashboardViewModel(IPeriodRepository periodRepo)
+        public RelayCommand<Transaction> ShowTransactionDetailsCommand { get; set; }
+
+        public DashboardViewModel(IPeriodRepository periodRepo, IDialogService dialogService)
         {
             _periodRepo = periodRepo;
+            _dialogService = dialogService;
+
+            ShowTransactionDetailsCommand = new RelayCommand<Transaction>((transaction) => ShowTransactionDetails(transaction));
 
             InitPeriods();
         }
@@ -101,6 +108,11 @@ namespace CashLight_App.ViewModels
             }
 
             return transactions;
+        }
+
+        private void ShowTransactionDetails(Transaction transaction)
+        {
+            _dialogService.ShowMessage(transaction.Description, "Details van transactie");
         }
     }
 }
