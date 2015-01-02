@@ -4,7 +4,11 @@ using System.Text;
 
 namespace CashLight_App.Models
 {
-    class Setting
+    public class Setting
     {
+        public int SettingID { get; set; }
+        public string Key { get; set; }
+        public string Value { get; set; }
+        public DateTime Date { get; set; }
     }
 }

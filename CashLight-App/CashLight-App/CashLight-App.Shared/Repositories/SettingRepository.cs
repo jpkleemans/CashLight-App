@@ -19,5 +19,17 @@ namespace CashLight_App.Repositories
 
             Mapper.CreateMap<SettingTable, Setting>();
         }
+
+        public Setting FindByKey(string key)
+        {
+            TableQuery<SettingTable> settings = _db.Context.Table<SettingTable>();
+
+            SettingTable setting = settings
+                .Where(x => x.Key == key)
+                .OrderByDescending(q => q.Date)
+                .FirstOrDefault();
+
+            return Mapper.Map<SettingTable, Setting>(setting);
+        }
     }
 }

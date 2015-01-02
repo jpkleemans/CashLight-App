@@ -13,5 +13,7 @@ namespace CashLight_App.Models
         public string Name { get; set; }
 
         public int Type { get; set; }
+
+        public double Percentage { get; set; }
     }
 }

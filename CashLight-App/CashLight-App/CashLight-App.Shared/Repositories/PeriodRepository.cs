@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using CashLight_App.Enums;
 
 namespace CashLight_App.Repositories
 {
@@ -12,11 +13,15 @@ namespace CashLight_App.Repositories
     {
         private ITransactionRepository _transactionRepo;
         private ISettingRepository _settingRepo;
+        private ICategoryRepository _categoryRepo;
 
-        public PeriodRepository(ITransactionRepository transactionRepo, ISettingRepository settingRepo)
+        public PeriodRepository(ITransactionRepository transactionRepo,
+                                ISettingRepository settingRepo,
+                                ICategoryRepository categoryRepo)
         {
             _transactionRepo = transactionRepo;
             _settingRepo = settingRepo;
+            _categoryRepo = categoryRepo;
         }
 
         public Period GetByDate(DateTime date)
@@ -26,20 +31,9 @@ namespace CashLight_App.Repositories
             this.SetDates(ref period, date);
             this.SetTransactions(ref period);
             this.SetImportantTransactions(ref period);
-            //this.SetCategories();
+            this.SetCategories(ref period);
 
             return period;
-        }
-
-        private void SetTransactions(ref Period period)
-        {
-            period.Transactions = _transactionRepo.GetAllBetweenDates(period.StartDate, period.EndDate);
-        }
-
-        private void SetImportantTransactions(ref Period period)
-        {
-            period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
-            period.ImportantSpendings = _transactionRepo.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
         }
 
         /// <summary>
@@ -90,6 +84,43 @@ namespace CashLight_App.Repositories
             }
         }
 
+        private void SetTransactions(ref Period period)
+        {
+            period.Transactions = _transactionRepo.GetAllBetweenDates(period.StartDate, period.EndDate);
+        }
+
+        private void SetImportantTransactions(ref Period period)
+        {
+            period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
+            period.ImportantSpendings = _transactionRepo.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
+        }
+
+        private void SetCategories(ref Period period)
+        {
+            IEnumerable<Category> categories = _categoryRepo.FindAll();
+
+            foreach (Category category in categories)
+            {
+                double totaltransactions = period.Transactions
+                    .Where(q => q.CategoryID == category.CategoryID)
+                    .Where(q => q.InOut == (int)InOut.Out)
+                    .Count();
+
+                double amountoftransactions = period.Transactions.Count();
+
+                if (totaltransactions == 0 || amountoftransactions == 0)
+                {
+                    category.Percentage = 0;
+                }
+                else
+                {
+                    category.Percentage = Convert.ToInt16((amountoftransactions / totaltransactions) * 100);
+                }
+            }
+
+            period.Categories = categories;
+        }
+
         private PeriodDTO GetConsistentIncome()
         {
             var name = "NA";
@@ -97,17 +128,17 @@ namespace CashLight_App.Repositories
             double averagedeviation = default(double);
             double averageperiod = 31;
 
-            //try
-            //{
-            //    name = _settingRepo.Find(q => q.Key == "Name").OrderByDescending(q => q.Date).FirstOrDefault().Value;
-            //    account = _settingRepo.Find(q => q.Key == "Account").OrderByDescending(q => q.Date).FirstOrDefault().Value;
-            //    averagedeviation = Convert.ToDouble(_settingRepo.Find(q => q.Key == "AverageDeviation").OrderByDescending(q => q.Date).FirstOrDefault().Value);
-            //    averageperiod = Convert.ToDouble(_settingRepo.Find(q => q.Key == "AveragePeriod").OrderByDescending(q => q.Date).FirstOrDefault().Value);
-            //}
-            //catch (Exception)
-            //{
+            try
+            {
+                name = _settingRepo.FindByKey("Income.CreditorName").Value;
+                account = _settingRepo.FindByKey("Income.CreditorNumber").Value;
+                averagedeviation = Convert.ToDouble(_settingRepo.FindByKey("Income.AverageDeviation").Value);
+                averageperiod = Convert.ToDouble(_settingRepo.FindByKey("Income.AveragePeriod").Value);
+            }
+            catch (Exception)
+            {
 
-            //}
+            }
 
             return new PeriodDTO(name, account, averagedeviation, averageperiod);
         }
