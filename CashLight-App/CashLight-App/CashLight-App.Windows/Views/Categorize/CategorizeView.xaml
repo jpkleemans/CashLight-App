@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Categorize, Source={StaticResource Locator}}"
     xmlns:part="using:CashLight_App.Views.Partials"
-    xmlns:sfc="using:CashLight_App.Converters">
+    xmlns:sfc="using:CashLight_App.Converters"
+    DataContext="{Binding Categorize, Source={StaticResource Locator}}"
+    x:Name="_this">
 
     <Page.Resources>
         <sfc:StringFormatConverter x:Key="StringFormatConverter" />
@@ -92,8 +93,8 @@
                         <DataTemplate>
                             <Button Content="{Binding Name}"
                                 Width="400" 
-                                Click="CategoryButton_Click"
-                                CommandParameter="1"/>
+                                Command="{Binding DataContext.SetCategoryCommand, ElementName=_this}"
+                                CommandParameter="{Binding CategoryID}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

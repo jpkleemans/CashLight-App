@@ -23,6 +23,8 @@ namespace CashLight_App.ViewModels
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Transaction> Transactions { get; set; }
 
+        public RelayCommand<int> SetCategoryCommand { get; set; }
+
         private Transaction _currentTransaction;
         public Transaction CurrentTransaction
         {
@@ -42,13 +44,15 @@ namespace CashLight_App.ViewModels
             _categoryRepo = categoryRepo;
             _transactionRepo = transactionRepo;
 
+            SetCategoryCommand = new RelayCommand<int>((categoryID) => SetCategory(categoryID));
+
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings());
 
             CurrentTransaction = Transactions.First();
         }
 
-        public void SetCategory(int categoryID)
+        private void SetCategory(int categoryID)
         {
             Transactions.Remove(CurrentTransaction);
 

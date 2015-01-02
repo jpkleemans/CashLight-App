@@ -50,14 +50,14 @@ namespace CashLight_App.ViewModels
         /// <summary>
         /// Only for designtime
         /// </summary>
-        public ViewModelLocator()
-        {
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-                ContainerBuilder container = new ContainerBuilder();
-                container.RegisterModule(new RuntimeModule());
-                ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container.Build()));
-            }
-        }
+        //public ViewModelLocator()
+        //{
+        //    if (ViewModelBase.IsInDesignModeStatic)
+        //    {
+        //        ContainerBuilder container = new ContainerBuilder();
+        //        container.RegisterModule(new RuntimeModule());
+        //        ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container.Build()));
+        //    }
+        //}
     }
 }
