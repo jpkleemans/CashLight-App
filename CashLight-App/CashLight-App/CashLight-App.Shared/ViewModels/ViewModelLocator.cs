@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using CashLight_App.Config;
+using CashLight_App.Enums;
 using GalaSoft.MvvmLight;
 using Microsoft.Practices.ServiceLocation;
 
@@ -49,15 +50,14 @@ namespace CashLight_App.ViewModels
 
         /// <summary>
         /// Only for designtime
+        /// Comment this if Visual Studio crashes in xaml
         /// </summary>
-        //public ViewModelLocator()
-        //{
-        //    if (ViewModelBase.IsInDesignModeStatic)
-        //    {
-        //        ContainerBuilder container = new ContainerBuilder();
-        //        container.RegisterModule(new RuntimeModule());
-        //        ServiceLocator.SetLocatorProvider(() => new AutofacServiceLocator(container.Build()));
-        //    }
-        //}
+        public ViewModelLocator()
+        {
+            if (ViewModelBase.IsInDesignModeStatic)
+            {
+                Bootstrapper.Initialize(Mode.Runtime);
+            }
+        }
     }
 }
