@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CashLight_App.Models;
+using CashLight_App.Repositories.Interfaces;
 using CashLight_App.Services.SQLite;
 using CashLight_App.Tables;
 using System;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace CashLight_App.Repositories
 {
-    class SettingRepository
+    class SettingRepository : ISettingRepository
     {
         private ISQLiteService _db;
 
