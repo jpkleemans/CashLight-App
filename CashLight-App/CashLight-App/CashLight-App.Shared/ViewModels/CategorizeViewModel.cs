@@ -49,7 +49,15 @@ namespace CashLight_App.ViewModels
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings());
 
-            CurrentTransaction = Transactions.First();
+            //If no transactions present, then show nothing. Instead of crashing.
+            if (Transactions.Count != 0)
+            {
+                CurrentTransaction = Transactions.First();
+            }
+            else
+            {
+                Debug.WriteLine("No transactions! Panic!")
+            }
         }
 
         private void SetCategory(int categoryID)
