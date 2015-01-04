@@ -56,7 +56,7 @@ namespace CashLight_App.ViewModels
             }
             else
             {
-                Debug.WriteLine("No transactions! Panic!")
+                Debug.WriteLine("No transactions! Panic!");
             }
         }
 
