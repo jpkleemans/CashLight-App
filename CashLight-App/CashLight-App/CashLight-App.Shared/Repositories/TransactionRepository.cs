@@ -23,6 +23,14 @@ namespace CashLight_App.Repositories
             Mapper.CreateMap<TransactionTable, Transaction>();
         }
 
+        public void Edit(Transaction transaction)
+        {
+            Mapper.CreateMap<Transaction, TransactionTable>();
+            TransactionTable transactionTable = Mapper.Map<Transaction, TransactionTable>(transaction);
+
+            _db.Context.Table<TransactionTable>().Connection.Update(transactionTable);
+        }
+
         public void Add(Transaction transaction)
         {
             Mapper.CreateMap<Transaction, TransactionTable>();

@@ -54,6 +54,9 @@ namespace CashLight_App.ViewModels
 
         private void SetCategory(int categoryID)
         {
+            CurrentTransaction.CategoryID = categoryID;
+            _transactionRepo.Edit(CurrentTransaction);
+            _transactionRepo.Commit();
             Transactions.Remove(CurrentTransaction);
 
             CurrentTransaction = Transactions.First();
