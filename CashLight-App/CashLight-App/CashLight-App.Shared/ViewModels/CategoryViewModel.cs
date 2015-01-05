@@ -47,7 +47,7 @@ namespace CashLight_App.ViewModels
                 if ((_currentType == "Other"))
                 {
                     BudgetEnabled = "Collapsed";
-                    Budget = null;
+                    Budget = 0;
                 }
                 else
                 {
@@ -89,10 +89,10 @@ namespace CashLight_App.ViewModels
         }
 
 
-        private double? _budget;
+        private double _budget;
         private INavigationService _navigator;
 
-        public double? Budget
+        public double Budget
         {
             get
             {
@@ -128,7 +128,7 @@ namespace CashLight_App.ViewModels
 
             category.Name = this.Text;
             category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
-            category.Budget = (double)this.Budget;
+            category.Budget = this.Budget;
 
             _categoryRepo.Add(category);
 
