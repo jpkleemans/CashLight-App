@@ -19,14 +19,14 @@ namespace CashLight_App.ViewModels
     {
         private ICategoryRepository _categoryRepo;
         private ITransactionRepository _transactionRepo;
+        private INavigationService _navigator;
+        private IDialogService _dialogService;
 
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Transaction> Transactions { get; set; }
 
         public RelayCommand<int> SetCategoryCommand { get; set; }
-        public RelayCommand AddCategoryCommand {get; set;}
-
-        private  INavigationService _navigator;
+        public RelayCommand AddCategoryCommand { get; set; }
 
         private Transaction _currentTransaction;
         public Transaction CurrentTransaction
@@ -41,6 +41,7 @@ namespace CashLight_App.ViewModels
                 RaisePropertyChanged(() => CurrentTransaction);
             }
         }
+
         private string _remaining;
         public string Remaining
         {
@@ -55,30 +56,37 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public CategorizeViewModel(INavigationService navigator, ICategoryRepository categoryRepo, ITransactionRepository transactionRepo)
+        public CategorizeViewModel(INavigationService navigator,
+                                   ICategoryRepository categoryRepo,
+                                   ITransactionRepository transactionRepo,
+                                   IDialogService dialogService)
         {
             _categoryRepo = categoryRepo;
             _transactionRepo = transactionRepo;
-
             _navigator = navigator;
+            _dialogService = dialogService;
 
             SetCategoryCommand = new RelayCommand<int>((categoryID) => SetCategory(categoryID));
-
             AddCategoryCommand = new RelayCommand(AddCategory);
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings());
 
-            //If no transactions present, then show nothing. Instead of crashing.
+            Remaining = Transactions.Count.ToString();
+
+            SetCurrentTransaction();
+        }
+
+        private void SetCurrentTransaction()
+        {
             if (Transactions.Count != 0)
             {
                 CurrentTransaction = Transactions.First();
             }
             else
             {
-                Debug.WriteLine("No transactions! Panic!");
+                _dialogService.ShowMessage("Er zijn geen ongecategoriseerde transacties meer gevonden.", "Melding", "Terug naar dashboard", () => _navigator.NavigateTo("Dashboard"));
             }
-            Remaining = Transactions.Count.ToString();
         }
 
         private void AddCategory()
@@ -91,10 +99,13 @@ namespace CashLight_App.ViewModels
             CurrentTransaction.CategoryID = categoryID;
             _transactionRepo.Edit(CurrentTransaction);
             _transactionRepo.Commit();
+
             Transactions.Remove(CurrentTransaction);
             removeEqualTransactions(CurrentTransaction);
+
             Remaining = Transactions.Count.ToString();
-            CurrentTransaction = Transactions.First();
+
+            SetCurrentTransaction();
         }
 
         public void removeEqualTransactions(Transaction CurrentTransaction)
@@ -102,7 +113,8 @@ namespace CashLight_App.ViewModels
             List<Transaction> list = Transactions.ToList();
             foreach (Transaction transaction in list)
             {
-                if (transaction.CreditorName == CurrentTransaction.CreditorName && transaction.CreditorNumber == CurrentTransaction.CreditorNumber)
+                if (transaction.CreditorName == CurrentTransaction.CreditorName
+                    && transaction.CreditorNumber == CurrentTransaction.CreditorNumber)
                 {
                     transaction.CategoryID = CurrentTransaction.CategoryID;
                     _transactionRepo.Edit(transaction);

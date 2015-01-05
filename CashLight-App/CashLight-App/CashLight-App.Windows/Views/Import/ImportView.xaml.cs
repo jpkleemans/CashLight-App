@@ -28,6 +28,7 @@ namespace CashLight_App.Views.Import
     public sealed partial class ImportView : Page
     {
         private ImportViewModel _dataContext;
+        public StorageFile file { get; set; }
 
         public ImportView()
         {
@@ -37,7 +38,12 @@ namespace CashLight_App.Views.Import
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _dataContext.UploadCSV((StorageFile)e.Parameter);
+            file = (StorageFile)e.Parameter;
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            _dataContext.UploadCSV(file);
         }
     }
 }

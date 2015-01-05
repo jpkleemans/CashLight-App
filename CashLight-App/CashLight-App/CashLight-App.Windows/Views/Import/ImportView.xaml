@@ -6,11 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Import, Source={StaticResource Locator}}">
+    DataContext="{Binding Import, Source={StaticResource Locator}}"
+    >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Content="Ga naar dashboard" HorizontalAlignment="Left" Margin="1199,-3,0,0" VerticalAlignment="Top" Command="{Binding GoToDashboardCommand}"/>
-        <ProgressRing HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Height="111" Width="111" IsActive="True"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,150,0,0" TextWrapping="Wrap" Text="Importeren..." VerticalAlignment="Center" FontSize="18"/>
+        <ProgressRing HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Height="111" Width="111" IsActive="True" />
+        <TextBox HorizontalAlignment="Center" Margin="0,150,0,0" TextWrapping="Wrap" Text="Importeren..." VerticalAlignment="Center" FontSize="18" BorderThickness="0" Background="Transparent" BorderBrush="White" Foreground="White" GotFocus="TextBox_GotFocus"/>
     </Grid>
 </Page>
