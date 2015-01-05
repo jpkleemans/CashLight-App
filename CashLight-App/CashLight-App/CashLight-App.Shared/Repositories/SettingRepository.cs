@@ -31,5 +31,18 @@ namespace CashLight_App.Repositories
 
             return Mapper.Map<SettingTable, Setting>(setting);
         }
+
+        public void Add(Setting setting)
+        {
+            Mapper.CreateMap<Setting, SettingTable>();
+            SettingTable settingTable = Mapper.Map<Setting, SettingTable>(setting);
+
+            _db.Context.Table<SettingTable>().Connection.Insert(settingTable);
+        }
+
+        public void Commit()
+        {
+            _db.Context.Commit();
+        }
     }
 }

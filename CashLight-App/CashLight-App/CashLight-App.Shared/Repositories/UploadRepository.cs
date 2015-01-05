@@ -18,14 +18,17 @@ namespace CashLight_App.Repositories
         private ITransactionRepository _transactionRepo;
         private ICSVReaderService _CSVReader;
         private IBankConverterService _bankConverter;
+        private IPeriodRepository _periodRepo;
 
         public UploadRepository(ITransactionRepository transactionRepo,
                                 ICSVReaderService CSVReader,
-                                IBankConverterService bankConverter)
+                                IBankConverterService bankConverter,
+                                IPeriodRepository periodRepo)
         {
             _transactionRepo = transactionRepo;
             _CSVReader = CSVReader;
             _bankConverter = bankConverter;
+            _periodRepo = periodRepo;
         }
 
         public async void ToDatabase(StorageFile storageFile)
@@ -71,6 +74,8 @@ namespace CashLight_App.Repositories
 
             }
             _transactionRepo.Commit();
+
+            _periodRepo.SearchMostConsistentIncome();
         }
     }
 }
