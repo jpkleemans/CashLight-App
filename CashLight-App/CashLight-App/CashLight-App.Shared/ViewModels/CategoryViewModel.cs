@@ -3,6 +3,7 @@ using CashLight_App.Models;
 using CashLight_App.Repositories.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -89,6 +90,7 @@ namespace CashLight_App.ViewModels
 
 
         private double _budget;
+        private INavigationService _navigator;
 
         public double Budget
         {
@@ -105,9 +107,10 @@ namespace CashLight_App.ViewModels
 
 
 
-        public CategoryViewModel(ICategoryRepository categoryRepo)
+        public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator)
         {
 
+            _navigator = navigator;
             _categoryRepo = categoryRepo;
 
             this.TypeList = new List<string>();
@@ -132,6 +135,8 @@ namespace CashLight_App.ViewModels
 
 
             _categoryRepo.Add(category);
+
+            _navigator.NavigateTo("Categorize");
 
         }
 
