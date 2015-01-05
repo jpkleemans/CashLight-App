@@ -15,25 +15,21 @@ namespace CashLight_App.ViewModels
     {
         private INavigationService _navigator;
         private IUploadRepository _uploadRepo;
-        public RelayCommand GoToDashboardCommand { get; set; }
-
         public ImportViewModel(INavigationService navigator, IUploadRepository uploadRepo)
         {
-            GoToDashboardCommand = new RelayCommand(GoToDashboard);
-
             _navigator = navigator;
             _uploadRepo = uploadRepo;
-        }
-
-        private void GoToDashboard()
-        {
-            _navigator.NavigateTo("Dashboard");
         }
 
         public void UploadCSV(StorageFile file)
         {
             _uploadRepo.ToDatabase(file);
             GoToDashboard();
+        }
+
+        private void GoToDashboard()
+        {
+            _navigator.NavigateTo("Dashboard");
         }
     }
 }

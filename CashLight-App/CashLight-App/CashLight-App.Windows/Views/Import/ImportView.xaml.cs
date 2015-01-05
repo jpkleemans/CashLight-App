@@ -38,17 +38,17 @@ namespace CashLight_App.Views.Import
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           file = (StorageFile)e.Parameter;
+            file = (StorageFile)e.Parameter;
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Grid_GotFocus(object sender, RoutedEventArgs e)
         {
             
         }
 
-        private void Page_GotFocus(object sender, RoutedEventArgs e)
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            _dataContext.UploadCSV(file);            
+            _dataContext.UploadCSV(file);
         }
     }
 }
