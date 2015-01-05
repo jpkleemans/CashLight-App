@@ -171,6 +171,7 @@
 
         <TextBlock Text="{Binding Title}" Height="30" Margin="30" FontSize="30" VerticalAlignment="Top" TextAlignment="Center"/>
 
+        <TextBlock Text="{Binding SelectedPeriod.SpendingsLimit, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" Height="30" Margin="30" FontSize="30" VerticalAlignment="Center" TextAlignment="Center"/>
         <part:Header Title="CashLight" />
     </Grid>
 </Page>

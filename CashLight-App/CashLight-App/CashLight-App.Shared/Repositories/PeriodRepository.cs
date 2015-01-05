@@ -106,7 +106,8 @@ namespace CashLight_App.Repositories
                     .Where(q => q.InOut == (int)InOut.Out)
                     .Count();
 
-                double amountoftransactions = period.Transactions.Count();
+                
+                double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
 
                 if (totaltransactions == 0 || amountoftransactions == 0)
                 {
@@ -114,7 +115,7 @@ namespace CashLight_App.Repositories
                 }
                 else
                 {
-                    category.Percentage = Convert.ToInt16((amountoftransactions / totaltransactions) * 100);
+                    category.Percentage = Convert.ToInt16((totaltransactions / amountoftransactions) * 100);
                 }
             }
 
@@ -252,10 +253,7 @@ namespace CashLight_App.Repositories
                 }
             }
 
-            foreach (var cat in _categoryRepo.FindAll())
-            {
-                spendinglimit -= cat.Budget;
-            }
+            
 
             period.SpendingsLimit = spendinglimit;
         }
