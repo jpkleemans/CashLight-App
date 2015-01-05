@@ -103,7 +103,7 @@
                         VerticalAlignment="top" 
                         HorizontalAlignment="Center" 
                         Content="+ Categorie toevoegen"
-                        CommandParameter="1" />
+                        Command="{Binding AddCategoryCommand}" />
             </Grid>
             <TextBox HorizontalAlignment="Left" Margin="333,208,0,10" TextWrapping="Wrap" Text="{Binding Remaining}" Width="700" TextAlignment="Center"/>
         </Grid>
