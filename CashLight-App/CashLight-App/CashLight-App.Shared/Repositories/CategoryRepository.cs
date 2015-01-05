@@ -27,5 +27,6 @@ namespace CashLight_App.Repositories
 
             return Mapper.Map<IEnumerable<CategoryTable>, IEnumerable<Category>>(table);
         }
+
     }
 }

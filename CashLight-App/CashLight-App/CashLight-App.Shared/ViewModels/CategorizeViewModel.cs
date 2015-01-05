@@ -41,6 +41,19 @@ namespace CashLight_App.ViewModels
                 RaisePropertyChanged(() => CurrentTransaction);
             }
         }
+        private string _remaining;
+        public string Remaining
+        {
+            get
+            {
+                return "Nog " + _remaining + " transacties te gaan.";
+            }
+            set
+            {
+                _remaining = value;
+                RaisePropertyChanged(() => Remaining);
+            }
+        }
 
         public CategorizeViewModel(INavigationService navigator, ICategoryRepository categoryRepo, ITransactionRepository transactionRepo)
         {
@@ -56,7 +69,16 @@ namespace CashLight_App.ViewModels
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings());
 
-            CurrentTransaction = Transactions.First();
+            //If no transactions present, then show nothing. Instead of crashing.
+            if (Transactions.Count != 0)
+            {
+                CurrentTransaction = Transactions.First();
+            }
+            else
+            {
+                Debug.WriteLine("No transactions! Panic!");
+            }
+            Remaining = Transactions.Count.ToString();
         }
 
         private void AddCategory()
@@ -66,8 +88,11 @@ namespace CashLight_App.ViewModels
 
         private void SetCategory(int categoryID)
         {
+            CurrentTransaction.CategoryID = categoryID;
+            _transactionRepo.Edit(CurrentTransaction);
+            _transactionRepo.Commit();
             Transactions.Remove(CurrentTransaction);
-
+            Remaining = Transactions.Count.ToString();
             CurrentTransaction = Transactions.First();
         }
     }

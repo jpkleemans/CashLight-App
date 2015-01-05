@@ -7,6 +7,7 @@ namespace CashLight_App.Repositories.Interfaces
 {
     public interface ITransactionRepository
     {
+        void Edit(Transaction transaction);
         void Add(Transaction transaction);
 
         void Commit(); // TODO Weet niet of dit netjes is hier?

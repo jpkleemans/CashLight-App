@@ -140,17 +140,17 @@
                                                   CommandParameter="{Binding ImportantSpendings[3]}" />
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="50,0,0,0" Width="300" HorizontalAlignment="Left">
-                            <ItemsControl ItemsSource="{Binding Categories}" HorizontalAlignment="Left">
+                        <Grid Grid.Row="1" Margin="30,20,0,0" Width="300" HorizontalAlignment="Left">
+                            <ItemsControl ItemsSource="{Binding Categories}" >
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel HorizontalAlignment="Left" />
+                                        <StackPanel />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
 
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid HorizontalAlignment="Left">
+                                        <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
@@ -163,7 +163,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Grid>
-                        
+
                     </Grid>
                 </DataTemplate>
             </FlipView.ItemTemplate>
