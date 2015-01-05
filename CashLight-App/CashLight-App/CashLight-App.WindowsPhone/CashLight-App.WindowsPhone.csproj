@@ -87,6 +87,9 @@
     <Compile Include="Views\Categorize\CategorizeView.xaml.cs">
       <DependentUpon>CategorizeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Category\AddCategoryView.xaml.cs">
+      <DependentUpon>AddCategoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
     <Page Include="Views\Categorize\CategorizeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Category\AddCategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Dashboard\DashboardView.xaml">
       <SubType>Designer</SubType>
