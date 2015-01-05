@@ -24,12 +24,7 @@ namespace CashLight_App.ViewModels
         public void UploadCSV(StorageFile file)
         {
             _uploadRepo.ToDatabase(file);
-            GoToDashboard();
-        }
-
-        private void GoToDashboard()
-        {
-            _navigator.NavigateTo("Dashboard");
+            _navigator.NavigateTo("Categorize");
         }
     }
 }

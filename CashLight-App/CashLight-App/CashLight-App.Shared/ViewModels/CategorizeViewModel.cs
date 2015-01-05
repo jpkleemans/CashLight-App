@@ -70,7 +70,7 @@ namespace CashLight_App.ViewModels
             AddCategoryCommand = new RelayCommand(AddCategory);
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
-            Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings());
+            Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings().Where(x => x.CategoryID == 0));
 
             Remaining = Transactions.Count.ToString();
 
