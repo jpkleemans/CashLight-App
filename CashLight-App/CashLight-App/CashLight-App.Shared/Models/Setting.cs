@@ -10,5 +10,11 @@ namespace CashLight_App.Models
         public string Key { get; set; }
         public string Value { get; set; }
         public DateTime Date { get; set; }
+
+        public Setting(string key, string value)
+        {
+            this.Key = key;
+            this.Value = value;
+        }
     }
 }

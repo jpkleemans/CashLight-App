@@ -32,7 +32,7 @@ namespace CashLight_App.Repositories
             this.SetTransactions(ref period);
             this.SetImportantTransactions(ref period);
             this.SetCategories(ref period);
-
+            this.GetSpendingLimit(ref period);
             return period;
         }
 
@@ -141,6 +141,97 @@ namespace CashLight_App.Repositories
             }
 
             return new PeriodDTO(name, account, averagedeviation, averageperiod);
+        }
+
+        public void SearchMostConsistentIncome()
+        {
+            // Get all returning incomes and group them
+            IEnumerable<IEnumerable<Transaction>> returningIncomeGroups = _transactionRepo.FindAll()
+                .Where(a => a.InOut == (int)Enums.InOut.In)
+                .GroupBy(b => b.CreditorNumber)
+                .Where(c => c.Count() > 1);
+
+            // Dictionary with information about most consistent income account
+            PeriodDTO mostConsistentIncomeAccount = new PeriodDTO();
+
+            // Loop trough all income groups
+            double previousAverageDeviation = default(double);
+            foreach (var group in returningIncomeGroups)
+            {
+                // Hashtable with info about current account
+                PeriodDTO accountInfo = new PeriodDTO();
+
+                // List with all periods between two transactions of current account
+                List<double> periods = new List<double>();
+
+                // Loop trough all transactions
+                DateTime previousDate = default(DateTime);
+                foreach (Transaction transaction in group)
+                {
+                    if (previousDate != default(DateTime))
+                    {
+                        // Add difference between dates (period) to periods list
+                        periods.Add((previousDate - transaction.Date).TotalDays);
+                    }
+                    previousDate = transaction.Date;
+
+                    accountInfo.Name = transaction.CreditorName;
+                    accountInfo.Account = transaction.CreditorNumber;
+                }
+
+                // If there are at least 2 periods
+                if (periods.Count > 1)
+                {
+                    // Average period between transactions
+                    double average = periods.Average();
+                    accountInfo.AveragePeriod = average;
+
+                    // Sum deviation from average
+                    double deviation = 0;
+                    foreach (double item in periods)
+                    {
+                        deviation += Math.Abs(average - item);
+                    }
+
+                    // Average deviation
+                    double averageDeviation = (deviation / periods.Count);
+                    accountInfo.AverageDeviation = averageDeviation;
+
+                    // Find most consistent income account
+                    if (previousAverageDeviation != default(double))
+                    {
+                        if (averageDeviation < previousAverageDeviation)
+                        {
+                            mostConsistentIncomeAccount = accountInfo;
+                        }
+                    }
+                    previousAverageDeviation = averageDeviation;
+                }
+            }
+
+            // Ceil some averages before return
+            mostConsistentIncomeAccount.AverageDeviation = Math.Ceiling(mostConsistentIncomeAccount.AverageDeviation);
+            mostConsistentIncomeAccount.AveragePeriod = Math.Ceiling(mostConsistentIncomeAccount.AveragePeriod);
+
+            //Save
+            SaveConsistentIncome(mostConsistentIncomeAccount);
+        }
+
+        public void SaveConsistentIncome(PeriodDTO p)
+        {
+            Setting s = new Setting("Income.CreditorName", p.Name);
+            _settingRepo.Add(s);
+
+            Setting s1 = new Setting("Income.CreditorNumber", p.Account);
+            _settingRepo.Add(s1);
+
+            Setting s2 = new Setting("Income.AverageDeviation", p.AverageDeviation.ToString());
+            _settingRepo.Add(s2);
+
+            Setting s3 = new Setting("Income.AveragePeriod", p.AveragePeriod.ToString());
+            _settingRepo.Add(s3);
+
+            _settingRepo.Commit();
         }
 
     }

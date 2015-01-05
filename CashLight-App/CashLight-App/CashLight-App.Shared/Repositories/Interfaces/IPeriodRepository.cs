@@ -8,5 +8,6 @@ namespace CashLight_App.Repositories.Interfaces
     public interface IPeriodRepository
     {
         Period GetByDate(DateTime date);
+        void SearchMostConsistentIncome();
     }
 }
