@@ -74,7 +74,7 @@ namespace CashLight_App.ViewModels
         }
 
         private string _text;
-        
+
         public string Text
         {
             get
@@ -89,10 +89,10 @@ namespace CashLight_App.ViewModels
         }
 
 
-        private double _budget;
+        private double? _budget;
         private INavigationService _navigator;
 
-        public double Budget
+        public double? Budget
         {
             get
             {
@@ -109,7 +109,6 @@ namespace CashLight_App.ViewModels
 
         public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator)
         {
-
             _navigator = navigator;
             _categoryRepo = categoryRepo;
 
@@ -121,23 +120,19 @@ namespace CashLight_App.ViewModels
             BudgetEnabled = "Collapsed";
 
             SaveCategoryCommand = new RelayCommand(SaveCategory);
-
         }
 
         private void SaveCategory()
         {
-
             Category category = new Category();
 
             category.Name = this.Text;
             category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
-            category.Budget = this.Budget;
-
+            category.Budget = (double)this.Budget;
 
             _categoryRepo.Add(category);
 
             _navigator.NavigateTo("Categorize");
-
         }
 
     }
