@@ -105,6 +105,7 @@
                         Content="+ Categorie toevoegen"
                         CommandParameter="1" />
             </Grid>
+            <TextBox HorizontalAlignment="Left" Margin="333,208,0,10" TextWrapping="Wrap" Text="U heeft nog XXX transacties te gaan." Width="700" TextAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>
