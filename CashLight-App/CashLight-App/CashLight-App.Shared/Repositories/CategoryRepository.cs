@@ -28,5 +28,13 @@ namespace CashLight_App.Repositories
             return Mapper.Map<IEnumerable<CategoryTable>, IEnumerable<Category>>(table);
         }
 
+        public void Add(Category category)
+        {
+            Mapper.CreateMap<Category, CategoryTable>();
+            CategoryTable categoryTable = Mapper.Map<Category, CategoryTable>(category);
+
+            _db.Context.Table<CategoryTable>().Connection.Insert(categoryTable);
+        }
+
     }
 }

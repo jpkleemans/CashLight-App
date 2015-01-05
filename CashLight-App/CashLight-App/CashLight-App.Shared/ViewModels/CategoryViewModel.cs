@@ -1,6 +1,8 @@
 ﻿using CashLight_App.Enums;
+using CashLight_App.Models;
 using CashLight_App.Repositories.Interfaces;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,10 +13,9 @@ namespace CashLight_App.ViewModels
     {
 
         private ICategoryRepository _categoryRepo;
+        public RelayCommand SaveCategoryCommand { get; set; }
 
-        private string _text;
         private List<string> _typeList;
-        private string _currentType;
 
         public List<string> TypeList
         {
@@ -29,6 +30,9 @@ namespace CashLight_App.ViewModels
             }
         }
 
+
+        private string _currentType;
+
         public string CurrentType
         {
             get
@@ -39,34 +43,37 @@ namespace CashLight_App.ViewModels
             {
                 _currentType = value;
 
-                if ((_currentType == "Fixed"))
+                if ((_currentType == "Other"))
                 {
-                    AmountEnabled = "Collapsed";
+                    BudgetEnabled = "Collapsed";
+                    Budget = 0;
                 }
                 else
                 {
-                    AmountEnabled = "Visible";
+                    BudgetEnabled = "Visible";
                 }
 
                 RaisePropertyChanged(() => CurrentType);
             }
         }
 
-        private string _amountEnabled;
-        public string AmountEnabled
+        private string _budgetEnabled;
+        public string BudgetEnabled
         {
             get
             {
-                return _amountEnabled;
+                return _budgetEnabled;
             }
             set
             {
-                _amountEnabled = value;
+                _budgetEnabled = value;
 
-                RaisePropertyChanged(() => AmountEnabled);
+                RaisePropertyChanged(() => BudgetEnabled);
             }
         }
 
+        private string _text;
+        
         public string Text
         {
             get
@@ -80,14 +87,51 @@ namespace CashLight_App.ViewModels
             }
         }
 
+
+        private double _budget;
+
+        public double Budget
+        {
+            get
+            {
+                return _budget;
+            }
+            set
+            {
+                _budget = value;
+                RaisePropertyChanged(() => Budget);
+            }
+        }
+
+
+
         public CategoryViewModel(ICategoryRepository categoryRepo)
         {
+
+            _categoryRepo = categoryRepo;
+
             this.TypeList = new List<string>();
             this.TypeList.Add(CategoryType.Fixed.ToString());
             this.TypeList.Add(CategoryType.Other.ToString());
             this.TypeList.Add(CategoryType.Variable.ToString());
 
-            Text = "Hey hoi!";
+            BudgetEnabled = "Collapsed";
+
+            SaveCategoryCommand = new RelayCommand(SaveCategory);
+
+        }
+
+        private void SaveCategory()
+        {
+
+            Category category = new Category();
+
+            category.Name = this.Text;
+            category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
+            category.Budget = this.Budget;
+
+
+            _categoryRepo.Add(category);
 
         }
 
