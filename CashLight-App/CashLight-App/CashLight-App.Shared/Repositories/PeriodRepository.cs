@@ -128,17 +128,17 @@ namespace CashLight_App.Repositories
             double averagedeviation = default(double);
             double averageperiod = 31;
 
-            try
-            {
-                name = _settingRepo.FindByKey("Income.CreditorName").Value;
-                account = _settingRepo.FindByKey("Income.CreditorNumber").Value;
-                averagedeviation = Convert.ToDouble(_settingRepo.FindByKey("Income.AverageDeviation").Value);
-                averageperiod = Convert.ToDouble(_settingRepo.FindByKey("Income.AveragePeriod").Value);
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    name = _settingRepo.FindByKey("Income.CreditorName").Value;
+            //    account = _settingRepo.FindByKey("Income.CreditorNumber").Value;
+            //    averagedeviation = Convert.ToDouble(_settingRepo.FindByKey("Income.AverageDeviation").Value);
+            //    averageperiod = Convert.ToDouble(_settingRepo.FindByKey("Income.AveragePeriod").Value);
+            //}
+            //catch (Exception)
+            //{
 
-            }
+            //}
 
             return new PeriodDTO(name, account, averagedeviation, averageperiod);
         }
