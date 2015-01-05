@@ -9,6 +9,7 @@ using Windows.UI.Xaml;
 using CashLight_App.Repositories.Interfaces;
 using System.Diagnostics;
 using GalaSoft.MvvmLight.Views;
+using System.Globalization;
 
 namespace CashLight_App.ViewModels
 {
@@ -22,6 +23,14 @@ namespace CashLight_App.ViewModels
             get
             {
                 return String.Format("{0} t/m {1}", SelectedPeriod.StartDate.ToString("dd-MM-yyyy"), SelectedPeriod.EndDate.ToString("dd-MM-yyyy"));
+            }
+        }
+
+        public string SpendingsLimit
+        {
+            get
+            {
+                return String.Format(new CultureInfo("nl-NL"), "Bestedingsruimte: {0:c}", SelectedPeriod.SpendingsLimit);
             }
         }
 
@@ -50,6 +59,7 @@ namespace CashLight_App.ViewModels
                 _selectedPeriod = value;
                 RaisePropertyChanged(() => SelectedPeriod);
                 RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => SpendingsLimit);
             }
         }
 
