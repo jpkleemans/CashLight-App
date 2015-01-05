@@ -80,8 +80,22 @@ namespace CashLight_App.ViewModels
             _transactionRepo.Edit(CurrentTransaction);
             _transactionRepo.Commit();
             Transactions.Remove(CurrentTransaction);
+            removeEqualTransactions(CurrentTransaction);
             Remaining = Transactions.Count.ToString();
             CurrentTransaction = Transactions.First();
+        }
+
+        public void removeEqualTransactions(Transaction CurrentTransaction)
+        {
+            List<Transaction> list = Transactions.ToList();
+            foreach (Transaction transaction in list)
+            {
+                if (transaction.CreditorName == CurrentTransaction.CreditorName && transaction.CreditorNumber == CurrentTransaction.CreditorNumber)
+                {
+                    transaction.CategoryID = CurrentTransaction.CategoryID;
+                    Transactions.Remove(transaction);
+                }
+            }
         }
     }
 }
