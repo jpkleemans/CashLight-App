@@ -107,7 +107,7 @@
                         Content="+ Categorie toevoegen"
                         Command="{Binding AddCategoryCommand}" />
             </Grid>
-            <TextBox Margin="0,220,0,0" TextWrapping="Wrap" Text="{Binding Remaining}" Width="700" TextAlignment="Center" Height="15" HorizontalAlignment="Center"/>
+            <TextBox Margin="0,220,0,0" TextWrapping="Wrap" Text="{Binding Remaining}" Width="700" TextAlignment="Center" HorizontalAlignment="Center" FontSize="15" IsReadOnly="True"/>
         </Grid>
     </Grid>
 </Page>
