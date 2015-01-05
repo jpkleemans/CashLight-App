@@ -40,6 +40,14 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        public CategoryViewModel Category
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CategoryViewModel>();
+            }
+        }
+
         public HeaderViewModel Header
         {
             get

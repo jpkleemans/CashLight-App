@@ -24,6 +24,9 @@ namespace CashLight_App.ViewModels
         public ObservableCollection<Transaction> Transactions { get; set; }
 
         public RelayCommand<int> SetCategoryCommand { get; set; }
+        public RelayCommand AddCategoryCommand {get; set;}
+
+        private  INavigationService _navigator;
 
         private Transaction _currentTransaction;
         public Transaction CurrentTransaction
@@ -52,12 +55,16 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public CategorizeViewModel(ICategoryRepository categoryRepo, ITransactionRepository transactionRepo)
+        public CategorizeViewModel(INavigationService navigator, ICategoryRepository categoryRepo, ITransactionRepository transactionRepo)
         {
             _categoryRepo = categoryRepo;
             _transactionRepo = transactionRepo;
 
+            _navigator = navigator;
+
             SetCategoryCommand = new RelayCommand<int>((categoryID) => SetCategory(categoryID));
+
+            AddCategoryCommand = new RelayCommand(AddCategory);
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings());
@@ -74,14 +81,33 @@ namespace CashLight_App.ViewModels
             Remaining = Transactions.Count.ToString();
         }
 
+        private void AddCategory()
+        {
+            _navigator.NavigateTo("AddCategory");
+        }
+
         private void SetCategory(int categoryID)
         {
             CurrentTransaction.CategoryID = categoryID;
             _transactionRepo.Edit(CurrentTransaction);
             _transactionRepo.Commit();
             Transactions.Remove(CurrentTransaction);
+            removeEqualTransactions(CurrentTransaction);
             Remaining = Transactions.Count.ToString();
             CurrentTransaction = Transactions.First();
+        }
+
+        public void removeEqualTransactions(Transaction CurrentTransaction)
+        {
+            List<Transaction> list = Transactions.ToList();
+            foreach (Transaction transaction in list)
+            {
+                if (transaction.CreditorName == CurrentTransaction.CreditorName && transaction.CreditorNumber == CurrentTransaction.CreditorNumber)
+                {
+                    transaction.CategoryID = CurrentTransaction.CategoryID;
+                    Transactions.Remove(transaction);
+                }
+            }
         }
     }
 }

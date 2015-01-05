@@ -32,7 +32,9 @@ namespace CashLight_App.Models
                 RaisePropertyChanged(() => Date);
             }
         }
-
+        /// <summary>
+        /// Je eigen rekeningnummer.
+        /// </summary>
         public string DebtorNumber
         {
             get
@@ -45,7 +47,9 @@ namespace CashLight_App.Models
                 RaisePropertyChanged(() => DebtorNumber);
             }
         }
-
+        /// <summary>
+        /// Is de naam van de tegenrekening.
+        /// </summary>
         public string CreditorName
         {
             get
@@ -58,7 +62,9 @@ namespace CashLight_App.Models
                 RaisePropertyChanged(() => CreditorName);
             }
         }
-
+        /// <summary>
+        /// Tegenrekeningnummer
+        /// </summary>
         public string CreditorNumber
         {
             get
@@ -71,7 +77,9 @@ namespace CashLight_App.Models
                 RaisePropertyChanged(() => CreditorNumber);
             }
         }
-
+        /// <summary>
+        /// Betalingskenmerk code
+        /// </summary>
         public int Code
         {
             get
@@ -84,7 +92,9 @@ namespace CashLight_App.Models
                 RaisePropertyChanged(() => Code);
             }
         }
-
+        /// <summary>
+        /// Af-Bij, plus of min.
+        /// </summary>
         public int InOut
         {
             get
@@ -97,7 +107,9 @@ namespace CashLight_App.Models
                 RaisePropertyChanged(() => InOut);
             }
         }
-
+        /// <summary>
+        /// Hoeveelheid van de transacties.
+        /// </summary>
         public double Amount
         {
             get
@@ -110,7 +122,9 @@ namespace CashLight_App.Models
                 RaisePropertyChanged(() => Amount);
             }
         }
-
+        /// <summary>
+        /// Omschrijving van de transactie.
+        /// </summary>
         public string Description
         {
             get
@@ -150,7 +164,9 @@ namespace CashLight_App.Models
             }
         }
 
-
+        /// <summary>
+        /// CategorieID
+        /// </summary>
         public int CategoryID
         {
             get

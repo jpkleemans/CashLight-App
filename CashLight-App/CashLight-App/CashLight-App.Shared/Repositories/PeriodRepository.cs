@@ -32,7 +32,7 @@ namespace CashLight_App.Repositories
             this.SetTransactions(ref period);
             this.SetImportantTransactions(ref period);
             this.SetCategories(ref period);
-
+            this.GetSpendingLimit(ref period);
             return period;
         }
 
