@@ -105,9 +105,11 @@ namespace CashLight_App.ViewModels
                 if (transaction.CreditorName == CurrentTransaction.CreditorName && transaction.CreditorNumber == CurrentTransaction.CreditorNumber)
                 {
                     transaction.CategoryID = CurrentTransaction.CategoryID;
+                    _transactionRepo.Edit(transaction);
                     Transactions.Remove(transaction);
                 }
             }
+            _transactionRepo.Commit();
         }
     }
 }

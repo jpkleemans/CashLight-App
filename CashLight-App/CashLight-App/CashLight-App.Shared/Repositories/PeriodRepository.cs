@@ -155,7 +155,6 @@ namespace CashLight_App.Repositories
             PeriodDTO mostConsistentIncomeAccount = new PeriodDTO();
 
             // Loop trough all income groups
-            double previousAverageDeviation = default(double);
             foreach (var group in returningIncomeGroups)
             {
                 // Hashtable with info about current account
@@ -198,14 +197,17 @@ namespace CashLight_App.Repositories
                     accountInfo.AverageDeviation = averageDeviation;
 
                     // Find most consistent income account
-                    if (previousAverageDeviation != default(double))
+                    if (mostConsistentIncomeAccount.AverageDeviation == 0)
                     {
-                        if (averageDeviation < previousAverageDeviation)
+                        mostConsistentIncomeAccount = accountInfo;
+                    }
+                    else
+                    {
+                        if (averageDeviation < mostConsistentIncomeAccount.AverageDeviation)
                         {
                             mostConsistentIncomeAccount = accountInfo;
                         }
                     }
-                    previousAverageDeviation = averageDeviation;
                 }
             }
 

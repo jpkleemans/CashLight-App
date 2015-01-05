@@ -19,6 +19,20 @@ namespace CashLight_App.Models
         private Category _category;
         private double _height;
         private int _categoryID;
+        private int _transactionID;
+
+        public int TransactionID
+        {
+            get
+            {
+                return _transactionID;
+            }
+            private set
+            {
+                _transactionID = value;
+                RaisePropertyChanged(() => _transactionID);
+            }
+        }
 
         public DateTime Date
         {
