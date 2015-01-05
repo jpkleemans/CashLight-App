@@ -33,6 +33,7 @@ namespace CashLight_App.ViewModels
         public void UploadCSV(StorageFile file)
         {
             _uploadRepo.ToDatabase(file);
+            GoToDashboard();
         }
     }
 }
