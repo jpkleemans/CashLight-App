@@ -38,6 +38,19 @@ namespace CashLight_App.ViewModels
                 RaisePropertyChanged(() => CurrentTransaction);
             }
         }
+        private string _remaining;
+        public string Remaining
+        {
+            get
+            {
+                return "Nog " + _remaining + " transacties te gaan.";
+            }
+            set
+            {
+                _remaining = value;
+                RaisePropertyChanged(() => Remaining);
+            }
+        }
 
         public CategorizeViewModel(ICategoryRepository categoryRepo, ITransactionRepository transactionRepo)
         {
@@ -58,6 +71,7 @@ namespace CashLight_App.ViewModels
             {
                 Debug.WriteLine("No transactions! Panic!");
             }
+            Remaining = Transactions.Count.ToString();
         }
 
         private void SetCategory(int categoryID)
@@ -66,7 +80,7 @@ namespace CashLight_App.ViewModels
             _transactionRepo.Edit(CurrentTransaction);
             _transactionRepo.Commit();
             Transactions.Remove(CurrentTransaction);
-
+            Remaining = Transactions.Count.ToString();
             CurrentTransaction = Transactions.First();
         }
     }
