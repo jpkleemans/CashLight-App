@@ -67,6 +67,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tables\SettingTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tables\TransactionTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategorizeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategoryViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DashboardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HeaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ImportViewModel.cs" />

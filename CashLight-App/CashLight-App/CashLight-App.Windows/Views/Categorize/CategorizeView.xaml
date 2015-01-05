@@ -103,7 +103,7 @@
                         VerticalAlignment="top" 
                         HorizontalAlignment="Center" 
                         Content="+ Categorie toevoegen"
-                        CommandParameter="1" />
+                        Command="{Binding AddCategoryCommand}" />
             </Grid>
         </Grid>
     </Grid>

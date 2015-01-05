@@ -24,6 +24,9 @@ namespace CashLight_App.ViewModels
         public ObservableCollection<Transaction> Transactions { get; set; }
 
         public RelayCommand<int> SetCategoryCommand { get; set; }
+        public RelayCommand AddCategoryCommand {get; set;}
+
+        private  INavigationService _navigator;
 
         private Transaction _currentTransaction;
         public Transaction CurrentTransaction
@@ -39,17 +42,26 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public CategorizeViewModel(ICategoryRepository categoryRepo, ITransactionRepository transactionRepo)
+        public CategorizeViewModel(INavigationService navigator, ICategoryRepository categoryRepo, ITransactionRepository transactionRepo)
         {
             _categoryRepo = categoryRepo;
             _transactionRepo = transactionRepo;
 
+            _navigator = navigator;
+
             SetCategoryCommand = new RelayCommand<int>((categoryID) => SetCategory(categoryID));
+
+            AddCategoryCommand = new RelayCommand(AddCategory);
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings());
 
             CurrentTransaction = Transactions.First();
+        }
+
+        private void AddCategory()
+        {
+            _navigator.NavigateTo("AddCategory");
         }
 
         private void SetCategory(int categoryID)
