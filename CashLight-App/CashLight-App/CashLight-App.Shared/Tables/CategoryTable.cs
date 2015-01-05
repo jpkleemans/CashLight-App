@@ -17,6 +17,8 @@ namespace CashLight_App.Tables
 
         public int Type { get; set; }
 
+        public double Budget { get; set; }
+
         [OneToMany]
         public IEnumerable<TransactionTable> Transactions { get; set; }
 
@@ -25,10 +27,11 @@ namespace CashLight_App.Tables
 
         }
 
-        public CategoryTable(string name, CategoryType type)
+        public CategoryTable(string name, CategoryType type, double budget)
         {
             this.Name = name;
             this.Type = (int)type;
+            this.Budget = Budget;
         }
     }
 }
