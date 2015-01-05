@@ -47,7 +47,7 @@ namespace CashLight_App.ViewModels
                 if ((_currentType == "Other"))
                 {
                     BudgetEnabled = "Collapsed";
-                    Budget = 0;
+                    Budget = null;
                 }
                 else
                 {
