@@ -131,5 +131,15 @@ namespace CashLight_App.Repositories
 
             return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(spendings);
         }
+
+
+        public Transaction GetFirst()
+        {
+            TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
+
+            TransactionTable transaction = transactions.LastOrDefault();
+
+            return Mapper.Map<TransactionTable, Transaction>(transaction);
+        }
     }
 }

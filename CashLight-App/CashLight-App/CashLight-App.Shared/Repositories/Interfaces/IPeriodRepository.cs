@@ -9,5 +9,7 @@ namespace CashLight_App.Repositories.Interfaces
     {
         Period GetByDate(DateTime date);
         void SearchMostConsistentIncome();
+
+        IEnumerable<Period> GetAll();
     }
 }

@@ -43,18 +43,18 @@ namespace CashLight_App.ViewModels
             }
             set
             {
-                if (_selectedPeriod != null)
-                {
-                    if (value.EndDate < _selectedPeriod.StartDate)
-                    {
-                        Period previous = _periodRepo.GetByDate(value.StartDate.AddDays(-1));
+                //if (_selectedPeriod != null)
+                //{
+                //    if (value.EndDate < _selectedPeriod.StartDate)
+                //    {
+                //        Period previous = _periodRepo.GetByDate(value.StartDate.AddDays(-1));
 
-                        previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
-                        previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
+                //        previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
+                //        previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
 
-                        Periods.Add(previous);
-                    }
-                }
+                //        Periods.Add(previous);
+                //    }
+                //}
 
                 _selectedPeriod = value;
                 RaisePropertyChanged(() => SelectedPeriod);
@@ -79,20 +79,34 @@ namespace CashLight_App.ViewModels
 
         private void InitPeriods()
         {
+            //Periods = new ObservableCollection<Period>();
+
+            //Period now = _periodRepo.GetByDate(DateTime.Now);
+            //Period previous = _periodRepo.GetByDate(now.StartDate.AddDays(-1));
+
+            //now.ImportantIncomes = SetHeight(now.ImportantIncomes);
+            //now.ImportantSpendings = SetHeight(now.ImportantSpendings);
+            //previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
+            //previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
+
+            //Periods.Add(now);
+            //Periods.Add(previous);
+
+            //SelectedPeriod = now;
+
             Periods = new ObservableCollection<Period>();
 
-            Period now = _periodRepo.GetByDate(DateTime.Now);
-            Period previous = _periodRepo.GetByDate(now.StartDate.AddDays(-1));
+            IEnumerable<Period> allPeriods = _periodRepo.GetAll();
 
-            now.ImportantIncomes = SetHeight(now.ImportantIncomes);
-            now.ImportantSpendings = SetHeight(now.ImportantSpendings);
-            previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
-            previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
+            foreach (Period period in allPeriods)
+            {
+                period.ImportantIncomes = SetHeight(period.ImportantIncomes);
+                period.ImportantSpendings = SetHeight(period.ImportantSpendings);
 
-            Periods.Add(now);
-            Periods.Add(previous);
+                Periods.Add(period);
+            }
 
-            SelectedPeriod = now;
+            SelectedPeriod = Periods.Last();
         }
 
         private IEnumerable<Transaction> SetHeight(IEnumerable<Transaction> transactions)
