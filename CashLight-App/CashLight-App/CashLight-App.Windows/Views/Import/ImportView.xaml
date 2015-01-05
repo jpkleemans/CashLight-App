@@ -9,7 +9,7 @@
     DataContext="{Binding Import, Source={StaticResource Locator}}"
     >
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" GotFocus="Grid_GotFocus">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ProgressRing HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Height="111" Width="111" IsActive="True" />
         <TextBox HorizontalAlignment="Center" Margin="0,150,0,0" TextWrapping="Wrap" Text="Importeren..." VerticalAlignment="Center" FontSize="18" BorderThickness="0" Background="Transparent" BorderBrush="White" Foreground="White" GotFocus="TextBox_GotFocus"/>
     </Grid>

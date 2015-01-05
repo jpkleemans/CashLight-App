@@ -41,11 +41,6 @@ namespace CashLight_App.Views.Import
             file = (StorageFile)e.Parameter;
         }
 
-        private void Grid_GotFocus(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             _dataContext.UploadCSV(file);
