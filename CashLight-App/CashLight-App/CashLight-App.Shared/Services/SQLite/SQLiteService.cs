@@ -70,7 +70,8 @@ namespace CashLight_App.Services.SQLite
                 new CategoryTable("Wonen", CategoryType.Fixed, 20),
                 new CategoryTable("Boodschappen", CategoryType.Fixed, 10),
                 new CategoryTable("Kleding", CategoryType.Variable, 5),
-                new CategoryTable("Vrije tijd", CategoryType.Variable, 30)
+                new CategoryTable("Vrije tijd", CategoryType.Variable, 30),
+                new CategoryTable("Overig", CategoryType.Other, 0)
             };
 
             foreach (CategoryTable categorie in defaultCategories)

@@ -33,6 +33,7 @@ namespace CashLight_App.Repositories
             this.SetImportantTransactions(ref period);
             this.SetCategories(ref period);
             this.GetSpendingLimit(ref period);
+
             return period;
         }
 
@@ -106,7 +107,7 @@ namespace CashLight_App.Repositories
                     .Where(q => q.InOut == (int)InOut.Out)
                     .Count();
 
-                
+
                 double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
 
                 if (totaltransactions == 0 || amountoftransactions == 0)
@@ -129,17 +130,17 @@ namespace CashLight_App.Repositories
             double averagedeviation = default(double);
             double averageperiod = 31;
 
-            //try
-            //{
-            //    name = _settingRepo.FindByKey("Income.CreditorName").Value;
-            //    account = _settingRepo.FindByKey("Income.CreditorNumber").Value;
-            //    averagedeviation = Convert.ToDouble(_settingRepo.FindByKey("Income.AverageDeviation").Value);
-            //    averageperiod = Convert.ToDouble(_settingRepo.FindByKey("Income.AveragePeriod").Value);
-            //}
-            //catch (Exception)
-            //{
+            try
+            {
+                name = _settingRepo.FindByKey("Income.CreditorName").Value;
+                account = _settingRepo.FindByKey("Income.CreditorNumber").Value;
+                //averagedeviation = Convert.ToDouble(_settingRepo.FindByKey("Income.AverageDeviation").Value);
+                //averageperiod = Convert.ToDouble(_settingRepo.FindByKey("Income.AveragePeriod").Value);
+            }
+            catch (Exception)
+            {
 
-            //}
+            }
 
             return new PeriodDTO(name, account, averagedeviation, averageperiod);
         }
@@ -252,8 +253,6 @@ namespace CashLight_App.Repositories
                     spendinglimit -= transaction.Amount;
                 }
             }
-
-            
 
             period.SpendingsLimit = spendinglimit;
         }
