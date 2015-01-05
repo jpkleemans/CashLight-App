@@ -6,6 +6,7 @@ using CashLight_App.Tables;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace CashLight_App.Repositories
 {
@@ -37,7 +38,20 @@ namespace CashLight_App.Repositories
             Mapper.CreateMap<Setting, SettingTable>();
             SettingTable settingTable = Mapper.Map<Setting, SettingTable>(setting);
 
-            _db.Context.Table<SettingTable>().Connection.Insert(settingTable);
+            var existingRow = _db.Context.Table<SettingTable>()
+                .Where(x => x.Key == setting.Key)
+                .FirstOrDefault();
+
+
+            if (existingRow == default(SettingTable))
+            {
+                _db.Context.Table<SettingTable>().Connection.Insert(settingTable);
+            }
+            else
+            {
+                settingTable.SettingID = existingRow.SettingID;
+                _db.Context.Table<SettingTable>().Connection.Update(settingTable);
+            }
         }
 
         public void Commit()
