@@ -51,7 +51,7 @@ namespace CashLight_App.Repositories
             TransactionTable transaction = transactions
                 .Where(q => q.CreditorNumber == account)
                 .Where(q => q.Date <= date)
-                .OrderByDescending(q => q.Date)
+                .OrderBy(q => q.Date)
                 .LastOrDefault();
 
             return Mapper.Map<TransactionTable, Transaction>(transaction);
