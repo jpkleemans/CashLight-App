@@ -234,5 +234,29 @@ namespace CashLight_App.Repositories
             _settingRepo.Commit();
         }
 
+        public void GetSpendingLimit(ref Period period)
+        {
+            double spendinglimit = 0;
+
+            foreach (var transaction in period.Transactions)
+            {
+                if ((InOut)transaction.InOut == InOut.In)
+                {
+                    spendinglimit += transaction.Amount;
+                }
+                else
+                {
+                    spendinglimit -= transaction.Amount;
+                }
+            }
+
+            foreach (var cat in _categoryRepo.FindAll())
+            {
+                spendinglimit -= cat.Budget;
+            }
+
+            period.SpendingsLimit = spendinglimit;
+        }
+
     }
 }
