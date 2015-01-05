@@ -32,7 +32,7 @@ namespace CashLight_App.Repositories
             this.SetTransactions(ref period);
             this.SetImportantTransactions(ref period);
             this.SetCategories(ref period);
-
+            this.GetSpendingLimit(ref period);
             return period;
         }
 
@@ -141,6 +141,30 @@ namespace CashLight_App.Repositories
             }
 
             return new PeriodDTO(name, account, averagedeviation, averageperiod);
+        }
+
+        public void GetSpendingLimit(ref Period period)
+        {
+            double spendinglimit = 0;
+
+            foreach(var transaction in period.Transactions)
+            {
+                if((InOut)transaction.InOut == InOut.In)
+                {
+                    spendinglimit += transaction.Amount;
+                }
+                else
+                {
+                    spendinglimit -= transaction.Amount;
+                }
+            }
+
+            foreach(var cat in _categoryRepo.FindAll())
+            {
+                spendinglimit -= cat.Budget;
+            }
+
+            period.SpendingsLimit = spendinglimit;
         }
 
     }

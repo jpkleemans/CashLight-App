@@ -66,11 +66,11 @@ namespace CashLight_App.Services.SQLite
 
             List<CategoryTable> defaultCategories = new List<CategoryTable>()
             {
-                new CategoryTable("Energie", CategoryType.Fixed),
-                new CategoryTable("Wonen", CategoryType.Fixed),
-                new CategoryTable("Boodschappen", CategoryType.Fixed),
-                new CategoryTable("Kleding", CategoryType.Variable),
-                new CategoryTable("Vrije tijd", CategoryType.Variable)
+                new CategoryTable("Energie", CategoryType.Fixed, 60),
+                new CategoryTable("Wonen", CategoryType.Fixed, 20),
+                new CategoryTable("Boodschappen", CategoryType.Fixed, 10),
+                new CategoryTable("Kleding", CategoryType.Variable, 5),
+                new CategoryTable("Vrije tijd", CategoryType.Variable, 30)
             };
 
             foreach (CategoryTable categorie in defaultCategories)

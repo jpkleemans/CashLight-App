@@ -13,6 +13,7 @@ namespace CashLight_App.Models
         private IEnumerable<Transaction> _importantIncomes;
         private IEnumerable<Transaction> _importantSpendings;
         private IEnumerable<Category> _categories;
+        private double _spendingsLimit;
 
         public DateTime StartDate
         {
@@ -89,6 +90,19 @@ namespace CashLight_App.Models
             {
                 _categories = value;
                 RaisePropertyChanged(() => Categories);
+            }
+        }
+
+        public double SpendingsLimit
+        {
+            get
+            {
+                return _spendingsLimit;
+            }
+            set
+            {
+                _spendingsLimit = value;
+                RaisePropertyChanged(() => SpendingsLimit);
             }
         }
     }
