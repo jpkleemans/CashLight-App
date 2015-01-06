@@ -82,7 +82,7 @@
 
                 <TextBlock Text="Deze uitgave hoort bij de categorie:" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" />
 
-                <ScrollViewer Grid.Row="1">
+                <ScrollViewer Grid.Row="1" Visibility="{Binding HasCategories}" VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding Categories}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,30">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -93,9 +93,9 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button Content="{Binding Name}"
-                                Width="400" 
-                                Command="{Binding DataContext.SetCategoryCommand, ElementName=_this}"
-                                CommandParameter="{Binding CategoryID}" />
+                                        Width="400"
+                                        Command="{Binding DataContext.SetCategoryCommand, ElementName=_this}"
+                                        CommandParameter="{Binding CategoryID}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

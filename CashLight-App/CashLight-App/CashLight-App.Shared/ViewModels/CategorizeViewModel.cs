@@ -57,6 +57,21 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        public string HasCategories
+        {
+            get
+            {
+                if (Categories.Count > 0)
+                {
+                    return "visible";
+                }
+                else
+                {
+                    return "collapsed";
+                }
+            }
+        }
+
         public CategorizeViewModel(INavigationService navigator,
                                    ICategoryRepository categoryRepo,
                                    ITransactionRepository transactionRepo,
@@ -125,10 +140,10 @@ namespace CashLight_App.ViewModels
             t.CategoryID = categoryid;
             _transactionRepo.Edit(t);
 
-            if(updatebudget)
+            if (updatebudget)
             {
                 Category c = _categoryRepo.FindByID(categoryid);
-                if(c.Type == (int)CategoryType.Fixed)
+                if (c.Type == (int)CategoryType.Fixed)
                 {
                     c.Budget += t.Amount;
                     _categoryRepo.Edit(c);
