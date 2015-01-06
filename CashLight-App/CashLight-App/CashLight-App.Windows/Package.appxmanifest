@@ -27,8 +27,9 @@
       <Extensions>
         <Extension Category="windows.fileTypeAssociation" Executable="CashLight-App.Windows.exe" EntryPoint="CashLight_App.Windows.App">
           <FileTypeAssociation Name="csv">
-            <DisplayName>CSV bestanden</DisplayName>
+            <DisplayName>CSV bestand</DisplayName>
             <Logo>icoon.png</Logo>
+            <InfoTip>CSV bestand met bank-gegevens</InfoTip>
             <EditFlags OpenIsSafe="true" />
             <SupportedFileTypes>
               <FileType ContentType="text/csv">.csv</FileType>
