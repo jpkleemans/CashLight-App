@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CashLight_App</RootNamespace>
     <AssemblyName>CashLight-App.Windows</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>nl-NL</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -151,7 +151,9 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\spending-marker.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\Square70x70Logo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="icoon.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Categorize\CategorizeView.xaml">
