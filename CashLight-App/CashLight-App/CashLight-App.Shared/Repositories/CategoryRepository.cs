@@ -18,11 +18,19 @@ namespace CashLight_App.Repositories
         {
             this._db = SQLiteService;
 
-            Mapper.CreateMap<CategoryTable, Category>();
+        }
+
+        public void Edit(Category category)
+        {
+            Mapper.CreateMap<Category, CategoryTable>();
+            CategoryTable categoryTable = Mapper.Map<Category, CategoryTable>(category);
+
+            _db.Context.Table<CategoryTable>().Connection.Update(categoryTable);
         }
 
         public IEnumerable<Category> FindAll()
         {
+            Mapper.CreateMap<CategoryTable, Category>();
             TableQuery<CategoryTable> table = _db.Context.Table<CategoryTable>();
 
             return Mapper.Map<IEnumerable<CategoryTable>, IEnumerable<Category>>(table);
@@ -34,6 +42,27 @@ namespace CashLight_App.Repositories
             CategoryTable categoryTable = Mapper.Map<Category, CategoryTable>(category);
 
             _db.Context.Table<CategoryTable>().Connection.Insert(categoryTable);
+        }
+
+        public void Commit()
+        {
+            _db.Context.Commit();
+        }
+
+        public Category FindByName(string name)
+        {
+            Mapper.CreateMap<CategoryTable, Category>();
+            var c = _db.Context.Table<CategoryTable>().Where(q => q.Name == name).FirstOrDefault();
+
+            return Mapper.Map<CategoryTable, Category>(c);
+        }
+
+        public Category FindByID(int id)
+        {
+            Mapper.CreateMap<CategoryTable, Category>();
+            var c = _db.Context.Table<CategoryTable>().Where(q => q.CategoryID == id).FirstOrDefault();
+
+            return Mapper.Map<CategoryTable, Category>(c);
         }
 
     }

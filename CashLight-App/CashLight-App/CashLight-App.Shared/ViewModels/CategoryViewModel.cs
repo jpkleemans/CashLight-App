@@ -44,7 +44,7 @@ namespace CashLight_App.ViewModels
             {
                 _currentType = value;
 
-                if ((_currentType == "Other"))
+                if ((_currentType == "Fixed"))
                 {
                     BudgetEnabled = "Collapsed";
                     Budget = 0;
@@ -114,7 +114,6 @@ namespace CashLight_App.ViewModels
 
             this.TypeList = new List<string>();
             this.TypeList.Add(CategoryType.Fixed.ToString());
-            this.TypeList.Add(CategoryType.Other.ToString());
             this.TypeList.Add(CategoryType.Variable.ToString());
 
             BudgetEnabled = "Collapsed";

@@ -7,7 +7,12 @@ namespace CashLight_App.Repositories.Interfaces
 {
     public interface ICategoryRepository
     {
+        void Edit(Category category);
+        Category FindByID(int id);
+        Category FindByName(string name);
         IEnumerable<Category> FindAll();
         void Add(Category category);
+
+        void Commit();
     }
 }

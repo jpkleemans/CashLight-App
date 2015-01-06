@@ -12,6 +12,7 @@ using System.Diagnostics;
 using GalaSoft.MvvmLight;
 using CashLight_App.Repositories.Interfaces;
 using System.Collections.ObjectModel;
+using CashLight_App.Enums;
 
 namespace CashLight_App.ViewModels
 {
@@ -96,19 +97,16 @@ namespace CashLight_App.ViewModels
 
         private void SetCategory(int categoryID)
         {
-            CurrentTransaction.CategoryID = categoryID;
-            _transactionRepo.Edit(CurrentTransaction);
-            _transactionRepo.Commit();
-
+            categorizeTransaction(CurrentTransaction, categoryID, true);
             Transactions.Remove(CurrentTransaction);
-            removeEqualTransactions(CurrentTransaction);
+            categorizeEqualTransactions(CurrentTransaction);
 
             Remaining = Transactions.Count.ToString();
-
+            _transactionRepo.Commit();
             SetCurrentTransaction();
         }
 
-        public void removeEqualTransactions(Transaction CurrentTransaction)
+        public void categorizeEqualTransactions(Transaction CurrentTransaction)
         {
             List<Transaction> list = Transactions.ToList();
             foreach (Transaction transaction in list)
@@ -116,12 +114,27 @@ namespace CashLight_App.ViewModels
                 if (transaction.CreditorName == CurrentTransaction.CreditorName
                     && transaction.CreditorNumber == CurrentTransaction.CreditorNumber)
                 {
-                    transaction.CategoryID = CurrentTransaction.CategoryID;
-                    _transactionRepo.Edit(transaction);
+                    categorizeTransaction(transaction, CurrentTransaction.CategoryID);
                     Transactions.Remove(transaction);
                 }
             }
-            _transactionRepo.Commit();
+        }
+
+        private void categorizeTransaction(Transaction t, int categoryid, bool updatebudget = false)
+        {
+            t.CategoryID = categoryid;
+            _transactionRepo.Edit(t);
+
+            if(updatebudget)
+            {
+                Category c = _categoryRepo.FindByID(categoryid);
+                if(c.Type == (int)CategoryType.Fixed)
+                {
+                    c.Budget += t.Amount;
+                    _categoryRepo.Edit(c);
+                    _categoryRepo.Commit();
+                }
+            }
         }
     }
 }

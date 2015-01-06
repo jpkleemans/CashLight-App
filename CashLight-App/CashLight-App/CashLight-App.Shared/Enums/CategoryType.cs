@@ -7,7 +7,6 @@ namespace CashLight_App.Enums
     public enum CategoryType
     {
         Fixed,
-        Variable,
-        Other
+        Variable
     }
 }
