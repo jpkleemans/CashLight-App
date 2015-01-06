@@ -15,16 +15,20 @@ namespace CashLight_App.ViewModels
     {
         private INavigationService _navigator;
         private IUploadRepository _uploadRepo;
-        public ImportViewModel(INavigationService navigator, IUploadRepository uploadRepo)
+        private IDialogService _dialogService;
+        private ISettingRepository _settingRepo;
+        public ImportViewModel(INavigationService navigator, IUploadRepository uploadRepo, IDialogService dialogService, ISettingRepository settingRepo)
         {
             _navigator = navigator;
             _uploadRepo = uploadRepo;
+            _dialogService = dialogService;
+            _settingRepo = settingRepo;
         }
 
         public void UploadCSV(StorageFile file)
         {
             _uploadRepo.ToDatabase(file);
-            _navigator.NavigateTo("Categorize");
+            _dialogService.ShowMessage("We hebben " + _settingRepo.FindByKey("Income.CreditorName") + " als inkomen gevonden.", "Inkomen", "Ga naar categoriseren", () => _navigator.NavigateTo("Categorize"));
         }
     }
 }

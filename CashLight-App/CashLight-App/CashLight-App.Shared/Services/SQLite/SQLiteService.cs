@@ -64,23 +64,6 @@ namespace CashLight_App.Services.SQLite
             connection.CreateTable<TransactionTable>();
             connection.CreateTable<SettingTable>();
 
-            List<CategoryTable> defaultCategories = new List<CategoryTable>()
-            {
-                new CategoryTable("Energie", CategoryType.Fixed, 60),
-                new CategoryTable("Wonen", CategoryType.Fixed, 20),
-                new CategoryTable("Boodschappen", CategoryType.Fixed, 10),
-                new CategoryTable("Kleding", CategoryType.Variable, 5),
-                new CategoryTable("Vrije tijd", CategoryType.Variable, 30),
-                new CategoryTable("Overig", CategoryType.Other, 0)
-            };
-
-            foreach (CategoryTable categorie in defaultCategories)
-            {
-                connection.Insert(categorie);
-            }
-
-            connection.Commit();
-
             return connection;
         }
 
