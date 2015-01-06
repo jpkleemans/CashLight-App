@@ -63,6 +63,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Transaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DTOs\PeriodDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\InOut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tables\AccountCategoryTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tables\CategoryTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tables\SettingTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tables\TransactionTable.cs" />

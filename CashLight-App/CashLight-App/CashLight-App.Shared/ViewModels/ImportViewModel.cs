@@ -28,7 +28,7 @@ namespace CashLight_App.ViewModels
         public void UploadCSV(StorageFile file)
         {
             _uploadRepo.ToDatabase(file);
-            _dialogService.ShowMessage("We hebben " + _settingRepo.FindByKey("Income.CreditorName") + " als inkomen gevonden.", "Inkomen", "Ga naar categoriseren", () => _navigator.NavigateTo("Categorize"));
+            _dialogService.ShowMessage("We hebben " + _settingRepo.FindByKey("Income.CreditorName").Value + " als uw hoofdinkomen gevonden.", "Inkomen", "Ga naar categoriseren", () => _navigator.NavigateTo("Categorize"));
         }
     }
 }
