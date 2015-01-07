@@ -49,7 +49,7 @@ namespace CashLight_App.ViewModels
         {
             get
             {
-                if (Accounts.Count > 0)
+                if (HasCategories)
                 {
                     return "Nog " + _remaining + " rekeningen te categoriseren.";
                 }
@@ -66,25 +66,19 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public string HasCategories
+        public bool HasCategories
         {
             get
             {
-                if (Categories.Count > 0)
-                    return "visible";
-                else
-                    return "collapsed";
+                return (Categories.Count > 0);
             }
         }
 
-        public string HasUncategorizedAccounts
+        public bool HasUncategorizedAccounts
         {
             get
             {
-                if (Accounts.Count > 0)
-                    return "visible";
-                else
-                    return "collapsed";
+                return (Accounts.Count > 0);
             }
         }
 

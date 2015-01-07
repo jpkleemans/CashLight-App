@@ -7,8 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"    
     xmlns:part="using:CashLight_App.Views.Partials"
+    xmlns:sfc="using:CashLight_App.Converters"
     DataContext="{Binding Category, Source={StaticResource Locator}}"
     x:Name="_this">
+
+    <Page.Resources>
+        <sfc:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Page.Resources>
 
     <Page.TopAppBar>
         <CommandBar BorderBrush="Transparent" Height="100">
@@ -55,7 +60,7 @@
 
                 <TextBox Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" PlaceholderText="Categorie-naam" Text="{Binding Text, Mode=TwoWay}" Width="385"/>
                 <ComboBox Grid.Row="1" HorizontalAlignment="Center" PlaceholderText="Type" SelectedItem="{Binding CurrentType, Mode=TwoWay}" ItemsSource="{Binding TypeList}" Width="385" VerticalAlignment="Center" />
-                <TextBox Grid.Row="2" HorizontalAlignment="Center" PlaceholderText="Budget" TextWrapping="Wrap" Visibility="{Binding BudgetEnabled}" Text="{Binding Budget, Mode=TwoWay}" VerticalAlignment="Center" Width="385"/>
+                <TextBox Grid.Row="2" HorizontalAlignment="Center" PlaceholderText="Budget" TextWrapping="Wrap" Visibility="{Binding BudgetEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Text="{Binding Budget, Mode=TwoWay}" VerticalAlignment="Center" Width="385"/>
 
             </Grid>
 

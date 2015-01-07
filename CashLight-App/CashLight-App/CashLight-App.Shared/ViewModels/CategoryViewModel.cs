@@ -14,10 +14,11 @@ namespace CashLight_App.ViewModels
     {
 
         private ICategoryRepository _categoryRepo;
+        private INavigationService _navigator;
+
         public RelayCommand SaveCategoryCommand { get; set; }
 
         private List<string> _typeList;
-
         public List<string> TypeList
         {
             get
@@ -33,7 +34,6 @@ namespace CashLight_App.ViewModels
 
 
         private string _currentType;
-
         public string CurrentType
         {
             get
@@ -44,37 +44,32 @@ namespace CashLight_App.ViewModels
             {
                 _currentType = value;
 
-                if ((_currentType == "Fixed"))
+                if (_currentType != "Variable")
                 {
-                    BudgetEnabled = "Collapsed";
                     Budget = 0;
-                }
-                else
-                {
-                    BudgetEnabled = "Visible";
                 }
 
                 RaisePropertyChanged(() => CurrentType);
-            }
-        }
-
-        private string _budgetEnabled;
-        public string BudgetEnabled
-        {
-            get
-            {
-                return _budgetEnabled;
-            }
-            set
-            {
-                _budgetEnabled = value;
-
                 RaisePropertyChanged(() => BudgetEnabled);
             }
         }
 
-        private string _text;
+        public bool BudgetEnabled
+        {
+            get
+            {
+                if (CurrentType == "Variable")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
+        private string _text;
         public string Text
         {
             get
@@ -90,8 +85,6 @@ namespace CashLight_App.ViewModels
 
 
         private double _budget;
-        private INavigationService _navigator;
-
         public double Budget
         {
             get
@@ -105,8 +98,6 @@ namespace CashLight_App.ViewModels
             }
         }
 
-
-
         public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator)
         {
             _navigator = navigator;
@@ -115,8 +106,6 @@ namespace CashLight_App.ViewModels
             this.TypeList = new List<string>();
             this.TypeList.Add(CategoryType.Fixed.ToString());
             this.TypeList.Add(CategoryType.Variable.ToString());
-
-            BudgetEnabled = "Collapsed";
 
             SaveCategoryCommand = new RelayCommand(SaveCategory);
         }
