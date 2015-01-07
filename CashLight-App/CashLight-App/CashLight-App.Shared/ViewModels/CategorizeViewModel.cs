@@ -84,14 +84,16 @@ namespace CashLight_App.ViewModels
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Accounts = new ObservableCollection<Account>(
                 _accountRepo.FindAllSpending()
+                    .Where(x => x.Category == null)
+                    .OrderByDescending(x => x.TotalAmount)
             );
 
             Remaining = Accounts.Count.ToString();
 
-            SetCurrentTransaction();
+            SetCurrentAccount();
         }
 
-        private void SetCurrentTransaction()
+        private void SetCurrentAccount()
         {
             if (Accounts.Count != 0)
             {
@@ -110,7 +112,7 @@ namespace CashLight_App.ViewModels
 
         private void SetCategory(int categoryID)
         {
-            //categorizeAccount(CurrentAccount, categoryID, true);
+            categorizeAccount(CurrentAccount, categoryID, true);
             //Accounts.Remove(CurrentAccount);
             //categorizeEqualAccounts(CurrentAccount);
 
@@ -119,21 +121,24 @@ namespace CashLight_App.ViewModels
             //SetCurrentTransaction();
         }
 
-        private void categorizeAccount(Transaction t, int categoryid, bool updatebudget = false)
+        private void categorizeAccount(Account account, int categoryid, bool updatebudget = false)
         {
-            t.CategoryID = categoryid;
+            //t.CategoryID = categoryid;
             //_accountRepo.Edit(t);
+            //if (updatebudget)
+            //{
+            //    Category c = _categoryRepo.FindByID(categoryid);
+            //    if (c.Type == (int)CategoryType.Fixed)
+            //    {
+            //        c.Budget += t.Amount;
+            //        _categoryRepo.Edit(c);
+            //        _categoryRepo.Commit();
+            //    }
+            //}
 
-            if (updatebudget)
-            {
-                Category c = _categoryRepo.FindByID(categoryid);
-                if (c.Type == (int)CategoryType.Fixed)
-                {
-                    c.Budget += t.Amount;
-                    _categoryRepo.Edit(c);
-                    _categoryRepo.Commit();
-                }
-            }
+            Accounts.Remove(account);
+            SetCurrentAccount();
+            Remaining = Accounts.Count.ToString();
         }
     }
 }

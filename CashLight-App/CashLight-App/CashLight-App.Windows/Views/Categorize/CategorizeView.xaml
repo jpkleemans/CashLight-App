@@ -62,8 +62,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="30,30,30,10" TextWrapping="NoWrap" Text="Rekening naam: " VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
@@ -72,11 +72,11 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="Rekeningnummer: " VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
                 <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="{Binding Number}" VerticalAlignment="Center" FontSize="18" />
 
-                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="Totaal uitgave: " VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="{Binding TotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" VerticalAlignment="Top" FontSize="18"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="Aantal uitgaven: " VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="{Binding TransactionCount}" VerticalAlignment="Top" FontSize="18"/>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="Aantal transacties: " VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="{Binding TransactionCount}" VerticalAlignment="Top" FontSize="18"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="Totaalbedrag uitgaven: " VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="{Binding TotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" VerticalAlignment="Top" FontSize="18"/>
             </Grid>
 
             <TextBox Grid.Row="1" TextWrapping="Wrap" Text="{Binding Remaining}" Width="700" TextAlignment="Center" HorizontalAlignment="Center" FontSize="15" IsReadOnly="True"/>
