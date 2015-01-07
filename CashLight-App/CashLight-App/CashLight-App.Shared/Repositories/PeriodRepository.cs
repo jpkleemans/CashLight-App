@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using CashLight_App.Enums;
-
+using AutoMapper;
 namespace CashLight_App.Repositories
 {
     class PeriodRepository : IPeriodRepository
@@ -93,7 +93,17 @@ namespace CashLight_App.Repositories
         private void SetImportantTransactions(ref Period period)
         {
             period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
-            period.ImportantSpendings = _transactionRepo.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
+
+            IEnumerable<Category> category = _categoryRepo.FindAll().OrderByDescending(q => q.Budget).Take(4);
+
+            IEnumerable<ImportantCategory> importantcategories = from a in category
+                                                                 select new ImportantCategory
+                                                                 {
+                                                                     Category = a,
+                                                                     PercentageOfBudget = 40
+                                                                 };
+
+            period.ImportantSpendingCategories = importantcategories;
         }
 
         private void SetCategories(ref Period period)

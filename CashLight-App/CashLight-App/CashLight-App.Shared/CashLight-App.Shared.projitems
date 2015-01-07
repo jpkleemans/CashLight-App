@@ -16,6 +16,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CategoryType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ImportantCategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Setting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\Interfaces\ISettingRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\SettingRepository.cs" />
