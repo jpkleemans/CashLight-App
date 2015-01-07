@@ -102,41 +102,43 @@ namespace CashLight_App.ViewModels
             SelectedPeriod = Periods.Last();
         }
 
-        private IEnumerable<Transaction> SetTransactionHeight(IEnumerable<Transaction> transactions)
+        private List<Transaction> SetTransactionHeight(IEnumerable<Transaction> transactions)
         {
-            if (transactions.Count() > 0)
+            var trx = transactions.ToList();
+            if (trx.Count() > 0)
             {
-                double highest = transactions.Max(x => x.Amount);
+                double highest = trx.Max(x => x.Amount);
 
                 var markerheightproperties = getMarkerHeightProperties();
 
-                foreach (Transaction item in transactions)
+                foreach (Transaction item in trx)
                 {
                     double percentage = (item.Amount / highest);
                     item.Height = (markerheightproperties.useableHeight * percentage) + markerheightproperties.minHeight;
                 }
             }
 
-            return transactions;
+            return trx;
         }
 
-        private IEnumerable<ImportantCategory> SetCategoryHeight(IEnumerable<ImportantCategory> categories)
+        private List<ImportantCategory> SetCategoryHeight(IEnumerable<ImportantCategory> categories)
         {
             if (categories == null) return null;
-            if (categories.Count() > 0)
+            List<ImportantCategory> cats = categories.ToList();
+            if (cats.Count() > 0)
             {
                 double highest = categories.Max(x => x.Category.Budget);
 
                 var markerheightproperties = getMarkerHeightProperties();
 
-                foreach (ImportantCategory item in categories)
+                foreach (ImportantCategory item in cats)
                 {
                     double percentage = (item.Category.Budget / highest);
                     item.Height = (markerheightproperties.useableHeight * percentage) + markerheightproperties.minHeight;
                 }
             }
 
-            return categories;
+            return cats;
         }
 
         public MarkerHeightProperties getMarkerHeightProperties()
