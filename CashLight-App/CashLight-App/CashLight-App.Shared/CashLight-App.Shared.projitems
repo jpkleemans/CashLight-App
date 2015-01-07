@@ -16,7 +16,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CategoryType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Account.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Setting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\AccountRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\Interfaces\IAccountRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\Interfaces\ISettingRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\SettingRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BankConverter\BankConverterService.cs" />
