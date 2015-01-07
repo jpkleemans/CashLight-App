@@ -53,7 +53,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" VerticalAlignment="Top" Margin="0,30,0,0" Width="700" Background="#3F000000" DataContext="{Binding CurrentAccount}" ToolTipService.ToolTip="Klik voor meer info">
+            <Grid Grid.Row="0" VerticalAlignment="Top" Margin="0,30,0,0" Width="700" Background="#3F000000" DataContext="{Binding CurrentAccount}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -77,6 +77,7 @@
 
                 <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="Totaalbedrag uitgaven: " VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
                 <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="{Binding TotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" VerticalAlignment="Top" FontSize="18"/>
+                <AppBarButton Icon="More" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding ShowMoreInfoCommand}"/>
             </Grid>
 
             <TextBox Grid.Row="1" TextWrapping="Wrap" Text="{Binding Remaining}" Width="700" TextAlignment="Center" HorizontalAlignment="Center" FontSize="15" IsReadOnly="True"/>

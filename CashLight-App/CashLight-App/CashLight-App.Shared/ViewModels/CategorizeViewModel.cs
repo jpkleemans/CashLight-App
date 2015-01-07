@@ -28,6 +28,7 @@ namespace CashLight_App.ViewModels
 
         public RelayCommand<int> SetCategoryCommand { get; set; }
         public RelayCommand AddCategoryCommand { get; set; }
+        public RelayCommand ShowMoreInfoCommand { get; set; }
 
         private Account _currentAccount;
         public Account CurrentAccount
@@ -80,6 +81,7 @@ namespace CashLight_App.ViewModels
 
             SetCategoryCommand = new RelayCommand<int>((categoryID) => SetCategory(categoryID));
             AddCategoryCommand = new RelayCommand(AddCategory);
+            ShowMoreInfoCommand = new RelayCommand(ShowMoreInfo);
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Accounts = new ObservableCollection<Account>(
@@ -91,6 +93,10 @@ namespace CashLight_App.ViewModels
             Remaining = Accounts.Count.ToString();
 
             SetCurrentAccount();
+        }
+        private void ShowMoreInfo()
+        {
+            _dialogService.ShowMessage("Test met newlines \nHoi dit is een newline", "Transactie informatie");
         }
 
         private void SetCurrentAccount()
