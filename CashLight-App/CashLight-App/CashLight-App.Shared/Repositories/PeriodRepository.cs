@@ -248,10 +248,11 @@ namespace CashLight_App.Repositories
                 {
                     spendinglimit += transaction.Amount;
                 }
-                else
-                {
-                    spendinglimit -= transaction.Amount;
-                }
+            }
+            var categories = _categoryRepo.FindAll();
+            foreach (var category in categories)
+            {
+                spendinglimit -= category.Budget;
             }
 
             period.SpendingsLimit = spendinglimit;
