@@ -33,88 +33,100 @@
             <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/Backgrounds/Purple.jpg"/>
         </Grid.Background>
 
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
 
-        <part:Header Title="Categoriseer uitgaven" Grid.Row="0" />
-
-        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="300"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" VerticalAlignment="Top" Margin="0,30,0,0" Width="700" Background="#3F000000" DataContext="{Binding CurrentAccount}">
+            <part:Header Title="Categoriseer uitgaven" Grid.Row="0" />
+
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="30,30,30,10" TextWrapping="NoWrap" Text="Rekening naam: " VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="30,30,30,10" TextWrapping="NoWrap" Text="{Binding Name}" VerticalAlignment="Center" FontSize="18" />
-
-                <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="Rekeningnummer: " VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="{Binding Number}" VerticalAlignment="Center" FontSize="18" />
-
-                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="Aantal uitgaven: " VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,10" TextWrapping="NoWrap" Text="{Binding TransactionCount}" VerticalAlignment="Top" FontSize="18"/>
-
-                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="Totaalbedrag uitgaven: " VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="30,10,30,30" TextWrapping="NoWrap" Text="{Binding TotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" VerticalAlignment="Top" FontSize="18"/>
-                <AppBarButton Icon="More" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding ShowMoreInfoCommand}"/>
-            </Grid>
-
-            <TextBox Grid.Row="1" TextWrapping="Wrap" Text="{Binding Remaining}" Width="700" TextAlignment="Center" HorizontalAlignment="Center" FontSize="15" IsReadOnly="True"/>
-
-            <Grid Grid.Row="2" VerticalAlignment="Top" Margin="0,30,0,0" Width="700" Background="#3F000000">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="200"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Alle uitgaven van deze rekening horen bij de categorie:" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" />
+                <Grid Grid.Row="0" Margin="39,0,39,0" Background="#7FFFFFFF">
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Remaining}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="Black" />
+                </Grid>
 
-                <ScrollViewer Grid.Row="1" Visibility="{Binding HasCategories}" VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding Categories}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,30">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
+                <Grid Grid.Row="1" Margin="39,20,39,0" Background="#3F000000" DataContext="{Binding CurrentAccount}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding Name}"
-                                        Width="400"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="NoWrap" Text="Rekening naam:" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding Name}" FontSize="18" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="NoWrap" Text="Rekeningnummer:" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding Number}" FontSize="18" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="NoWrap" Text="Aantal uitgaven:" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding TransactionCount}" FontSize="18"/>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="NoWrap" Text="Totaalbedrag uitgaven:" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding TotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontSize="18"/>
+                </Grid>
+
+                <AppBarButton Grid.Row="1" Margin="0,0,50,0" Icon="More" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsCompact="True" Command="{Binding ShowMoreInfoCommand}"/>
+
+                <Grid Grid.Row="2" Margin="39,20,39,0" Background="#3F000000">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Alle uitgaven van deze rekening horen bij de categorie:" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" />
+
+                    <ScrollViewer Grid.Row="1" Visibility="{Binding HasCategories}" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Categories}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,30">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding Name}"
+                                        Width="500"
                                         Command="{Binding DataContext.SetCategoryCommand, ElementName=_this}"
                                         CommandParameter="{Binding CategoryID}" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
 
-                <Button Grid.Row="2" 
-                        VerticalAlignment="top" 
+                    <Button Grid.Row="2" 
+                        VerticalAlignment="Center" 
                         HorizontalAlignment="Center" 
                         Content="+ Categorie toevoegen"
                         Command="{Binding AddCategoryCommand}" />
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
