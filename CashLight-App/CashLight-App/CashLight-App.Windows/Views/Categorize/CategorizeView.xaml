@@ -64,7 +64,7 @@
                         <TextBlock TextWrapping="Wrap" Text="{Binding Remaining}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="Black" />
                     </Grid>
 
-                    <Grid Grid.Row="1" Margin="39,20,39,0" Background="#3F000000" DataContext="{Binding CurrentAccount}">
+                    <Grid Grid.Row="1" Margin="39,20,39,0" Background="#3F000000" DataContext="{Binding CurrentAccount}" Visibility="{Binding DataContext.HasUncategorizedAccounts, ElementName=_this}">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -92,9 +92,9 @@
                         <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding TotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontSize="18"/>
                     </Grid>
 
-                    <AppBarButton Grid.Row="1" Margin="0,0,50,0" Icon="More" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsCompact="True" Command="{Binding ShowMoreInfoCommand}"/>
+                    <AppBarButton Grid.Row="1" Margin="0,0,50,0" Icon="More" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsCompact="True" Command="{Binding ShowMoreInfoCommand}" Visibility="{Binding HasUncategorizedAccounts}"/>
 
-                    <Grid Grid.Row="2" Margin="39,20,39,0" Background="#3F000000" VerticalAlignment="Top">
+                    <Grid Grid.Row="2" Margin="39,20,39,0" Background="#3F000000" VerticalAlignment="Top" Visibility="{Binding HasUncategorizedAccounts}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="*"/>

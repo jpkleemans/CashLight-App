@@ -49,12 +49,20 @@ namespace CashLight_App.ViewModels
         {
             get
             {
-                return "Nog " + _remaining + " rekeningen te categoriseren.";
+                if (Accounts.Count > 0)
+                {
+                    return "Nog " + _remaining + " rekeningen te categoriseren.";
+                }
+                else
+                {
+                    return "Geen rekeningen om te categoriseren.";
+                }
             }
             set
             {
                 _remaining = value;
                 RaisePropertyChanged(() => Remaining);
+                RaisePropertyChanged(() => HasUncategorizedAccounts);
             }
         }
 
@@ -63,6 +71,17 @@ namespace CashLight_App.ViewModels
             get
             {
                 if (Categories.Count > 0)
+                    return "visible";
+                else
+                    return "collapsed";
+            }
+        }
+
+        public string HasUncategorizedAccounts
+        {
+            get
+            {
+                if (Accounts.Count > 0)
                     return "visible";
                 else
                     return "collapsed";
@@ -99,7 +118,7 @@ namespace CashLight_App.ViewModels
             string transactions = "";
             foreach (var trans in _currentAccount.Transactions)
             {
-                transactions += trans.Date.ToString("dd MMM yyyy") + "  \t" + trans.Amount.ToString("c") + "    \t" + Shorten(trans.Description.ToString(),55) + "\n";
+                transactions += trans.Date.ToString("dd MMM yyyy") + "  \t" + trans.Amount.ToString("c") + "    \t" + Shorten(trans.Description.ToString(), 55) + "\n";
             }
             _dialogService.ShowMessage(transactions, "Transactie informatie");
         }
@@ -110,10 +129,10 @@ namespace CashLight_App.ViewModels
             {
                 CurrentAccount = Accounts.First();
             }
-            else
-            {
-                _dialogService.ShowMessage("Er zijn geen ongecategoriseerde uitgaven meer gevonden.", "Melding", "Terug naar dashboard", () => _navigator.NavigateTo("Dashboard"));
-            }
+            //else
+            //{
+            //    _dialogService.ShowMessage("Er zijn geen ongecategoriseerde uitgaven meer gevonden.", "Melding");
+            //}
         }
 
         private void AddCategory()
@@ -128,7 +147,7 @@ namespace CashLight_App.ViewModels
 
             _accountRepo.Add(account);
             _accountRepo.Commit();
-            
+
             Accounts.Remove(CurrentAccount);
             SetCurrentAccount();
             Remaining = Accounts.Count.ToString();
