@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using CashLight_App.Enums;
+using System.Diagnostics;
 
 namespace CashLight_App.Repositories
 {
@@ -107,7 +108,6 @@ namespace CashLight_App.Repositories
                     .Where(q => q.InOut == (int)InOut.Out)
                     .Count();
 
-
                 double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
 
                 if (totaltransactions == 0 || amountoftransactions == 0)
@@ -137,9 +137,9 @@ namespace CashLight_App.Repositories
                 //averagedeviation = Convert.ToDouble(_settingRepo.FindByKey("Income.AverageDeviation").Value);
                 //averageperiod = Convert.ToDouble(_settingRepo.FindByKey("Income.AveragePeriod").Value);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Debug.WriteLine(e);
             }
 
             return new PeriodDTO(name, account, averagedeviation, averageperiod);

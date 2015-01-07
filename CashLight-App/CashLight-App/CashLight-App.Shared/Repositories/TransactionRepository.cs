@@ -15,10 +15,13 @@ namespace CashLight_App.Repositories
     class TransactionRepository : ITransactionRepository
     {
         private ISQLiteService _db;
+        private IAccountRepository _accountRepo;
 
-        public TransactionRepository(ISQLiteService SQLiteService)
+        public TransactionRepository(ISQLiteService SQLiteService, IAccountRepository accountRepo)
         {
             this._db = SQLiteService;
+
+            _accountRepo = accountRepo;
 
             Mapper.CreateMap<TransactionTable, Transaction>();
         }
@@ -78,7 +81,21 @@ namespace CashLight_App.Repositories
                     .Where(q => q.Date >= startDate && q.Date <= endDate)
                     .OrderBy(q => q.Date);
 
-            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
+            IEnumerable<Transaction> transactionModels = Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
+
+            IEnumerable<Account> accountCategories = _accountRepo.FindAll();
+
+            foreach (Transaction transaction in transactionModels)
+            {
+                Account account = accountCategories.Where(x => x.Number == transaction.CreditorNumber).FirstOrDefault();
+
+                if (account != null)
+                {
+                    transaction.CategoryID = account.CategoryID;
+                }
+            }
+
+            return transactionModels;
         }
 
         public IEnumerable<Transaction> GetHighestBetweenDates(Enums.InOut inOut, int limit, DateTime startDate, DateTime endDate)

@@ -81,5 +81,25 @@ namespace CashLight_App.Repositories
         {
             _db.Context.Commit();
         }
+
+
+        public IEnumerable<Account> FindAll()
+        {
+            IEnumerable<AccountCategoryTable> AccountCategories = _db.Context.Table<AccountCategoryTable>();
+
+            List<Account> accounts = new List<Account>();
+
+            foreach (AccountCategoryTable item in AccountCategories)
+            {
+                Account account = new Account();
+
+                account.CategoryID = item.CategoryID;
+                account.Number = item.AccountNumber;
+
+                accounts.Add(account);
+            }
+
+            return accounts;
+        }
     }
 }

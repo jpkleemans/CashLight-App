@@ -12,5 +12,7 @@ namespace CashLight_App.Repositories.Interfaces
         void Add(Account account);
 
         void Commit();
+
+        IEnumerable<Account> FindAll();
     }
 }
