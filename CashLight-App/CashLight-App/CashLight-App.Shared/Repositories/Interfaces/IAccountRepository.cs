@@ -8,5 +8,9 @@ namespace CashLight_App.Repositories.Interfaces
     public interface IAccountRepository
     {
         IEnumerable<Account> FindAllSpending();
+
+        void Add(Account account);
+
+        void Commit();
     }
 }

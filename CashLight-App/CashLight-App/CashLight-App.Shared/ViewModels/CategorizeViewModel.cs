@@ -84,7 +84,7 @@ namespace CashLight_App.ViewModels
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Accounts = new ObservableCollection<Account>(
                 _accountRepo.FindAllSpending()
-                    .Where(x => x.Category == null)
+                    .Where(x => x.CategoryID == 0)
                     .OrderByDescending(x => x.TotalAmount)
             );
 
@@ -112,31 +112,13 @@ namespace CashLight_App.ViewModels
 
         private void SetCategory(int categoryID)
         {
-            categorizeAccount(CurrentAccount, categoryID, true);
-            //Accounts.Remove(CurrentAccount);
-            //categorizeEqualAccounts(CurrentAccount);
+            Account account = CurrentAccount;
+            account.CategoryID = categoryID;
 
-            //Remaining = Transactions.Count.ToString();
-            //_transactionRepo.Commit();
-            //SetCurrentTransaction();
-        }
-
-        private void categorizeAccount(Account account, int categoryid, bool updatebudget = false)
-        {
-            //t.CategoryID = categoryid;
-            //_accountRepo.Edit(t);
-            //if (updatebudget)
-            //{
-            //    Category c = _categoryRepo.FindByID(categoryid);
-            //    if (c.Type == (int)CategoryType.Fixed)
-            //    {
-            //        c.Budget += t.Amount;
-            //        _categoryRepo.Edit(c);
-            //        _categoryRepo.Commit();
-            //    }
-            //}
-
-            Accounts.Remove(account);
+            _accountRepo.Add(account);
+            _accountRepo.Commit();
+            
+            Accounts.Remove(CurrentAccount);
             SetCurrentAccount();
             Remaining = Accounts.Count.ToString();
         }

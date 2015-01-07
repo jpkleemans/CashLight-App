@@ -11,7 +11,7 @@ namespace CashLight_App.Models
 
         public string Number { get; set; }
 
-        public Category Category { get; set; }
+        public int CategoryID { get; set; }
 
         public List<Transaction> Transactions { get; set; }
 
