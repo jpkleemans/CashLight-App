@@ -99,7 +99,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="70"/>
                         </Grid.RowDefinitions>
 
                         <TextBlock Text="Alle uitgaven van deze rekening horen bij de categorie:" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" />
@@ -123,12 +123,9 @@
                             </ItemsControl>
                         </ScrollViewer>
 
-                        <Button Grid.Row="2" 
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Center" 
-                        Content="+ Categorie toevoegen"
-                        Command="{Binding AddCategoryCommand}" />
+                        <AppBarButton Grid.Row="2" Margin="0,0,10,0" Icon="Add" HorizontalAlignment="Right" IsCompact="True" Command="{Binding AddCategoryCommand}"/>
                     </Grid>
+
                 </Grid>
 
                 <Grid Grid.Column="1" Margin="0,20,0,0">
