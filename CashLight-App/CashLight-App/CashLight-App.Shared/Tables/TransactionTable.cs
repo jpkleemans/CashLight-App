@@ -21,18 +21,12 @@ namespace CashLight_App.Tables
         public double Amount { get; set; }
         public string Description { get; set; }
 
-        [ForeignKey(typeof(CategoryTable))]
-        public int CategoryID { get; set; }
-
-        [ManyToOne]
-        public virtual CategoryTable Category { get; set; }
-
         public TransactionTable()
         {
 
         }
 
-        public TransactionTable(DateTime date, string debtorNumber, string creditorName, string creditorNumber, int code, int inOut, double amount, string description, int categoryID)
+        public TransactionTable(DateTime date, string debtorNumber, string creditorName, string creditorNumber, int code, int inOut, double amount, string description)
         {
             this.Date = date;
             this.DebtorNumber = debtorNumber;
@@ -42,7 +36,6 @@ namespace CashLight_App.Tables
             this.InOut = inOut;
             this.Amount = amount;
             this.Description = description;
-            this.CategoryID = categoryID;
         }
 
     }

@@ -62,6 +62,7 @@ namespace CashLight_App.Services.SQLite
             SQLiteConnection connection = new SQLiteConnection(database);
             connection.CreateTable<CategoryTable>();
             connection.CreateTable<TransactionTable>();
+            connection.CreateTable<AccountCategoryTable>();
             connection.CreateTable<SettingTable>();
 
             return connection;

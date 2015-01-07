@@ -65,6 +65,9 @@ namespace CashLight_App.Config
             .As<ISettingRepository>()
             .SingleInstance();
 
+            builder.RegisterType<AccountRepository>()
+            .As<IAccountRepository>()
+            .SingleInstance();
         }
     }
 }

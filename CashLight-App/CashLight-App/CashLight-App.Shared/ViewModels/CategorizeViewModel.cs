@@ -19,27 +19,28 @@ namespace CashLight_App.ViewModels
     public class CategorizeViewModel : ViewModelBase
     {
         private ICategoryRepository _categoryRepo;
-        private ITransactionRepository _transactionRepo;
+        private IAccountRepository _accountRepo;
         private INavigationService _navigator;
         private IDialogService _dialogService;
 
         public ObservableCollection<Category> Categories { get; set; }
-        public ObservableCollection<Transaction> Transactions { get; set; }
+        public ObservableCollection<Account> Accounts { get; set; }
 
         public RelayCommand<int> SetCategoryCommand { get; set; }
         public RelayCommand AddCategoryCommand { get; set; }
+        public RelayCommand ShowMoreInfoCommand { get; set; }
 
-        private Transaction _currentTransaction;
-        public Transaction CurrentTransaction
+        private Account _currentAccount;
+        public Account CurrentAccount
         {
             get
             {
-                return _currentTransaction;
+                return _currentAccount;
             }
             set
             {
-                _currentTransaction = value;
-                RaisePropertyChanged(() => CurrentTransaction);
+                _currentAccount = value;
+                RaisePropertyChanged(() => CurrentAccount);
             }
         }
 
@@ -48,7 +49,7 @@ namespace CashLight_App.ViewModels
         {
             get
             {
-                return "Nog " + _remaining + " transacties te gaan.";
+                return "Nog " + _remaining + " rekeningen te categoriseren.";
             }
             set
             {
@@ -57,36 +58,56 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        public string HasCategories
+        {
+            get
+            {
+                if (Categories.Count > 0)
+                    return "visible";
+                else
+                    return "collapsed";
+            }
+        }
+
         public CategorizeViewModel(INavigationService navigator,
                                    ICategoryRepository categoryRepo,
-                                   ITransactionRepository transactionRepo,
+                                   IAccountRepository accountRepo,
                                    IDialogService dialogService)
         {
             _categoryRepo = categoryRepo;
-            _transactionRepo = transactionRepo;
+            _accountRepo = accountRepo;
             _navigator = navigator;
             _dialogService = dialogService;
 
             SetCategoryCommand = new RelayCommand<int>((categoryID) => SetCategory(categoryID));
             AddCategoryCommand = new RelayCommand(AddCategory);
+            ShowMoreInfoCommand = new RelayCommand(ShowMoreInfo);
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
-            Transactions = new ObservableCollection<Transaction>(_transactionRepo.GetAllSpendings().Where(x => x.CategoryID == 0));
+            Accounts = new ObservableCollection<Account>(
+                _accountRepo.FindAllSpending()
+                    .Where(x => x.CategoryID == 0)
+                    .OrderByDescending(x => x.TotalAmount)
+            );
 
-            Remaining = Transactions.Count.ToString();
+            Remaining = Accounts.Count.ToString();
 
-            SetCurrentTransaction();
+            SetCurrentAccount();
+        }
+        private void ShowMoreInfo()
+        {
+            _dialogService.ShowMessage("Test met newlines \nHoi dit is een newline", "Transactie informatie");
         }
 
-        private void SetCurrentTransaction()
+        private void SetCurrentAccount()
         {
-            if (Transactions.Count != 0)
+            if (Accounts.Count != 0)
             {
-                CurrentTransaction = Transactions.First();
+                CurrentAccount = Accounts.First();
             }
             else
             {
-                _dialogService.ShowMessage("Er zijn geen ongecategoriseerde transacties meer gevonden.", "Melding", "Terug naar dashboard", () => _navigator.NavigateTo("Dashboard"));
+                _dialogService.ShowMessage("Er zijn geen ongecategoriseerde uitgaven meer gevonden.", "Melding", "Terug naar dashboard", () => _navigator.NavigateTo("Dashboard"));
             }
         }
 
@@ -97,44 +118,15 @@ namespace CashLight_App.ViewModels
 
         private void SetCategory(int categoryID)
         {
-            categorizeTransaction(CurrentTransaction, categoryID, true);
-            Transactions.Remove(CurrentTransaction);
-            categorizeEqualTransactions(CurrentTransaction);
+            Account account = CurrentAccount;
+            account.CategoryID = categoryID;
 
-            Remaining = Transactions.Count.ToString();
-            _transactionRepo.Commit();
-            SetCurrentTransaction();
-        }
-
-        public void categorizeEqualTransactions(Transaction CurrentTransaction)
-        {
-            List<Transaction> list = Transactions.ToList();
-            foreach (Transaction transaction in list)
-            {
-                if (transaction.CreditorName == CurrentTransaction.CreditorName
-                    && transaction.CreditorNumber == CurrentTransaction.CreditorNumber)
-                {
-                    categorizeTransaction(transaction, CurrentTransaction.CategoryID);
-                    Transactions.Remove(transaction);
-                }
-            }
-        }
-
-        private void categorizeTransaction(Transaction t, int categoryid, bool updatebudget = false)
-        {
-            t.CategoryID = categoryid;
-            _transactionRepo.Edit(t);
-
-            if(updatebudget)
-            {
-                Category c = _categoryRepo.FindByID(categoryid);
-                if(c.Type == (int)CategoryType.Fixed)
-                {
-                    c.Budget += t.Amount;
-                    _categoryRepo.Edit(c);
-                    _categoryRepo.Commit();
-                }
-            }
+            _accountRepo.Add(account);
+            _accountRepo.Commit();
+            
+            Accounts.Remove(CurrentAccount);
+            SetCurrentAccount();
+            Remaining = Accounts.Count.ToString();
         }
     }
 }

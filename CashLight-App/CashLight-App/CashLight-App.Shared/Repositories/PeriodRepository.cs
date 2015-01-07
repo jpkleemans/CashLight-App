@@ -258,33 +258,34 @@ namespace CashLight_App.Repositories
             period.SpendingsLimit = spendinglimit;
         }
 
-
-
         public IEnumerable<Period> GetAll()
         {
-            DateTime firstTransactionDate = _transactionRepo.GetFirst().Date;
+            Transaction firstTransaction = _transactionRepo.GetFirst();
 
             List<Period> periods = new List<Period>();
 
-            Period firstPeriod = GetByDate(firstTransactionDate);
-            periods.Add(firstPeriod);
-
-            Period prevPeriod = firstPeriod;
-
-            while (true)
+            if (firstTransaction != null)
             {
-                Period curPeriod = GetByDate(prevPeriod.EndDate.AddDays(1));
+                Period firstPeriod = GetByDate(firstTransaction.Date);
+                periods.Add(firstPeriod);
 
-                if ((curPeriod.Transactions.Count() > 0) && (curPeriod.EndDate != prevPeriod.EndDate))
-                {
-                    periods.Add(curPeriod);
-                }
-                else
-                {
-                    break;
-                }
+                Period prevPeriod = firstPeriod;
 
-                prevPeriod = curPeriod;
+                while (true)
+                {
+                    Period curPeriod = GetByDate(prevPeriod.EndDate.AddDays(1));
+
+                    if ((curPeriod.Transactions.Count() > 0) && (curPeriod.EndDate != prevPeriod.EndDate))
+                    {
+                        periods.Add(curPeriod);
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                    prevPeriod = curPeriod;
+                }
             }
 
             return periods;

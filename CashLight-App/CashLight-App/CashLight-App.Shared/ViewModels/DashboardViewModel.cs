@@ -79,31 +79,24 @@ namespace CashLight_App.ViewModels
 
         private void InitPeriods()
         {
-            //Periods = new ObservableCollection<Period>();
-
-            //Period now = _periodRepo.GetByDate(DateTime.Now);
-            //Period previous = _periodRepo.GetByDate(now.StartDate.AddDays(-1));
-
-            //now.ImportantIncomes = SetHeight(now.ImportantIncomes);
-            //now.ImportantSpendings = SetHeight(now.ImportantSpendings);
-            //previous.ImportantIncomes = SetHeight(previous.ImportantIncomes);
-            //previous.ImportantSpendings = SetHeight(previous.ImportantSpendings);
-
-            //Periods.Add(now);
-            //Periods.Add(previous);
-
-            //SelectedPeriod = now;
+            IEnumerable<Period> allPeriods = _periodRepo.GetAll();
 
             Periods = new ObservableCollection<Period>();
 
-            IEnumerable<Period> allPeriods = _periodRepo.GetAll();
-
-            foreach (Period period in allPeriods)
+            if (allPeriods.Count() > 0)
             {
-                period.ImportantIncomes = SetHeight(period.ImportantIncomes);
-                period.ImportantSpendings = SetHeight(period.ImportantSpendings);
+                foreach (Period period in allPeriods)
+                {
+                    period.ImportantIncomes = SetHeight(period.ImportantIncomes);
+                    period.ImportantSpendings = SetHeight(period.ImportantSpendings);
 
-                Periods.Add(period);
+                    Periods.Add(period);
+                }
+            }
+            else
+            {
+                Periods.Add(_periodRepo.GetByDate(DateTime.Now));
+                _dialogService.ShowError("U heeft nog geen CSV-bestand van uw bank geüpload.", "Geen transacties gevonden!", "App sluiten", () => Application.Current.Exit());
             }
 
             SelectedPeriod = Periods.Last();
