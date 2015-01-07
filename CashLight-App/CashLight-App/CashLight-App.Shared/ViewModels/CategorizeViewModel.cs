@@ -96,12 +96,13 @@ namespace CashLight_App.ViewModels
         }
         private void ShowMoreInfo()
         {
-            string transactions = "";
+            string transactions = "De huidige rekeningen zijn van " + _currentAccount.Name + ".\n\n";
             foreach (var trans in _currentAccount.Transactions)
             {
                 transactions += trans.Date.ToString("dd MMM yyyy") + "  \t" + trans.Amount.ToString("c") + "    \t" + Shorten(trans.Description.ToString(),55) + "\n";
             }
-            _dialogService.ShowMessage(transactions, "Transactie informatie");
+            transactions += "\nTotaal:\t\t" + _currentAccount.TotalAmount.ToString("c");
+            _dialogService.ShowMessage(transactions, "Rekeningdetails");
         }
 
         private void SetCurrentAccount()
