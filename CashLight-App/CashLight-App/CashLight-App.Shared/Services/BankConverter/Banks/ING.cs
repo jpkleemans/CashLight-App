@@ -47,7 +47,7 @@ namespace CashLight_App.Services.BankConverter.Banks
                 database.Add("Bedrag (EUR)", RQ[6]);
                 database.Add("Mutatiesoort", RQ[7]);
 
-                if (row.Count < 8)
+                if (row.Count <= 8)
                 {
                     database.Add("Mededelingen", string.Empty);
 

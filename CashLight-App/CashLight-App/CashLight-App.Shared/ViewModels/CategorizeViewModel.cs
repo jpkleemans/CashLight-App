@@ -96,7 +96,12 @@ namespace CashLight_App.ViewModels
         }
         private void ShowMoreInfo()
         {
-            _dialogService.ShowMessage("Test met newlines \nHoi dit is een newline", "Transactie informatie");
+            string transactions = "";
+            foreach (var trans in _currentAccount.Transactions)
+            {
+                transactions += trans.Date.ToString("dd MMM yyyy") + "  \t" + trans.Amount.ToString("c") + "    \t" + Shorten(trans.Description.ToString(),55) + "\n";
+            }
+            _dialogService.ShowMessage(transactions, "Transactie informatie");
         }
 
         private void SetCurrentAccount()
@@ -127,6 +132,16 @@ namespace CashLight_App.ViewModels
             Accounts.Remove(CurrentAccount);
             SetCurrentAccount();
             Remaining = Accounts.Count.ToString();
+        }
+        /// <summary>
+        /// Used to make string shorter to specific length.
+        /// </summary>
+        /// <param name="value">Input string</param>
+        /// <param name="maxChars">Amount of chars</param>
+        /// <returns></returns>
+        public string Shorten(string value, int maxChars)
+        {
+            return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "…";
         }
     }
 }
