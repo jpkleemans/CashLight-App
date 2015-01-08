@@ -133,6 +133,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="721599d8-52fa-4f9e-9fc1-4ed661543933" />
           </association>
+          <association Id="a76a005b-26a8-41c0-a35c-792c39068d41" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Inzien voortgang categoriseren" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c44ce625-abcd-4048-8d1e-ef122265306d" LastKnownName="Inzien voortgang categoriseren" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1a9d6037-a76f-4a6a-b4e8-d87584f53600" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="40fc523c-4db7-4e92-a7d0-24e1a32d090a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bb43fcc2-4616-430a-882d-8f63bdea1f5a" name="Inzien voortgang categoriseren" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d9856828-2d12-4de5-b615-704c66fd0de1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9e923dfe-f1af-4b16-8ab5-9a658b52f48f" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
