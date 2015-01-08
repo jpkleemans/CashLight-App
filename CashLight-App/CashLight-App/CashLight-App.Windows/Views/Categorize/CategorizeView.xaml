@@ -90,7 +90,7 @@
                         <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding TransactionCount}" FontSize="18"/>
 
                         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="NoWrap" Text="Totaalbedrag uitgaven:" FontSize="18" FontWeight="Bold"/>
-                        <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding TotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontSize="18"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="{Binding TransactionTotalAmount, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontSize="18"/>
                     </Grid>
 
                     <AppBarButton Grid.Row="1" Margin="0,0,50,0" Icon="More" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsCompact="True" Command="{Binding ShowMoreInfoCommand}" Visibility="{Binding HasUncategorizedAccounts, Converter={StaticResource BooleanToVisibilityConverter}}"/>

@@ -8,7 +8,7 @@ using System.Text;
 namespace CashLight_App.Tables
 {
     [Table("Category")]
-    class CategoryTable
+    public class CategoryTable
     {
         [PrimaryKey, AutoIncrement]
         public int CategoryID { get; set; }

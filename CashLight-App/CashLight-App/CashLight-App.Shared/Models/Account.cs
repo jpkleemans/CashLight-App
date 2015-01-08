@@ -17,7 +17,7 @@ namespace CashLight_App.Models
 
         public int TransactionCount { get; set; }
 
-        public double TotalAmount { get; set; }
+        public double TransactionTotalAmount { get; set; }
 
         public int AccountCategoryID { get; set; }
     }
