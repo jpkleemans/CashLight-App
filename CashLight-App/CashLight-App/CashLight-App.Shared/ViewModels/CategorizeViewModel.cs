@@ -24,7 +24,7 @@ namespace CashLight_App.ViewModels
         private IDialogService _dialogService;
 
         public ObservableCollection<Category> Categories { get; set; }
-        public ObservableCollection<Account> Accounts { get; set; }
+        public ObservableCollection<Account> UncategorizedAccounts { get; set; }
         public ObservableCollection<Account> CategorizedAccounts { get; set; }
 
         public RelayCommand<int> SetCategoryCommand { get; set; }
@@ -68,21 +68,8 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public bool HasCategories
-        {
-            get
-            {
-                return (Categories.Count > 0);
-            }
-        }
-
-        public bool HasUncategorizedAccounts
-        {
-            get
-            {
-                return (Accounts.Count > 0);
-            }
-        }
+        public bool HasCategories { get { return (Categories.Count > 0); } }
+        public bool HasUncategorizedAccounts { get { return (UncategorizedAccounts.Count > 0); } }
 
         public CategorizeViewModel(INavigationService navigator,
                                    ICategoryRepository categoryRepo,
@@ -100,17 +87,18 @@ namespace CashLight_App.ViewModels
             DeleteCategoryCommand = new RelayCommand<int>((categoryID) => DeleteCategory(categoryID));
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
-            Accounts = new ObservableCollection<Account>(
-                _accountRepo.FindAllSpending()
+            UncategorizedAccounts = new ObservableCollection<Account>(
+                _accountRepo.FindAll()
                     .Where(x => x.CategoryID == 0)
                     .OrderByDescending(x => x.TransactionTotalAmount)
             );
-            CategorizedAccounts = new ObservableCollection<Account>(_accountRepo.FindAll());
+            CategorizedAccounts = new ObservableCollection<Account>(_accountRepo.FindAllCategorized());
 
-            Remaining = Accounts.Count.ToString();
+            Remaining = UncategorizedAccounts.Count.ToString();
 
             SetCurrentAccount();
         }
+
         private void ShowMoreInfo()
         {
             string transactions = "De huidige rekeningen zijn van " + _currentAccount.Name + ".\n\n";
@@ -124,9 +112,9 @@ namespace CashLight_App.ViewModels
 
         private void SetCurrentAccount()
         {
-            if (Accounts.Count != 0)
+            if (UncategorizedAccounts.Count != 0)
             {
-                CurrentAccount = Accounts.First();
+                CurrentAccount = UncategorizedAccounts.First();
             }
             //else
             //{
@@ -147,27 +135,32 @@ namespace CashLight_App.ViewModels
             _accountRepo.Add(account);
             _accountRepo.Commit();
 
-            Accounts.Remove(CurrentAccount);
+            CategorizedAccounts.Add(account);
+            UncategorizedAccounts.Remove(account);
+
             SetCurrentAccount();
-            Remaining = Accounts.Count.ToString();
+            Remaining = UncategorizedAccounts.Count.ToString();
         }
 
         private void DeleteCategory(int categoryID)
         {
-            Category category = new Category();
-            category.CategoryID = categoryID;
-            foreach (var account in _accountRepo.FindAll())
+            Category category = Categories.Where(x => x.CategoryID == categoryID).First();
+
+            foreach (var account in _accountRepo.FindAllCategorized())
             {
-                if (account.CategoryID == categoryID)
+                if (account.CategoryID == category.CategoryID)
                 {
                     _accountRepo.Delete(account);
                 }
             }
             _accountRepo.Commit();
+
             _categoryRepo.Delete(category);
             _categoryRepo.Commit();
-            Categories.Remove(Categories.Where(x => x.CategoryID == categoryID).First());
+
+            Categories.Remove(category);
         }
+
         /// <summary>
         /// Used to make string shorter to specific length.
         /// </summary>

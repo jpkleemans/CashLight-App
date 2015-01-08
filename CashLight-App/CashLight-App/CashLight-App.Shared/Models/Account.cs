@@ -7,18 +7,19 @@ namespace CashLight_App.Models
 {
     public class Account : ObservableObject
     {
+        public int AccountCategoryID { get; set; }
+
         public string Name { get; set; }
 
         public string Number { get; set; }
 
         public int CategoryID { get; set; }
 
+
         public List<Transaction> Transactions { get; set; }
 
         public int TransactionCount { get; set; }
 
         public double TransactionTotalAmount { get; set; }
-
-        public int AccountCategoryID { get; set; }
     }
 }

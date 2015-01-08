@@ -84,8 +84,7 @@ namespace CashLight_App.Repositories
 
             foreach (Transaction transaction in transactionModels)
             {
-                AccountCategoryTable account = AccountCategories.Where(x => x.AccountNumber == transaction.CreditorNumber).FirstOrDefault();
-
+                AccountCategoryTable account = AccountCategories.Where(x => x.Number == transaction.CreditorNumber).FirstOrDefault();
                 if (account != null)
                 {
                     transaction.CategoryID = account.CategoryID;

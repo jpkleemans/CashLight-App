@@ -7,13 +7,13 @@ namespace CashLight_App.Repositories.Interfaces
 {
     public interface IAccountRepository
     {
-        IEnumerable<Account> FindAllSpending();
+        IEnumerable<Account> FindAll();
+
+        IEnumerable<Account> FindAllCategorized();
 
         void Add(Account account);
 
         void Delete(Account account);
-
-        List<Account> FindAll();
 
         void Commit();
     }

@@ -12,7 +12,9 @@ namespace CashLight_App.Tables
         [PrimaryKey, AutoIncrement]
         public int AccountCategoryID { get; set; }
 
-        public string AccountNumber { get; set; }
+        public string Number { get; set; }
+
+        public string Name { get; set; }
 
         [ForeignKey(typeof(CategoryTable))]
         public int CategoryID { get; set; }
