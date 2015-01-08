@@ -15,13 +15,10 @@ namespace CashLight_App.Repositories
     class TransactionRepository : ITransactionRepository
     {
         private ISQLiteService _db;
-        private IAccountRepository _accountRepo;
 
-        public TransactionRepository(ISQLiteService SQLiteService, IAccountRepository accountRepo)
+        public TransactionRepository(ISQLiteService SQLiteService)
         {
             this._db = SQLiteService;
-
-            _accountRepo = accountRepo;
 
             Mapper.CreateMap<TransactionTable, Transaction>();
         }
@@ -83,11 +80,11 @@ namespace CashLight_App.Repositories
 
             IEnumerable<Transaction> transactionModels = Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
 
-            IEnumerable<Account> accountCategories = _accountRepo.FindAll();
+            IEnumerable<AccountCategoryTable> AccountCategories = _db.Context.Table<AccountCategoryTable>();
 
             foreach (Transaction transaction in transactionModels)
             {
-                Account account = accountCategories.Where(x => x.Number == transaction.CreditorNumber).FirstOrDefault();
+                AccountCategoryTable account = AccountCategories.Where(x => x.AccountNumber == transaction.CreditorNumber).FirstOrDefault();
 
                 if (account != null)
                 {
