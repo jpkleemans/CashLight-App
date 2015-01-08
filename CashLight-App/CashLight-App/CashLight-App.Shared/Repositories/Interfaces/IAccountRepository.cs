@@ -11,6 +11,10 @@ namespace CashLight_App.Repositories.Interfaces
 
         void Add(Account account);
 
+        void Delete(Account account);
+
+        List<Account> FindAll();
+
         void Commit();
     }
 }

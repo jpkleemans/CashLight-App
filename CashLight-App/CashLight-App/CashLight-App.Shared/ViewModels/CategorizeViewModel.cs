@@ -29,6 +29,7 @@ namespace CashLight_App.ViewModels
         public RelayCommand<int> SetCategoryCommand { get; set; }
         public RelayCommand AddCategoryCommand { get; set; }
         public RelayCommand ShowMoreInfoCommand { get; set; }
+        public RelayCommand<int> DeleteCategoryCommand { get; set; }
 
         private Account _currentAccount;
         public Account CurrentAccount
@@ -95,6 +96,7 @@ namespace CashLight_App.ViewModels
             SetCategoryCommand = new RelayCommand<int>((categoryID) => SetCategory(categoryID));
             AddCategoryCommand = new RelayCommand(AddCategory);
             ShowMoreInfoCommand = new RelayCommand(ShowMoreInfo);
+            DeleteCategoryCommand = new RelayCommand<int>((categoryID) => DeleteCategory(categoryID));
 
             Categories = new ObservableCollection<Category>(_categoryRepo.FindAll());
             Accounts = new ObservableCollection<Account>(
@@ -146,6 +148,23 @@ namespace CashLight_App.ViewModels
             Accounts.Remove(CurrentAccount);
             SetCurrentAccount();
             Remaining = Accounts.Count.ToString();
+        }
+
+        private void DeleteCategory(int categoryID)
+        {
+            Category category = new Category();
+            category.CategoryID = categoryID;
+            foreach (var account in _accountRepo.FindAll())
+            {
+                if (account.CategoryID == categoryID)
+                {
+                    _accountRepo.Delete(account);
+                }
+            }
+            _accountRepo.Commit();
+            _categoryRepo.Delete(category);
+            _categoryRepo.Commit();
+            Categories.Remove(Categories.Where(x=>x.CategoryID == categoryID).First());
         }
         /// <summary>
         /// Used to make string shorter to specific length.
