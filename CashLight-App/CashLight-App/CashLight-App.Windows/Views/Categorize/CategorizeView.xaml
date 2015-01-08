@@ -45,7 +45,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <part:Header Grid.Row="0" Title="Categoriseer uitgaven" />
+        <part:Header Grid.Row="0" Title="Categoriseer uitgaven!" />
 
         <Grid Grid.Row="1">
             <Grid>
