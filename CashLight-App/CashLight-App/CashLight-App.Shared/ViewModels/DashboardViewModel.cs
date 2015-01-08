@@ -129,7 +129,13 @@ namespace CashLight_App.ViewModels
 
         private void ShowTransactionDetails(Transaction transaction)
         {
-            _dialogService.ShowMessage(transaction.Description, "Details van transactie");
+            if (transaction == null || transaction.Description == "")
+            {
+                _dialogService.ShowMessage("Er zijn geen details van de transactie aanwezig.", "Details van transactie");
+            }
+            else{
+                _dialogService.ShowMessage(transaction.Description, "Details van transactie");
+            }
         }
     }
 }
