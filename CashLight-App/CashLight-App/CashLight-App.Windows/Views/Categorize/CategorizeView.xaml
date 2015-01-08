@@ -114,10 +114,19 @@
 
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Name}"
+                                        <Grid Width="600">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="500"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Column="0" Content="{Binding Name}"
                                         Width="500"
                                         Command="{Binding DataContext.SetCategoryCommand, ElementName=_this}"
-                                        CommandParameter="{Binding CategoryID}" />
+                                        CommandParameter="{Binding CategoryID}" Height="45" VerticalAlignment="Center"/>
+                                            <AppBarButton Grid.Column="1" Icon="Delete" IsCompact="True" VerticalAlignment="Center" 
+                                                          Margin="0,5,0,0" Command="{Binding DataContext.DeleteCategoryCommand, ElementName=_this}"
+                                                          CommandParameter="{Binding CategoryID}"/>
+                                        </Grid>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>

@@ -43,6 +43,15 @@ namespace CashLight_App.Repositories
 
             _db.Context.Table<CategoryTable>().Connection.Insert(categoryTable);
         }
+        public void Delete(Category category)
+        {
+            CategoryTable CategoryTable = new CategoryTable();
+
+            CategoryTable.CategoryID = category.CategoryID;
+
+            _db.Context.Table<CategoryTable>().Connection.Delete(CategoryTable);
+        }
+
 
         public void Commit()
         {
