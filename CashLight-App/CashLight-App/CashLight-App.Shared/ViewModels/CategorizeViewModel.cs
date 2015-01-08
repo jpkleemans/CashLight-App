@@ -57,14 +57,30 @@ namespace CashLight_App.ViewModels
                 }
                 else
                 {
-                    return "Geen rekeningen om te categoriseren.";
+                    return "Geen rekeningen om te categoriseren. Klik met uw rechtermuisknop om het menu te openen.";
                 }
             }
             set
             {
                 _remaining = value;
                 RaisePropertyChanged(() => Remaining);
+                RaisePropertyChanged(() => CategoryListLabel);
                 RaisePropertyChanged(() => HasUncategorizedAccounts);
+            }
+        }
+
+        public string CategoryListLabel
+        {
+            get
+            {
+                if (HasUncategorizedAccounts)
+                {
+                    return "Alle uitgaven van deze rekening horen bij de categorie:";
+                }
+                else
+                {
+                    return "Uw categorie(ën):";
+                }
             }
         }
 
