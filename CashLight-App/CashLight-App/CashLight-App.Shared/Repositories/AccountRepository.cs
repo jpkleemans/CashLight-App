@@ -36,7 +36,7 @@ namespace CashLight_App.Repositories
                 {
                     account.Transactions.Add(transaction);
                     account.TransactionCount++;
-                    account.TotalAmount += transaction.Amount;
+                    account.TransactionTotalAmount += transaction.Amount;
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace CashLight_App.Repositories
                     account.Transactions = new List<Transaction>();
                     account.Transactions.Add(transaction);
                     account.TransactionCount = 1;
-                    account.TotalAmount = transaction.Amount;
+                    account.TransactionTotalAmount = transaction.Amount;
 
                     accounts.Add(account);
                 }

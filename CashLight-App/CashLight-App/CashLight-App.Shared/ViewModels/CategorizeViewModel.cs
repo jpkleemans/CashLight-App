@@ -49,7 +49,7 @@ namespace CashLight_App.ViewModels
         {
             get
             {
-                if (HasCategories)
+                if (HasUncategorizedAccounts)
                 {
                     return "Nog " + _remaining + " rekeningen te categoriseren.";
                 }
@@ -100,7 +100,7 @@ namespace CashLight_App.ViewModels
             Accounts = new ObservableCollection<Account>(
                 _accountRepo.FindAllSpending()
                     .Where(x => x.CategoryID == 0)
-                    .OrderByDescending(x => x.TotalAmount)
+                    .OrderByDescending(x => x.TransactionTotalAmount)
             );
 
             Remaining = Accounts.Count.ToString();
@@ -114,7 +114,7 @@ namespace CashLight_App.ViewModels
             {
                 transactions += trans.Date.ToString("dd MMM yyyy") + "  \t" + trans.Amount.ToString("c") + "    \t" + Shorten(trans.Description.ToString(), 55) + "\n";
             }
-            transactions += "\nTotaal:\t\t" + _currentAccount.TotalAmount.ToString("c");
+            transactions += "\nTotaal:\t\t" + _currentAccount.TransactionTotalAmount.ToString("c");
             _dialogService.ShowMessage(transactions, "Rekeningdetails");
         }
 
