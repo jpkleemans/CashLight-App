@@ -95,14 +95,14 @@
 
                     <AppBarButton Grid.Row="1" Margin="0,0,50,0" Icon="More" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsCompact="True" Command="{Binding ShowMoreInfoCommand}" Visibility="{Binding HasUncategorizedAccounts, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                    <Grid Grid.Row="2" Margin="39,20,39,0" Background="#3F000000" VerticalAlignment="Top" Visibility="{Binding HasUncategorizedAccounts, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Grid Grid.Row="2" Margin="39,20,39,0" Background="#3F000000" VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="70"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Alle uitgaven van deze rekening horen bij de categorie:" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" />
+                        <TextBlock Text="Alle uitgaven van deze rekening horen bij de categorie:" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Visibility="{Binding HasUncategorizedAccounts, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
                         <ScrollViewer Grid.Row="1" Visibility="{Binding HasCategories, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalScrollBarVisibility="Auto">
                             <ItemsControl ItemsSource="{Binding Categories}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,30">

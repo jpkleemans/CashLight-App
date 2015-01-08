@@ -116,10 +116,10 @@ namespace CashLight_App.ViewModels
             {
                 CurrentAccount = UncategorizedAccounts.First();
             }
-            //else
-            //{
-            //    _dialogService.ShowMessage("Er zijn geen ongecategoriseerde uitgaven meer gevonden.", "Melding");
-            //}
+            else
+            {
+                CurrentAccount = null;
+            }
         }
 
         private void AddCategory()
@@ -129,36 +129,50 @@ namespace CashLight_App.ViewModels
 
         private void SetCategory(int categoryID)
         {
-            Account account = CurrentAccount;
-            account.CategoryID = categoryID;
+            if (CurrentAccount != null)
+            {
+                Account account = CurrentAccount;
+                account.CategoryID = categoryID;
 
-            _accountRepo.Add(account);
-            _accountRepo.Commit();
+                _accountRepo.Add(account);
+                _accountRepo.Commit();
 
-            CategorizedAccounts.Add(account);
-            UncategorizedAccounts.Remove(account);
+                CategorizedAccounts.Add(account);
+                UncategorizedAccounts.Remove(account);
 
-            SetCurrentAccount();
-            Remaining = UncategorizedAccounts.Count.ToString();
+                SetCurrentAccount();
+                Remaining = UncategorizedAccounts.Count.ToString();
+            }
         }
 
         private void DeleteCategory(int categoryID)
         {
             Category category = Categories.Where(x => x.CategoryID == categoryID).First();
 
-            foreach (var account in _accountRepo.FindAllCategorized())
+            foreach (var account in _accountRepo.FindAll())
             {
                 if (account.CategoryID == category.CategoryID)
                 {
                     _accountRepo.Delete(account);
+                    UncategorizedAccounts.Add(account);
+
+
                 }
             }
             _accountRepo.Commit();
 
+            List<Account> categorizedAccounts = CategorizedAccounts.Where(x => x.CategoryID == category.CategoryID).ToList();
+            foreach (Account categorizedAccount in categorizedAccounts)
+            {
+                CategorizedAccounts.Remove(categorizedAccount);
+            }
+
             _categoryRepo.Delete(category);
             _categoryRepo.Commit();
-
             Categories.Remove(category);
+
+            SetCurrentAccount();
+            Remaining = UncategorizedAccounts.Count.ToString();
         }
 
         /// <summary>
