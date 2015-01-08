@@ -518,6 +518,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="9e923dfe-f1af-4b16-8ab5-9a658b52f48f"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Inzien voortgang categoriseren"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="145529ed-a1f9-4782-9c36-d9ba082a32c8"
+              LastKnownName="Inzien voortgang categoriseren"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="40fc523c-4db7-4e92-a7d0-24e1a32d090a"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d9856828-2d12-4de5-b615-704c66fd0de1"
+                  name="Inzien voortgang categoriseren"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
