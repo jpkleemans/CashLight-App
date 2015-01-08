@@ -36,7 +36,7 @@ namespace CashLight_App.Repositories
                 {
                     account.Transactions.Add(transaction);
                     account.TransactionCount++;
-                    account.TotalAmount += transaction.Amount;
+                    account.TransactionTotalAmount += transaction.Amount;
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace CashLight_App.Repositories
                     account.Transactions = new List<Transaction>();
                     account.Transactions.Add(transaction);
                     account.TransactionCount = 1;
-                    account.TotalAmount = transaction.Amount;
+                    account.TransactionTotalAmount = transaction.Amount;
 
                     accounts.Add(account);
                 }
@@ -55,6 +55,7 @@ namespace CashLight_App.Repositories
                 AccountCategoryTable categorizedAccount = alreadyCategorizedAccounts.Where(x => x.AccountNumber == account.Number).FirstOrDefault();
                 if (categorizedAccount != null)
                 {
+                    account.AccountCategoryID = categorizedAccount.AccountCategoryID;
                     account.CategoryID = categorizedAccount.CategoryID;
                 }
                 else
@@ -74,6 +75,30 @@ namespace CashLight_App.Repositories
             accountCategoryTable.AccountNumber = account.Number;
 
             _db.Context.Table<AccountCategoryTable>().Connection.Insert(accountCategoryTable);
+        }
+
+        public List<Account> FindAll()
+        {
+            IEnumerable<AccountCategoryTable> AccountCategories = _db.Context.Table<AccountCategoryTable>();
+            List<Account> list = new List<Account>();
+            foreach (var account in AccountCategories)
+            {
+                var henkie = new Account();
+                henkie.AccountCategoryID = account.AccountCategoryID;
+                henkie.CategoryID = account.CategoryID;
+                henkie.Number = account.AccountNumber;
+                list.Add(henkie);
+            }
+            return list;
+        }
+
+        public void Delete(Account account)
+        {
+            AccountCategoryTable accountCategoryTable = new AccountCategoryTable();
+
+            accountCategoryTable.AccountCategoryID = account.AccountCategoryID;
+
+            _db.Context.Table<AccountCategoryTable>().Connection.Delete(accountCategoryTable);
         }
 
 

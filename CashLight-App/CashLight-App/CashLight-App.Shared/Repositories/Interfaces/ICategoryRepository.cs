@@ -12,7 +12,7 @@ namespace CashLight_App.Repositories.Interfaces
         Category FindByName(string name);
         IEnumerable<Category> FindAll();
         void Add(Category category);
-
+        void Delete(Category category);
         void Commit();
     }
 }

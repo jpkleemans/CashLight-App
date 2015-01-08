@@ -17,6 +17,5 @@ namespace CashLight_App.Models
         public double Budget { get; set; }
 
         public double Percentage { get; set; }
-
     }
 }
