@@ -25,6 +25,7 @@ namespace CashLight_App.ViewModels
 
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Account> Accounts { get; set; }
+        public ObservableCollection<Account> CategorizedAccounts { get; set; }
 
         public RelayCommand<int> SetCategoryCommand { get; set; }
         public RelayCommand AddCategoryCommand { get; set; }
@@ -102,6 +103,7 @@ namespace CashLight_App.ViewModels
                     .Where(x => x.CategoryID == 0)
                     .OrderByDescending(x => x.TransactionTotalAmount)
             );
+            CategorizedAccounts = _accountRepo.FindAll();
 
             Remaining = Accounts.Count.ToString();
 
