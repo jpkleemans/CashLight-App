@@ -96,7 +96,7 @@ namespace CashLight_App.ViewModels
             else
             {
                 Periods.Add(_periodRepo.GetByDate(DateTime.Now));
-                _dialogService.ShowError("U heeft nog geen CSV-bestand van uw bank geüpload.", "Geen transacties gevonden!", "App sluiten", () => Application.Current.Exit());
+                _dialogService.ShowError("U heeft nog geen CSV-bestand van uw bank geüpload.\nVoor ondersteuning zie: wwww.eenalien.me", "Geen transacties gevonden!", "App sluiten", () => Application.Current.Exit());
             }
 
             SelectedPeriod = Periods.Last();
