@@ -105,7 +105,7 @@ namespace CashLight_App.ViewModels
                     .Where(x => x.CategoryID == 0)
                     .OrderByDescending(x => x.TransactionTotalAmount)
             );
-            CategorizedAccounts = _accountRepo.FindAll();
+            CategorizedAccounts = new ObservableCollection<Account>(_accountRepo.FindAll());
 
             Remaining = Accounts.Count.ToString();
 
@@ -166,7 +166,7 @@ namespace CashLight_App.ViewModels
             _accountRepo.Commit();
             _categoryRepo.Delete(category);
             _categoryRepo.Commit();
-            Categories.Remove(Categories.Where(x=>x.CategoryID == categoryID).First());
+            Categories.Remove(Categories.Where(x => x.CategoryID == categoryID).First());
         }
         /// <summary>
         /// Used to make string shorter to specific length.
