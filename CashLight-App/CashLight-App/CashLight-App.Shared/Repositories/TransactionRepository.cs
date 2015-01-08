@@ -78,7 +78,21 @@ namespace CashLight_App.Repositories
                     .Where(q => q.Date >= startDate && q.Date <= endDate)
                     .OrderBy(q => q.Date);
 
-            return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
+            IEnumerable<Transaction> transactionModels = Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList);
+
+            IEnumerable<AccountCategoryTable> AccountCategories = _db.Context.Table<AccountCategoryTable>();
+
+            foreach (Transaction transaction in transactionModels)
+            {
+                AccountCategoryTable account = AccountCategories.Where(x => x.AccountNumber == transaction.CreditorNumber).FirstOrDefault();
+
+                if (account != null)
+                {
+                    transaction.CategoryID = account.CategoryID;
+                }
+            }
+
+            return transactionModels;
         }
 
         public IEnumerable<Transaction> GetHighestBetweenDates(Enums.InOut inOut, int limit, DateTime startDate, DateTime endDate)
