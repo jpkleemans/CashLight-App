@@ -33,7 +33,7 @@ namespace CashLight_App.Repositories
             this.SetDates(ref period, date);
             this.SetTransactions(ref period);
             this.SetImportantTransactions(ref period);
-            this.SetCategories(ref period);
+            //this.SetCategories(ref period);
             this.GetSpendingLimit(ref period);
 
             return period;
@@ -140,31 +140,31 @@ namespace CashLight_App.Repositories
              
         }
             
-        private void SetCategories(ref Period period)
-        {
-            IEnumerable<Category> categories = _categoryRepo.FindAll();
+        //private void SetCategories(ref Period period)
+        //{
+        //    IEnumerable<Category> categories = _categoryRepo.FindAll();
 
-            foreach (Category category in categories)
-            {
-                double totaltransactions = period.Transactions
-                    .Where(q => q.CategoryID == category.CategoryID)
-                    .Where(q => q.InOut == (int)InOut.Out)
-                    .Count();
+        //    foreach (Category category in categories)
+        //    {
+        //        double totaltransactions = period.Transactions
+        //            .Where(q => q.CategoryID == category.CategoryID)
+        //            .Where(q => q.InOut == (int)InOut.Out)
+        //            .Count();
 
-                double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
+        //        double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
 
-                if (totaltransactions == 0 || amountoftransactions == 0)
-                {
-                    category.Percentage = 0;
-                }
-                else
-                {
-                    category.Percentage = Convert.ToInt16((totaltransactions / amountoftransactions) * 100);
-                }
-            }
+        //        if (totaltransactions == 0 || amountoftransactions == 0)
+        //        {
+        //            category.Percentage = 0;
+        //        }
+        //        else
+        //        {
+        //            category.Percentage = Convert.ToInt16((totaltransactions / amountoftransactions) * 100);
+        //        }
+        //    }
 
-            period.Categories = categories;
-        }
+        //    period.Categories = categories;
+        //}
 
         private PeriodDTO GetConsistentIncome()
         {
