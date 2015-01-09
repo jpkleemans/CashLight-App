@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using CashLight_App.Enums;
+using AutoMapper;
 using System.Diagnostics;
 
 namespace CashLight_App.Repositories
@@ -93,8 +94,22 @@ namespace CashLight_App.Repositories
 
         private void SetImportantTransactions(ref Period period)
         {
+            var startdate = period.StartDate;
+            var enddate = period.EndDate;
             period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
-            period.ImportantSpendings = _transactionRepo.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
+
+            IEnumerable<Category> category = _categoryRepo.FindAll().OrderByDescending(q => q.Budget).Take(4);
+
+            IEnumerable<ImportantCategory> importantcategories = from a in category
+                                                                 select new ImportantCategory
+                                                                 {
+                                                                     Category = a,
+                                                                     PercentageOfBudget = Convert.ToInt16(a.Budget) != 0 ? (int)a.Budget / ((from b in _transactionRepo.GetAllBetweenDates(startdate, enddate)
+                                                                                          where b.InOut == (int)InOut.Out && b.CategoryID == a.CategoryID
+                                                                                          select (int)b.Amount).Sum() * 100) : 0
+                                                                 };
+
+            period.ImportantSpendingCategories = importantcategories;
         }
 
         private void SetCategories(ref Period period)
@@ -251,7 +266,7 @@ namespace CashLight_App.Repositories
             }
             var categories = _categoryRepo.FindAll();
             foreach (var category in categories)
-            {
+                {
                 spendinglimit -= category.Budget;
             }
 

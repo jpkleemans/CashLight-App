@@ -1,137 +1,242 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="baf62e0a-b77e-463c-98d9-4e1a33e36739" name="CashLight" linkedPackageId="08bb5dff-f56f-45a5-8d9f-229e6c1ed620" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="2d383cf0-c034-4867-b57d-53e24eccc4c9">
+      <elementDefinition Id="7ec9dee1-30fd-4546-b774-d2fd38d613d9" />
+      <body>Een categorie is een groep van hetzelfde soort uitgaven. Bijvoorbeeld 'Woonlasten'.</body>
+      <annotatedElements>
+        <useCaseMoniker Id="9a707f2e-ee4b-4014-a297-b617e711d4f9" LastKnownName="Categorie toekennen aan rekening" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="85aaa7cc-0bf1-4674-9b4b-6d5a5c85fd73" name="Gebruiker" isAbstract="false" isLeaf="false">
         <elementDefinition Id="a6d3cae4-dd5c-40da-9124-685ffd682db0" />
         <targetEnds>
-          <association Id="73a779cd-a83e-4564-938e-70ee5d5f1c8f" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Installeren cashlight" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="fce8e79a-b442-457d-b35f-660a31932f0a" LastKnownName="Installeren cashlight" />
+          <association Id="aba22599-5c21-4b8a-bfbe-eae1c0cc5692" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="CSV-bestand importeren" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a9e8b6cf-f4e8-4baf-8c31-4e09dc39de11" LastKnownName="CSV-bestand importeren" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="90f34bda-44ae-4b3b-b3fe-123cf3e2d243" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="77318038-934c-472b-bbe0-72b53e7fe1a2" />
+                <memberEnd Id="8ff6cc91-e512-4a91-9a93-009b7514d3e1" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7c5523ce-be0d-41da-807c-421c70803fc0" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="077d4ebb-7b61-4dcd-bba8-26bee84c1043" name="Installeren cashlight" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="78cdea42-b7b7-4dcf-95b2-b8ac958dd7b0" />
+                <memberEnd Id="29d722ff-3115-4828-b1dd-8a7e4ea855df" name="CSV-bestand importeren" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2d3a3e40-50d4-4baf-b517-9f01ed0a22a8" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="95ad8a38-1c81-4457-a85c-481efdbba809" />
+            <elementDefinition Id="76fd37bb-02c9-4cfb-bf83-a1ceea95afe7" />
           </association>
-          <association Id="e0bb27b4-6bc7-4b48-9bbb-97d9e9f012fd" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Uploaden CSV-bestand" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="32f12954-8829-418b-8a2c-a48d6c530412" LastKnownName="Uploaden CSV-bestand" />
+          <association Id="3444dd60-ee07-4ad5-917c-2aee779e02ae" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Categorie aanmaken" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="7d055d14-482d-4fd3-98a8-d15486d15e39" LastKnownName="Categorie aanmaken" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="44401414-3406-4e38-bde9-318db4456fb0" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="24fabd0d-26d0-4c89-a3eb-8520742e4f91" />
+                <memberEnd Id="57c696ab-0be3-4d3f-a29a-138ca36489c6" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1c8c0343-8029-49c5-bc62-f8223836e8b6" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="70f98232-db55-4115-b39b-2f1e57176eb2" name="Uploaden CSV-bestand" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="356a6068-d75a-4f08-a859-975551dd0005" />
+                <memberEnd Id="f35cfc13-1225-4ad1-a0c8-63ee6702dbaf" name="Categorie aanmaken" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="60ed3cd7-f85c-4158-ab5b-21d55339a19d" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="1d2559a4-fa22-41cb-903a-8cfc074e5b89" />
+            <elementDefinition Id="86e45869-d6b8-4cee-9cfa-f792ad3c2686" />
           </association>
-          <association Id="7c957a10-53bc-4964-a0f1-7d6236b730e8" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Categoriseren transacties" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="2178dec6-ae72-44f8-9137-9cef39cc9a20" LastKnownName="Categoriseren transacties" />
+          <association Id="37e38514-030d-4a2e-8b8a-45f8fb895b53" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Categorie verwijderen" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="99753c25-b630-475d-9f73-94f7047a79b1" LastKnownName="Categorie verwijderen" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="1d7d7768-e926-4ed3-9185-0afd5410f6a6" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="f10a21c0-c6d5-4c16-8561-28b03711eed2" />
+                <memberEnd Id="10af2805-8be2-4c65-989c-d5012bb24188" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5c2a9a3b-1147-47c6-95b5-653a57a7908a" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="541149ae-beab-45d6-99a2-de2833414f64" name="Categoriseren transacties" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="f310e2ee-6b3a-4199-a66f-6096535be0ff" />
+                <memberEnd Id="870bb089-1ec9-4827-a087-3002ebd62140" name="Categorie verwijderen" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8b54aea6-fa5a-4f79-9748-c4e3bc2f8e40" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="158beded-1689-4c5f-8566-8aadc0319e64" />
+            <elementDefinition Id="9878882c-9b0c-413f-a652-99d2488eae4c" />
           </association>
-          <association Id="7979cb0b-7b9e-4a9b-b8ee-7f8ad8267c68" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Inzien spaardoelen" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="029ded03-29f9-4a3f-90e4-826a9a90272e" LastKnownName="Inzien spaardoelen" />
+          <association Id="df138726-3475-4df5-b3cc-6266086c58a6" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Categorie toekennen aan rekening" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9a707f2e-ee4b-4014-a297-b617e711d4f9" LastKnownName="Categorie toekennen aan rekening" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="91b43f26-4a83-454d-895a-ae0f3f9b8272" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="67303c02-b8c9-4c71-acc3-476e32171dc0" />
+                <memberEnd Id="34c6cafd-2bf0-42ed-b599-d013a6a1214a" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2daeb4d4-3b45-4eac-8a92-bf67ed58d9a3" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="1bba7552-cb9c-420a-aa8b-a0182f6f570e" name="Inzien spaardoelen" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="fdeb727d-57b7-4f87-aff5-ff34a9776063" />
+                <memberEnd Id="a40f76dd-3148-44b9-aba2-3cef5b2de732" name="Categorie toekennen aan rekening" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f69c08b0-f774-430d-aa24-3c4139215066" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="813bfc6e-2957-4d94-84dd-9ebdc38fc621" />
+            <elementDefinition Id="b3091b63-72a8-4c75-b385-ef26157993a8" />
           </association>
-          <association Id="e6c6bafd-92ee-4a87-a819-1854d3348ef9" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Ingeven spaardoelen" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="10143334-380a-4b16-9bde-c45c7ecd0bf5" LastKnownName="Ingeven spaardoelen" />
+          <association Id="c289e7a2-f688-4c8a-9af8-212741347cd2" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Cecategoriseerde rekeningen inzien" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8516644e-7f03-4759-8acd-fa5bc17fbb94" LastKnownName="Gecategoriseerde rekeningen inzien" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="aea7dbfa-6aa4-4669-b407-6fe29bdab1c5" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="ceeb76e0-0cc7-4131-8e65-f99f1beb8094" />
+                <memberEnd Id="f069d437-f57e-4ac6-8c57-7095445b3d24" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="00770e29-6a28-4721-8574-20c31eb67f7c" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="99801989-42db-4285-a6cd-6d5722bd987d" name="Ingeven spaardoelen" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="d75c1673-59d2-412f-be6f-d5201187f4fb" />
+                <memberEnd Id="6683862a-2a8f-4f81-a513-85b8f07a18dd" name="Cecategoriseerde rekeningen inzien" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d4389e49-20e9-4ffb-b5c1-b024acb05163" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="3b3ba536-9a43-446c-b270-c6b73ae65266" />
+            <elementDefinition Id="dc86721d-2f1c-46f9-be81-05892ca22dea" />
           </association>
-          <association Id="f4606a0e-1ea3-4204-93f3-e8d3c7764f74" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Prioriteren spaardoelen" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="2dfcc1eb-b86f-4a9f-87b8-d7ddffe9e859" LastKnownName="Prioriteren spaardoelen" />
+          <association Id="0d9102cc-7d99-4aeb-8e03-8219ef70faf9" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Rekeningdetails inzien" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="18835c91-f37d-450c-bcb5-f7c1ba54e96c" LastKnownName="Rekeningdetails inzien" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="ef4846fb-4641-4fda-9455-2a9e6c203e0c" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="ff9895b5-916c-45dc-bf83-6dc822fbe97c" />
+                <memberEnd Id="7c9c856d-aa9b-4187-9cd5-cdf405f97bab" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="aefa8c44-f737-478a-9527-6a139d9dd4b2" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="bd82d069-135f-45f1-9aca-a2d809349707" name="Prioriteren spaardoelen" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="767afbe3-b1ac-43bd-b43a-a2500edafd5a" />
+                <memberEnd Id="38725ca3-3fb3-41b7-a894-aca09f6dbcb7" name="Rekeningdetails inzien" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="09f37ddf-53b7-430e-9c34-99e12ccb6037" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="e2c5ed8d-978e-4446-8b4c-9bc39cb69fe0" />
+            <elementDefinition Id="a1ee321b-16f1-42c7-8748-59d547a352de" />
           </association>
-          <association Id="3f4c9f4d-4aeb-4a9b-935c-79c75865f6e6" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Inzien bestedingsruimte" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="c7d10fcb-006e-4938-b85d-13da4216bb03" LastKnownName="Inzien bestedingsruimte" />
+          <association Id="cac20784-c187-4927-80f0-cfd98a2584de" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Categorie wijzigen van rekening" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6d74fa4b-b03d-4a31-93ed-957620b34942" LastKnownName="Categorie wijzigen van rekening" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="ad87f862-4ae1-48d6-8138-9c033a6c2c0a" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="b9484b8a-6af8-4f00-aa12-b8514c3618af" />
+                <memberEnd Id="5749c616-6564-4ace-8698-9e3da1e07dde" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2f10bc2a-d568-402c-b159-71f0191425ea" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="9275c9cc-7a80-4737-a208-f2e38efc31f9" name="Inzien bestedingsruimte" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="63fd4525-eee7-4f93-b1a9-f1f4da90ed6e" />
+                <memberEnd Id="ef5e5538-70ae-4998-87d1-eba6d32bb827" name="Categorie wijzigen van rekening" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="68d5cc88-056e-43d9-a386-9bd63db1944e" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="bfe37761-b220-44d7-a487-aa5f4e195a4f" />
+            <elementDefinition Id="0fd2783b-d1af-49fc-aacf-c560d880a2e7" />
           </association>
-          <association Id="8698d377-9fe1-4b0d-97af-eac97bbd78da" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Wisselen periodes" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="eac114c0-320d-4725-9c93-c1a8f91844df" LastKnownName="Wisselen periodes" />
+          <association Id="ae97b639-5fe6-415e-89b9-de9645bd8555" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Periode selecteren" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5afe6c2b-4ff6-470a-8b0f-124bbf251103" LastKnownName="Periode selecteren" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="37d77b85-b3e9-4105-a79f-9793937ab9eb" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="143aa4a5-a854-49b8-9d1c-af9183f2bdff" />
+                <memberEnd Id="835bf9f3-f120-42ab-b386-07c517ebc52c" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3c4b1acd-0569-4c69-bb8a-b7f02c5206e0" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="4d59dae2-b8a6-4c3d-9671-5ba0e829abc6" name="Wisselen periodes" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="493ab5ef-27c2-4090-aadd-67638195447e" />
+                <memberEnd Id="dafed0e2-4fd5-473b-b6fc-bd2324316405" name="Periode selecteren" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="268574f8-6653-4435-a0cf-5cdf8a97c4df" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="721599d8-52fa-4f9e-9fc1-4ed661543933" />
+            <elementDefinition Id="3fca75e7-e795-4f27-9cf3-1e32f8ed7b2c" />
+          </association>
+          <association Id="41a662a8-720b-4799-a94a-428c341ff827" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Belangrijkste inkomsten inzien per periode" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b8d59a91-8d2d-48e2-995f-1e58bb4feb40" LastKnownName="Belangrijkste inkomsten inzien per periode" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4d670af0-b185-43a1-a991-4c13e0c0ef96" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="dc81942a-16d6-42e7-bf55-401010f52779" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d6e4aba5-442b-430a-8047-390384cdb87e" name="Belangrijkste inkomsten inzien per periode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5579072a-ef5c-4a61-9fd8-2294cebb3bed" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="66a3dcc3-2cea-4bc3-b5cd-456d095518d3" />
+          </association>
+          <association Id="aac4a594-adc1-44f1-ae18-8529a173f17e" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Inkomstdetails inzien" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="31163482-9bb0-40f5-8abc-1e0f51a519f8" LastKnownName="Inkomstdetails inzien" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="81b93e30-d46a-49a1-a484-e8b1feafbf90" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d37f44c4-1e5e-4ed1-8057-76ed81c407a6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8a50aa66-cce9-46a6-abd2-f2e0680a70fa" name="Inkomstdetails inzien" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="da6d1e42-dc84-4926-a349-2932a3d09edc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fa3d4645-0a87-4b94-8a23-6a5968afe2a4" />
+          </association>
+          <association Id="b03b818b-b578-4f5c-8b97-3aa88ba239a2" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Categorieën inzien per periode" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="69596d8a-bb3c-4ad1-83e8-b9abf9afb274" LastKnownName="Categorieën inzien per periode" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="940b8de0-3c60-4c92-907c-c4da443e49af" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="538469a8-6fa1-47de-b85b-0b04f71f7c5d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b426c5a0-f59d-4e6f-8a30-bf57883de7b4" name="Categorieën inzien per periode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fb74c495-b93b-4d2f-99f6-56b138ab3070" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fb7b4ac5-f524-4013-b8c9-7163da2ac4ad" />
+          </association>
+          <association Id="b0e42659-9f71-45e1-b709-9393a35100d7" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Categoriedetails inzien" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d3ee723b-799c-47e7-8c5e-f233225ff360" LastKnownName="Categoriedetails inzien" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="35f37f1d-07c6-4e04-bf21-25176d76b7a0" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2601404f-eb4b-4358-98c1-e1078b72c055" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="99c2515e-7254-412e-9b21-dcb54ac5b09f" name="Categoriedetails inzien" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="33666337-6c80-4618-bca6-088db00104e6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a8cb4f00-91de-4003-a9c4-dd03a0562511" />
+          </association>
+          <association Id="fceff265-b3c6-4c59-8acf-18b8f87c9f12" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Bestedingsruimte inzien per periode" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e8ebf734-711b-4bbf-af1c-707fc7fa6e52" LastKnownName="Bestedingsruimte inzien per periode" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d3465d0e-611a-4db1-a2f5-e9d3e6e955b5" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6228e4df-bca9-4c76-879a-8d9d6a6ca72b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6080c8a3-f2ee-4688-9530-461fe494bfa5" name="Bestedingsruimte inzien per periode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5299bb8b-afa6-426f-8500-e162d9635027" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c80a3d27-62c5-4f81-afda-2e398b20808b" />
+          </association>
+          <association Id="2060c090-3ee8-4c36-b55e-25a25ed28294" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="App afsluiten" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4f48df73-0802-4007-bdf5-9116062672ec" LastKnownName="App afsluiten" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c3b7ffbd-529c-4e8f-9341-eb6b546dd67d" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="992f7bf0-47dd-4b86-a291-b9d047aae08d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cfd03219-4f1e-4a8d-b7c9-d91bafb9fa28" name="App afsluiten" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d3a4e574-f798-4bf1-bce0-33aae4538e4c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="dcaf3fda-0e29-416e-9314-939ea42324fe" />
           </association>
         </targetEnds>
       </actor>
@@ -142,72 +247,112 @@
       </subsystem>
     </useCaseModelRootHasTypes>
     <packageHasNamedElement>
-      <useCase Id="c7d10fcb-006e-4938-b85d-13da4216bb03" name="Inzien bestedingsruimte" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="b874bb67-71d4-499e-8a30-f839bbcb5b4a" />
-        <subjects>
-          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <useCaseModelRootHasTypes>
-      <useCase Id="2dfcc1eb-b86f-4a9f-87b8-d7ddffe9e859" name="Prioriteren spaardoelen" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="064d35f1-8af9-46e4-9d1c-7082ddc16ccb" />
-        <subjects>
-          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
-        </subjects>
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="10143334-380a-4b16-9bde-c45c7ecd0bf5" name="Ingeven spaardoelen" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="95ed7aa2-264f-47d6-ae04-066893b868eb" />
-        <subjects>
-          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
-        </subjects>
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="029ded03-29f9-4a3f-90e4-826a9a90272e" name="Inzien spaardoelen" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="427e87ae-3810-4c69-ac08-7bf0f046d887" />
-        <subjects>
-          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
-        </subjects>
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="2178dec6-ae72-44f8-9137-9cef39cc9a20" name="Categoriseren transacties" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="e35933a5-feb3-4e48-84e8-d0157f602653" />
-        <subjects>
-          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
-        </subjects>
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="32f12954-8829-418b-8a2c-a48d6c530412" name="Uploaden CSV-bestand" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="ebc052db-5eda-4ae4-98cc-7e4430937df6" />
-        <subjects>
-          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
-        </subjects>
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="fce8e79a-b442-457d-b35f-660a31932f0a" name="Installeren cashlight" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="8c5677e8-6c77-4d97-a98b-bad9372527f6" />
-        <subjects>
-          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
-        </subjects>
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <packageHasNamedElement>
-      <useCase Id="eac114c0-320d-4725-9c93-c1a8f91844df" name="Wisselen periodes" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="97821638-2117-4205-8484-007e1401e7bc" />
+      <useCase Id="a9e8b6cf-f4e8-4baf-8c31-4e09dc39de11" name="CSV-bestand importeren" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="255bb706-281e-4c2a-bd80-dd09004265e6" />
         <subjects>
           <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
         </subjects>
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <useCase Id="c44ce625-abcd-4048-8d1e-ef122265306d" name="Inzien voortgang categoriseren" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="145529ed-a1f9-4782-9c36-d9ba082a32c8" />
+      <useCase Id="9a707f2e-ee4b-4014-a297-b617e711d4f9" name="Categorie toekennen aan rekening" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fcdbdc31-85c0-4791-b4c6-c83d45627c0c" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="7d055d14-482d-4fd3-98a8-d15486d15e39" name="Categorie aanmaken" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="30288529-2ef6-4820-8844-7f895a78c711" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="99753c25-b630-475d-9f73-94f7047a79b1" name="Categorie verwijderen" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f9994582-10ed-49e4-85db-afa39dad5e78" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="8516644e-7f03-4759-8acd-fa5bc17fbb94" name="Gecategoriseerde rekeningen inzien" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ff514bf9-b66a-4e96-bd27-555684edc647" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="6d74fa4b-b03d-4a31-93ed-957620b34942" name="Categorie wijzigen van rekening" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1a5a31c4-8637-460f-92d4-fa5847c10614" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="18835c91-f37d-450c-bcb5-f7c1ba54e96c" name="Rekeningdetails inzien" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6e1fbdc7-8138-48f8-b88f-0b6f6c662dc5" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="b8d59a91-8d2d-48e2-995f-1e58bb4feb40" name="Belangrijkste inkomsten inzien per periode" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2868174e-7e89-4e1b-937d-227b339df261" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="69596d8a-bb3c-4ad1-83e8-b9abf9afb274" name="Categorieën inzien per periode" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="18842e3a-174f-4d0c-8e14-ba6a5cc8f638" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e8ebf734-711b-4bbf-af1c-707fc7fa6e52" name="Bestedingsruimte inzien per periode" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4bffc12e-faf8-4ac2-821d-93c62bd18492" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="31163482-9bb0-40f5-8abc-1e0f51a519f8" name="Inkomstdetails inzien" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2138cc58-9039-4fe8-98b9-ea5b3c4bf1fc" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="d3ee723b-799c-47e7-8c5e-f233225ff360" name="Categoriedetails inzien" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b47e9788-2e73-4f55-a625-bae0138e50cb" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="4f48df73-0802-4007-bdf5-9116062672ec" name="App afsluiten" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d4e6986c-a837-4021-9132-427c59b7e981" />
+        <subjects>
+          <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="5afe6c2b-4ff6-470a-8b0f-124bbf251103" name="Periode selecteren" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1ef3ec91-b8a9-4714-9dcb-2dcdc2d1fb47" />
         <subjects>
           <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />
         </subjects>

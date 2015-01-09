@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using CashLight_App.Tables;
 using CashLight_App.Services.SQLite;
+using AutoMapper;
 
 namespace CashLight_App.Repositories
 {
@@ -18,27 +19,21 @@ namespace CashLight_App.Repositories
         {
             _db = SQLiteService;
             _transactionRepo = transactionRepo;
+
+            Mapper.CreateMap<AccountCategoryTable, Account>();
         }
 
-        public IEnumerable<Account> FindAllSpending()
+        public IEnumerable<Account> FindAll()
         {
             List<Account> accounts = new List<Account>();
 
-            IEnumerable<AccountCategoryTable> alreadyCategorizedAccounts = _db.Context.Table<AccountCategoryTable>();
-
             IEnumerable<Transaction> transactions = _transactionRepo.GetAllSpendings();
+            IEnumerable<Account> categorizedAccounts = FindAllCategorized();
 
             foreach (Transaction transaction in transactions)
             {
                 Account account = accounts.Where(x => x.Number == transaction.CreditorNumber).FirstOrDefault();
-
-                if (account != null)
-                {
-                    account.Transactions.Add(transaction);
-                    account.TransactionCount++;
-                    account.TransactionTotalAmount += transaction.Amount;
-                }
-                else
+                if (account == null)
                 {
                     account = new Account();
                     account.Number = transaction.CreditorNumber;
@@ -51,51 +46,42 @@ namespace CashLight_App.Repositories
 
                     accounts.Add(account);
                 }
+                else
+                {
+                    account.Transactions.Add(transaction);
+                    account.TransactionCount++;
+                    account.TransactionTotalAmount += transaction.Amount;
+                }
 
-                AccountCategoryTable categorizedAccount = alreadyCategorizedAccounts.Where(x => x.AccountNumber == account.Number).FirstOrDefault();
+                Account categorizedAccount = categorizedAccounts.Where(x => x.Number == account.Number).FirstOrDefault();
                 if (categorizedAccount != null)
                 {
                     account.AccountCategoryID = categorizedAccount.AccountCategoryID;
                     account.CategoryID = categorizedAccount.CategoryID;
-                }
-                else
-                {
-                    account.CategoryID = 0;
                 }
             }
 
             return accounts;
         }
 
-        public void Add(Account account)
+        public IEnumerable<Account> FindAllCategorized()
         {
-            AccountCategoryTable accountCategoryTable = new AccountCategoryTable();
+            TableQuery<AccountCategoryTable> accountCategories = _db.Context.Table<AccountCategoryTable>();
 
-            accountCategoryTable.CategoryID = account.CategoryID;
-            accountCategoryTable.AccountNumber = account.Number;
-
-            _db.Context.Table<AccountCategoryTable>().Connection.Insert(accountCategoryTable);
+            return Mapper.Map<IEnumerable<AccountCategoryTable>, IEnumerable<Account>>(accountCategories);
         }
 
-        public List<Account> FindAll()
+        public void Add(Account account)
         {
-            IEnumerable<AccountCategoryTable> AccountCategories = _db.Context.Table<AccountCategoryTable>();
-            List<Account> list = new List<Account>();
-            foreach (var account in AccountCategories)
-            {
-                var henkie = new Account();
-                henkie.AccountCategoryID = account.AccountCategoryID;
-                henkie.CategoryID = account.CategoryID;
-                henkie.Number = account.AccountNumber;
-                list.Add(henkie);
-            }
-            return list;
+            Mapper.CreateMap<Account, AccountCategoryTable>();
+            AccountCategoryTable accountTable = Mapper.Map<Account, AccountCategoryTable>(account);
+
+            _db.Context.Table<AccountCategoryTable>().Connection.Insert(accountTable);
         }
 
         public void Delete(Account account)
         {
             AccountCategoryTable accountCategoryTable = new AccountCategoryTable();
-
             accountCategoryTable.AccountCategoryID = account.AccountCategoryID;
 
             _db.Context.Table<AccountCategoryTable>().Connection.Delete(accountCategoryTable);
