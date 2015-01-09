@@ -94,6 +94,8 @@ namespace CashLight_App.Repositories
 
         private void SetImportantTransactions(ref Period period)
         {
+            var startdate = period.StartDate;
+            var enddate = period.EndDate;
             period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
 
             IEnumerable<Category> category = _categoryRepo.FindAll().OrderByDescending(q => q.Budget).Take(4);
@@ -102,7 +104,9 @@ namespace CashLight_App.Repositories
                                                                  select new ImportantCategory
                                                                  {
                                                                      Category = a,
-                                                                     PercentageOfBudget = 40
+                                                                     PercentageOfBudget = Convert.ToInt16(a.Budget) != 0 ? (int)a.Budget / ((from b in _transactionRepo.GetAllBetweenDates(startdate, enddate)
+                                                                                          where b.InOut == (int)InOut.Out && b.CategoryID == a.CategoryID
+                                                                                          select (int)b.Amount).Sum() * 100) : 0
                                                                  };
 
             period.ImportantSpendingCategories = importantcategories;
