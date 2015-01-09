@@ -154,18 +154,7 @@ namespace CashLight_App.ViewModels
             return categories.ToList();
         }
 
-        public MarkerHeightProperties getMarkerHeightProperties()
-        {
-            double minHeight = 230;
-            double maxHeight = 500;
-            double marginTop = 70;
-            if (Window.Current != null)
-            {
-                maxHeight = (Window.Current.Bounds.Height / 2) - marginTop;
-            }
-            double useableHeight = maxHeight - minHeight;
-            return new MarkerHeightProperties(minHeight, maxHeight, marginTop, useableHeight);
-        }
+     
 
         private void ShowTransactionDetails(Transaction transaction)
         {
@@ -179,18 +168,4 @@ namespace CashLight_App.ViewModels
         }
     }
 
-    public class MarkerHeightProperties
-    {
-        public MarkerHeightProperties (double min, double max, double margin, double useableheight)
-	{
-            this.minHeight = min;
-            this.maxHeight = max;
-            this.marginTop = margin;
-            this.useableHeight = useableHeight;
-	}
-        public double minHeight { get; set; }
-        public double maxHeight { get; set; }
-        public double marginTop { get; set; }
-        public double useableHeight { get; set; }
-    }
 }

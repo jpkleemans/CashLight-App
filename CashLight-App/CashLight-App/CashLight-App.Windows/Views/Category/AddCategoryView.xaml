@@ -54,7 +54,12 @@
             </Grid.RowDefinitions>
 
             <TextBox Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" PlaceholderText="Categorie-naam" Text="{Binding Text, Mode=TwoWay}" Width="500"/>
-            <ComboBox Grid.Row="1" HorizontalAlignment="Center" PlaceholderText="Type" SelectedItem="{Binding CurrentType, Mode=TwoWay}" ItemsSource="{Binding TypeList}" Width="500" VerticalAlignment="Center" />
+
+            <ComboBox Grid.Row="1" SelectedValue="{Binding CurrentType, Mode=TwoWay}" SelectedValuePath="Tag" HorizontalAlignment="Center" PlaceholderText="Type" Width="500" VerticalAlignment="Center">
+                <ComboBoxItem Content="Vast" Tag="Fixed"/>
+                <ComboBoxItem Content="Variabel" Tag="Variable"/>
+            </ComboBox>
+
             <TextBox Grid.Row="2" HorizontalAlignment="Center" PlaceholderText="Budget" TextWrapping="Wrap" Visibility="{Binding BudgetEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Text="{Binding Budget, Mode=TwoWay}" VerticalAlignment="Center" Width="500"/>
 
             <AppBarButton Grid.Row="3" Label="Opslaan"  Margin="0,0,10,0" Icon="Save" HorizontalAlignment="Right" IsCompact="True" Command="{Binding SaveCategoryCommand}"/>

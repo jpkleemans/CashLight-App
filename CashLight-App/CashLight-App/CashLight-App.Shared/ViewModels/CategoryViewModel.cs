@@ -12,7 +12,6 @@ namespace CashLight_App.ViewModels
 {
     public class CategoryViewModel : ViewModelBase
     {
-
         private ICategoryRepository _categoryRepo;
         private INavigationService _navigator;
 
@@ -44,9 +43,9 @@ namespace CashLight_App.ViewModels
             {
                 _currentType = value;
 
-                if (_currentType != "Variable")
+                if (_currentType == "Fixed")
                 {
-                    Budget = 0;
+                    _budget = null;
                 }
 
                 RaisePropertyChanged(() => CurrentType);
@@ -83,17 +82,16 @@ namespace CashLight_App.ViewModels
             }
         }
 
-
-        private double _budget;
-        public double Budget
+        private double? _budget;
+        public string Budget
         {
             get
             {
-                return _budget;
+                return _budget.ToString();
             }
             set
             {
-                _budget = value;
+                _budget = double.Parse(value);
                 RaisePropertyChanged(() => Budget);
             }
         }
@@ -116,7 +114,15 @@ namespace CashLight_App.ViewModels
 
             category.Name = this.Text;
             category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
-            category.Budget = this.Budget;
+
+            if (_budget != null)
+            {
+                category.Budget = (double)_budget;
+            }
+            else
+            {
+                category.Budget = 0;
+            }
 
             _categoryRepo.Add(category);
 

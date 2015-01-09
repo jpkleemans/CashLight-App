@@ -94,20 +94,52 @@ namespace CashLight_App.Repositories
 
         private void SetImportantTransactions(ref Period period)
         {
+            var startdate = period.StartDate;
+            var enddate = period.EndDate;
             period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
 
             IEnumerable<Category> category = _categoryRepo.FindAll().OrderByDescending(q => q.Budget).Take(4);
-
+            /*
             IEnumerable<ImportantCategory> importantcategories = from a in category
                                                                  select new ImportantCategory
                                                                  {
                                                                      Category = a,
-                                                                     PercentageOfBudget = 40
+                                                                     PercentageOfBudget = (int)a.Budget != 0 ? (int)((from b in _transactionRepo.GetAllBetweenDates(startdate, enddate)
+                                                                                          where b.InOut == (int)InOut.Out && b.CategoryID == a.CategoryID
+                                                                                          select b.Amount).Sum() / a.Budget) * 100 : 0
                                                                  };
+            
+            */
+            List<ImportantCategory> importantcategories = (from a in category
+                                                                 select new ImportantCategory
+                                                                 {
+                                                                     Category = a,
+                                                                 }).ToList();
+            
+            foreach(var item in importantcategories)
+            {
+                if((int)item.Category.Budget != 0)
+                {
+                    double total = 0;
+                    foreach(var trx in _transactionRepo.GetAllBetweenDates(startdate, enddate).Where(q => q.InOut == (int)InOut.Out && q.CategoryID == item.Category.CategoryID))
+                    {
+                        total += trx.Amount;
+                    }
 
+                    double calc = total / item.Category.Budget;
+                    var percentage = calc * 100;
+                    item.PercentageOfBudget = Convert.ToInt16(percentage);
+                }
+                else
+                {
+                    item.PercentageOfBudget = 0;
+                }
+            }
+             
             period.ImportantSpendingCategories = importantcategories;
+             
         }
-
+            
         private void SetCategories(ref Period period)
         {
             IEnumerable<Category> categories = _categoryRepo.FindAll();
