@@ -10,8 +10,8 @@ namespace CashLight_App.Models
     {
         private Category _category;
         private double _amount;
-        private int _percentageOfBudget;
         private double _height;
+        private int _percentageOfBudget;
         public Category Category
         {
             get
