@@ -88,7 +88,7 @@ namespace CashLight_App.ViewModels
                 foreach (Period period in allPeriods)
                 {
                     period.ImportantIncomes = SetTransactionHeight(period.ImportantIncomes);
-                    period.ImportantSpendingCategories = SetCategoryHeight(period.ImportantSpendingCategories).ToList();
+                    period.ImportantSpendingCategories = SetCategoryHeight(period.ImportantSpendingCategories.ToList()).ToList();
 
                     Periods.Add(period);
                 }
@@ -102,43 +102,56 @@ namespace CashLight_App.ViewModels
             SelectedPeriod = Periods.Last();
         }
 
-        private List<Transaction> SetTransactionHeight(IEnumerable<Transaction> transactions)
+        private IEnumerable<Transaction> SetTransactionHeight(IEnumerable<Transaction> transactions)
         {
-            var trx = transactions.ToList();
-            if (trx.Count() > 0)
+            if (transactions.Count() > 0)
             {
-                double highest = trx.Max(x => x.Amount);
+                double highest = transactions.Max(x => x.Amount);
 
-                var markerheightproperties = getMarkerHeightProperties();
+                double minHeight = 230;
+                double maxHeight = 500;
+                double marginTop = 70;
+                if (Window.Current != null)
+                {
+                    maxHeight = (Window.Current.Bounds.Height / 2) - marginTop;
+                }
+                double useableHeight = maxHeight - minHeight;
 
-                foreach (Transaction item in trx)
+                foreach (Transaction item in transactions)
                 {
                     double percentage = (item.Amount / highest);
-                    item.Height = (markerheightproperties.useableHeight * percentage) + markerheightproperties.minHeight;
+                    item.Height = (useableHeight * percentage) + minHeight;
                 }
             }
 
-            return trx;
+            return transactions;
         }
 
-        private List<ImportantCategory> SetCategoryHeight(IEnumerable<ImportantCategory> categories)
+        
+
+        private List<ImportantCategory> SetCategoryHeight(List<ImportantCategory> categories)
         {
-            if (categories == null) return null;
-            List<ImportantCategory> cats = categories.ToList();
-            if (cats.Count() > 0)
+            if (categories.Count() > 0)
             {
                 double highest = categories.Max(x => x.Category.Budget);
 
-                var markerheightproperties = getMarkerHeightProperties();
+                double minHeight = 230;
+                double maxHeight = 500;
+                double marginTop = 70;
+                if (Window.Current != null)
+                {
+                    maxHeight = (Window.Current.Bounds.Height / 2) - marginTop;
+                }
+                double useableHeight = maxHeight - minHeight;
 
-                foreach (ImportantCategory item in cats)
+                foreach (ImportantCategory item in categories)
                 {
                     double percentage = (item.Category.Budget / highest);
-                    item.Height = (markerheightproperties.useableHeight * percentage) + markerheightproperties.minHeight;
+                    item.Height = (useableHeight * percentage) + minHeight;
                 }
             }
 
-            return cats;
+            return categories.ToList();
         }
 
         public MarkerHeightProperties getMarkerHeightProperties()
