@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Windows.UI.Xaml;
 
 namespace CashLight_App.Models
 {
@@ -12,6 +13,40 @@ namespace CashLight_App.Models
         private double _amount;
         private double _height;
         private int _percentageOfBudget;
+
+        public int HeightOfBudget
+        {
+            get
+            {
+                int maxHeight = (int)Height - 80;
+
+                if (PercentageOfBudget >= 100)
+                {
+                    return maxHeight;
+                }
+
+                int newheight = Convert.ToInt32(maxHeight * ((double)PercentageOfBudget / 100));
+
+                return newheight;
+            }
+        }
+
+        public Thickness MarginOfBudget
+        {
+            get
+            {
+                return new Thickness(10, (HeightOfBudget - 10), -45, 0);
+            }
+        }
+
+        public Thickness MarginOfDot
+        {
+            get
+            {
+                return new Thickness(0, (HeightOfBudget - 7), -6, 0);
+            }
+        }
+
         public Category Category
         {
             get
