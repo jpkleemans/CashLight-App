@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CategoryType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Account.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ImportantCategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Setting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\AccountRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\Interfaces\IAccountRepository.cs" />
