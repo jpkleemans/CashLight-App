@@ -44,7 +44,7 @@ namespace CashLight_App.ViewModels
             {
                 _currentType = value;
 
-                if (_currentType != "Variable")
+                if (_currentType == "Fixed")
                 {
                     Budget = 0;
                 }
@@ -58,13 +58,13 @@ namespace CashLight_App.ViewModels
         {
             get
             {
-                if (CurrentType == "Variable")
+                if (CurrentType == "Fixed")
                 {
-                    return true;
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    return true;
                 }
             }
         }
