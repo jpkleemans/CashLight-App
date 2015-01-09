@@ -39,14 +39,6 @@ namespace CashLight_App.Models
             }
         }
 
-        public Thickness MarginOfDot
-        {
-            get
-            {
-                return new Thickness(0, (HeightOfBudget - 7), -6, 0);
-            }
-        }
-
         public Category Category
         {
             get
