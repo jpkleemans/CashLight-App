@@ -17,7 +17,7 @@ using System.Reflection;
 namespace CashLight_Test.Windows
 {
     [TestClass]
-    public class Category
+    public class _Category
     {
         private StorageFile _csv;
 
@@ -27,65 +27,65 @@ namespace CashLight_Test.Windows
             Bootstrapper.Initialize(Mode.Testing);
         }
 
-        [TestMethod]
-        public void TestAddCategory()
-        {
-            ISQLiteService db = ServiceLocator.Current.GetInstance<ISQLiteService>();
+        //[TestMethod]
+        //public void TestAddCategory()
+        //{
+        //    ISQLiteService db = ServiceLocator.Current.GetInstance<ISQLiteService>();
 
-            var total = db.Context.Table<CategoryTable>();
-            Assert.AreEqual(0, total.Count());
+        //    var total = db.Context.Table<CategoryTable>();
+        //    Assert.AreEqual(0, total.Count());
 
-            var categoryTable = new CategoryTable("Category", CategoryType.Variable, 200.0);
+        //    var categoryTable = new CategoryTable("Category", CategoryType.Variable, 200.0);
 
-            db.Context.Table<CategoryTable>().Connection.Insert(categoryTable);
+        //    db.Context.Table<CategoryTable>().Connection.Insert(categoryTable);
 
-            db.Context.Commit();
+        //    db.Context.Commit();
 
-            var count = db.Context.Table<CategoryTable>();
-            Assert.AreEqual(1, count.Count());
-            Assert.AreEqual("Category", count.First().Name);
-            //Assert.AreEqual(200.0, count.First().Budget);
-            Assert.AreEqual((int)CategoryType.Variable, count.First().Type);
-        }
+        //    var count = db.Context.Table<CategoryTable>();
+        //    Assert.AreEqual(1, count.Count());
+        //    Assert.AreEqual("Category", count.First().Name);
+        //    //Assert.AreEqual(200.0, count.First().Budget);
+        //    Assert.AreEqual((int)CategoryType.Variable, count.First().Type);
+        //}
 
-        [TestMethod]
-        public void TestEditCategory()
-        {
+        //[TestMethod]
+        //public void TestEditCategory()
+        //{
 
-            ISQLiteService db = ServiceLocator.Current.GetInstance<ISQLiteService>();
+        //    ISQLiteService db = ServiceLocator.Current.GetInstance<ISQLiteService>();
 
-            var before = db.Context.Table<CategoryTable>();
-            Assert.AreEqual(1, before.Count());
-            Assert.AreEqual("Category", before.First().Name);
+        //    var before = db.Context.Table<CategoryTable>();
+        //    Assert.AreEqual(1, before.Count());
+        //    Assert.AreEqual("Category", before.First().Name);
 
-            var henkie = before.First();
+        //    var henkie = before.First();
 
-            henkie.Name = "Changed Category";
+        //    henkie.Name = "Changed Category";
 
-            db.Context.Table<CategoryTable>().Connection.Update(henkie);
+        //    db.Context.Table<CategoryTable>().Connection.Update(henkie);
 
-            var after = db.Context.Table<CategoryTable>();
+        //    var after = db.Context.Table<CategoryTable>();
 
-            Assert.AreEqual(1, after.Count());
-            Assert.AreEqual("Changed Category", before.First().Name);
+        //    Assert.AreEqual(1, after.Count());
+        //    Assert.AreEqual("Changed Category", before.First().Name);
 
-        }
+        //}
 
-        [TestMethod]
-        public void TestDeleteCategory()
-        {
+        //[TestMethod]
+        //public void TestDeleteCategory()
+        //{
 
-            ISQLiteService db = ServiceLocator.Current.GetInstance<ISQLiteService>();
+        //    ISQLiteService db = ServiceLocator.Current.GetInstance<ISQLiteService>();
 
-            var before = db.Context.Table<CategoryTable>();
-            Assert.AreEqual(1, before.Count());
+        //    var before = db.Context.Table<CategoryTable>();
+        //    Assert.AreEqual(1, before.Count());
 
-            db.Context.Table<CategoryTable>().Connection.Delete(before.First());
+        //    db.Context.Table<CategoryTable>().Connection.Delete(before.First());
 
-            var after = db.Context.Table<CategoryTable>();
-            Assert.AreEqual(0, after.Count());
+        //    var after = db.Context.Table<CategoryTable>();
+        //    Assert.AreEqual(0, after.Count());
 
-        }
+        //}
 
         //[TestMethod]
         //public void TestMethod2()
