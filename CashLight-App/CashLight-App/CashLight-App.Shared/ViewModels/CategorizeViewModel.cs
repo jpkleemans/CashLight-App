@@ -147,11 +147,24 @@ namespace CashLight_App.ViewModels
         {
             if (CurrentAccount != null)
             {
+                Category category = _categoryRepo.FindByID(categoryID);
+
                 Account account = CurrentAccount;
-                account.CategoryID = categoryID;
+                account.CategoryID = category.CategoryID;
 
                 _accountRepo.Add(account);
                 _accountRepo.Commit();
+
+                if (category.Type == (int)CategoryType.Fixed)
+                {
+                    Transaction transaction = account.Transactions.FirstOrDefault();
+                    if (transaction != null)
+                    {
+                        category.Budget += transaction.Amount;
+                        _categoryRepo.Edit(category);
+                        _categoryRepo.Commit();
+                    }
+                }
 
                 CategorizedAccounts.Add(account);
                 UncategorizedAccounts.Remove(account);
@@ -171,8 +184,6 @@ namespace CashLight_App.ViewModels
                 {
                     _accountRepo.Delete(account);
                     UncategorizedAccounts.Add(account);
-
-
                 }
             }
             _accountRepo.Commit();
