@@ -6,7 +6,7 @@
   <ownedCommentsInternal>
     <comment
       Id="7ec9dee1-30fd-4546-b774-d2fd38d613d9">
-      <body>Een categorie is een groep van hetzelfde soort uitgaven. Bijvoorbeeld 'Woonlsaten'.</body>
+      <body>Een categorie is een groep van hetzelfde soort uitgaven. Bijvoorbeeld 'Woonlasten'.</body>
       <annotatedElements>
         <useCaseMoniker
           Id="fcdbdc31-85c0-4791-b4c6-c83d45627c0c"
@@ -383,7 +383,7 @@
             isAbstract="false">
             <useCaseMoniker
               Id="ff514bf9-b66a-4e96-bd27-555684edc647"
-              LastKnownName="Cecategoriseerde rekeningen inzien"
+              LastKnownName="Gecategoriseerde rekeningen inzien"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -973,7 +973,7 @@
     <packageHasNamedElement>
       <useCase
         Id="ff514bf9-b66a-4e96-bd27-555684edc647"
-        name="Cecategoriseerde rekeningen inzien"
+        name="Gecategoriseerde rekeningen inzien"
         isAbstract="false"
         isLeaf="false">
         <subjects>
