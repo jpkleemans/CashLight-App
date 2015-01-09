@@ -44,11 +44,11 @@ namespace CashLight_App.Models
                 }
 
                 int marginLeft;
-                if (AmountOfBudget > 1000)
+                if (AmountOfBudget >= 1000)
                     marginLeft = -100;
-                else if (AmountOfBudget > 100)
+                else if (AmountOfBudget >= 100)
                     marginLeft = -80;
-                else if (AmountOfBudget > 10)
+                else if (AmountOfBudget >= 10)
                     marginLeft = -70;
                 else
                     marginLeft = -60;
