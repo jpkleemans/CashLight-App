@@ -10,6 +10,8 @@ using System.IO;
 using System.Text;
 using Windows.Storage;
 using CashLight_App.Services.BankConverter;
+using GalaSoft.MvvmLight.Views;
+using Windows.UI.Xaml;
 
 namespace CashLight_App.Repositories
 {
@@ -19,59 +21,73 @@ namespace CashLight_App.Repositories
         private ICSVReaderService _CSVReader;
         private IBankConverterService _bankConverter;
         private IPeriodRepository _periodRepo;
+        private IDialogService _dialogService;
 
         public UploadRepository(ITransactionRepository transactionRepo,
                                 ICSVReaderService CSVReader,
                                 IBankConverterService bankConverter,
-                                IPeriodRepository periodRepo)
+                                IPeriodRepository periodRepo, IDialogService dialogService)
         {
             _transactionRepo = transactionRepo;
             _CSVReader = CSVReader;
             _bankConverter = bankConverter;
             _periodRepo = periodRepo;
+            _dialogService = dialogService;
         }
 
         public async void ToDatabase(StorageFile storageFile)
         {
-            Stream stream = await storageFile.OpenStreamForReadAsync();
-
-            List<List<string>> csvList = _CSVReader.ReadToList(stream);
-
-            List<Dictionary<string, string>> bankList = _bankConverter.Convert(csvList);
-
-            foreach (Dictionary<string, string> dic in bankList)
+            bool crashChecker = false;
+            try
             {
-                int inOut;
-                if (dic["Af / Bij"] == "Bij")
+                Stream stream = await storageFile.OpenStreamForReadAsync();
+
+                List<List<string>> csvList = _CSVReader.ReadToList(stream);
+
+                List<Dictionary<string, string>> bankList = _bankConverter.Convert(csvList);
+
+                foreach (Dictionary<string, string> dic in bankList)
                 {
-                    inOut = (int)InOut.In;
+                    int inOut;
+                    if (dic["Af / Bij"] == "Bij")
+                    {
+                        inOut = (int)InOut.In;
+                    }
+                    else
+                    {
+                        inOut = (int)InOut.Out;
+                    }
+
+                    DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
+                    Transaction transaction = new Transaction()
+                        {
+                            InOut = inOut,
+                            Amount = Double.Parse(dic["Bedrag (EUR)"], new CultureInfo("nl-NL")),
+                            Code = 0,
+                            CreditorNumber = dic["Tegenrekening"],
+                            Description = dic["Mededelingen"],
+                            CreditorName = dic["Naam / Omschrijving"],
+                            DebtorNumber = dic["Rekening"],
+                            Date = csvDate
+                        };
+
+                    bool exists = _transactionRepo.Exists(transaction);
+
+                    if (!exists)
+                    {
+                        _transactionRepo.Add(transaction);
+                    }
                 }
-                else
-                {
-                    inOut = (int)InOut.Out;
-                }
+            }
+            catch (Exception)
+            {
 
-                DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
+                crashChecker = true;
 
-                Transaction transaction = new Transaction()
-                {
-                    InOut = inOut,
-                    Amount = Double.Parse(dic["Bedrag (EUR)"], new CultureInfo("nl-NL")),
-                    Code = 0,
-                    CreditorNumber = dic["Tegenrekening"],
-                    Description = dic["Mededelingen"],
-                    CreditorName = dic["Naam / Omschrijving"],
-                    DebtorNumber = dic["Rekening"],
-                    Date = csvDate
-                };
-
-                bool exists = _transactionRepo.Exists(transaction);
-
-                if (!exists)
-                {
-                    _transactionRepo.Add(transaction);
-                }
-
+            }
+            if (crashChecker)
+            {
+                await _dialogService.ShowError("Het CSV-bestand is ongeldig. \nDownload een nieuw CSV-bestand van Mijn ING.", "Ongeldig CSV", "App afsluiten", () => Application.Current.Exit());
             }
             _transactionRepo.Commit();
 
