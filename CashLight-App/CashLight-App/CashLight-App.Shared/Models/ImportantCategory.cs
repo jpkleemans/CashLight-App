@@ -13,6 +13,7 @@ namespace CashLight_App.Models
         private double _amount;
         private double _height;
         private int _percentageOfBudget;
+        private double _amountOfBudget;
 
         public int HeightOfBudget
         {
@@ -42,7 +43,17 @@ namespace CashLight_App.Models
                     height = HeightOfBudget;
                 }
 
-                return new Thickness(10, (height - 10), -45, 0);
+                int marginLeft;
+                if (AmountOfBudget > 1000)
+                    marginLeft = -100;
+                else if (AmountOfBudget > 100)
+                    marginLeft = -80;
+                else if (AmountOfBudget > 10)
+                    marginLeft = -70;
+                else
+                    marginLeft = -60;
+
+                return new Thickness(10, (height - 10), marginLeft, 0);
             }
         }
 
@@ -85,5 +96,18 @@ namespace CashLight_App.Models
             }
         }
 
+
+        public double AmountOfBudget
+        {
+            get
+            {
+                return _amountOfBudget;
+            }
+            set
+            {
+                _amountOfBudget = value;
+                RaisePropertyChanged(() => AmountOfBudget);
+            }
+        }
     }
 }

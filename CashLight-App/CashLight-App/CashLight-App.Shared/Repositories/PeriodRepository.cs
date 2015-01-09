@@ -125,6 +125,7 @@ namespace CashLight_App.Repositories
                     {
                         total += trx.Amount;
                     }
+                    item.AmountOfBudget = total;
 
                     double calc = total / item.Category.Budget;
                     var percentage = calc * 100;
@@ -133,6 +134,7 @@ namespace CashLight_App.Repositories
                 else
                 {
                     item.PercentageOfBudget = 0;
+                    item.AmountOfBudget = 0;
                 }
             }
              
