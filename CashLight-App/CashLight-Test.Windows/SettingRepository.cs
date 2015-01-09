@@ -27,23 +27,19 @@ namespace CashLight_Test.Windows
         }
 
         [TestMethod]
-        public void TestAddSetting()
+        public void TestAddAndFindByKeySetting()
         {
 
-            new Setting("Key01", "Value01");
-            new Setting("Key02", "Value02");
+            var key01 = new Setting("Key01", "Value01");
+            var key02 = new Setting("Key02", "Value02");
 
-            Assert.AreEqual("Value01", _repo.FindByKey("Key01"));
-            Assert.AreEqual("Value02", _repo.FindByKey("Key02"));
+            _repo.Add(key01);
+            _repo.Add(key02);
 
-        }
-
-        [TestMethod]
-        public void TestFindByKeySetting()
-        {
+            Assert.AreEqual("Value01", _repo.FindByKey("Key01").Value);
+            Assert.AreEqual("Value02", _repo.FindByKey("Key02").Value);
 
         }
-
 
     }
 }

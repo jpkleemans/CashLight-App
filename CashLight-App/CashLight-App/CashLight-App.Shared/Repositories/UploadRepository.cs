@@ -40,43 +40,11 @@ namespace CashLight_App.Repositories
             bool crashChecker = false;
             try
             {
-                Stream stream = await storageFile.OpenStreamForReadAsync();
-
-                List<List<string>> csvList = _CSVReader.ReadToList(stream);
-
-                List<Dictionary<string, string>> bankList = _bankConverter.Convert(csvList);
+                List<Dictionary<string, string>> bankList = await CreateList(storageFile);
 
                 foreach (Dictionary<string, string> dic in bankList)
                 {
-                    int inOut;
-                    if (dic["Af / Bij"] == "Bij")
-                    {
-                        inOut = (int)InOut.In;
-                    }
-                    else
-                    {
-                        inOut = (int)InOut.Out;
-                    }
-
-                    DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
-                    Transaction transaction = new Transaction()
-                        {
-                            InOut = inOut,
-                            Amount = Double.Parse(dic["Bedrag (EUR)"], new CultureInfo("nl-NL")),
-                            Code = 0,
-                            CreditorNumber = dic["Tegenrekening"],
-                            Description = dic["Mededelingen"],
-                            CreditorName = dic["Naam / Omschrijving"],
-                            DebtorNumber = dic["Rekening"],
-                            Date = csvDate
-                        };
-
-                    bool exists = _transactionRepo.Exists(transaction);
-
-                    if (!exists)
-                    {
-                        _transactionRepo.Add(transaction);
-                    }
+                    SaveTransaction (dic);
                 }
             }
             catch (Exception)
@@ -92,6 +60,49 @@ namespace CashLight_App.Repositories
             _transactionRepo.Commit();
 
             _periodRepo.SearchMostConsistentIncome();
+        }
+
+        private void SaveTransaction(Dictionary<string, string> dic)
+        {
+            int inOut;
+            if (dic["Af / Bij"] == "Bij")
+            {
+                inOut = (int)InOut.In;
+            }
+            else
+            {
+                inOut = (int)InOut.Out;
+            }
+
+            DateTime csvDate = Convert.ToDateTime(dic["Datum"]);
+            Transaction transaction = new Transaction()
+            {
+                InOut = inOut,
+                Amount = Double.Parse(dic["Bedrag (EUR)"], new CultureInfo("nl-NL")),
+                Code = 0,
+                CreditorNumber = dic["Tegenrekening"],
+                Description = dic["Mededelingen"],
+                CreditorName = dic["Naam / Omschrijving"],
+                DebtorNumber = dic["Rekening"],
+                Date = csvDate
+            };
+
+            bool exists = _transactionRepo.Exists(transaction);
+
+            if (!exists)
+            {
+                _transactionRepo.Add(transaction);
+            }
+        }
+
+        private async System.Threading.Tasks.Task<List<Dictionary<string, string>>> CreateList(StorageFile storageFile)
+        {
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+
+            List<List<string>> csvList = _CSVReader.ReadToList(stream);
+
+            List<Dictionary<string, string>> bankList = _bankConverter.Convert(csvList);
+            return bankList;
         }
     }
 }
