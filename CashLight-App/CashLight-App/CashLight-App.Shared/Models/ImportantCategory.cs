@@ -35,7 +35,14 @@ namespace CashLight_App.Models
         {
             get
             {
-                return new Thickness(10, (HeightOfBudget - 10), -45, 0);
+                int height = 15;
+
+                if (HeightOfBudget > height)
+                {
+                    height = HeightOfBudget;
+                }
+
+                return new Thickness(10, (height - 10), -45, 0);
             }
         }
 
