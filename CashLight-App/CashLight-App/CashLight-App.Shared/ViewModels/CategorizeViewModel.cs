@@ -161,6 +161,7 @@ namespace CashLight_App.ViewModels
                 if (account.CategoryID == categoryID)
                 {
                     _accountRepo.Delete(account);
+                    Accounts.Add(account);
                 }
             }
             _accountRepo.Commit();
