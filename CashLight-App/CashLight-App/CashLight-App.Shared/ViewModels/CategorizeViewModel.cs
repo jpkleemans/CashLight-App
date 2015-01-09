@@ -76,9 +76,9 @@ namespace CashLight_App.ViewModels
                 if (HasUncategorizedAccounts)
                 {
                     return "Alle uitgaven van deze rekening horen bij de categorie:";
-            }
+                }
                 else
-        {
+                {
                     return "Uw categorie(ën):";
                 }
             }
@@ -147,18 +147,31 @@ namespace CashLight_App.ViewModels
         {
             if (CurrentAccount != null)
             {
-            Account account = CurrentAccount;
-            account.CategoryID = categoryID;
+                Category category = _categoryRepo.FindByID(categoryID);
 
-            _accountRepo.Add(account);
-            _accountRepo.Commit();
+                Account account = CurrentAccount;
+                account.CategoryID = category.CategoryID;
+
+                _accountRepo.Add(account);
+                _accountRepo.Commit();
+
+                if (category.Type == (int)CategoryType.Fixed)
+                {
+                    Transaction transaction = account.Transactions.FirstOrDefault();
+                    if (transaction != null)
+                    {
+                        category.Budget += transaction.Amount;
+                        _categoryRepo.Edit(category);
+                        _categoryRepo.Commit();
+                    }
+                }
 
                 CategorizedAccounts.Add(account);
                 UncategorizedAccounts.Remove(account);
 
-            SetCurrentAccount();
+                SetCurrentAccount();
                 Remaining = UncategorizedAccounts.Count.ToString();
-        }
+            }
         }
 
         private void DeleteCategory(int categoryID)
@@ -171,8 +184,6 @@ namespace CashLight_App.ViewModels
                 {
                     _accountRepo.Delete(account);
                     UncategorizedAccounts.Add(account);
-
-
                 }
             }
             _accountRepo.Commit();
