@@ -45,13 +45,6 @@ namespace CashLight_Test.Windows
         }
 
         [TestMethod]
-        public void TestFindAllCategorizedAccount()
-        {
-
-        }
-
-
-        [TestMethod]
         public void TestDeleteAccount()
         {
 
