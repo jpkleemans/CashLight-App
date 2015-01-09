@@ -3,6 +3,18 @@
   dslVersion="1.0.0.0"
   Id="4a2e8585-23b1-418e-8c9a-403eba34cdc9"
   name="ModelingProject1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="7ec9dee1-30fd-4546-b774-d2fd38d613d9">
+      <body>Een categorie is een groep van hetzelfde soort uitgaven. Bijvoorbeeld 'Woonlsaten'.</body>
+      <annotatedElements>
+        <useCaseMoniker
+          Id="fcdbdc31-85c0-4791-b4c6-c83d45627c0c"
+          LastKnownName="Categorie toekennen aan rekening"
+          LastKnownLocation="ModelingProject1.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <packageHasNamedElement>
       <actor
@@ -207,20 +219,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="95ad8a38-1c81-4457-a85c-481efdbba809"
+            Id="76fd37bb-02c9-4cfb-bf83-a1ceea95afe7"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Installeren cashlight"
+            targetEndRoleName="CSV-bestand importeren"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="8c5677e8-6c77-4d97-a98b-bad9372527f6"
-              LastKnownName="Installeren cashlight"
+              Id="255bb706-281e-4c2a-bd80-dd09004265e6"
+              LastKnownName="CSV-bestand importeren"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="77318038-934c-472b-bbe0-72b53e7fe1a2"
+                  Id="7c5523ce-be0d-41da-807c-421c70803fc0"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -233,8 +245,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="78cdea42-b7b7-4dcf-95b2-b8ac958dd7b0"
-                  name="Installeren cashlight"
+                  Id="2d3a3e40-50d4-4baf-b517-9f01ed0a22a8"
+                  name="CSV-bestand importeren"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -246,20 +258,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="1d2559a4-fa22-41cb-903a-8cfc074e5b89"
+            Id="86e45869-d6b8-4cee-9cfa-f792ad3c2686"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Uploaden CSV-bestand"
+            targetEndRoleName="Categorie aanmaken"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="ebc052db-5eda-4ae4-98cc-7e4430937df6"
-              LastKnownName="Uploaden CSV-bestand"
+              Id="30288529-2ef6-4820-8844-7f895a78c711"
+              LastKnownName="Categorie aanmaken"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="24fabd0d-26d0-4c89-a3eb-8520742e4f91"
+                  Id="1c8c0343-8029-49c5-bc62-f8223836e8b6"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -272,8 +284,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="356a6068-d75a-4f08-a859-975551dd0005"
-                  name="Uploaden CSV-bestand"
+                  Id="60ed3cd7-f85c-4158-ab5b-21d55339a19d"
+                  name="Categorie aanmaken"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -285,20 +297,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="158beded-1689-4c5f-8566-8aadc0319e64"
+            Id="9878882c-9b0c-413f-a652-99d2488eae4c"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Categoriseren transacties"
+            targetEndRoleName="Categorie verwijderen"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="e35933a5-feb3-4e48-84e8-d0157f602653"
-              LastKnownName="Categoriseren transacties"
+              Id="f9994582-10ed-49e4-85db-afa39dad5e78"
+              LastKnownName="Categorie verwijderen"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="f10a21c0-c6d5-4c16-8561-28b03711eed2"
+                  Id="5c2a9a3b-1147-47c6-95b5-653a57a7908a"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -311,8 +323,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="f310e2ee-6b3a-4199-a66f-6096535be0ff"
-                  name="Categoriseren transacties"
+                  Id="8b54aea6-fa5a-4f79-9748-c4e3bc2f8e40"
+                  name="Categorie verwijderen"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -324,20 +336,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="813bfc6e-2957-4d94-84dd-9ebdc38fc621"
+            Id="b3091b63-72a8-4c75-b385-ef26157993a8"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Inzien spaardoelen"
+            targetEndRoleName="Categorie toekennen aan rekening"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="427e87ae-3810-4c69-ac08-7bf0f046d887"
-              LastKnownName="Inzien spaardoelen"
+              Id="fcdbdc31-85c0-4791-b4c6-c83d45627c0c"
+              LastKnownName="Categorie toekennen aan rekening"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="67303c02-b8c9-4c71-acc3-476e32171dc0"
+                  Id="2daeb4d4-3b45-4eac-8a92-bf67ed58d9a3"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -350,8 +362,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="fdeb727d-57b7-4f87-aff5-ff34a9776063"
-                  name="Inzien spaardoelen"
+                  Id="f69c08b0-f774-430d-aa24-3c4139215066"
+                  name="Categorie toekennen aan rekening"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -363,20 +375,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="3b3ba536-9a43-446c-b270-c6b73ae65266"
+            Id="dc86721d-2f1c-46f9-be81-05892ca22dea"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Ingeven spaardoelen"
+            targetEndRoleName="Cecategoriseerde rekeningen inzien"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="95ed7aa2-264f-47d6-ae04-066893b868eb"
-              LastKnownName="Ingeven spaardoelen"
+              Id="ff514bf9-b66a-4e96-bd27-555684edc647"
+              LastKnownName="Cecategoriseerde rekeningen inzien"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="ceeb76e0-0cc7-4131-8e65-f99f1beb8094"
+                  Id="00770e29-6a28-4721-8574-20c31eb67f7c"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -389,8 +401,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="d75c1673-59d2-412f-be6f-d5201187f4fb"
-                  name="Ingeven spaardoelen"
+                  Id="d4389e49-20e9-4ffb-b5c1-b024acb05163"
+                  name="Cecategoriseerde rekeningen inzien"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -402,20 +414,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="e2c5ed8d-978e-4446-8b4c-9bc39cb69fe0"
+            Id="a1ee321b-16f1-42c7-8748-59d547a352de"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Prioriteren spaardoelen"
+            targetEndRoleName="Rekeningdetails inzien"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="064d35f1-8af9-46e4-9d1c-7082ddc16ccb"
-              LastKnownName="Prioriteren spaardoelen"
+              Id="6e1fbdc7-8138-48f8-b88f-0b6f6c662dc5"
+              LastKnownName="Rekeningdetails inzien"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="ff9895b5-916c-45dc-bf83-6dc822fbe97c"
+                  Id="aefa8c44-f737-478a-9527-6a139d9dd4b2"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -428,8 +440,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="767afbe3-b1ac-43bd-b43a-a2500edafd5a"
-                  name="Prioriteren spaardoelen"
+                  Id="09f37ddf-53b7-430e-9c34-99e12ccb6037"
+                  name="Rekeningdetails inzien"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -441,20 +453,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="bfe37761-b220-44d7-a487-aa5f4e195a4f"
+            Id="0fd2783b-d1af-49fc-aacf-c560d880a2e7"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Inzien bestedingsruimte"
+            targetEndRoleName="Categorie wijzigen van rekening"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="b874bb67-71d4-499e-8a30-f839bbcb5b4a"
-              LastKnownName="Inzien bestedingsruimte"
+              Id="1a5a31c4-8637-460f-92d4-fa5847c10614"
+              LastKnownName="Categorie wijzigen van rekening"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="b9484b8a-6af8-4f00-aa12-b8514c3618af"
+                  Id="2f10bc2a-d568-402c-b159-71f0191425ea"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -467,8 +479,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="63fd4525-eee7-4f93-b1a9-f1f4da90ed6e"
-                  name="Inzien bestedingsruimte"
+                  Id="68d5cc88-056e-43d9-a386-9bd63db1944e"
+                  name="Categorie wijzigen van rekening"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -480,20 +492,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="721599d8-52fa-4f9e-9fc1-4ed661543933"
+            Id="3fca75e7-e795-4f27-9cf3-1e32f8ed7b2c"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Wisselen periodes"
+            targetEndRoleName="Periode selecteren"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="97821638-2117-4205-8484-007e1401e7bc"
-              LastKnownName="Wisselen periodes"
+              Id="1ef3ec91-b8a9-4714-9dcb-2dcdc2d1fb47"
+              LastKnownName="Periode selecteren"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="143aa4a5-a854-49b8-9d1c-af9183f2bdff"
+                  Id="3c4b1acd-0569-4c69-bb8a-b7f02c5206e0"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -506,8 +518,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="493ab5ef-27c2-4090-aadd-67638195447e"
-                  name="Wisselen periodes"
+                  Id="268574f8-6653-4435-a0cf-5cdf8a97c4df"
+                  name="Periode selecteren"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -519,20 +531,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="9e923dfe-f1af-4b16-8ab5-9a658b52f48f"
+            Id="66a3dcc3-2cea-4bc3-b5cd-456d095518d3"
             isDerived="false"
             sourceEndRoleName="Gebruiker"
-            targetEndRoleName="Inzien voortgang categoriseren"
+            targetEndRoleName="Belangrijkste inkomsten inzien per periode"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="145529ed-a1f9-4782-9c36-d9ba082a32c8"
-              LastKnownName="Inzien voortgang categoriseren"
+              Id="2868174e-7e89-4e1b-937d-227b339df261"
+              LastKnownName="Belangrijkste inkomsten inzien per periode"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="40fc523c-4db7-4e92-a7d0-24e1a32d090a"
+                  Id="dc81942a-16d6-42e7-bf55-401010f52779"
                   name="Gebruiker"
                   isLeaf="false"
                   isStatic="false"
@@ -545,8 +557,203 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="d9856828-2d12-4de5-b615-704c66fd0de1"
-                  name="Inzien voortgang categoriseren"
+                  Id="5579072a-ef5c-4a61-9fd8-2294cebb3bed"
+                  name="Belangrijkste inkomsten inzien per periode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="fa3d4645-0a87-4b94-8a23-6a5968afe2a4"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Inkomstdetails inzien"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2138cc58-9039-4fe8-98b9-ea5b3c4bf1fc"
+              LastKnownName="Inkomstdetails inzien"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d37f44c4-1e5e-4ed1-8057-76ed81c407a6"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="da6d1e42-dc84-4926-a349-2932a3d09edc"
+                  name="Inkomstdetails inzien"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="fb7b4ac5-f524-4013-b8c9-7163da2ac4ad"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Categorieën inzien per periode"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="18842e3a-174f-4d0c-8e14-ba6a5cc8f638"
+              LastKnownName="Categorieën inzien per periode"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="538469a8-6fa1-47de-b85b-0b04f71f7c5d"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fb74c495-b93b-4d2f-99f6-56b138ab3070"
+                  name="Categorieën inzien per periode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a8cb4f00-91de-4003-a9c4-dd03a0562511"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Categoriedetails inzien"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b47e9788-2e73-4f55-a625-bae0138e50cb"
+              LastKnownName="Categoriedetails inzien"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2601404f-eb4b-4358-98c1-e1078b72c055"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="33666337-6c80-4618-bca6-088db00104e6"
+                  name="Categoriedetails inzien"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c80a3d27-62c5-4f81-afda-2e398b20808b"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Bestedingsruimte inzien per periode"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4bffc12e-faf8-4ac2-821d-93c62bd18492"
+              LastKnownName="Bestedingsruimte inzien per periode"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6228e4df-bca9-4c76-879a-8d9d6a6ca72b"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5299bb8b-afa6-426f-8500-e162d9635027"
+                  name="Bestedingsruimte inzien per periode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="dcaf3fda-0e29-416e-9314-939ea42324fe"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="App afsluiten"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d4e6986c-a837-4021-9132-427c59b7e981"
+              LastKnownName="App afsluiten"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="992f7bf0-47dd-4b86-a291-b9d047aae08d"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d3a4e574-f798-4bf1-bce0-33aae4538e4c"
+                  name="App afsluiten"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -629,98 +836,49 @@
         Id="b874bb67-71d4-499e-8a30-f839bbcb5b4a"
         name="Inzien bestedingsruimte"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="064d35f1-8af9-46e4-9d1c-7082ddc16ccb"
         name="Prioriteren spaardoelen"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="95ed7aa2-264f-47d6-ae04-066893b868eb"
         name="Ingeven spaardoelen"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="427e87ae-3810-4c69-ac08-7bf0f046d887"
         name="Inzien spaardoelen"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="e35933a5-feb3-4e48-84e8-d0157f602653"
         name="Categoriseren transacties"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="ebc052db-5eda-4ae4-98cc-7e4430937df6"
         name="Uploaden CSV-bestand"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="8c5677e8-6c77-4d97-a98b-bad9372527f6"
         name="Installeren cashlight"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -734,14 +892,7 @@
         Id="97821638-2117-4205-8484-007e1401e7bc"
         name="Wisselen periodes"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="470e6903-4257-4924-b2c3-ba190a001444"
-            LastKnownName="CashLight"
-            LastKnownLocation="ModelingProject1.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -753,6 +904,230 @@
       <useCase
         Id="145529ed-a1f9-4782-9c36-d9ba082a32c8"
         name="Inzien voortgang categoriseren"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="255bb706-281e-4c2a-bd80-dd09004265e6"
+        name="CSV-bestand importeren"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="81239779-6a99-4371-bd97-ac04ab0cd106"
+        name="Importeren CSV-bestand1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fcdbdc31-85c0-4791-b4c6-c83d45627c0c"
+        name="Categorie toekennen aan rekening"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="30288529-2ef6-4820-8844-7f895a78c711"
+        name="Categorie aanmaken"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f9994582-10ed-49e4-85db-afa39dad5e78"
+        name="Categorie verwijderen"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ff514bf9-b66a-4e96-bd27-555684edc647"
+        name="Cecategoriseerde rekeningen inzien"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1a5a31c4-8637-460f-92d4-fa5847c10614"
+        name="Categorie wijzigen van rekening"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="61e15c6f-b679-4f71-9a02-8ec177bae89f"
+        name="UseCase3"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6e1fbdc7-8138-48f8-b88f-0b6f6c662dc5"
+        name="Rekeningdetails inzien"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2868174e-7e89-4e1b-937d-227b339df261"
+        name="Belangrijkste inkomsten inzien per periode"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="18842e3a-174f-4d0c-8e14-ba6a5cc8f638"
+        name="Categorieën inzien per periode"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d40337cb-6519-483c-8472-42f5975d0078"
+        name="Uitgaven per categorie van periode inzien1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="97e369bf-e596-4429-bce0-31519e7d72e1"
+        name="Belangrijkste inkomsten van periode inzien1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4bffc12e-faf8-4ac2-821d-93c62bd18492"
+        name="Bestedingsruimte inzien per periode"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2138cc58-9039-4fe8-98b9-ea5b3c4bf1fc"
+        name="Inkomstdetails inzien"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b47e9788-2e73-4f55-a625-bae0138e50cb"
+        name="Categoriedetails inzien"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d4e6986c-a837-4021-9132-427c59b7e981"
+        name="App afsluiten"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ff3b412b-ac32-4384-b2ae-7cae252d8ffe"
+        name="App afsluiten1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1ef3ec91-b8a9-4714-9dcb-2dcdc2d1fb47"
+        name="Periode selecteren"
         isAbstract="false"
         isLeaf="false">
         <subjects>
