@@ -135,6 +135,7 @@
     </AppxManifest>
     <None Include="CashLight-App.Windows_StoreKey.pfx" />
     <None Include="CashLight-App.Windows_TemporaryKey.pfx" />
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
