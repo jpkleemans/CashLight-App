@@ -28,10 +28,10 @@
         </Border>
 
         <!-- BudgetLine -->
-        <Border x:Name="BudgetLine" Height="60" BorderBrush="#27333D" VerticalAlignment="Top" BorderThickness="0,0,3,0"/>
+        <Border x:Name="BudgetLine" Height="{Binding ImportantCategory.HeightOfBudget}" BorderBrush="#27333D" VerticalAlignment="Top" BorderThickness="0,0,3,0"/>
 
-        <!-- Amount -->
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,50,-45,0" TextWrapping="Wrap" Text="{Binding ImportantCategory.PercentageOfBudget, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0}%'}" FontFamily="Arial Black" FontSize="20" Foreground="White"/>
+        <!-- Percentage -->
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Right" Margin="{Binding ImportantCategory.MarginOfBudget}" TextWrapping="Wrap" Text="{Binding ImportantCategory.AmountOfBudget, Converter={StaticResource StringFormatConverter},ConverterParameter='{}{0:c}'}" FontFamily="Arial Black" FontSize="20" Foreground="White"/>
 
         <!-- Dot -->
         <Ellipse Fill="White" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-7,-6,0" />
