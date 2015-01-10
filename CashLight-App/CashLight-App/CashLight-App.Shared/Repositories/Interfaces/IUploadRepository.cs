@@ -11,5 +11,7 @@ namespace CashLight_App.Repositories.Interfaces
         //Upload GetByFile(StorageFile file);
 
         void ToDatabase(StorageFile storageFile);
+
+        void SaveTransaction(Dictionary<string, string> dic);
     }
 }

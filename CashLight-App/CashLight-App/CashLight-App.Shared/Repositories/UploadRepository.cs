@@ -15,7 +15,7 @@ using Windows.UI.Xaml;
 
 namespace CashLight_App.Repositories
 {
-    class UploadRepository : IUploadRepository
+    public class UploadRepository : IUploadRepository
     {
         private ITransactionRepository _transactionRepo;
         private ICSVReaderService _CSVReader;
@@ -62,7 +62,7 @@ namespace CashLight_App.Repositories
             _periodRepo.SearchMostConsistentIncome();
         }
 
-        private void SaveTransaction(Dictionary<string, string> dic)
+        public void SaveTransaction(Dictionary<string, string> dic)
         {
             int inOut;
             if (dic["Af / Bij"] == "Bij")

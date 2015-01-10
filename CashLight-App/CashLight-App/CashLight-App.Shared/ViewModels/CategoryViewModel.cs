@@ -14,6 +14,7 @@ namespace CashLight_App.ViewModels
     {
         private ICategoryRepository _categoryRepo;
         private INavigationService _navigator;
+        private IDialogService _dialogService;
 
         public RelayCommand SaveCategoryCommand { get; set; }
 
@@ -96,10 +97,11 @@ namespace CashLight_App.ViewModels
             }
         }
 
-        public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator)
+        public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator, IDialogService dialogService)
         {
             _navigator = navigator;
             _categoryRepo = categoryRepo;
+            _dialogService = dialogService;
 
             this.TypeList = new List<string>();
             this.TypeList.Add(CategoryType.Fixed.ToString());
@@ -108,25 +110,39 @@ namespace CashLight_App.ViewModels
             SaveCategoryCommand = new RelayCommand(SaveCategory);
         }
 
-        private void SaveCategory()
+        private async void SaveCategory()
         {
             Category category = new Category();
 
-            category.Name = this.Text;
-            category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
-
-            if (_budget != null)
+            if (Text == null)
             {
-                category.Budget = (double)_budget;
+                await _dialogService.ShowError("De categorie-naam is niet ingevuld.", "Ongeldige naam", "Terug", null);
+            }
+            else if (CurrentType == null)
+            {
+                await _dialogService.ShowError("Het categorie-type is niet ingevuld.", "Ongeldig type", "Terug", null);
             }
             else
             {
-                category.Budget = 0;
+
+                category.Name = this.Text;
+                category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
+
+                if (_budget != null)
+                {
+                    category.Budget = (double)_budget;
+                }
+                else
+                {
+                    category.Budget = 0;
+                }
+
+                // if alright
+                _categoryRepo.Add(category);
+                _navigator.NavigateTo("Categorize");
+
             }
 
-            _categoryRepo.Add(category);
-
-            _navigator.NavigateTo("Categorize");
         }
 
     }
