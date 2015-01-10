@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+<ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="CashLight_App.App" Collapsed="true">
-    <Position X="19.25" Y="0.5" Width="1.5" />
+    <Position X="14" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAAAIAAg=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Config.Bootstrapper" Collapsed="true">
-    <Position X="12.25" Y="1.5" Width="1.5" />
+    <Position X="15.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Config\Bootstrapper.cs</FileName>
@@ -29,14 +29,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Config.TesttimeModule" Collapsed="true">
-    <Position X="12.25" Y="7.5" Width="1.5" />
+    <Position X="15.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Config\TesttimeModule.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Converters.BooleanToVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="24.5" Y="0.5" Width="1.5" />
+    <Position X="21.25" Y="4" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Converters\BooleanToVisibilityConverter.cs</FileName>
@@ -44,7 +44,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="CashLight_App.Converters.StringFormatConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="18" Y="6.5" Width="1.5" />
+    <Position X="18" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Converters\StringFormatConverter.cs</FileName>
@@ -52,7 +52,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="CashLight_App.Converters.StringToUpperConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20" Y="6.5" Width="1.5" />
+    <Position X="20" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Converters\StringToUpperConverter.cs</FileName>
@@ -60,56 +60,56 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="CashLight_App.DTOs.PeriodDTO" Collapsed="true">
-    <Position X="17.5" Y="4.5" Width="1.5" />
+    <Position X="18.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAACAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\DTOs\PeriodDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Models.Account" Collapsed="true">
-    <Position X="12.25" Y="0.5" Width="1.5" />
+    <Position X="11.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAACAAACAAAAAEAAABQAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Models\Account.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Models.Category" Collapsed="true">
-    <Position X="17.5" Y="1.5" Width="1.5" />
+    <Position X="9.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAQAAAgAAAAAAQAAAAAAgAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Models\Category.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Models.ImportantCategory" Collapsed="true">
-    <Position X="24.5" Y="2.5" Width="1.5" />
+    <Position X="11.25" Y="2.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIBACCBAAAAABAAAAAAEAAAAAAAADAAAACCAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Models\ImportantCategory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Models.Period" Collapsed="true">
-    <Position X="15.75" Y="4.5" Width="1.5" />
+    <Position X="11.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AASAAAAAQIAAIAIAIAAAAIIiAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Models\Period.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Models.Setting" Collapsed="true">
-    <Position X="17.5" Y="5.5" Width="1.5" />
+    <Position X="11.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAABAAAgACAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Models\Setting.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Models.Transaction" Collapsed="true">
-    <Position X="15.75" Y="7.25" Width="1.5" />
+    <Position X="11.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEACEAACBACgBAgEBEAgAACgEAAAEAABAABCEAAgCAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Models\Transaction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Repositories.AccountRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15.75" Y="0.5" Width="1.5" />
+    <Position X="10.5" Y="10.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAIAkEAAAAAAAAAAAAQQAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\AccountRepository.cs</FileName>
@@ -117,7 +117,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="CashLight_App.Repositories.CategoryRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="19.25" Y="1.5" Width="1.5" />
+    <Position X="19.25" Y="10.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAIAgEAAAAABAAAAAAAQAAAAAAEAAAACAAAAAAACAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\CategoryRepository.cs</FileName>
@@ -125,7 +125,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="CashLight_App.Repositories.PeriodRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="19.25" Y="4.5" Width="1.5" />
+    <Position X="17.5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACEAAABAAEIAAAiAAAAIAAAgAAAAAAAgAAAAEAAEA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\PeriodRepository.cs</FileName>
@@ -141,7 +141,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="CashLight_App.Repositories.TransactionRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="12.25" Y="10.75" Width="1.5" />
+    <Position X="12.25" Y="10.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAIAgEAACBAAAAAAAAAQAAAAAAAAAABCAAgAAQEAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\TransactionRepository.cs</FileName>
@@ -151,55 +151,34 @@
   <Class Name="CashLight_App.Repositories.UploadRepository" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="14" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAQAAAAQAAAAAAAAACAAAACgQQAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAAAEAAQAAAAQAAAAAAAAACAAAACgAQAAAAAAAAAAAg=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\UploadRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.228" Collapsed="true" />
   </Class>
   <Class Name="CashLight_App.Services.BankConverter.BankConverterService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="22.75" Y="0.5" Width="1.5" />
+    <Position X="7.25" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\BankConverter\BankConverterService.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.294" />
   </Class>
   <Class Name="CashLight_App.Services.BankConverter.Banks.ING" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17.5" Y="3.5" Width="1.5" />
+    <Position X="5.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAQAAAAAAAAAAAAAAAAAAIAgAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\BankConverter\Banks\ING.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.188" />
   </Class>
   <Class Name="CashLight_App.Services.CSVReader.CSVReaderService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="14" Y="2.5" Width="1.5" />
+    <Position X="3.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\CSVReader\CSVReaderService.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="CashLight_App.Services.SQLite.AutoIncrementAttribute" Collapsed="true">
-    <Position X="21" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\SQLite\SQLite.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CashLight_App.Services.SQLite.Orm" Collapsed="true">
-    <Position X="14" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AABAECAAAAAAAAAAABgAAAAAAAAAAAwAAAAAAAACAAE=</HashCode>
-      <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\SQLite\SQLite.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SQLiteNetExtensions.Extensions.ReadOperations" Collapsed="true">
-    <Position X="24.5" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAIAAAAAAAAQQCgAAAAAAAAAgAA=</HashCode>
-      <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\SQLite\SQLiteNetExtensions\Extensions\ReadOperations.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="WinRTExtensions.ExtensionMethods" Collapsed="true">
     <Position X="19.25" Y="2.5" Width="1.5" />
@@ -209,119 +188,119 @@
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Tables.AccountCategoryTable" Collapsed="true">
-    <Position X="14" Y="0.5" Width="1.5" />
+    <Position X="8.5" Y="9.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAEAAABQAAAAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Tables\AccountCategoryTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Tables.CategoryTable" Collapsed="true">
-    <Position X="21" Y="1.5" Width="1.5" />
+    <Position X="8.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAACAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAgAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Tables\CategoryTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Tables.SettingTable" Collapsed="true">
-    <Position X="21" Y="5.5" Width="1.5" />
+    <Position X="8.5" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAABAAAgACAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Tables\SettingTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Tables.TransactionTable" Collapsed="true">
-    <Position X="19.25" Y="7.5" Width="1.5" />
+    <Position X="8.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAgAACgEAAAEAABAAACEAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Tables\TransactionTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.ViewModels.CategorizeViewModel" Collapsed="true">
-    <Position X="15.75" Y="1.5" Width="1.5" />
+    <Position X="6" Y="7" Width="1.75" />
     <TypeIdentifier>
       <HashCode>ggAIBCAAAAYIMAABQQAAAAAAAiAAEQQCAAABAQEAAEA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\ViewModels\CategorizeViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.ViewModels.CategoryViewModel" Collapsed="true">
-    <Position X="22.75" Y="1.5" Width="1.5" />
+    <Position X="4.25" Y="7" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAIAAAAAAAAEAAAAAAAAQJAIFAGAEEgAg=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\ViewModels\CategoryViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.ViewModels.DashboardViewModel" Collapsed="true">
-    <Position X="17.5" Y="2.5" Width="1.5" />
+    <Position X="6" Y="8" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAQABACAAAAACEAAAIAAAAAAAACCAAwAAAAAAIAABAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\ViewModels\DashboardViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.ViewModels.HeaderViewModel" Collapsed="true">
-    <Position X="22.75" Y="2.5" Width="1.5" />
+    <Position X="6" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAABAgAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\ViewModels\HeaderViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.ViewModels.ImportViewModel" Collapsed="true">
-    <Position X="14" Y="3.5" Width="1.5" />
+    <Position X="6" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAACIAAAAAAQAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\ViewModels\ImportViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.ViewModels.MenuViewModel" Collapsed="true">
-    <Position X="24.5" Y="3.5" Width="1.5" />
+    <Position X="6" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAEAAAAAAAAAOAAAAAAAAAAAAABAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\ViewModels\MenuViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.ViewModels.ViewModelLocator" Collapsed="true">
-    <Position X="22.75" Y="7.5" Width="1.5" />
+    <Position X="14" Y="6.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAEAAAIAAAAAAAAAQIAAAAAAAAAAAACAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\ViewModels\ViewModelLocator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Views.Categorize.CategorizeView" Collapsed="true">
-    <Position X="10.25" Y="1" Width="1.5" />
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Categorize\CategorizeView.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Views.Category.AddCategoryView" Collapsed="true">
-    <Position X="17.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Category\AddCategoryView.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Views.Dashboard.DashboardView" Collapsed="true">
-    <Position X="15.75" Y="2.5" Width="1.5" />
+    <Position X="0.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Dashboard\DashboardView.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Views.Dashboard.IncomeMarker" Collapsed="true">
-    <Position X="15.75" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACIAAAAAAAAEAAAAAAABIAQAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Dashboard\IncomeMarker.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Views.Dashboard.SpendingMarker" Collapsed="true">
-    <Position X="22.75" Y="5.5" Width="1.5" />
+    <Position X="0.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAAAAAABIAAAQAAAAAEACABAAAAAAA=</HashCode>
       <FileName>Views\Dashboard\SpendingMarker.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CashLight_App.Views.Import.ImportView" Collapsed="true">
-    <Position X="12.25" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAAAAAAAAQAAAAAQAAABAAAAAAAAAA=</HashCode>
       <FileName>Views\Import\ImportView.xaml.cs</FileName>
@@ -334,15 +313,23 @@
       <FileName>Views\Partials\Header.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="CashLight_App.Services.SQLite.SQLiteService" Collapsed="true">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAABAQAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\SQLite\SQLiteService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.731" />
+  </Class>
   <Interface Name="CashLight_App.Repositories.Interfaces.IAccountRepository" Collapsed="true">
-    <Position X="12.25" Y="8.75" Width="1.5" />
+    <Position X="10.5" Y="9.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAIAAEAAAAAAAAAAAAQQAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\Interfaces\IAccountRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Repositories.Interfaces.ICategoryRepository" Collapsed="true">
-    <Position X="17.5" Y="8.75" Width="1.5" />
+    <Position X="17.5" Y="8.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAIAAEAAAAABAAAAAAAQAAAAAAEAAAACAAAAAAACAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\Interfaces\ICategoryRepository.cs</FileName>
@@ -356,49 +343,49 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Repositories.Interfaces.ISettingRepository" Collapsed="true">
-    <Position X="22.75" Y="8.75" Width="1.5" />
+    <Position X="22.75" Y="8.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAIAAEAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\Interfaces\ISettingRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Repositories.Interfaces.ITransactionRepository" Collapsed="true">
-    <Position X="12.25" Y="9.75" Width="1.5" />
+    <Position X="12.5" Y="9.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAIAAEAACBAAAAAAAAAQAAAAAAAAAABCAAgAAQEAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\Interfaces\ITransactionRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Repositories.Interfaces.IUploadRepository" Collapsed="true">
-    <Position X="14" Y="9.75" Width="1.5" />
+    <Position X="14.75" Y="9.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Repositories\Interfaces\IUploadRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Services.BankConverter.IBankConverterService" Collapsed="true">
-    <Position X="15.75" Y="8.75" Width="1.5" />
+    <Position X="7.25" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\BankConverter\IBankConverterService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Services.BankConverter.Banks.IBank" Collapsed="true">
-    <Position X="14" Y="8.75" Width="1.5" />
+    <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\BankConverter\Banks\IBank.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Services.CSVReader.ICSVReaderService" Collapsed="true">
-    <Position X="19.25" Y="8.75" Width="1.5" />
+    <Position X="3.25" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\CSVReader\ICSVReaderService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CashLight_App.Services.SQLite.ISQLiteService" Collapsed="true">
-    <Position X="24.5" Y="8.75" Width="1.5" />
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>C:\Users\bernard\Source\Repos\CashLight-App\CashLight-App\CashLight-App\CashLight-App.Shared\Services\SQLite\ISQLiteService.cs</FileName>
