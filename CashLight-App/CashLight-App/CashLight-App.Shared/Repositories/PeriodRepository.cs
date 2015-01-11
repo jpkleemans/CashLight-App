@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using CashLight_App.Enums;
+using AutoMapper;
 using System.Diagnostics;
 
 namespace CashLight_App.Repositories
@@ -32,7 +33,7 @@ namespace CashLight_App.Repositories
             this.SetDates(ref period, date);
             this.SetTransactions(ref period);
             this.SetImportantTransactions(ref period);
-            this.SetCategories(ref period);
+            //this.SetCategories(ref period);
             this.GetSpendingLimit(ref period);
 
             return period;
@@ -93,35 +94,79 @@ namespace CashLight_App.Repositories
 
         private void SetImportantTransactions(ref Period period)
         {
+            var startdate = period.StartDate;
+            var enddate = period.EndDate;
             period.ImportantIncomes = _transactionRepo.GetHighestBetweenDates(Enums.InOut.In, 4, period.StartDate, period.EndDate);
-            period.ImportantSpendings = _transactionRepo.GetHighestBetweenDates(Enums.InOut.Out, 4, period.StartDate, period.EndDate);
-        }
 
-        private void SetCategories(ref Period period)
-        {
-            IEnumerable<Category> categories = _categoryRepo.FindAll();
-
-            foreach (Category category in categories)
+            IEnumerable<Category> category = _categoryRepo.FindAll().OrderByDescending(q => q.Budget).Take(4);
+            /*
+            IEnumerable<ImportantCategory> importantcategories = from a in category
+                                                                 select new ImportantCategory
+                                                                 {
+                                                                     Category = a,
+                                                                     PercentageOfBudget = (int)a.Budget != 0 ? (int)((from b in _transactionRepo.GetAllBetweenDates(startdate, enddate)
+                                                                                          where b.InOut == (int)InOut.Out && b.CategoryID == a.CategoryID
+                                                                                          select b.Amount).Sum() / a.Budget) * 100 : 0
+                                                                 };
+            
+            */
+            List<ImportantCategory> importantcategories = (from a in category
+                                                                 select new ImportantCategory
+                                                                 {
+                                                                     Category = a,
+                                                                 }).ToList();
+            
+            foreach(var item in importantcategories)
             {
-                double totaltransactions = period.Transactions
-                    .Where(q => q.CategoryID == category.CategoryID)
-                    .Where(q => q.InOut == (int)InOut.Out)
-                    .Count();
-
-                double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
-
-                if (totaltransactions == 0 || amountoftransactions == 0)
+                if((int)item.Category.Budget != 0)
                 {
-                    category.Percentage = 0;
+                    double total = 0;
+                    foreach(var trx in _transactionRepo.GetAllBetweenDates(startdate, enddate).Where(q => q.InOut == (int)InOut.Out && q.CategoryID == item.Category.CategoryID))
+                    {
+                        total += trx.Amount;
+                    }
+                    item.AmountOfBudget = total;
+
+                    double calc = total / item.Category.Budget;
+                    var percentage = calc * 100;
+                    item.PercentageOfBudget = Convert.ToInt16(percentage);
                 }
                 else
                 {
-                    category.Percentage = Convert.ToInt16((totaltransactions / amountoftransactions) * 100);
+                    item.PercentageOfBudget = 0;
+                    item.AmountOfBudget = 0;
                 }
             }
-
-            period.Categories = categories;
+             
+            period.ImportantSpendingCategories = importantcategories;
+             
         }
+            
+        //private void SetCategories(ref Period period)
+        //{
+        //    IEnumerable<Category> categories = _categoryRepo.FindAll();
+
+        //    foreach (Category category in categories)
+        //    {
+        //        double totaltransactions = period.Transactions
+        //            .Where(q => q.CategoryID == category.CategoryID)
+        //            .Where(q => q.InOut == (int)InOut.Out)
+        //            .Count();
+
+        //        double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
+
+        //        if (totaltransactions == 0 || amountoftransactions == 0)
+        //        {
+        //            category.Percentage = 0;
+        //        }
+        //        else
+        //        {
+        //            category.Percentage = Convert.ToInt16((totaltransactions / amountoftransactions) * 100);
+        //        }
+        //    }
+
+        //    period.Categories = categories;
+        //}
 
         private PeriodDTO GetConsistentIncome()
         {
@@ -251,7 +296,7 @@ namespace CashLight_App.Repositories
             }
             var categories = _categoryRepo.FindAll();
             foreach (var category in categories)
-            {
+                {
                 spendinglimit -= category.Budget;
             }
 

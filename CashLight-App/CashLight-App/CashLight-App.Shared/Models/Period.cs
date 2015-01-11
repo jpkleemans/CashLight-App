@@ -11,8 +11,8 @@ namespace CashLight_App.Models
         private DateTime _endDate;
         private IEnumerable<Transaction> _transactions;
         private IEnumerable<Transaction> _importantIncomes;
-        private IEnumerable<Transaction> _importantSpendings;
-        private IEnumerable<Category> _categories;
+        private IEnumerable<ImportantCategory> _importantSpendingCategories;
+        //private IEnumerable<Category> _categories;
         private double _spendingsLimit;
 
         public DateTime StartDate
@@ -67,31 +67,31 @@ namespace CashLight_App.Models
             }
         }
 
-        public IEnumerable<Transaction> ImportantSpendings
+        public IEnumerable<ImportantCategory> ImportantSpendingCategories
         {
             get
             {
-                return _importantSpendings;
+                return _importantSpendingCategories;
             }
             set
             {
-                _importantSpendings = value;
-                RaisePropertyChanged(() => ImportantSpendings);
+                _importantSpendingCategories = value;
+                RaisePropertyChanged(() => ImportantSpendingCategories);
             }
         }
 
-        public IEnumerable<Category> Categories
-        {
-            get
-            {
-                return _categories;
-            }
-            set
-            {
-                _categories = value;
-                RaisePropertyChanged(() => Categories);
-            }
-        }
+        //public IEnumerable<Category> Categories
+        //{
+        //    get
+        //    {
+        //        return _categories;
+        //    }
+        //    set
+        //    {
+        //        _categories = value;
+        //        RaisePropertyChanged(() => Categories);
+        //    }
+        //}
 
         public double SpendingsLimit
         {

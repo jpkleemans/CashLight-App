@@ -87,8 +87,8 @@ namespace CashLight_App.ViewModels
             {
                 foreach (Period period in allPeriods)
                 {
-                    period.ImportantIncomes = SetHeight(period.ImportantIncomes);
-                    period.ImportantSpendings = SetHeight(period.ImportantSpendings);
+                    period.ImportantIncomes = SetTransactionHeight(period.ImportantIncomes);
+                    period.ImportantSpendingCategories = SetCategoryHeight(period.ImportantSpendingCategories.ToList()).ToList();
 
                     Periods.Add(period);
                 }
@@ -102,7 +102,7 @@ namespace CashLight_App.ViewModels
             SelectedPeriod = Periods.Last();
         }
 
-        private IEnumerable<Transaction> SetHeight(IEnumerable<Transaction> transactions)
+        private IEnumerable<Transaction> SetTransactionHeight(IEnumerable<Transaction> transactions)
         {
             if (transactions.Count() > 0)
             {
@@ -127,6 +127,35 @@ namespace CashLight_App.ViewModels
             return transactions;
         }
 
+        
+
+        private List<ImportantCategory> SetCategoryHeight(List<ImportantCategory> categories)
+        {
+            if (categories.Count() > 0)
+            {
+                double highest = categories.Max(x => x.Category.Budget);
+
+                double minHeight = 230;
+                double maxHeight = 500;
+                double marginTop = 70;
+                if (Window.Current != null)
+                {
+                    maxHeight = (Window.Current.Bounds.Height / 2) - marginTop;
+                }
+                double useableHeight = maxHeight - minHeight;
+
+                foreach (ImportantCategory item in categories)
+                {
+                    double percentage = (item.Category.Budget / highest);
+                    item.Height = (useableHeight * percentage) + minHeight;
+                }
+            }
+
+            return categories.ToList();
+        }
+
+     
+
         private void ShowTransactionDetails(Transaction transaction)
         {
             if (transaction == null || transaction.Description == "")
@@ -138,4 +167,5 @@ namespace CashLight_App.ViewModels
             }
         }
     }
+
 }

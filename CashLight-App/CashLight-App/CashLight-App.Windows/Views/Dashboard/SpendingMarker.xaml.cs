@@ -22,17 +22,17 @@ namespace CashLight_App.Views.Dashboard
     public sealed partial class SpendingMarker : UserControl
     {
         #region Properties
-        public static readonly DependencyProperty TransactionProperty = DependencyProperty.Register(
-            "Transaction",
-            typeof(Transaction),
+        public static readonly DependencyProperty ImportantCategoryProperty = DependencyProperty.Register(
+            "ImportantCategory",
+            typeof(ImportantCategory),
             typeof(SpendingMarker),
             new PropertyMetadata(null)
         );
 
-        public Transaction Transaction
+        public ImportantCategory ImportantCategory
         {
-            get { return (Transaction)GetValue(TransactionProperty); }
-            set { SetValue(TransactionProperty, value); }
+            get { return (ImportantCategory)GetValue(ImportantCategoryProperty); }
+            set { SetValue(ImportantCategoryProperty, value); }
         }
 
         public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(

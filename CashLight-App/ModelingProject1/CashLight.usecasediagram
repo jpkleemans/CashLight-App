@@ -3,7 +3,7 @@
   <ownedCommentsInternal>
     <comment Id="2d383cf0-c034-4867-b57d-53e24eccc4c9">
       <elementDefinition Id="7ec9dee1-30fd-4546-b774-d2fd38d613d9" />
-      <body>Een categorie is een groep van hetzelfde soort uitgaven. Bijvoorbeeld 'Woonlsaten'.</body>
+      <body>Een categorie is een groep van hetzelfde soort uitgaven. Bijvoorbeeld 'Woonlasten'.</body>
       <annotatedElements>
         <useCaseMoniker Id="9a707f2e-ee4b-4014-a297-b617e711d4f9" LastKnownName="Categorie toekennen aan rekening" />
       </annotatedElements>
@@ -79,7 +79,7 @@
             <elementDefinition Id="b3091b63-72a8-4c75-b385-ef26157993a8" />
           </association>
           <association Id="c289e7a2-f688-4c8a-9af8-212741347cd2" isDerived="false" sourceEndRoleName="Gebruiker" targetEndRoleName="Cecategoriseerde rekeningen inzien" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="8516644e-7f03-4759-8acd-fa5bc17fbb94" LastKnownName="Cecategoriseerde rekeningen inzien" />
+            <useCaseMoniker Id="8516644e-7f03-4759-8acd-fa5bc17fbb94" LastKnownName="Gecategoriseerde rekeningen inzien" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="f069d437-f57e-4ac6-8c57-7095445b3d24" name="Gebruiker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -279,7 +279,7 @@
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <useCase Id="8516644e-7f03-4759-8acd-fa5bc17fbb94" name="Cecategoriseerde rekeningen inzien" isAbstract="false" isLeaf="false">
+      <useCase Id="8516644e-7f03-4759-8acd-fa5bc17fbb94" name="Gecategoriseerde rekeningen inzien" isAbstract="false" isLeaf="false">
         <elementDefinition Id="ff514bf9-b66a-4e96-bd27-555684edc647" />
         <subjects>
           <subsystemMoniker Id="4cb1b6e9-71aa-49d9-a80e-eff16241fd82" LastKnownName="CashLight" />

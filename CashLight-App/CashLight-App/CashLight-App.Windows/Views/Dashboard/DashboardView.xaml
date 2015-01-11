@@ -52,7 +52,7 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Margin="-200,0,300,0">
+                        <Grid Grid.Row="0" Margin="0,0,100,0">
                             <Grid.ChildrenTransitions>
                                 <TransitionCollection>
                                     <EntranceThemeTransition/>
@@ -96,7 +96,7 @@
                                                 CommandParameter="{Binding ImportantIncomes[3]}" />
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="0,0,100,0">
+                        <Grid Grid.Row="1" Margin="-200,0,300,0">
                             <Grid.ChildrenTransitions>
                                 <TransitionCollection>
                                     <EntranceThemeTransition/>
@@ -111,57 +111,33 @@
                             </Grid.ColumnDefinitions>
 
                             <local:SpendingMarker Grid.Column="0" 
-                                                  Transaction="{Binding ImportantSpendings[0]}"
-                                                  Height="{Binding ImportantSpendings[0].Height}" 
+                                                  ImportantCategory="{Binding ImportantSpendingCategories[0]}"
+                                                  Height="{Binding ImportantSpendingCategories[0].Height}" 
                                                   VerticalAlignment="Top" 
                                                   HorizontalAlignment="Right" 
                                                   Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
-                                                  CommandParameter="{Binding ImportantSpendings[0]}" />
+                                                  CommandParameter="{Binding ImportantSpendingCategories[0]}" />
                             <local:SpendingMarker Grid.Column="1" 
-                                                  Transaction="{Binding ImportantSpendings[1]}"
-                                                  Height="{Binding ImportantSpendings[1].Height}" 
+                                                  ImportantCategory="{Binding ImportantSpendingCategories[1]}"
+                                                  Height="{Binding ImportantSpendingCategories[1].Height}" 
                                                   VerticalAlignment="Top" 
                                                   HorizontalAlignment="Right" 
                                                   Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
-                                                  CommandParameter="{Binding ImportantSpendings[1]}" />
+                                                  CommandParameter="{Binding ImportantSpendingCategories[1]}" />
                             <local:SpendingMarker Grid.Column="2" 
-                                                  Transaction="{Binding ImportantSpendings[2]}"
-                                                  Height="{Binding ImportantSpendings[2].Height}" 
+                                                  ImportantCategory="{Binding ImportantSpendingCategories[2]}"
+                                                  Height="{Binding ImportantSpendingCategories[2].Height}" 
                                                   VerticalAlignment="Top" 
                                                   HorizontalAlignment="Right" 
                                                   Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
-                                                  CommandParameter="{Binding ImportantSpendings[2]}" />
+                                                  CommandParameter="{Binding ImportantSpendingCategories[2]}" />
                             <local:SpendingMarker Grid.Column="3" 
-                                                  Transaction="{Binding ImportantSpendings[3]}"
-                                                  Height="{Binding ImportantSpendings[3].Height}" 
+                                                  ImportantCategory="{Binding ImportantSpendingCategories[3]}"
+                                                  Height="{Binding ImportantSpendingCategories[3].Height}" 
                                                   VerticalAlignment="Top" 
                                                   HorizontalAlignment="Right" 
                                                   Command="{Binding DataContext.ShowTransactionDetailsCommand, ElementName=_this}"
-                                                  CommandParameter="{Binding ImportantSpendings[3]}" />
-                        </Grid>
-
-                        <Grid Grid.Row="1" Margin="30,20,0,0" Width="250" HorizontalAlignment="Left">
-                            <ItemsControl ItemsSource="{Binding Categories}" >
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*" />
-                                                <ColumnDefinition Width="1*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <TextBlock Grid.Column="0" Text="{Binding Name}" Foreground="White" FontSize="20" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Percentage, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0}%'}" Foreground="White" FontSize="20" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                                                  CommandParameter="{Binding ImportantSpendingCategories[3]}" />
                         </Grid>
 
                     </Grid>
@@ -172,6 +148,7 @@
         <TextBlock Text="{Binding Title}" Height="30" Margin="30" FontSize="30" VerticalAlignment="Top" TextAlignment="Center"/>
 
         <TextBlock Text="{Binding SpendingsLimit}" Height="30" Margin="30" FontSize="30" VerticalAlignment="Top" TextAlignment="Right"/>
+
         <part:Header Title="CashLight" />
     </Grid>
 </Page>

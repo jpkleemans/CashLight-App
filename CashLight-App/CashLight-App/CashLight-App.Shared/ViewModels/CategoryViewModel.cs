@@ -12,9 +12,9 @@ namespace CashLight_App.ViewModels
 {
     public class CategoryViewModel : ViewModelBase
     {
-
         private ICategoryRepository _categoryRepo;
         private INavigationService _navigator;
+        private IDialogService _dialogService;
 
         public RelayCommand SaveCategoryCommand { get; set; }
 
@@ -44,9 +44,9 @@ namespace CashLight_App.ViewModels
             {
                 _currentType = value;
 
-                if (_currentType != "Variable")
+                if (_currentType == "Fixed")
                 {
-                    Budget = 0;
+                    _budget = null;
                 }
 
                 RaisePropertyChanged(() => CurrentType);
@@ -83,25 +83,25 @@ namespace CashLight_App.ViewModels
             }
         }
 
-
-        private double _budget;
-        public double Budget
+        private double? _budget;
+        public string Budget
         {
             get
             {
-                return _budget;
+                return _budget.ToString();
             }
             set
             {
-                _budget = value;
+                _budget = double.Parse(value);
                 RaisePropertyChanged(() => Budget);
             }
         }
 
-        public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator)
+        public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator, IDialogService dialogService)
         {
             _navigator = navigator;
             _categoryRepo = categoryRepo;
+            _dialogService = dialogService;
 
             this.TypeList = new List<string>();
             this.TypeList.Add(CategoryType.Fixed.ToString());
@@ -110,17 +110,39 @@ namespace CashLight_App.ViewModels
             SaveCategoryCommand = new RelayCommand(SaveCategory);
         }
 
-        private void SaveCategory()
+        private async void SaveCategory()
         {
             Category category = new Category();
 
-            category.Name = this.Text;
-            category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
-            category.Budget = this.Budget;
+            if (Text == null)
+            {
+                await _dialogService.ShowError("De categorie-naam is niet ingevuld.", "Ongeldige naam", "Terug", null);
+            }
+            else if (CurrentType == null)
+            {
+                await _dialogService.ShowError("Het categorie-type is niet ingevuld.", "Ongeldig type", "Terug", null);
+            }
+            else
+            {
 
-            _categoryRepo.Add(category);
+                category.Name = this.Text;
+                category.Type = (int)Enum.Parse(typeof(CategoryType), CurrentType);
 
-            _navigator.NavigateTo("Categorize");
+                if (_budget != null)
+                {
+                    category.Budget = (double)_budget;
+                }
+                else
+                {
+                    category.Budget = 0;
+                }
+
+                // if alright
+                _categoryRepo.Add(category);
+                _navigator.NavigateTo("Categorize");
+
+            }
+
         }
 
     }
