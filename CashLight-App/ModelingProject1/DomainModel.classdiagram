@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="b17a14ab-1cc6-469c-bd7d-689cf5be89cb" name="DomainModel" linkedPackageId="bdc6e846-4211-4bfd-87db-d4ba2d044bfc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6292a637-6b97-4c36-a611-35e34c048b98" name="Categorie" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4ab1645e-e851-4f54-b1e1-3e4700c0cb1e" />
+        <ownedAttributesInternal>
+          <property Id="8b6d1e19-b4e0-46d0-930a-d8ac9411d670" name="Naam" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6d2f7355-71af-42af-a31c-2c7bb142a14d" />
+          </property>
+          <property Id="f746fc1f-c2e3-45bd-ab7c-ff44e0f7ea84" name="Budget" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="06b0c096-1658-41b1-a05e-8b3c920da96a" />
+          </property>
+          <property Id="3414980f-df17-4c33-a4ae-8002cea2eba3" name="Type" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a83e1395-51a1-4f6c-a9c3-3b82aa396d9b" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0a89952f-c6e3-4628-8e2c-fff40496e0b0" name="Periode" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f0c7929f-33e5-4fd0-9332-eb8e465df9c8" />
+        <targetEnds>
+          <association Id="dd15e24c-e8b1-431f-9d1a-c3aca16aca0b" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="fd73ee90-ff41-45b0-be99-ab934b5e17e1" LastKnownName="Transactie" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5eec2e3d-8d65-43c0-8ae7-91715562e579" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a079e357-579c-4a02-9127-db352371817c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dd238497-8e05-49dd-aa65-af2a90a0a1bd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="7c522c2d-d27a-4af0-b538-c8933ea7559e" name="Lower" value="*">
+                      <elementDefinition Id="28fe679e-5d74-4fab-b919-4dd408122992" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="482e43c5-29e8-4206-9d9d-693d8d2ae2e4" name="Upper" value="*">
+                      <elementDefinition Id="9f9cdf77-64ac-4da9-aebc-fdad09964255" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="5cb50924-4a00-40c4-898d-efbb4b3dd986" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7a8322e4-0d81-4be6-bd6d-60d362920579" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="0383a279-2490-40fd-b64a-fc08695d805f" name="BeginDatum" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3195767b-eeb6-4595-a537-af145c06263b" />
+          </property>
+          <property Id="149ce660-54b2-4004-9f4a-820e563db812" name="EindDatum" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7d127d02-f167-4f2f-ba11-14bab03bf740" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fd73ee90-ff41-45b0-be99-ab934b5e17e1" name="Transactie" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="63c8c1b1-675c-494e-a283-b067af7d572c" />
+        <ownedAttributesInternal>
+          <property Id="327eccd8-e88d-401f-881c-adf30e091cb6" name="Datum" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="60e0484d-a7b0-490c-8db4-62c1dacda642" />
+          </property>
+          <property Id="7435c4a9-5427-4f3b-9c6b-f4c21be45799" name="Bedrag" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="99c9385f-610a-4da3-be4c-f06949cc54a3" />
+          </property>
+          <property Id="74246236-04c0-411f-a217-dd8e379fc5f9" name="Mededelingen" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e1e71e3f-4284-432c-9ae2-9d06b642a5d6" />
+          </property>
+          <property Id="6617a3e0-d704-4fd7-9809-52b85ab57915" name="Tegenrekening" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="308835d8-80bd-4543-a0e2-43d7ed21a9b2" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="393b9d0c-0be5-426b-8376-22b7b62dea33" name="Inkomst" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="26d8cc5e-1b38-4e76-b39e-9f4a810b0ab6" />
+        <generalsInternal>
+          <generalization Id="7764c96c-973d-4c7b-8a57-bf00fab18d12" isSubstitutable="false">
+            <classMoniker Id="fd73ee90-ff41-45b0-be99-ab934b5e17e1" LastKnownName="Transactie" />
+            <elementDefinition Id="5fa70eda-a6c3-4828-b893-66cee5510612" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5cba5f1b-c696-4a72-adf6-ab78d42c572f" name="Uitgave" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a6013470-9fb9-4b0b-a98e-be15fee4670f" />
+        <generalsInternal>
+          <generalization Id="a9b73fa9-41f8-4461-8af3-2c1d2f067232" isSubstitutable="false">
+            <classMoniker Id="fd73ee90-ff41-45b0-be99-ab934b5e17e1" LastKnownName="Transactie" />
+            <elementDefinition Id="08798129-1a19-4565-a754-440ee2f8c5cf" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="a3c0ff30-8c65-4596-9730-1cb68b72476a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="6292a637-6b97-4c36-a611-35e34c048b98" LastKnownName="Categorie" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5df1bbc6-7fcc-42ae-b840-72a85aabc996" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="ae3c1dae-2786-4cab-8565-61b50d71efb6" name="Lower" value="*">
+                      <elementDefinition Id="52fc637b-fc81-49eb-a13a-0f90a1a77f2c" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="a4ddddfc-60ee-46cc-a1e5-c9c0205df963" name="Upper" value="*">
+                      <elementDefinition Id="7a773ffc-a290-4c3c-a404-13da9e0c8649" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="79bdf9a8-3675-4406-bb0a-34b8397c2d69" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="16b11509-d3b6-411b-9644-c5c0a95160b8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ce16079f-faae-410a-bd92-1166d3508bca" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="40f3e13f-ebc9-4d88-b303-2f6c0c89025b" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="bdc6e846-4211-4bfd-87db-d4ba2d044bfc" name="ModelingProject1">
+    <elementDefinition Id="4a2e8585-23b1-418e-8c9a-403eba34cdc9" />
+  </package>
+</logicalClassDesignerModel>
