@@ -66,14 +66,14 @@ namespace CashLight_App.ViewModels
         public ObservableCollection<Period> Periods { get; set; }
 
         public RelayCommand<Transaction> ShowTransactionDetailsCommand { get; set; }
-
+        public RelayCommand<Category> ShowCategoryDetailsCommand { get; set; }
         public DashboardViewModel(IPeriodRepository periodRepo, IDialogService dialogService)
         {
             _periodRepo = periodRepo;
             _dialogService = dialogService;
 
             ShowTransactionDetailsCommand = new RelayCommand<Transaction>((transaction) => ShowTransactionDetails(transaction));
-
+            ShowCategoryDetailsCommand = new RelayCommand<Category>((category) => ShowCategoryDetaisl(category));
             InitPeriods();
         }
 
@@ -153,7 +153,17 @@ namespace CashLight_App.ViewModels
 
             return categories.ToList();
         }
-
+        private void ShowCategoryDetaisl(Category category)
+        {
+            if (category == null)
+            {
+                _dialogService.ShowMessage("Er zijn geen details van de transactie aanwezig.", "Details van transactie");
+            }
+            else
+            {
+                _dialogService.ShowMessage(category.Budget.ToString(), "Budget van transactie");
+            }
+        }
      
 
         private void ShowTransactionDetails(Transaction transaction)
