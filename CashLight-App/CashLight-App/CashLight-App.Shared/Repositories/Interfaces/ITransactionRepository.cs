@@ -11,6 +11,7 @@ namespace CashLight_App.Repositories.Interfaces
         void Add(Transaction transaction);
 
         void Commit(); // TODO Weet niet of dit netjes is hier?
+        void Delete(Transaction transaction);
 
         Transaction GetFirstIncomeBeforeDate(DateTime date, string account);
         Transaction GetFirstIncomeAfterDate(DateTime date, string account);

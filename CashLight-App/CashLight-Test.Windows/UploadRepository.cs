@@ -33,7 +33,7 @@ namespace CashLight_Test.Windows
         {
 
             var count = _transactions.FindAll();
-            Assert.AreEqual(0, count.Count());
+            Assert.AreEqual(0, count.Count(), "DB not empty");
 
             var transaction = new Dictionary<string, string>();
 

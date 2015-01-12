@@ -764,6 +764,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="85f8c1b4-3c83-44a6-84d8-0658942cf412"
+            isDerived="false"
+            sourceEndRoleName="Gebruiker"
+            targetEndRoleName="Voortgang categoriseren inzien"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="84c25974-681b-4eba-9b4e-4d4d9e963d13"
+              LastKnownName="Voortgang categoriseren inzien"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="64e3837f-9491-4282-931a-6da775a665c8"
+                  name="Gebruiker"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9e94c778-92ad-4931-b5b6-640b6f31c65e"
+                  name="Voortgang categoriseren inzien"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -1128,6 +1167,20 @@
       <useCase
         Id="1ef3ec91-b8a9-4714-9dcb-2dcdc2d1fb47"
         name="Periode selecteren"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="470e6903-4257-4924-b2c3-ba190a001444"
+            LastKnownName="CashLight"
+            LastKnownLocation="ModelingProject1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="84c25974-681b-4eba-9b4e-4d4d9e963d13"
+        name="Voortgang categoriseren inzien"
         isAbstract="false"
         isLeaf="false">
         <subjects>

@@ -154,5 +154,12 @@ namespace CashLight_App.Repositories
 
             return Mapper.Map<TransactionTable, Transaction>(transaction);
         }
+        public void Delete(Transaction transaction)
+        {
+            TransactionTable TransactionTable = new TransactionTable();
+            TransactionTable.TransactionID = transaction.TransactionID;
+
+            _db.Context.Table<TransactionTable>().Connection.Delete(TransactionTable);
+        }
     }
 }
