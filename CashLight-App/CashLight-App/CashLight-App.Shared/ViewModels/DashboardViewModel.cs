@@ -18,6 +18,9 @@ namespace CashLight_App.ViewModels
         private IPeriodRepository _periodRepo;
         private IDialogService _dialogService;
 
+        /// <summary>
+        /// Haalt de tekst op voor de huidige periode
+        /// </summary>
         public string Title
         {
             get
@@ -26,6 +29,9 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        /// <summary>
+        /// Haalt de tekst op voor de bestedingsruimte
+        /// </summary>
         public string SpendingsLimit
         {
             get
@@ -35,6 +41,9 @@ namespace CashLight_App.ViewModels
         }
 
         private Period _selectedPeriod;
+        /// <summary>
+        /// SelecterPeriod get / set
+        /// </summary>
         public Period SelectedPeriod
         {
             get
@@ -66,6 +75,12 @@ namespace CashLight_App.ViewModels
         public ObservableCollection<Period> Periods { get; set; }
 
         public RelayCommand<Transaction> ShowTransactionDetailsCommand { get; set; }
+
+        /// <summary>
+        /// Initialiseert de klasse met de juiste dependencies
+        /// </summary>
+        /// <param name="periodRepo">PeriodRepo</param>
+        /// <param name="dialogService">DialogService</param>
         public RelayCommand<Category> ShowCategoryDetailsCommand { get; set; }
         public DashboardViewModel(IPeriodRepository periodRepo, IDialogService dialogService)
         {
@@ -77,6 +92,9 @@ namespace CashLight_App.ViewModels
             InitPeriods();
         }
 
+        /// <summary>
+        /// Initialiseert de juiste periode
+        /// </summary>
         private void InitPeriods()
         {
             IEnumerable<Period> allPeriods = _periodRepo.GetAll();
@@ -102,6 +120,11 @@ namespace CashLight_App.ViewModels
             SelectedPeriod = Periods.Last();
         }
 
+        /// <summary>
+        /// Zet de hoogte van de transactie marker op het dashboard
+        /// </summary>
+        /// <param name="transactions"></param>
+        /// <returns></returns>
         private IEnumerable<Transaction> SetTransactionHeight(IEnumerable<Transaction> transactions)
         {
             if (transactions.Count() > 0)
@@ -128,7 +151,11 @@ namespace CashLight_App.ViewModels
         }
 
         
-
+        /// <summary>
+        /// Zet de hoogte van de category marker op het dashboard
+        /// </summary>
+        /// <param name="categories"></param>
+        /// <returns></returns>
         private List<ImportantCategory> SetCategoryHeight(List<ImportantCategory> categories)
         {
             if (categories.Count() > 0)
@@ -165,7 +192,10 @@ namespace CashLight_App.ViewModels
             }
         }
      
-
+        /// <summary>
+        /// Laat details zien van de transactie waar op geklikt is.
+        /// </summary>
+        /// <param name="transaction"></param>
         private void ShowTransactionDetails(Transaction transaction)
         {
             if (transaction == null || transaction.Description == "")

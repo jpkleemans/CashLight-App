@@ -19,6 +19,10 @@ namespace CashLight_App.ViewModels
         public RelayCommand SaveCategoryCommand { get; set; }
 
         private List<string> _typeList;
+
+        /// <summary>
+        /// TypeList get / set
+        /// </summary>
         public List<string> TypeList
         {
             get
@@ -34,6 +38,9 @@ namespace CashLight_App.ViewModels
 
 
         private string _currentType;
+        /// <summary>
+        /// CurrentType get / set
+        /// </summary>
         public string CurrentType
         {
             get
@@ -54,6 +61,9 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        /// <summary>
+        /// BudgetEnabled get / set
+        /// </summary>
         public bool BudgetEnabled
         {
             get
@@ -70,6 +80,9 @@ namespace CashLight_App.ViewModels
         }
 
         private string _text;
+        /// <summary>
+        /// Test get / set
+        /// </summary>
         public string Text
         {
             get
@@ -84,6 +97,9 @@ namespace CashLight_App.ViewModels
         }
 
         private double? _budget;
+        /// <summary>
+        /// Budget get / set
+        /// </summary>
         public string Budget
         {
             get
@@ -97,6 +113,12 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        /// <summary>
+        /// Initialiseert de klasse met de juiste dependencies
+        /// </summary>
+        /// <param name="categoryRepo">categoryRepo</param>
+        /// <param name="navigator">Navigator</param>
+        /// <param name="dialogService">DialogService</param>
         public CategoryViewModel(ICategoryRepository categoryRepo, INavigationService navigator, IDialogService dialogService)
         {
             _navigator = navigator;
@@ -110,6 +132,9 @@ namespace CashLight_App.ViewModels
             SaveCategoryCommand = new RelayCommand(SaveCategory);
         }
 
+        /// <summary>
+        /// Opslaan van de categorie
+        /// </summary>
         private async void SaveCategory()
         {
             Category category = new Category();
