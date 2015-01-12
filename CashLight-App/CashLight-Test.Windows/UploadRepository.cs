@@ -1,6 +1,8 @@
 ﻿using CashLight_App.Config;
 using CashLight_App.Enums;
 using CashLight_App.Repositories.Interfaces;
+using CashLight_App.Services.SQLite;
+using CashLight_App.Tables;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System;
@@ -31,7 +33,7 @@ namespace CashLight_Test.Windows
         [TestMethod]
         public void TestSaveTransaction()
         {
-
+            this.RemoveAll();
             var count = _transactions.FindAll();
             Assert.AreEqual(0, count.Count(), "DB not empty");
 
@@ -53,6 +55,15 @@ namespace CashLight_Test.Windows
 
 
         }
+        /// <summary>
+    /// Removes all data in DB.
+    /// </summary>
+        public void RemoveAll()
+        {
+            ISQLiteService db = ServiceLocator.Current.GetInstance<ISQLiteService>();
 
+            db.Context.Table<TransactionTable>().Connection.DeleteAll<TransactionTable>();
+
+        }
     }
-}
+    }

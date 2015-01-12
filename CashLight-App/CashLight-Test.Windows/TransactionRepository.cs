@@ -28,6 +28,8 @@ namespace CashLight_Test.Windows
         [TestMethod]
         public void TestAddTransaction()
         {
+            this.RemoveAll();
+
             var count = _repo.FindAll();
             DateTime now = DateTime.Now;
             Assert.AreEqual(0, count.Count());
@@ -57,14 +59,33 @@ namespace CashLight_Test.Windows
         [TestMethod]
         public void TestEditTransaction()
         {
+            this.RemoveAll();
 
-            var transaction = _repo.GetFirst();
+            var count = _repo.FindAll();
+            DateTime now = DateTime.Now;
+            Assert.AreEqual(0, count.Count());
 
-            Assert.AreEqual("CreditorName", transaction.CreditorName,"Name is correct!");            
+            Transaction transaction = new Transaction();
+            transaction.Amount = 20;
+            transaction.CategoryID = 0;
+            transaction.Code = 2;
+            transaction.CreditorName = "CreditorName";
+            transaction.CreditorNumber = "123456789";
+            transaction.Date = now;
+            transaction.DebtorNumber = "987654321";
+            transaction.Description = "Description";
+            transaction.InOut = (int)InOut.In;
 
-            transaction.CreditorName = "Henk";
+            _repo.Add(transaction);
 
-            _repo.Edit(transaction);
+            var result = _repo.GetFirst();
+
+            Assert.AreEqual("CreditorName", result.CreditorName,"Name is correct!");            
+
+            result
+                .CreditorName = "Henk";
+
+            _repo.Edit(result);
 
             var modified = _repo.GetFirst();
             Assert.AreEqual("Henk", modified.CreditorName);
