@@ -69,6 +69,9 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        /// <summary>
+        /// Haalt de juiste tekst op
+        /// </summary>
         public string CategoryListLabel
         {
             get
@@ -115,6 +118,9 @@ namespace CashLight_App.ViewModels
             SetCurrentAccount();
         }
 
+        /// <summary>
+        /// Laat info zien
+        /// </summary>
         private void ShowMoreInfo()
         {
             string transactions = "De huidige rekeningen zijn van " + _currentAccount.Name + ".\n\n";
@@ -126,6 +132,9 @@ namespace CashLight_App.ViewModels
             _dialogService.ShowMessage(transactions, "Rekeningdetails");
         }
 
+        /// <summary>
+        /// Registreert de huidige rekening.
+        /// </summary>
         private void SetCurrentAccount()
         {
             if (UncategorizedAccounts.Count != 0)
@@ -138,11 +147,18 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        /// <summary>
+        /// Voegt een categorie toe
+        /// </summary>
         private void AddCategory()
         {
             _navigator.NavigateTo("AddCategory");
         }
 
+        /// <summary>
+        /// Koppelen van een account aan een categorie
+        /// </summary>
+        /// <param name="categoryID">CategoryID</param>
         private void SetCategory(int categoryID)
         {
             if (CurrentAccount != null)
@@ -174,6 +190,10 @@ namespace CashLight_App.ViewModels
             }
         }
 
+        /// <summary>
+        /// Verwijdert een categorie
+        /// </summary>
+        /// <param name="categoryID">CategoryID</param>
         private void DeleteCategory(int categoryID)
         {
             Category category = Categories.Where(x => x.CategoryID == categoryID).First();
