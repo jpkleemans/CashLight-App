@@ -17,6 +17,7 @@ namespace CashLight_App.ViewModels
     {
         private IPeriodRepository _periodRepo;
         private IDialogService _dialogService;
+        private IAccountRepository _accountRepo;
 
         /// <summary>
         /// Haalt de tekst op voor de huidige periode
@@ -81,14 +82,15 @@ namespace CashLight_App.ViewModels
         /// </summary>
         /// <param name="periodRepo">PeriodRepo</param>
         /// <param name="dialogService">DialogService</param>
-        public RelayCommand<Category> ShowCategoryDetailsCommand { get; set; }
-        public DashboardViewModel(IPeriodRepository periodRepo, IDialogService dialogService)
+        public RelayCommand<ImportantCategory> ShowCategoryDetailsCommand { get; set; }
+        public DashboardViewModel(IPeriodRepository periodRepo, IDialogService dialogService, IAccountRepository accountRepo)
         {
             _periodRepo = periodRepo;
             _dialogService = dialogService;
+            _accountRepo = accountRepo;
 
             ShowTransactionDetailsCommand = new RelayCommand<Transaction>((transaction) => ShowTransactionDetails(transaction));
-            ShowCategoryDetailsCommand = new RelayCommand<Category>((category) => ShowCategoryDetaisl(category));
+            ShowCategoryDetailsCommand = new RelayCommand<ImportantCategory>((category) => ShowCategoryDetails(category));
             InitPeriods();
         }
 
@@ -180,15 +182,27 @@ namespace CashLight_App.ViewModels
 
             return categories.ToList();
         }
-        private void ShowCategoryDetaisl(Category category)
+        private void ShowCategoryDetails(ImportantCategory category)
         {
             if (category == null)
             {
-                _dialogService.ShowMessage("Er zijn geen details van de transactie aanwezig.", "Details van transactie");
+                _dialogService.ShowMessage("Er zijn geen details van de categorie aanwezig.", "Details van categorie");
             }
             else
             {
-                _dialogService.ShowMessage(category.Budget.ToString(), "Budget van transactie");
+                string message = "";
+                message += "Budget deze maand: \t" + category.Category.Budget.ToString("c") + "\n";
+                message += "Budget verbruikt: \t\t" + category.AmountOfBudget.ToString("c") + "\n\n\n";
+                
+                foreach (var account in _accountRepo.FindAll())
+                {
+                    if (account.CategoryID == category.Category.CategoryID)
+                    {
+                        message += "Rekening: \t\t" + account.Name + " - " + account.Number + "\n";
+                    }
+                }
+
+                _dialogService.ShowMessage(message, "Budget van categorie");
             }
         }
      

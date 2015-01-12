@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CashLight_App.Windows.App">
-      <m2:VisualElements DisplayName="CashLight" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Het nieuwe huishoudboekje." ForegroundText="light" BackgroundColor="#464646" ToastCapable="false">
+      <m2:VisualElements DisplayName="CashLight" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Het nieuwe huishoudboekje." ForegroundText="light" BackgroundColor="#464646">
         <m2:DefaultTile Square70x70Logo="Assets\Square70x70Logo.png" ShortName="CashLight" DefaultSize="square150x150Logo">
         </m2:DefaultTile>
         <m2:SplashScreen Image="Assets\SplashScreen.png" />

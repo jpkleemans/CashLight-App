@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CashLight_App</RootNamespace>
     <AssemblyName>CashLight-App.Windows</AssemblyName>
-    <DefaultLanguage>nl-NL</DefaultLanguage>
+    <DefaultLanguage>nl</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
