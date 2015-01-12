@@ -14,6 +14,10 @@ namespace CashLight_App.Repositories
     {
         private ISQLiteService _db;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="SQLiteService"></param>
         public SettingRepository(ISQLiteService SQLiteService)
         {
             this._db = SQLiteService;
@@ -21,6 +25,11 @@ namespace CashLight_App.Repositories
             Mapper.CreateMap<SettingTable, Setting>();
         }
 
+        /// <summary>
+        /// Get a Setting by key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public Setting FindByKey(string key)
         {
             TableQuery<SettingTable> settings = _db.Context.Table<SettingTable>();
@@ -33,6 +42,10 @@ namespace CashLight_App.Repositories
             return Mapper.Map<SettingTable, Setting>(setting);
         }
 
+        /// <summary>
+        /// Adds a new setting
+        /// </summary>
+        /// <param name="setting"></param>
         public void Add(Setting setting)
         {
             Mapper.CreateMap<Setting, SettingTable>();
@@ -54,6 +67,9 @@ namespace CashLight_App.Repositories
             }
         }
 
+        /// <summary>
+        /// Commit
+        /// </summary>
         public void Commit()
         {
             _db.Context.Commit();

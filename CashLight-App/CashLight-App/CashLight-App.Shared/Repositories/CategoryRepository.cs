@@ -14,12 +14,20 @@ namespace CashLight_App.Repositories
     {
         private ISQLiteService _db;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="SQLiteService"></param>
         public CategoryRepository(ISQLiteService SQLiteService)
         {
             this._db = SQLiteService;
 
         }
 
+        /// <summary>
+        /// Edits (Saves) a specific category
+        /// </summary>
+        /// <param name="category"></param>
         public void Edit(Category category)
         {
             Mapper.CreateMap<Category, CategoryTable>();
@@ -28,6 +36,10 @@ namespace CashLight_App.Repositories
             _db.Context.Table<CategoryTable>().Connection.Update(categoryTable);
         }
 
+        /// <summary>
+        /// This method will do a FindAll-query on the database
+        /// </summary>
+        /// <returns>IEnumerable<Category></returns>
         public IEnumerable<Category> FindAll()
         {
             Mapper.CreateMap<CategoryTable, Category>();
@@ -36,6 +48,10 @@ namespace CashLight_App.Repositories
             return Mapper.Map<IEnumerable<CategoryTable>, IEnumerable<Category>>(table);
         }
 
+        /// <summary>
+        /// Adds a new category to the database
+        /// </summary>
+        /// <param name="category"></param>
         public void Add(Category category)
         {
             Mapper.CreateMap<Category, CategoryTable>();
@@ -43,6 +59,11 @@ namespace CashLight_App.Repositories
 
             _db.Context.Table<CategoryTable>().Connection.Insert(categoryTable);
         }
+
+        /// <summary>
+        /// Removes a specific category from the database
+        /// </summary>
+        /// <param name="category"></param>
         public void Delete(Category category)
         {
             CategoryTable CategoryTable = new CategoryTable();
@@ -51,12 +72,19 @@ namespace CashLight_App.Repositories
             _db.Context.Table<CategoryTable>().Connection.Delete(CategoryTable);
         }
 
-
+        /// <summary>
+        /// Commit-method
+        /// </summary>
         public void Commit()
         {
             _db.Context.Commit();
         }
 
+        /// <summary>
+        /// Query; Find by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Category</returns>
         public Category FindByName(string name)
         {
             Mapper.CreateMap<CategoryTable, Category>();
@@ -65,6 +93,11 @@ namespace CashLight_App.Repositories
             return Mapper.Map<CategoryTable, Category>(c);
         }
 
+        /// <summary>
+        /// Query; Find by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Category</returns>
         public Category FindByID(int id)
         {
             Mapper.CreateMap<CategoryTable, Category>();

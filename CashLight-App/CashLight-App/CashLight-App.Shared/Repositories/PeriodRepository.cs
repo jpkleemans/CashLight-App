@@ -17,6 +17,12 @@ namespace CashLight_App.Repositories
         private ISettingRepository _settingRepo;
         private ICategoryRepository _categoryRepo;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="transactionRepo"></param>
+        /// <param name="settingRepo"></param>
+        /// <param name="categoryRepo"></param>
         public PeriodRepository(ITransactionRepository transactionRepo,
                                 ISettingRepository settingRepo,
                                 ICategoryRepository categoryRepo)
@@ -26,6 +32,11 @@ namespace CashLight_App.Repositories
             _categoryRepo = categoryRepo;
         }
 
+        /// <summary>
+        /// Returns period by a specific date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns>Period</returns>
         public Period GetByDate(DateTime date)
         {
             Period period = new Period();
@@ -86,12 +97,19 @@ namespace CashLight_App.Repositories
                 }
             }
         }
-
+        /// <summary>
+        /// Sets the transactions to the current period
+        /// </summary>
+        /// <param name="period"></param>
         private void SetTransactions(ref Period period)
         {
             period.Transactions = _transactionRepo.GetAllBetweenDates(period.StartDate, period.EndDate);
         }
 
+        /// <summary>
+        /// Sets the important transactions to the current period
+        /// </summary>
+        /// <param name="period"></param>
         private void SetImportantTransactions(ref Period period)
         {
             var startdate = period.StartDate;
@@ -141,33 +159,11 @@ namespace CashLight_App.Repositories
             period.ImportantSpendingCategories = importantcategories;
              
         }
-            
-        //private void SetCategories(ref Period period)
-        //{
-        //    IEnumerable<Category> categories = _categoryRepo.FindAll();
-
-        //    foreach (Category category in categories)
-        //    {
-        //        double totaltransactions = period.Transactions
-        //            .Where(q => q.CategoryID == category.CategoryID)
-        //            .Where(q => q.InOut == (int)InOut.Out)
-        //            .Count();
-
-        //        double amountoftransactions = period.Transactions.Where(q => q.InOut == (int)InOut.Out).Count();
-
-        //        if (totaltransactions == 0 || amountoftransactions == 0)
-        //        {
-        //            category.Percentage = 0;
-        //        }
-        //        else
-        //        {
-        //            category.Percentage = Convert.ToInt16((totaltransactions / amountoftransactions) * 100);
-        //        }
-        //    }
-
-        //    period.Categories = categories;
-        //}
-
+        
+        /// <summary>
+        /// This method returs the most consistent imcome
+        /// </summary>
+        /// <returns>PeriodDTO</returns>
         private PeriodDTO GetConsistentIncome()
         {
             var name = "NA";
@@ -190,6 +186,10 @@ namespace CashLight_App.Repositories
             return new PeriodDTO(name, account, averagedeviation, averageperiod);
         }
 
+        /// <summary>
+        /// This method searches for the most consistent income.
+        /// Saves it to the Settings-table
+        /// </summary>
         public void SearchMostConsistentIncome()
         {
             // Get all returning incomes and group them
@@ -266,6 +266,10 @@ namespace CashLight_App.Repositories
             SaveConsistentIncome(mostConsistentIncomeAccount);
         }
 
+        /// <summary>
+        /// Saves the consistent income
+        /// </summary>
+        /// <param name="p"></param>
         public void SaveConsistentIncome(PeriodDTO p)
         {
             Setting s = new Setting("Income.CreditorName", p.Name);
@@ -283,6 +287,10 @@ namespace CashLight_App.Repositories
             _settingRepo.Commit();
         }
 
+        /// <summary>
+        /// This method gets the spendingsLimit from the given period
+        /// </summary>
+        /// <param name="period"></param>
         public void GetSpendingLimit(ref Period period)
         {
             double spendinglimit = 0;
@@ -303,6 +311,10 @@ namespace CashLight_App.Repositories
             period.SpendingsLimit = spendinglimit;
         }
 
+        /// <summary>
+        /// GetAll-method
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Period> GetAll()
         {
             Transaction firstTransaction = _transactionRepo.GetFirst();
