@@ -6,7 +6,7 @@ using System.Text;
 namespace CashLight_App.Tables
 {
     [Table("Setting")]
-    class SettingTable
+    public class SettingTable
     {
         [PrimaryKey, AutoIncrement]
         public int SettingID { get; set; }
