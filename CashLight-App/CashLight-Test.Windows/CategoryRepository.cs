@@ -14,7 +14,6 @@ using Windows.Storage;
 using System.Threading.Tasks;
 using System.Reflection;
 using CashLight_App.Models;
-using System.Diagnostics;
 
 namespace CashLight_Test.Windows
 {
@@ -48,7 +47,7 @@ namespace CashLight_Test.Windows
 
             count = _repo.FindAll();
             Assert.AreEqual(1, count.Count());
-            
+
         }
 
         [TestMethod]
@@ -65,17 +64,15 @@ namespace CashLight_Test.Windows
             _repo.Add(category);
 
             var result = _repo.FindAll().First();
-            Debug.WriteLine(result.Name);
 
-            //Assert.AreEqual("Test Category 1", result.Name);
-            //Assert.AreEqual((int)CategoryType.Fixed, result.Type);
+            Assert.AreEqual("Test Category 1", result.Name);
+            Assert.AreEqual((int)CategoryType.Fixed, result.Type);
 
             result.Name = "Test Category Modified";
 
             _repo.Edit(result);
 
-            var modified = _repo.FindByID(1);
-            Debug.WriteLine(modified.Name);
+            var modified = _repo.FindAll().First();
             Assert.AreEqual("Test Category Modified", modified.Name);
 
         }
@@ -178,3 +175,4 @@ namespace CashLight_Test.Windows
     }
 
 }
+
