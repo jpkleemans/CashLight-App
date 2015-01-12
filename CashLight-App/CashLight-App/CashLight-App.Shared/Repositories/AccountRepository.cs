@@ -23,6 +23,10 @@ namespace CashLight_App.Repositories
             Mapper.CreateMap<AccountCategoryTable, Account>();
         }
 
+        /// <summary>
+        /// FindAll returns all transactions from the table
+        /// </summary>
+        /// <returns>IEnumerable<Account></returns>
         public IEnumerable<Account> FindAll()
         {
             List<Account> accounts = new List<Account>();
@@ -64,6 +68,10 @@ namespace CashLight_App.Repositories
             return accounts;
         }
 
+        /// <summary>
+        /// Returs all categorized transactions
+        /// </summary>
+        /// <returns>IEnumerable<Account></returns>
         public IEnumerable<Account> FindAllCategorized()
         {
             TableQuery<AccountCategoryTable> accountCategories = _db.Context.Table<AccountCategoryTable>();
@@ -71,6 +79,10 @@ namespace CashLight_App.Repositories
             return Mapper.Map<IEnumerable<AccountCategoryTable>, IEnumerable<Account>>(accountCategories);
         }
 
+        /// <summary>
+        /// Adds an account to the database
+        /// </summary>
+        /// <param name="account"></param>
         public void Add(Account account)
         {
             Mapper.CreateMap<Account, AccountCategoryTable>();
@@ -79,6 +91,10 @@ namespace CashLight_App.Repositories
             _db.Context.Table<AccountCategoryTable>().Connection.Insert(accountTable);
         }
 
+        /// <summary>
+        /// Deletes an account from the database
+        /// </summary>
+        /// <param name="account"></param>
         public void Delete(Account account)
         {
             AccountCategoryTable accountCategoryTable = new AccountCategoryTable();
@@ -87,7 +103,9 @@ namespace CashLight_App.Repositories
             _db.Context.Table<AccountCategoryTable>().Connection.Delete(accountCategoryTable);
         }
 
-
+        /// <summary>
+        /// Commit-method;
+        /// </summary>
         public void Commit()
         {
             _db.Context.Commit();

@@ -16,6 +16,10 @@ namespace CashLight_App.Repositories
     {
         private ISQLiteService _db;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="SQLiteService"></param>
         public TransactionRepository(ISQLiteService SQLiteService)
         {
             this._db = SQLiteService;
@@ -23,14 +27,23 @@ namespace CashLight_App.Repositories
             Mapper.CreateMap<TransactionTable, Transaction>();
         }
 
+        /// <summary>
+        /// Edits a specific Transaction
+        /// </summary>
+        /// <param name="transaction"></param>
         public void Edit(Transaction transaction)
         {
             Mapper.CreateMap<Transaction, TransactionTable>();
             TransactionTable transactionTable = Mapper.Map<Transaction, TransactionTable>(transaction);
 
             _db.Context.Table<TransactionTable>().Connection.Update(transactionTable);
+        
         }
 
+        /// <summary>
+        /// Adds a new Transaction
+        /// </summary>
+        /// <param name="transaction"></param>
         public void Add(Transaction transaction)
         {
             Mapper.CreateMap<Transaction, TransactionTable>();
@@ -39,11 +52,20 @@ namespace CashLight_App.Repositories
             _db.Context.Table<TransactionTable>().Connection.Insert(transactionTable);
         }
 
+        /// <summary>
+        /// Commit-method
+        /// </summary>
         public void Commit()
         {
             _db.Context.Commit();
         }
 
+        /// <summary>
+        /// Get first income before a specific Date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public Transaction GetFirstIncomeBeforeDate(DateTime date, string account)
         {
             TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
@@ -57,6 +79,12 @@ namespace CashLight_App.Repositories
             return Mapper.Map<TransactionTable, Transaction>(transaction);
         }
 
+        /// <summary>
+        /// Get first income after a specific Date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public Transaction GetFirstIncomeAfterDate(DateTime date, string account)
         {
             TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
@@ -70,6 +98,12 @@ namespace CashLight_App.Repositories
             return Mapper.Map<TransactionTable, Transaction>(transaction);
         }
 
+        /// <summary>
+        /// Get all income between two dates
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
         public IEnumerable<Transaction> GetAllBetweenDates(DateTime startDate, DateTime endDate)
         {
             TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
@@ -94,6 +128,14 @@ namespace CashLight_App.Repositories
             return transactionModels;
         }
 
+        /// <summary>
+        /// Gets the highest Transactions between dates
+        /// </summary>
+        /// <param name="inOut"></param>
+        /// <param name="limit"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
         public IEnumerable<Transaction> GetHighestBetweenDates(Enums.InOut inOut, int limit, DateTime startDate, DateTime endDate)
         {
             TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();
@@ -107,6 +149,11 @@ namespace CashLight_App.Repositories
             return Mapper.Map<IEnumerable<TransactionTable>, IEnumerable<Transaction>>(transactionList.OrderBy(x => x.Date));
         }
 
+        /// <summary>
+        /// Checks if a transaction exists
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Exists(Transaction transaction)
         {
             TableQuery<TransactionTable> transactions = _db.Context.Table<TransactionTable>();

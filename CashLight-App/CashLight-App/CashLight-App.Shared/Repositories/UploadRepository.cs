@@ -23,6 +23,14 @@ namespace CashLight_App.Repositories
         private IPeriodRepository _periodRepo;
         private IDialogService _dialogService;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="transactionRepo"></param>
+        /// <param name="CSVReader"></param>
+        /// <param name="bankConverter"></param>
+        /// <param name="periodRepo"></param>
+        /// <param name="dialogService"></param>
         public UploadRepository(ITransactionRepository transactionRepo,
                                 ICSVReaderService CSVReader,
                                 IBankConverterService bankConverter,
@@ -35,6 +43,10 @@ namespace CashLight_App.Repositories
             _dialogService = dialogService;
         }
 
+        /// <summary>
+        /// ToDatabase saves csv to database
+        /// </summary>
+        /// <param name="storageFile"></param>
         public async void ToDatabase(StorageFile storageFile)
         {
             bool crashChecker = false;
@@ -62,6 +74,10 @@ namespace CashLight_App.Repositories
             _periodRepo.SearchMostConsistentIncome();
         }
 
+        /// <summary>
+        /// Saves a single transaction
+        /// </summary>
+        /// <param name="dic"></param>
         public void SaveTransaction(Dictionary<string, string> dic)
         {
             int inOut;
@@ -95,6 +111,11 @@ namespace CashLight_App.Repositories
             }
         }
 
+        /// <summary>
+        /// Creates a list of the csv (storageFile)
+        /// </summary>
+        /// <param name="storageFile"></param>
+        /// <returns></returns>
         private async System.Threading.Tasks.Task<List<Dictionary<string, string>>> CreateList(StorageFile storageFile)
         {
             Stream stream = await storageFile.OpenStreamForReadAsync();
